@@ -1,4 +1,3 @@
-
 const name = 'xl-col'
 export default {
   name: name,
