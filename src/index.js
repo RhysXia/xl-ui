@@ -1,7 +1,5 @@
 import { Row, Col } from './components/grid/index.js'
 
-import './styles/index.scss'
-
 const components = {
   Row,
   Col

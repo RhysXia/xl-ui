@@ -1,7 +1,7 @@
-const prefix = 'xl'
-const clsPrefix = `${prefix}-col`
+
+const name = 'xl-col'
 export default {
-  name: `${prefix}-col`,
+  name: name,
   inject: ['xlRow'],
   props: {
     tag: {
@@ -30,14 +30,14 @@ export default {
       return this.xlRow.gutter
     },
     classes () {
-      let classList = [clsPrefix]
+      let classList = [name]
       let props = ['span', 'offset', 'pull', 'push']
       props.forEach(prop => {
         if (this[prop] || this[prop] === 0) {
           if (prop === 'span') {
-            classList.push(`${clsPrefix}-${this[prop]}`)
+            classList.push(`${name}-${this[prop]}`)
           } else {
-            classList.push(`${clsPrefix}-${prop}-${this[prop]}`)
+            classList.push(`${name}-${prop}-${this[prop]}`)
           }
         }
       })
@@ -45,7 +45,7 @@ export default {
       props = ['xs', 'sm', 'md', 'lg', 'xl']
       props.forEach(size => {
         if (typeof this[size] === 'number') {
-          classList.push(`${clsPrefix}-${size}-${this[size]}`)
+          classList.push(`${name}-${size}-${this[size]}`)
         } else if (typeof this[size] === 'object') {
           let props = this[size]
           Object.keys(props).forEach(prop => {

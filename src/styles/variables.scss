@@ -1,1 +1,15 @@
+//前缀
 $clsPrefix: 'xl';
+
+//grid断点
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1920px;
+$grid-breakpoints: ( 
+    'xs': (max-width: $sm), 
+    'sm': (min-width: $sm), 
+    'md': (min-width: $md), 
+    'lg': (min-width: $lg), 
+    'xl': (min-width: $xl)
+);

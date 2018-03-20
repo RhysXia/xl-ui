@@ -1,7 +1,7 @@
-const prefix = 'xl'
-const clsPrefix = `${prefix}-row`
+
+const name = 'xl-row'
 export default {
-  name: `${prefix}-row`,
+  name,
   provide () {
     return {
       xlRow: this
@@ -41,10 +41,10 @@ export default {
   computed: {
     classes () {
       return [
-        clsPrefix,
-        this.type ? `${clsPrefix}--${this.type}` : '',
-        this.justify ? `${clsPrefix}--${this.justify}` : '',
-        this.align ? `${clsPrefix}--${this.align}` : ''
+        name,
+        this.type ? `${name}--${this.type}` : '',
+        this.justify ? `${name}--${this.justify}` : '',
+        this.align ? `${name}--${this.align}` : ''
       ]
     },
     styles () {
