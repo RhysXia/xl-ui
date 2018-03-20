@@ -24,7 +24,7 @@
     "dev": "webpack-dev-server --content-base test/ --open --inline --hot --compress --history-api-fallback --port 8081 --config build/webpack.dev.config.js",
     "dist:dev": "webpack --config build/webpack.dist.dev.config.js",
     "dist:prod": "webpack --config build/webpack.dist.prod.config.js",
-    "dist": "npm run dist:style && npm run dist:dev && npm run dist:prod",
+    "dist": "npm run dist:dev && npm run dist:prod",
     "lint": "eslint --fix --ext .js,.vue src",
     "prepublish": "npm run dist"
   },
@@ -84,7 +84,7 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^3.0.0"
   },
   "engines": {
     "node": ">= 6.0.0",

@@ -26,7 +26,7 @@ module.exports = {
         options: {
           sourceMap: true
         },
-        exclude: /node_modules/
+        exclude: /(node_modules|dist)/
       },
       {
         test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,

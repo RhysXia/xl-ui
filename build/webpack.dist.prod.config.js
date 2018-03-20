@@ -20,6 +20,14 @@ module.exports = merge(webpackBaseConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  externals: {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
+  },
   module: {
     rules: [{
       test: /\.vue$/,
@@ -38,14 +46,6 @@ module.exports = merge(webpackBaseConfig, {
         extract: true,
       })
     )
-  },
-  externals: {
-    vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
-    }
   },
   plugins: [
     // @todo
