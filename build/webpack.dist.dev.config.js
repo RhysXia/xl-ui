@@ -13,8 +13,8 @@ module.exports = merge(webpackBaseConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    filename: 'xl-ui.js',
-    library: 'xl-ui',
+    filename: 'xl-vision.js',
+    library: 'xl-vision',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -52,6 +52,6 @@ module.exports = merge(webpackBaseConfig, {
         NODE_ENV: '"development"'
       }
     }),
-    new ExtractTextPlugin('/style/xl-ui.css')
+    new ExtractTextPlugin('/style/xl-vision.css')
   ]
 });

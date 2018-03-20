@@ -1,13 +1,13 @@
 {
-  "name": "xl-ui",
+  "name": "xl-vision",
   "version": "0.0.1-beta.1",
   "description": "A high quality  UI components Library with Vue.js",
   "author": "Rhys Xia <xrs4433@outlook.com>",
-  "homepage": "http://www.rhys.site/xl-ui",
+  "homepage": "http://www.rhys.site/xl-vision",
   "private": true,
   "license": "MIT",
   "keywords": [
-    "xl-ui",
+    "xl-vision",
     "vue",
     "vue.js",
     "component",
@@ -17,9 +17,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/RhysXia/xl-ui"
+    "url": "https://github.com/RhysXia/xl-vision"
   },
-  "main": "dist/xl.js",
+  "main": "dist/xl-vision.js",
   "scripts": {
     "dev": "webpack-dev-server --content-base test/ --open --inline --hot --compress --history-api-fallback --port 8081 --config build/webpack.dev.config.js",
     "dist:dev": "webpack --config build/webpack.dist.dev.config.js",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
+    "babel-eslint": "^8.2.2",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -67,6 +68,8 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.1.2",
     "postcss-url": "^7.2.1",
+    "pug": "^2.0.1",
+    "pug-loader": "^2.3.0",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.7",
     "semver": "^5.3.0",

@@ -3,13 +3,23 @@ const webpack = require('webpack')
 const pkg = require('../package.json')
 const utils = require('./utils')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   module: {
     rules: [
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('examples'), resolve('test')],
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: true
+        }
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -31,7 +41,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      'vue': 'vue/dist/vue.esm.js',
+      vue: 'vue/dist/vue.esm.js',
       '@': resolve('src')
     }
   },
@@ -39,6 +49,6 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({
       'process.env.VERSION': `'${pkg.version}'`
-    }),
+    })
   ]
 }

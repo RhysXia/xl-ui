@@ -39,12 +39,6 @@ module.exports = merge(webpackBaseConfig, {
       })
     )
   },
-  resolve: {
-    alias: {
-      'xl-ui': '../../src/index',
-      vue: 'vue/dist/vue.esm.js'
-    }
-  },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',

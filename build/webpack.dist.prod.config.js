@@ -15,8 +15,8 @@ module.exports = merge(webpackBaseConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    filename: 'xl-ui.min.js',
-    library: 'xl-ui',
+    filename: 'xl-vision.min.js',
+    library: 'xl-vision',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -65,7 +65,7 @@ module.exports = merge(webpackBaseConfig, {
       threshold: 10240,
       minRatio: 0.8
     }),
-    new ExtractTextPlugin('/style/xl-ui.min.css'),
+    new ExtractTextPlugin('/style/xl-vision.min.css'),
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true,
