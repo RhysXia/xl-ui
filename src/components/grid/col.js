@@ -49,7 +49,7 @@ export default {
         } else if (typeof this[size] === 'object') {
           let props = this[size]
           Object.keys(props).forEach(prop => {
-            classList.push(`el-col-${size}-${prop}-${props[prop]}`)
+            classList.push(`${name}-${size}-${prop}-${props[prop]}`)
           })
         }
       })

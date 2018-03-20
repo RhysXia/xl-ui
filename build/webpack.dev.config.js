@@ -28,7 +28,8 @@ module.exports = merge(webpackBaseConfig, {
       loader: 'vue-loader',
       options: {
         loaders: utils.cssLoaders({
-          extract: false
+          extract: false,
+          usePostCSS:true
         })
       }
     }].concat(

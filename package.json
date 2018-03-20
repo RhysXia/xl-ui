@@ -4,7 +4,6 @@
   "description": "A high quality  UI components Library with Vue.js",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "homepage": "http://www.rhys.site/xl-vision",
-  "private": true,
   "license": "MIT",
   "keywords": [
     "xl-vision",
