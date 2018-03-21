@@ -1,3 +1,4 @@
+<script>
 const name = 'xl-col'
 export default {
   name: name,
@@ -25,10 +26,10 @@ export default {
     lg: [Number, Object]
   },
   computed: {
-    gutter () {
+    gutter() {
       return this.xlRow.gutter
     },
-    classes () {
+    classes() {
       let classList = [name]
       let props = ['span', 'offset', 'pull', 'push']
       props.forEach(prop => {
@@ -54,7 +55,7 @@ export default {
       })
       return classList
     },
-    styles () {
+    styles() {
       let style = {}
       if (this.gutter !== 0) {
         style = {
@@ -65,7 +66,7 @@ export default {
       return style
     }
   },
-  render (h) {
+  render(h) {
     return h(
       this.tag,
       {
@@ -76,3 +77,50 @@ export default {
     )
   }
 }
+</script>
+<style lang="scss">
+@import '../../styles/variables.scss';
+
+@mixin col($prefix, $type, $number) {
+  @if ($type==span) {
+    $type: #{''};
+  } @else {
+    $type: -#{$type};
+  }
+  .#{$prefix}#{$type}-0 {
+    display: none;
+  }
+  @for $i from 1 through $number {
+    .#{$prefix}#{$type}-#{$i} {
+      width: $i / $number * 100%;
+    }
+    .#{$prefix}#{$type}-pull-#{$i} {
+      position: relative;
+      right: $i / $number * 100%;
+    }
+    .#{$prefix}#{$type}-offset-#{$i} {
+      margin-left: $i / $number * 100%;
+    }
+    .#{$prefix}#{$type}-push-#{$i} {
+      position: relative;
+      left: $i / $number * 100%;
+    }
+  }
+}
+
+@mixin media-col($prefix, $breakpoints) {
+  @each $key in map_keys($breakpoints) {
+    @media only screen and #{map_get($breakpoints,$key)} {
+      @include col($prefix, $key, 24);
+    }
+  }
+}
+
+.xl-col {
+  float: left;
+  box-sizing: border-box;
+}
+
+@include col(#{$--clsPrefix}-col, span, 24);
+@include media-col(#{$--clsPrefix}-col, $--grid-breakpoints);
+</style>

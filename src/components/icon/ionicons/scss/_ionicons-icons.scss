@@ -736,7 +736,7 @@
 .#{$ionicons-prefix}wrench:before,
 .#{$ionicons-prefix}xbox:before
 {
-  @extend .xl-icon;
+  @extend .#{$--clsPrefix}-icon;
 }
 .#{$ionicons-prefix}alert:before { content: $ionicon-var-alert; }
 .#{$ionicons-prefix}alert-circled:before { content: $ionicon-var-alert-circled; }

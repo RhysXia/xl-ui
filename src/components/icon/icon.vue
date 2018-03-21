@@ -14,10 +14,10 @@ export default {
     size: [Number, String]
   },
   computed: {
-    classes () {
+    classes() {
       return [name, `${name}-${this.type}`]
     },
-    styles () {
+    styles() {
       const style = {}
       if (this.size) {
         style['font-size'] = `${this.size}px`
@@ -30,3 +30,7 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import '../../styles/variables.scss';
+@import './ionicons/scss/ionicons.scss';
+</style>
