@@ -1,19 +1,27 @@
 //前缀
 $--clsPrefix: 'xl';
 //base color
-$--color-primary : #409eff;
-$--color-info : #909399;
-$--color-success : #67c23a;
-$--color-warning : #e6a23c;
-$--color-error : #f56c6c;
-$--color-border : #dddee1;
-$--color-text : #495060;
+$--color-primary: #409eff;
+$--color-info: #909399;
+$--color-success: #67c23a;
+$--color-warning: #e6a23c;
+$--color-error: #f56c6c;
+$--color-border: #dddee1;
+$--color-text: #495060;
 $--color-background: #f7f7f7;
-//size
-$--border-radius : 0.2em;
-$--font-size-base : 14px;
-$--font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 
+$--color-link: $--color-primary;
+//size
+$--border-radius: 0.2em;
+$--font-size-base: 14px;
+$--font-family: "Helvetica Neue",
+Helvetica,
+"PingFang SC",
+"Hiragino Sans GB",
+"Microsoft YaHei",
+"微软雅黑",
+Arial,
+sans-serif;
 //grid断点
 $--sm: 768px;
 $--md: 992px;
@@ -24,4 +32,46 @@ $--grid-breakpoints: ( 'xs': (max-width: $--sm), 'sm': (min-width: $--sm), 'md':
 $--btn-color--default:$--color-text;
 $--btn-bg-color--default:$--color-background;
 $--btn-border-color--default:$--color-border;
+$--btn-color--default--hover: $--color-primary;
+$--btn-bg-color--default--hover: lighten($--color-primary, 30%);
+$--btn-border-color--default--hover: $--color-primary;
 
+$--btn-color--success:$--color-background;
+$--btn-bg-color--success:$--color-success;
+$--btn-border-color--success:$--btn-bg-color--success;
+$--btn-color--success--hover: $--btn-color--success;
+$--btn-bg-color--success--hover: lighten($--color-success, 10%);
+$--btn-border-color--success--hover: $--btn-bg-color--success--hover;
+
+$--btn-color--primary:$--color-background;
+$--btn-bg-color--primary:$--color-primary;
+$--btn-border-color--primary:$--btn-bg-color--primary;
+$--btn-color--primary--hover: $--btn-color--primary;
+$--btn-bg-color--primary--hover: lighten($--color-primary, 10%);
+$--btn-border-color--primary--hover: $--btn-bg-color--primary--hover;
+
+$--btn-color--warning:$--color-background;
+$--btn-bg-color--warning:$--color-warning;
+$--btn-border-color--warning:$--btn-bg-color--warning;
+$--btn-color--warning--hover: $--btn-color--warning;
+$--btn-bg-color--warning--hover: lighten($--color-warning, 10%);
+$--btn-border-color--warning--hover: $--btn-bg-color--warning--hover;
+
+$--btn-color--error:$--color-background;
+$--btn-bg-color--error:$--color-error;
+$--btn-border-color--error:$--btn-bg-color--error;
+$--btn-color--error--hover: $--btn-color--error;
+$--btn-bg-color--error--hover: lighten($--color-error, 10%);
+$--btn-border-color--error--hover: $--btn-bg-color--error--hover;
+
+$--btn-color--info:$--color-background;
+$--btn-bg-color--info:$--color-info;
+$--btn-border-color--info:$--btn-bg-color--info;
+$--btn-color--info--hover: $--btn-color--info;
+$--btn-bg-color--info--hover: lighten($--color-info, 10%);
+$--btn-border-color--info--hover: $--btn-bg-color--info--hover;
+
+$--btn-color--text: $--color-text;
+$--btn-bg-color--text:$--color-background;
+$--btn-border-color--text:$--color-background;
+$--btn-color--text--hover:$--color-link;
