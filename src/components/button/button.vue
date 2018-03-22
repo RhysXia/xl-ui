@@ -1,12 +1,21 @@
 <template lang="pug">
   button(@click="_clickHandler",:class='classes',:type="nativeType",:disabled='disabled')
-    slot
+    Icon(v-if='loading',type='load-c')
+    Icon(v-else-if='icon',:type='icon')
+    span
+      slot
 </template>
 <script>
+import Icon from '../icon'
 const name = 'xl-button'
 export default {
   name,
   props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    icon: String,
     type: {
       default: 'default',
       validator(value) {
@@ -59,6 +68,9 @@ export default {
       if (this.plain) {
         arr.push(`${name}--plain`)
       }
+      if (this.loading) {
+        arr.push(`${name}--loading`)
+      }
       return arr
     }
   },
@@ -69,6 +81,9 @@ export default {
     foucs() {
       this.$el.focus()
     }
+  },
+  components: {
+    Icon
   }
 }
 </script>
@@ -85,7 +100,6 @@ export default {
   box-sizing: border-box;
   outline: none;
   margin: 0;
-  transition: 0.2s ease-in-out;
   border-radius: $--border-radius;
   padding: 0.4em 0.6em;
   border: 1px solid;
@@ -96,6 +110,9 @@ export default {
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+  .#{$--clsPrefix}-icon + span {
+    padding-left: 0.25em;
   }
 }
 .#{$--clsPrefix}-button--long {
@@ -110,6 +127,24 @@ export default {
   background-color: $--btn-bg-color--default !important;
   &:hover {
     background-color: $--btn-bg-color--default !important;
+  }
+}
+
+@keyframes #{$--clsPrefix}-button-loading-loop{
+    from{
+        transform: rotate(0deg)
+    }
+    to{
+        transform: rotate(360deg)
+    }
+}
+
+.#{$--clsPrefix}-button--loading {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+  .#{$--clsPrefix}-icon{
+    animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
   }
 }
 

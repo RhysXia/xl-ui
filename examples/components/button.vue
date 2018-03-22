@@ -54,6 +54,10 @@
       xl-icon(type='locked')
     xl-button(round)
       xl-icon(type='locked')
+    br
+    xl-button(round,icon='locked') 提交
+    br
+    xl-button(type='primary',loading)
 </template>
 <script>
 export default {}
