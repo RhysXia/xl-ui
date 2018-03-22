@@ -1,13 +1,14 @@
 import './styles/index.scss'
 import { Row, Col } from './components/grid/index.js'
 import Icon from './components/icon/index.js'
-import Button from './components/button/index.js'
+import { Button, ButtonGroup } from './components/button/index.js'
 
 const components = {
   Row,
   Col,
   Icon,
-  Button
+  Button,
+  ButtonGroup
 }
 
 const install = (Vue, opts = {}) => {

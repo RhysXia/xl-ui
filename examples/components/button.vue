@@ -60,7 +60,7 @@ export default {}
 </script>
 <style lang="scss">
 .button-example {
-  .xl-button {
+  >.xl-button {
     margin: 0.5em;
   }
 }
