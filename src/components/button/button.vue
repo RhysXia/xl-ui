@@ -53,23 +53,28 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      prefixCls: name
+    }
+  },
   computed: {
     classes() {
-      const arr = [name]
+      const arr = [this.prefixCls]
       if (this.type) {
-        arr.push(`${name}--${this.type}`)
+        arr.push(`${this.prefixCls}--${this.type}`)
       }
       if (this.round) {
-        arr.push(`${name}--round`)
+        arr.push(`${this.prefixCls}--round`)
       }
       if (this.long) {
-        arr.push(`${name}--long`)
+        arr.push(`${this.prefixCls}--long`)
       }
       if (this.plain) {
-        arr.push(`${name}--plain`)
+        arr.push(`${this.prefixCls}--plain`)
       }
       if (this.loading) {
-        arr.push(`${name}--loading`)
+        arr.push(`${this.prefixCls}--loading`)
       }
       return arr
     }
@@ -103,7 +108,7 @@ export default {
   border-radius: $--border-radius;
   padding: 0.4em 0.6em;
   border: 1px solid;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color $--transition-time ease, border-color $--transition-time ease;
   &::-moz-focus-inner {
     border: 0;
   }
@@ -130,20 +135,20 @@ export default {
   }
 }
 
-@keyframes #{$--clsPrefix}-button-loading-loop{
-    from{
-        transform: rotate(0deg)
-    }
-    to{
-        transform: rotate(360deg)
-    }
+@keyframes #{$--clsPrefix}-button-loading-loop {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .#{$--clsPrefix}-button--loading {
   cursor: default;
   pointer-events: none;
   opacity: 0.5;
-  .#{$--clsPrefix}-icon{
+  .#{$--clsPrefix}-icon {
     animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
   }
 }

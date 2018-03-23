@@ -13,14 +13,23 @@ export default {
     color: String,
     size: [Number, String]
   },
+  data() {
+    return {
+      prefixCls: name
+    }
+  },
   computed: {
     classes() {
-      return [name, `${name}-${this.type}`]
+      return [this.prefixCls, `${this.prefixCls}-${this.type}`]
     },
     styles() {
       const style = {}
       if (this.size) {
-        style['font-size'] = `${this.size}px`
+        if (typeof this.size === 'string') {
+          style['font-size'] = `${this.size}`
+        } else {
+          style['font-size'] = `${this.size}em`
+        }
       }
       if (this.color) {
         style.color = this.color
@@ -33,4 +42,7 @@ export default {
 <style lang="scss">
 @import '../../styles/variables.scss';
 @import './ionicons/scss/ionicons.scss';
+.#{$--clsPrefix}-icon {
+  font-size: 1em;
+}
 </style>

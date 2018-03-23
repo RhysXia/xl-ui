@@ -25,19 +25,24 @@ export default {
     md: [Number, Object],
     lg: [Number, Object]
   },
+  data() {
+    return {
+      prefixCls: name
+    }
+  },
   computed: {
     gutter() {
       return this.xlRow.gutter
     },
     classes() {
-      let classList = [name]
+      let classList = [this.prefixCls]
       let props = ['span', 'offset', 'pull', 'push']
       props.forEach(prop => {
         if (this[prop] || this[prop] === 0) {
           if (prop === 'span') {
-            classList.push(`${name}-${this[prop]}`)
+            classList.push(`${this.prefixCls}-${this[prop]}`)
           } else {
-            classList.push(`${name}-${prop}-${this[prop]}`)
+            classList.push(`${this.prefixCls}-${prop}-${this[prop]}`)
           }
         }
       })
@@ -45,11 +50,11 @@ export default {
       props = ['xs', 'sm', 'md', 'lg', 'xl']
       props.forEach(size => {
         if (typeof this[size] === 'number') {
-          classList.push(`${name}-${size}-${this[size]}`)
+          classList.push(`${this.prefixCls}-${size}-${this[size]}`)
         } else if (typeof this[size] === 'object') {
           let props = this[size]
           Object.keys(props).forEach(prop => {
-            classList.push(`${name}-${size}-${prop}-${props[prop]}`)
+            classList.push(`${this.prefixCls}-${size}-${prop}-${props[prop]}`)
           })
         }
       })

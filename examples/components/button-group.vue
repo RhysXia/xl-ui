@@ -28,7 +28,6 @@ export default {}
 </script>
 <style lang="scss">
 .button-group-example {
-  display: flex;
   .xl-button-group {
     margin: 0.5em;
   }

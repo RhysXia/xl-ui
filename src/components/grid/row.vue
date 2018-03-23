@@ -38,13 +38,18 @@ export default {
       default: 0
     }
   },
+  data() {
+    return {
+      prefixCls: name
+    }
+  },
   computed: {
     classes() {
       return [
         name,
-        this.type ? `${name}--${this.type}` : '',
-        this.justify ? `${name}--${this.justify}` : '',
-        this.align ? `${name}--${this.align}` : ''
+        this.type ? `${this.prefixCls}--${this.type}` : '',
+        this.justify ? `${this.prefixCls}--${this.justify}` : '',
+        this.align ? `${this.prefixCls}--${this.align}` : ''
       ]
     },
     styles() {

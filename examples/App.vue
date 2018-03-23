@@ -4,6 +4,7 @@
     Icon
     Button
     ButtonGroup
+    Input
 </template>
 
 <script>
@@ -11,19 +12,21 @@ import Grid from './components/grid'
 import Icon from './components/icon'
 import Button from './components/button'
 import ButtonGroup from './components/button-group'
+import Input from './components/input'
 export default {
   name: 'App',
   components: {
     Grid,
     Icon,
     Button,
-    ButtonGroup
+    ButtonGroup,
+    Input
   }
 }
 </script>
 <style lang="scss">
-#app{
-  >*{
+#app {
+  > * {
     margin-bottom: 20px;
   }
 }
