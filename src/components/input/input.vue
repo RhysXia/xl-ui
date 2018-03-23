@@ -1,18 +1,21 @@
 <template lang="pug">
   div(:class='classes')
-    textarea(v-if="type=='textarea'",:value='value',@input='_inputHandler',:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
+    textarea(ref="textarea",v-if="type=='textarea'",:value='currentValue',@input='_inputHandler',:style="textareaStyles",:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
     template(v-else)
       div(:class="[prefixCls+'__prepend']",v-if="$slots&&$slots.prepend")
         slot(name="prepend")
-      input(:type='type',:value='value',@input='_inputHandler',:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
+      input(:type='type',:value='currentValue',@input='_inputHandler',:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
       div(:class="[prefixCls+'__append']",v-if="$slots&&$slots.append")
         slot(name="append")
 </template>
 <script>
+import calcTextareaHeight from '@/utils/calcTextareaHeight'
 const name = 'xl-input'
 export default {
   name,
   props: {
+    // true/false/{minRows:1,maxRows:5}
+    autosize: [Boolean, Object],
     rows: {
       type: Number,
       default: 2
@@ -43,28 +46,57 @@ export default {
   },
   data() {
     return {
-      prefixCls: name
+      prefixCls: name,
+      currentValue: this.value,
+      textareaStyles: {}
     }
   },
   computed: {
     classes() {
       const arr = [`${this.prefixCls}`]
-      if (this.disabled) {
-        arr.push(`${this.prefixCls}--disabled`)
-      }
-      if (this.readonly) {
-        arr.push(`${this.prefixCls}--readonly`)
+      if (this.autosize) {
+        arr.push(`${this.prefixCls}--autosize`)
       }
       return arr
     }
   },
-  methods: {
-    _inputHandler(e) {
-      const value = (e.target || e.srcElement).value
-      this.$emit('input', value)
+  watch: {
+    value(val) {
+      this._updateValue(val)
     }
   },
-  mounted() {}
+  methods: {
+    _updateValue(val) {
+      if (val === this.currentValue) {
+        return
+      }
+      this.currentValue = val
+      this.$nextTick(() => {
+        this._resizeTextarea()
+      })
+    },
+    _inputHandler(e) {
+      const value = (e.target || e.srcElement).value
+      this._updateValue(value)
+      this.$emit('input', e)
+    },
+    _resizeTextarea() {
+      const autosize = this.autosize
+      if (!autosize || this.type !== 'textarea') {
+        return false
+      }
+      const minRows = autosize.minRows
+      const maxRows = autosize.maxRows
+      this.textareaStyles = calcTextareaHeight(
+        this.$refs.textarea,
+        minRows,
+        maxRows
+      )
+    }
+  },
+  mounted() {
+    this._resizeTextarea()
+  }
 }
 </script>
 <style lang="scss">
@@ -88,6 +120,7 @@ export default {
   }
   input,
   textarea {
+    resize: none;
     outline: none;
     color: $--color-text;
     width: 100%;
@@ -129,6 +162,11 @@ export default {
   & > :last-child {
     border-bottom-right-radius: $--border-radius;
     border-top-right-radius: $--border-radius;
+  }
+}
+.#{$--clsPrefix}-input--autosize {
+  textarea {
+    transition: height $--transition-time ease-in-out;
   }
 }
 </style>

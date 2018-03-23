@@ -16,6 +16,10 @@
     xl-input(disabled,type="textarea",placeholder="textarea disabled")
     br
     xl-input(readonly,type="textarea",placeholder="textarea readonly")
+    br
+    xl-input(type="textarea",placeholder="textarea autosize",autosize)
+    br
+    xl-input(type="textarea",placeholder="textarea autosize object",:autosize="{minRows:5,maxRows:10}")
 </template>
 <style lang="scss">
 </style>
