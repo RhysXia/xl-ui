@@ -20,6 +20,16 @@
     xl-input(type="textarea",placeholder="textarea autosize",autosize)
     br
     xl-input(type="textarea",placeholder="textarea autosize object",:autosize="{minRows:5,maxRows:10}")
+    br
+    xl-input(clearable,placeholder='clearable')
+    br
+    xl-input(icon='arrow-swap',placeholder='icon')
+    br
+    xl-input(icon='arrow-swap',clearable,placeholder='icon with clearable')
+    br
+    xl-input(icon='arrow-swap',clearable,placeholder='icon with clearable and append')
+      span(slot='prepend') prepend
+      span(slot='append') append
 </template>
 <style lang="scss">
 </style>

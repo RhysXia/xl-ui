@@ -1,5 +1,5 @@
 <template lang="pug">
-  i(:class='classes',:style='styles')
+  i(:class='classes',:style='styles',@click="_clickHandler")
 </template>
 <script>
 const name = 'xl-icon'
@@ -35,6 +35,11 @@ export default {
         style.color = this.color
       }
       return style
+    }
+  },
+  methods: {
+    _clickHandler(e) {
+      this.$emit('click', e)
     }
   }
 }

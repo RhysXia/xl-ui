@@ -1,19 +1,25 @@
 <template lang="pug">
   div(:class='classes')
-    textarea(ref="textarea",v-if="type=='textarea'",:value='currentValue',@input='_inputHandler',:style="textareaStyles",:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
+    textarea(ref="textarea",v-if="type=='textarea'",:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:style="textareaStyles",:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
     template(v-else)
       div(:class="[prefixCls+'__prepend']",v-if="$slots&&$slots.prepend")
         slot(name="prepend")
-      input(:type='type',:value='currentValue',@input='_inputHandler',:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
+      div(:class="prefixCls+'__inner-wrapper'",@mouseenter="isHovered = true",@mouseleave="isHovered = false")
+        input(ref="input",:type='type',:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
+        Icon(ref="icon-clear",@click="currentValue=''",:class="prefixCls+'__icon'",v-if="clearable&&currentValue&&(isFocused||isHovered)&&!readonly&&!disabled",type="ios-close")
+        Icon(@click="_iconClickHandler",:class="prefixCls+'__icon'",v-else-if="icon",:type="icon")
       div(:class="[prefixCls+'__append']",v-if="$slots&&$slots.append")
         slot(name="append")
 </template>
 <script>
 import calcTextareaHeight from '@/utils/calcTextareaHeight'
+import Icon from '../icon'
 const name = 'xl-input'
 export default {
   name,
   props: {
+    icon: String,
+    clearable: Boolean,
     // true/false/{minRows:1,maxRows:5}
     autosize: [Boolean, Object],
     rows: {
@@ -48,7 +54,9 @@ export default {
     return {
       prefixCls: name,
       currentValue: this.value,
-      textareaStyles: {}
+      textareaStyles: {},
+      isFocused: false,
+      isHovered: false
     }
   },
   computed: {
@@ -62,23 +70,36 @@ export default {
   },
   watch: {
     value(val) {
-      this._updateValue(val)
-    }
-  },
-  methods: {
-    _updateValue(val) {
-      if (val === this.currentValue) {
-        return
-      }
       this.currentValue = val
+    },
+    currentValue(val) {
+      this.$emit('input', val)
       this.$nextTick(() => {
         this._resizeTextarea()
       })
+    }
+  },
+  methods: {
+    focus() {
+      ;(this.$refs.textarea || this.$refs.input).focus()
+    },
+    blur() {
+      ;(this.$refs.textarea || this.$refs.input).blur()
+    },
+    _iconClickHandler() {
+      this.$emit('icon-click')
+    },
+    _blurHandler(e) {
+      this.$emit('blur', e)
+      this.isFocused = false
+    },
+    _focusHandler(e) {
+      this.$emit('focus', e)
+      this.isFocused = true
     },
     _inputHandler(e) {
       const value = (e.target || e.srcElement).value
-      this._updateValue(value)
-      this.$emit('input', e)
+      this.currentValue = value
     },
     _resizeTextarea() {
       const autosize = this.autosize
@@ -96,6 +117,9 @@ export default {
   },
   mounted() {
     this._resizeTextarea()
+  },
+  components: {
+    Icon
   }
 }
 </script>
@@ -111,12 +135,11 @@ export default {
   input,
   textarea {
     position: relative;
-    display: table-cell;
     box-sizing: border-box;
-    vertical-align: middle;
     padding: 0.5em 1em;
     border: 1px solid $--input-border-color;
     font-size: 1em;
+    z-index: 1;
   }
   input,
   textarea {
@@ -148,6 +171,8 @@ export default {
     background-color: $--input-append-bg-color;
     text-align: center;
     white-space: nowrap;
+    display: table-cell;
+    vertical-align: middle;
   }
   .#{$--clsPrefix}-input__prepend {
     border-right: none;
@@ -162,6 +187,24 @@ export default {
   & > :last-child {
     border-bottom-right-radius: $--border-radius;
     border-top-right-radius: $--border-radius;
+  }
+  .#{$--clsPrefix}-input__inner-wrapper {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .#{$--clsPrefix}-input__icon {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-size: 1em;
+    z-index: 3;
+    cursor: pointer;
   }
 }
 .#{$--clsPrefix}-input--autosize {
