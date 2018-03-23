@@ -2,14 +2,15 @@
   div(:class='classes')
     textarea(ref="textarea",v-if="type=='textarea'",:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:style="textareaStyles",:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
     template(v-else)
-      div(:class="[prefixCls+'__prepend']",v-if="$slots&&$slots.prepend")
-        slot(name="prepend")
+      div(:class="[prefixCls+'__prefix']",v-if="$slots&&$slots.prefix")
+        slot(name="prefix")
       div(:class="prefixCls+'__inner-wrapper'",@mouseenter="isHovered = true",@mouseleave="isHovered = false")
-        input(ref="input",:type='type',:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
-        Icon(ref="icon-clear",@click="currentValue=''",:class="prefixCls+'__icon'",v-if="clearable&&currentValue&&(isFocused||isHovered)&&!readonly&&!disabled",type="ios-close")
-        Icon(@click="_iconClickHandler",:class="prefixCls+'__icon'",v-else-if="icon",:type="icon")
-      div(:class="[prefixCls+'__append']",v-if="$slots&&$slots.append")
-        slot(name="append")
+        Icon(@click="_iconClickHandler",:class="prefixCls+'__prefix-icon'",v-if="prefixIcon",:type="prefixIcon")
+        input(:class="inputClasses",ref="input",:type='type',:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
+        Icon(ref="icon-clear",@click="currentValue=''",:class="prefixCls+'__suffix-icon'",v-if="clearable&&currentValue&&(isFocused||isHovered)&&!readonly&&!disabled",type="ios-close")
+        Icon(@click="_iconClickHandler",:class="prefixCls+'__suffix-icon'",v-else-if="suffixIcon",:type="suffixIcon")
+      div(:class="[prefixCls+'__suffix']",v-if="$slots&&$slots.suffix")
+        slot(name="suffix")
 </template>
 <script>
 import calcTextareaHeight from '@/utils/calcTextareaHeight'
@@ -18,7 +19,8 @@ const name = 'xl-input'
 export default {
   name,
   props: {
-    icon: String,
+    suffixIcon: String,
+    prefixIcon: String,
     clearable: Boolean,
     // true/false/{minRows:1,maxRows:5}
     autosize: [Boolean, Object],
@@ -60,6 +62,18 @@ export default {
     }
   },
   computed: {
+    inputClasses() {
+      const arr = [`${this.prefixCls}__inner`]
+
+      if (this.suffixIcon) {
+        arr.push(`${this.prefixCls}__inner--suffix-icon`)
+      }
+      if (this.prefixIcon) {
+        arr.push(`${this.prefixCls}__inner--prefix-icon`)
+      }
+
+      return arr
+    },
     classes() {
       const arr = [`${this.prefixCls}`]
       if (this.autosize) {
@@ -130,9 +144,9 @@ export default {
   display: table;
   box-sizing: border-box;
   width: 100%;
-  .#{$--clsPrefix}-input__prepend,
-  .#{$--clsPrefix}-input__append,
-  input,
+  .#{$--clsPrefix}-input__prefix,
+  .#{$--clsPrefix}-input__suffix,
+  .#{$--clsPrefix}-input__inner,
   textarea {
     position: relative;
     box-sizing: border-box;
@@ -141,7 +155,7 @@ export default {
     font-size: 1em;
     z-index: 1;
   }
-  input,
+  .#{$--clsPrefix}-input__inner,
   textarea {
     resize: none;
     outline: none;
@@ -164,20 +178,20 @@ export default {
       background-color: $--input-bg-color--disabled;
     }
   }
-  .#{$--clsPrefix}-input__prepend,
-  .#{$--clsPrefix}-input__append {
+  .#{$--clsPrefix}-input__prefix,
+  .#{$--clsPrefix}-input__suffix {
     color: $--color-text--secondary;
     width: 1px;
-    background-color: $--input-append-bg-color;
+    background-color: $--input-suffix-bg-color;
     text-align: center;
     white-space: nowrap;
     display: table-cell;
     vertical-align: middle;
   }
-  .#{$--clsPrefix}-input__prepend {
+  .#{$--clsPrefix}-input__prefix {
     border-right: none;
   }
-  .#{$--clsPrefix}-input__append {
+  .#{$--clsPrefix}-input__suffix {
     border-left: none;
   }
   & > :first-child {
@@ -194,10 +208,17 @@ export default {
     vertical-align: middle;
   }
 
-  .#{$--clsPrefix}-input__icon {
+  .#{$--clsPrefix}-input__inner--prefix-icon {
+    padding-left: 2em;
+  }
+  .#{$--clsPrefix}-input__inner--suffix-icon {
+    padding-right: 2em;
+  }
+
+  .#{$--clsPrefix}-input__prefix-icon,
+  .#{$--clsPrefix}-input__suffix-icon {
     position: absolute;
     top: 2px;
-    right: 0;
     height: 2em;
     width: 2em;
     line-height: 2em;
@@ -205,6 +226,12 @@ export default {
     font-size: 1em;
     z-index: 3;
     cursor: pointer;
+  }
+  .#{$--clsPrefix}-input__prefix-icon {
+    left: 0;
+  }
+  .#{$--clsPrefix}-input__suffix-icon {
+    right: 0;
   }
 }
 .#{$--clsPrefix}-input--autosize {

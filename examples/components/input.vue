@@ -5,9 +5,9 @@
     br
     xl-input(type='textarea',placeholder="basic textarea")
     br
-    xl-input(placeholder="inpue with prepend and append")
-      span(slot='prepend') prepend
-      span(slot='append') append
+    xl-input(placeholder="inpue with prefix and suffix")
+      span(slot='prefix') prefix
+      span(slot='suffix') suffix
     br
     xl-input(disabled,placeholder="disabled")
     br
@@ -23,13 +23,13 @@
     br
     xl-input(clearable,placeholder='clearable')
     br
-    xl-input(icon='arrow-swap',placeholder='icon')
+    xl-input(suffix-icon='arrow-swap',prefix-icon='arrow-swap',placeholder='suffix-icon prefix-icon')
     br
-    xl-input(icon='arrow-swap',clearable,placeholder='icon with clearable')
+    xl-input(suffix-icon='arrow-swap',clearable,placeholder='suffix-icon with clearable')
     br
-    xl-input(icon='arrow-swap',clearable,placeholder='icon with clearable and append')
-      span(slot='prepend') prepend
-      span(slot='append') append
+    xl-input(suffix-icon='arrow-swap',clearable,placeholder='suffix-icon with clearable and suffix')
+      span(slot='prefix') prefix
+      span(slot='suffix') suffix
 </template>
 <style lang="scss">
 </style>
