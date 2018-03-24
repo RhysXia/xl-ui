@@ -29,8 +29,12 @@ module.exports = {
         exclude: /(node_modules|dist)/
       },
       {
-        test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader?limit=8192'
+        test: /\.(gif|jpg|png)\??.*$/,
+        loader: 'url-loader?limit=8192&name=assets/[name].[ext]'
+      },
+      {
+        test: /\.(woff|svg|eot|ttf)\??.*$/,
+        loader: 'url-loader?limit=8192&name=fonts/[name].[ext]'
       },
       {
         test: /\.(html|tpl)$/,

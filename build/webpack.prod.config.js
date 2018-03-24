@@ -4,7 +4,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const utils = require('./utils')
 
 module.exports = merge(webpackBaseConfig, {
@@ -31,27 +32,44 @@ module.exports = merge(webpackBaseConfig, {
       loader: 'vue-loader',
       options: {
         loaders: utils.cssLoaders({
-          extract: false,
+          extract: true,
           usePostCSS:true
         })
       }
     }].concat(
       utils.styleLoaders({
+        extract: true,
         usePostCSS: true
       })
     )
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      parallel: true,
+      sourceMap: true,
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
       filename: 'vendor.bundle.js'
     }),
+    new ExtractTextPlugin('/style/docs.min.css'),
     new HtmlWebpackPlugin({
       inject: true,
       filename: path.join(__dirname, '../docs/dist/index.html'),
       template: path.join(__dirname, '../docs/index.html')
     }),
-    new FriendlyErrorsPlugin()
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true,
+        map: {
+          inline: false
+        }
+      }
+    })
   ]
-
 })
