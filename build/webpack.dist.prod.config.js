@@ -65,7 +65,7 @@ module.exports = merge(webpackBaseConfig, {
       threshold: 10240,
       minRatio: 0.8
     }),
-    new ExtractTextPlugin('/style/xl-vision.min.css'),
+    new ExtractTextPlugin('style/xl-vision.min.css'),
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true,

@@ -52,6 +52,6 @@ module.exports = merge(webpackBaseConfig, {
         NODE_ENV: '"development"'
       }
     }),
-    new ExtractTextPlugin('/style/xl-vision.css')
+    new ExtractTextPlugin('style/xl-vision.css')
   ]
 });

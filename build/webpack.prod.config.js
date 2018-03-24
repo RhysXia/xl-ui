@@ -57,7 +57,7 @@ module.exports = merge(webpackBaseConfig, {
       name: 'vendors',
       filename: 'vendor.bundle.js'
     }),
-    new ExtractTextPlugin('/style/docs.min.css'),
+    new ExtractTextPlugin('style/docs.min.css'),
     new HtmlWebpackPlugin({
       inject: true,
       filename: path.join(__dirname, '../docs/index.html'),
