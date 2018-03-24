@@ -10,14 +10,14 @@ const utils = require('./utils')
 module.exports = merge(webpackBaseConfig, {
   devtool: 'eval-source-map',
   entry: {
-    main: './docs/main',
+    main: './docs/src/main',
     verdors: [
       'vue',
       'vue-router'
     ]
   },
   output: {
-    path: path.join(__dirname, '../docs/dist'),
+    path: path.join(__dirname, '../docs'),
     publicPath: '',
     filename: '[name].js',
     chunkFilename: '[name].chunk.js'
@@ -48,8 +48,8 @@ module.exports = merge(webpackBaseConfig, {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      filename: path.join(__dirname, '../docs/dist/index.html'),
-      template: path.join(__dirname, '../docs/index.html')
+      filename: path.join(__dirname, '../docs/index.html'),
+      template: path.join(__dirname, '../docs/src/index.html')
     }),
     new FriendlyErrorsPlugin()
   ]
