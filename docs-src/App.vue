@@ -1,33 +1,45 @@
 <template lang='pug'>
-  div#app
-    Grid
-    Icon
-    Button
-    ButtonGroup
-    Input
+  #app
+    header
+      a.logo(href="https://github.com/RhysXia/xl-vision") xl vision
+    xl-row
+      xl-col(:span="3")
+        ul.menu-list
+          li
+            router-link(to="/button") button
+      xl-col(:span="21")
+        keep-alive
+          router-view
 </template>
 
 <script>
-import Grid from './components/grid'
-import Icon from './components/icon'
-import Button from './components/button'
-import ButtonGroup from './components/button-group'
-import Input from './components/input'
 export default {
-  name: 'App',
-  components: {
-    Grid,
-    Icon,
-    Button,
-    ButtonGroup,
-    Input
-  }
+  name: 'App'
 }
 </script>
 <style lang="scss">
 #app {
-  > * {
-    margin-bottom: 20px;
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      a {
+        display: inline-block;
+        text-decoration: none;
+        width: 100%;
+        height: 3em;
+        line-height: 3em;
+        text-align: center;
+        background-color: #fff;
+        font-size: 1.2em;
+        color: #333;
+        &:hover,
+        &:active {
+          color: #0077ff;
+        }
+      }
+    }
   }
 }
 </style>
