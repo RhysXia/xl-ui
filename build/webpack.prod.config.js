@@ -1,8 +1,8 @@
-const webpack = require('webpack');
+const webpack = require('webpack')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const merge = require('webpack-merge');
-const webpackBaseConfig = require('./webpack.base.config.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const merge = require('webpack-merge')
+const webpackBaseConfig = require('./webpack.base.config.js')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const utils = require('./utils')
@@ -22,11 +22,13 @@ module.exports = merge(webpackBaseConfig, {
       },
       {
         test: /\.(gif|jpg|png)\??.*$/,
-        loader: 'url-loader?limit=8192&name=[name].[ext]&outputPath=assets/&publicPath=../assets/'
+        loader:
+          'url-loader?limit=8192&name=[name].[ext]&outputPath=assets/&publicPath=../assets/'
       },
       {
         test: /\.(woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader?limit=8192&&name=[name].[ext]&outputPath=style/fonts/&publicPath=fonts/'
+        loader:
+          'url-loader?limit=8192&&name=[name].[ext]&outputPath=style/fonts/&publicPath=fonts/'
       }
     ].concat(
       utils.styleLoaders({
@@ -43,9 +45,9 @@ module.exports = merge(webpackBaseConfig, {
     }),
     new webpack.optimize.UglifyJsPlugin({
       parallel: true,
-      sourceMap: true,
+      sourceMap: true
     }),
-    new ExtractTextPlugin('style/docs.min.css'),
+    new ExtractTextPlugin('style/docs.css'),
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true,

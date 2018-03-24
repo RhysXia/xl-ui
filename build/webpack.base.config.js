@@ -4,30 +4,13 @@ const pkg = require('../package.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const striptags = require('./strip-tags')
 const slugify = require('transliteration').slugify
-var hljs = require('highlight.js')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-var replaceDelimiters = function(str) {
-  return str.replace(/({{|}})/g, '<span>$1</span>')
-}
 
-var renderHighlight = function(str, lang) {
-  if (!(lang && hljs.getLanguage(lang))) {
-    return ''
-  }
-  try {
-    return replaceDelimiters(hljs.highlight(lang, str, true).value)
-  } catch (err) {}
-}
-
-const md = require('markdown-it')('default', {
-  html: true,
-  breaks: true,
-  highlight: renderHighlight
-})
+const md = require('markdown-it')()
 
 function convert(str) {
   str = str.replace(/(&#x)(\w{4});/gi, function($0) {
@@ -113,9 +96,9 @@ module.exports = {
                     jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
 
                     return `<demo-block :jsfiddle="${jsfiddle}">
-                            <div slot="source">${html}</div>
-                            ${descriptionHTML}
-                            <div class="highlight" slot="highlight">`
+                            ${html}
+                            <div slot='desc'>${descriptionHTML}</div>
+                            <div slot="source">`
                   }
                   return '</div></demo-block>\n'
                 }
