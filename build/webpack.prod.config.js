@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const webpackBaseConfig = require('./webpack.base.config.js')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const utils = require('./utils')
 const path = require('path')
@@ -107,6 +108,14 @@ module.exports = merge(webpackBaseConfig, {
       async: 'vendor-async',
       children: true,
       minChunks: 3
-    })
+    }),
+    new CleanWebpackPlugin(
+      ['docs/*'], //匹配删除的文件
+      {
+        root: path.resolve(__dirname, '..'), //根目录
+        verbose: true, //开启在控制台输出信息
+        dry: false //启用删除文件
+      }
+    )
   ]
 })
