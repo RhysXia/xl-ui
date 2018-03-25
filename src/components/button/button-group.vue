@@ -35,16 +35,30 @@ export default {
 .#{$--clsPrefix}-button-group {
   position: relative;
   display: inline-block;
+  .#{$--clsPrefix}-button {
+    position: relative;
+    &:focus,
+    &:hover {
+      z-index: 1;
+    }
+  }
 }
 .#{$--clsPrefix}-button-group--horizontal {
-  .#{$--clsPrefix}-button:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  .#{$--clsPrefix}-button {
+    float: left;
   }
-  .#{$--clsPrefix}-button:not(:last-child) {
+  .#{$--clsPrefix}-button:first-child:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    margin-right: -1px;
+  }
+  .#{$--clsPrefix}-button:last-child:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+  }
+  .#{$--clsPrefix}-button:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    margin-left: -1px;
   }
 }
 
@@ -52,14 +66,18 @@ export default {
   .#{$--clsPrefix}-button {
     display: block;
   }
-  .#{$--clsPrefix}-button:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-  .#{$--clsPrefix}-button:not(:last-child) {
+  .#{$--clsPrefix}-button:first-child:not(:last-child) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    margin-bottom: -1px;
+  }
+  .#{$--clsPrefix}-button:last-child:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
+  }
+  .#{$--clsPrefix}-button:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    margin-top: -1px;
   }
 }
 </style>

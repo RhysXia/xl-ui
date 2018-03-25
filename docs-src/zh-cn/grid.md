@@ -99,12 +99,30 @@
 
 ```html
 <xl-row>
-    <xl-col :span='6'><div class='grid-content bg-purple'></div></xl-col>
-    <xl-col :span='6' :offset='6'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='2'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
 <xl-row>
     <xl-col :span='6' :offset='2'><div class='grid-content bg-purple'></div></xl-col>
-    <xl-col :span='6' :offset='6'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='6' :offset='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+</xl-row>
+<xl-row>
+    <xl-col :span='4' :push='2'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='4' :push='2'><div class='grid-content  bg-purple--light'></div></xl-col>
+</xl-row>
+<xl-row>
+    <xl-col :span='4'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='4' :pull='2'><div class='grid-content bg-purple--light'></div></xl-col>
 </xl-row>
 ```
 
@@ -195,12 +213,12 @@
 
 | 参数   | 说明                                   | 类型                                       | 可选值 | 默认值 |
 | ------ | -------------------------------------- | ------------------------------------------ | ------ | ------ |
-| span   | 栅格占据的列数                         | number                                     | 0-24   | —      |
-| offset | 栅格左侧的间隔列数，间隔内不可以有栅格 | number                                     | 0-24   | —      |
-| push   | 栅格向右移动的列数                     | number                                     | 0-24   | —      |
-| pull   | 栅格向左移动的列数                     | number                                     | 0-24   | —      |
-| tag    | 自定义元素标签                         | string                                     | —      | div    |
 | order  | 栅格顺序，flex 布局模式下有效          | number                                     | —      | —      |
+| tag    | 自定义元素标签                         | string                                     | —      | div    |
+| span   | 栅格占据的列数                         | number                                     | 0-24   | —      |
+| offset | 栅格左侧的间隔列数，间隔内不可以有栅格 | number                                     | 1-24   | —      |
+| push   | 栅格向右移动的列数                     | number                                     | 1-24   | —      |
+| pull   | 栅格向左移动的列数                     | number                                     | 1-24   | —      |
 | xs     | ≥0 响应式栅格数或者栅格属性对象        | number/object(例如： {span: 4, offset: 4}) | —      | —      |
 | sm     | ≥768px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
 | md     | ≥992px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
