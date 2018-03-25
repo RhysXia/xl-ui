@@ -153,10 +153,23 @@ export default {
     padding: 0.5em 1em;
     border: 1px solid $--input-border-color;
     font-size: 1em;
-    z-index: 1;
+    // z-index: 1;
+  }
+  .#{$--clsPrefix}-input__inner-wrapper:not(:first-child) {
+    .#{$--clsPrefix}-input__inner {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+  .#{$--clsPrefix}-input__inner-wrapper:not(:last-child) {
+    .#{$--clsPrefix}-input__inner {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
   .#{$--clsPrefix}-input__inner,
   textarea {
+    border-radius: $--border-radius;
     resize: none;
     outline: none;
     color: $--color-text;
@@ -190,15 +203,11 @@ export default {
   }
   .#{$--clsPrefix}-input__prefix {
     border-right: none;
-  }
-  .#{$--clsPrefix}-input__suffix {
-    border-left: none;
-  }
-  & > :first-child {
     border-top-left-radius: $--border-radius;
     border-bottom-left-radius: $--border-radius;
   }
-  & > :last-child {
+  .#{$--clsPrefix}-input__suffix {
+    border-left: none;
     border-bottom-right-radius: $--border-radius;
     border-top-right-radius: $--border-radius;
   }

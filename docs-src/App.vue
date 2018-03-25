@@ -4,7 +4,7 @@
     xl-row.container(type='flex')
       xl-col(:span="4")
         SideNav
-      xl-col(:span="20")
+      xl-col.content(:span="20")
         keep-alive
           router-view
 </template>

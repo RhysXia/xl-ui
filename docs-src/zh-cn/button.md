@@ -10,7 +10,7 @@
 
 <style>
     .button-bottom{
-        margin-bottom:1em;
+        margin-bottom:1em !important;
     }
 </style>
 
@@ -174,8 +174,20 @@
 | icon        | 图标类名       | string  | —                                                           | —       |
 | native-type | 原生 type 属性 | string  | button / submit / reset                                     | button  |
 
+## button 方法
+
+| 方法名 | 说明               | 参数 |
+| ------ | ------------------ | ---- |
+| focus  | 使 button 获取焦点 | -    |
+
+## button 事件
+
+| 事件名 | 说明     | 参数           |
+| ------ | -------- | -------------- |
+| click  | 点击事件 | 原生事件对象 e |
+
 ## buttin group 属性
 
-| 参数        | 说明            |  类型    |                            可选值                            | 默认值  |
-| ----------- | -------------- | -------  | ----------------------------------------------------------- | ------- |
-| vertical    | 是否是竖直方向的按钮组   | boolean | -   |           false 
+| 参数     | 说明                   | 类型    | 可选值 | 默认值 |
+| -------- | ---------------------- | ------- | ------ | ------ |
+| vertical | 是否是竖直方向的按钮组 | boolean | -      | false  |

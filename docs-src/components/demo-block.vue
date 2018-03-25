@@ -21,8 +21,8 @@ export default {
   computed: {
     iconStyle() {
       return this.expand
-        ? { transform: 'scale(2) rotate(0deg)' }
-        : { transform: 'scale(2) rotate(180deg)' }
+        ? { transform: 'rotate(0deg)' }
+        : { transform: 'rotate(180deg)' }
     }
   }
 }
@@ -48,7 +48,12 @@ export default {
     padding: 0 1em;
     position: relative;
     .demo-desc {
-      padding-right: 2em;
+      padding-right:3em;
+      min-height: 3em;
+      p{
+       line-height: 2em;
+       margin: 0.5em 0;
+      }
       code {
         background-color: #e6effb;
         display: inline-block;
@@ -60,10 +65,10 @@ export default {
     }
     .demo-icon {
       position: absolute;
-      right: 1em;
+      right: 0.5em;
       top: 0;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 2.5em;
       color: #888;
       transition: transform $--transition-time ease-in-out;
     }
