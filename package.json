@@ -20,7 +20,7 @@
   },
   "main": "dist/xl-vision.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --inline --progress --hot --port 8081 --config build/webpack.dev.config.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
     "build": "webpack --config build/webpack.prod.config.js",
     "dist:dev": "webpack --config build/webpack.dist.dev.config.js",
     "dist:prod": "webpack --config build/webpack.dist.prod.config.js",
@@ -90,6 +90,7 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
+    "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^3.0.0"
   },
   "engines": {

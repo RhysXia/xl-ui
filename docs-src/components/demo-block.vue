@@ -21,8 +21,8 @@ export default {
   computed: {
     iconStyle() {
       return this.expand
-        ? {transform: 'scale(2) rotate(0deg)'}
-        : {transform: 'scale(2) rotate(180deg)'}
+        ? { transform: 'scale(2) rotate(0deg)' }
+        : { transform: 'scale(2) rotate(180deg)' }
     }
   }
 }
@@ -31,18 +31,32 @@ export default {
 @import '../../src/styles/variables.scss';
 .demo-block {
   border: 1px solid $--color-border;
-  padding: 1em;
   font-size: 1em;
+  transition: box-shadow $--transition-time ease-in-out;
+  code {
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  }
+  &:hover {
+    box-shadow: 0 0 0.5em $--color-border;
+  }
   .demo-code {
-    padding-bottom: 1em;
+    padding: 1em;
     border-bottom: 1px solid $--color-border;
     margin-bottom: 1em;
   }
   .demo-bottom {
+    padding: 0 1em;
     position: relative;
-    * {
-      margin: 0;
-      padding: 0;
+    .demo-desc {
+      padding-right: 2em;
+      code {
+        background-color: #e6effb;
+        display: inline-block;
+        margin: 0 0.2em;
+        padding: 0.1em 0.4em;
+        height: 1.1em;
+        line-height: 1.1em;
+      }
     }
     .demo-icon {
       position: absolute;
@@ -56,8 +70,9 @@ export default {
   }
   .demo-source {
     border-top: 1px solid $--color-border;
-    margin-top: 1em;
-    padding-top: 1em;
+    pre {
+      margin: 0;
+    }
   }
   .slide-enter-active,
   .slide-leave-active {

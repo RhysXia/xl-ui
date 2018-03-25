@@ -20,10 +20,14 @@ export default {
     pull: {
       type: Number
     },
+    order: {
+      type: Number
+    },
     xs: [Number, Object],
     sm: [Number, Object],
     md: [Number, Object],
-    lg: [Number, Object]
+    lg: [Number, Object],
+    xl: [Number, Object]
   },
   data() {
     return {
@@ -54,7 +58,11 @@ export default {
         } else if (typeof this[size] === 'object') {
           let props = this[size]
           Object.keys(props).forEach(prop => {
-            classList.push(`${this.prefixCls}-${size}-${prop}-${props[prop]}`)
+            if (prop === 'span') {
+              classList.push(`${this.prefixCls}-${size}-${props[prop]}`)
+            } else {
+              classList.push(`${this.prefixCls}-${size}-${prop}-${props[prop]}`)
+            }
           })
         }
       })
@@ -67,6 +75,9 @@ export default {
           paddingLeft: this.gutter / 2 + 'px',
           paddingRight: this.gutter / 2 + 'px'
         }
+      }
+      if (this.order !== undefined) {
+        style.order = this.order
       }
       return style
     }
@@ -97,6 +108,7 @@ export default {
   }
   @for $i from 1 through $number {
     .#{$prefix}#{$type}-#{$i} {
+      display: block;
       width: $i / $number * 100%;
     }
     .#{$prefix}#{$type}-pull-#{$i} {

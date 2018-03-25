@@ -1,14 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 const pkg = require('../package.json')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const striptags = require('./strip-tags')
 const slugify = require('transliteration').slugify
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
-
 
 const md = require('markdown-it')()
 
@@ -95,9 +94,9 @@ module.exports = {
 
                     jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
 
-                    return `<demo-block :jsfiddle="${jsfiddle}">
+                    return `<demo-block>
                             ${html}
-                            <div slot='desc'>${descriptionHTML}</div>
+                            <div slot="desc">${descriptionHTML}</div>
                             <div slot="source">`
                   }
                   return '</div></demo-block>\n'
@@ -139,18 +138,16 @@ module.exports = {
     }
   },
   plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({
       'process.env.VERSION': `'${pkg.version}'`
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendors',
-      filename: 'vendor.bundle.js'
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      filename: path.join(__dirname, '../docs/index.html'),
-      template: path.join(__dirname, '../docs-src/index.html')
     })
+    // copy custom static assets
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, '../docs-src/static'),
+    //     to: '/docs/static',
+    //     ignore: ['.*']
+    //   }
+    // ])
   ]
 }

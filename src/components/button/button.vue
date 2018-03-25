@@ -2,7 +2,7 @@
   button(@click="_clickHandler",:class='classes',:type="nativeType",:disabled='disabled')
     Icon(v-if='loading',type='load-c')
     Icon(v-else-if='icon',:type='icon')
-    span
+    span(v-if='$slots&&$slots.default')
       slot
 </template>
 <script>

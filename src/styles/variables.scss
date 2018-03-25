@@ -32,10 +32,10 @@ $--sm: 768px;
 $--md: 992px;
 $--lg: 1200px;
 $--xl: 1920px;
-$--grid-breakpoints: ( 'xs': (max-width: $--sm), 'sm': (min-width: $--sm), 'md': (min-width: $--md), 'lg': (min-width: $--lg), 'xl': (min-width: $--xl));
+$--grid-breakpoints: ( 'xs': (min-width: 0), 'sm': (min-width: $--sm), 'md': (min-width: $--md), 'lg': (min-width: $--lg), 'xl': (min-width: $--xl));
 //button
 $--btn-color--default:$--color-text;
-$--btn-bg-color--default:$--color-background;
+$--btn-bg-color--default:transparent;
 $--btn-border-color--default:$--color-border;
 $--btn-color--default--hover: $--color-primary;
 $--btn-bg-color--default--hover: lighten($--color-primary, 30%);
@@ -77,8 +77,8 @@ $--btn-bg-color--info--hover: lighten($--color-info, 10%);
 $--btn-border-color--info--hover: $--btn-bg-color--info--hover;
 
 $--btn-color--text: $--color-text;
-$--btn-bg-color--text:$--color-background;
-$--btn-border-color--text:$--color-background;
+$--btn-bg-color--text:$--btn-bg-color--default;
+$--btn-border-color--text:$--btn-bg-color--default;
 $--btn-color--text--hover:$--color-link;
 
 //input

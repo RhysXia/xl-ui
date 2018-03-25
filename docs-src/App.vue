@@ -1,55 +1,33 @@
 <template lang='pug'>
   #app
-    header
-      a.logo(href="https://github.com/RhysXia/xl-vision") xl vision
-    xl-row
-      xl-col(:span="3")
-        ul.menu-list
-          li
-            router-link(to="/button") button
-      xl-col.content(:span="21")
+    Header
+    xl-row.container(type='flex')
+      xl-col(:span="4")
+        SideNav
+      xl-col(:span="20")
         keep-alive
           router-view
 </template>
 
 <script>
+import SideNav from './components/side-nav'
+import Header from './components/header'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    SideNav,
+    Header
+  }
 }
 </script>
 <style lang="scss">
-body {
-  font-size: 14px;
-}
-.hljs{
-  line-height: 1.8;
-  font-size: 1em;
-}
+@import './style/base.scss';
 #app {
-  .menu-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    li {
-      a {
-        display: inline-block;
-        text-decoration: none;
-        width: 100%;
-        height: 3em;
-        line-height: 3em;
-        text-align: center;
-        background-color: #fff;
-        font-size: 1.2em;
-        color: #333;
-        &:hover,
-        &:active {
-          color: #0077ff;
-        }
-      }
-    }
+  .container {
+    width: 1250px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1em;
   }
-}
-.content {
-  background: #fff;
 }
 </style>
