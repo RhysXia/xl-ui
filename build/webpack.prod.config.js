@@ -54,7 +54,7 @@ module.exports = merge(webpackBaseConfig, {
       sourceMap: true
     }),
     new ExtractTextPlugin({
-      filename: 'style/docs.css',
+      filename: 'style/docs.[hash].css',
       allChunks: true
     }),
     new OptimizeCSSPlugin({
