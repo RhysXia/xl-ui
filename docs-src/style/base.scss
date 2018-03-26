@@ -41,6 +41,13 @@ h2 {
 }
 
 .content {
+    a {
+        text-decoration: none;
+        color: $--color-primary;
+    }
+}
+
+.demo-desc {
     code {
         background-color: #e6effb;
         display: inline-block;
@@ -48,9 +55,5 @@ h2 {
         padding: 0.1em 0.4em;
         height: 1.1em;
         line-height: 1.1em;
-    }
-    a{
-      text-decoration: none;
-      color:$--color-primary;
     }
 }

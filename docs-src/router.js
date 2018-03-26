@@ -22,5 +22,10 @@ export default [
     path: '/icon',
     meta: '图标',
     component: () => import('./zh-cn/icon.md')
+  },
+  {
+    path: '/radio',
+    meta: '单选框',
+    component: () => import('./zh-cn/radio.md')
   }
 ]

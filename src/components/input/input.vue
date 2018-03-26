@@ -87,7 +87,7 @@ export default {
       this.currentValue = val
     },
     currentValue(val) {
-      this.$emit('input', val)
+      this.$emit('on-input', val)
       this.$nextTick(() => {
         this._resizeTextarea()
       })
@@ -101,14 +101,14 @@ export default {
       ;(this.$refs.textarea || this.$refs.input).blur()
     },
     _iconClickHandler() {
-      this.$emit('icon-click')
+      this.$emit('on-icon-click')
     },
     _blurHandler(e) {
-      this.$emit('blur', e)
+      this.$emit('on-blur', e)
       this.isFocused = false
     },
     _focusHandler(e) {
-      this.$emit('focus', e)
+      this.$emit('on-focus', e)
       this.isFocused = true
     },
     _inputHandler(e) {

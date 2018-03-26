@@ -11,10 +11,7 @@ export default {
       required: true
     },
     color: String,
-    size: {
-      type: [Number, String],
-      default: 1
-    }
+    size: [Number, String]
   },
   data() {
     return {

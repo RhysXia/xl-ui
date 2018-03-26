@@ -3,6 +3,7 @@ import { Row, Col } from './components/grid'
 import Icon from './components/icon'
 import Input from './components/input'
 import { Button, ButtonGroup } from './components/button'
+import { Radio, RadioGroup } from './components/radio'
 
 const components = {
   Row,
@@ -10,7 +11,9 @@ const components = {
   Icon,
   Button,
   ButtonGroup,
-  Input
+  Input,
+  Radio,
+  RadioGroup
 }
 
 const install = (Vue, opts = {}) => {

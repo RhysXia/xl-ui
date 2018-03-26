@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     _clickHandler(e) {
-      this.$emit('click', e)
+      this.$emit('on-click', e)
     },
     foucs() {
       this.$el.focus()
