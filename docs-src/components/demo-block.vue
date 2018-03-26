@@ -48,19 +48,11 @@ export default {
     padding: 0 1em;
     position: relative;
     .demo-desc {
-      padding-right:3em;
+      padding-right: 3em;
       min-height: 3em;
-      p{
-       line-height: 2em;
-       margin: 0.5em 0;
-      }
-      code {
-        background-color: #e6effb;
-        display: inline-block;
-        margin: 0 0.2em;
-        padding: 0.1em 0.4em;
-        height: 1.1em;
-        line-height: 1.1em;
+      p {
+        line-height: 2em;
+        margin: 0.5em 0;
       }
     }
     .demo-icon {

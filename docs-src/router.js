@@ -17,5 +17,10 @@ export default [
     path: '/input',
     meta: 'input输入框',
     component: () => import('./zh-cn/input.md')
+  },
+  {
+    path: '/icon',
+    meta: '图标',
+    component: () => import('./zh-cn/icon.md')
   }
 ]
