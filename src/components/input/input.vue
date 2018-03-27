@@ -18,6 +18,10 @@ import Icon from '../icon'
 const name = 'xl-input'
 export default {
   name,
+  model: {
+    prop: 'value',
+    event: 'on-input'
+  },
   props: {
     suffixIcon: String,
     prefixIcon: String,
@@ -177,18 +181,22 @@ export default {
     appearance: none;
     background-color: $--input-bg-color;
     background-image: none;
-    transition: border-color $--transition-time ease;
+    transition: border-color $--transition-time ease,
+      box-shadow $--transition-time ease;
     &:not(:disabled):not(:read-only) {
       &:hover {
         border-color: $--input-border-color--hover;
       }
       &:focus {
         border-color: $--input-border-color--focus;
+        box-shadow: $--box-shadow-size
+          rgba($--input-border-color--focus, $--box-shadow-transparency);
       }
     }
     &:disabled {
       cursor: not-allowed;
-      background-color: $--input-bg-color--disabled;
+      // background-color: $--input-bg-color--disabled;
+      opacity:$--disabled-opacity;
     }
   }
   .#{$--clsPrefix}-input__prefix,

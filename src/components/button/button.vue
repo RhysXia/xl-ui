@@ -108,12 +108,12 @@ export default {
   border-radius: $--border-radius;
   padding: 0.4em 0.6em;
   border: 1px solid;
-  transition: background-color $--transition-time ease, border-color $--transition-time ease;
+  transition: background-color $--transition-time ease, border-color $--transition-time ease,box-shadow $--transition-time ease;
   &::-moz-focus-inner {
     border: 0;
   }
   &:disabled {
-    opacity: 0.5;
+    opacity:$--disabled-opacity;
     cursor: not-allowed;
   }
   .#{$--clsPrefix}-icon + span {
@@ -147,7 +147,7 @@ export default {
 .#{$--clsPrefix}-button--loading {
   cursor: default;
   pointer-events: none;
-  opacity: 0.5;
+  opacity:$--disabled-opacity;
   .#{$--clsPrefix}-icon {
     animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
   }
@@ -163,6 +163,9 @@ export default {
     border-color: $--btn-border-color--default--hover;
     color: $--btn-color--default--hover;
   }
+  &:not(:disabled):focus{
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--default--hover,$--box-shadow-transparency);
+  }
 }
 
 .#{$--clsPrefix}-button--success {
@@ -174,6 +177,9 @@ export default {
     background-color: $--btn-bg-color--success--hover;
     border-color: $--btn-border-color--success--hover;
     color: $--btn-color--success--hover;
+  }
+  &:not(:disabled):focus{
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--success--hover,$--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--success;
@@ -194,6 +200,9 @@ export default {
     border-color: $--btn-border-color--primary--hover;
     color: $--btn-color--primary--hover;
   }
+  &:not(:disabled):focus{
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--primary--hover,$--box-shadow-transparency);
+  }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--primary;
     &:not(:disabled):hover,
@@ -212,6 +221,9 @@ export default {
     background-color: $--btn-bg-color--warning--hover;
     border-color: $--btn-border-color--warning--hover;
     color: $--btn-color--warning--hover;
+  }
+  &:not(:disabled):focus{
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--warning--hover,$--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--warning;
@@ -232,6 +244,9 @@ export default {
     border-color: $--btn-border-color--error--hover;
     color: $--btn-color--error--hover;
   }
+  &:not(:disabled):focus{
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--error--hover,$--box-shadow-transparency);
+  }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--error;
     &:not(:disabled):hover,
@@ -250,6 +265,9 @@ export default {
     background-color: $--btn-bg-color--info--hover;
     border-color: $--btn-border-color--info--hover;
     color: $--btn-color--info--hover;
+  }
+  &:not(:disabled):focus{
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--info--hover,$--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--info;

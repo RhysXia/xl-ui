@@ -8,12 +8,13 @@ $--color-warning: #e6a23c;
 $--color-error: #f56c6c;
 $--color-border: #dddee1;
 $--color-text: #495060;
-$--color-text--secondary: lighten($--color-text,15%);
+$--color-text--secondary: lighten($--color-text, 15%);
 $--color-background: #f7f7f7;
-
 $--color-link: $--color-primary;
-
 //base
+$--disabled-opacity:0.6;
+$--box-shadow-size:0 0 0 0.15em;
+$--box-shadow-transparency:0.3;
 $--transition-time: .25s;
 $--border-radius: 0.2em;
 $--font-size-base: 14px;
@@ -25,8 +26,6 @@ Helvetica,
 "微软雅黑",
 Arial,
 sans-serif;
-
-
 //grid断点
 $--sm: 768px;
 $--md: 992px;
@@ -34,57 +33,56 @@ $--lg: 1200px;
 $--xl: 1920px;
 $--grid-breakpoints: ( 'xs': (min-width: 0), 'sm': (min-width: $--sm), 'md': (min-width: $--md), 'lg': (min-width: $--lg), 'xl': (min-width: $--xl));
 //button
+$--btn-box-shadow-size:0 0 0 0.15em;
+$--btn-box-shadow-transparency:0.3;
 $--btn-color--default:$--color-text;
 $--btn-bg-color--default:transparent;
 $--btn-border-color--default:$--color-border;
 $--btn-color--default--hover: $--color-primary;
 $--btn-bg-color--default--hover: lighten($--color-primary, 30%);
 $--btn-border-color--default--hover: $--color-primary;
-
 $--btn-color--success:$--color-background;
 $--btn-bg-color--success:$--color-success;
 $--btn-border-color--success:$--btn-bg-color--success;
 $--btn-color--success--hover: $--btn-color--success;
 $--btn-bg-color--success--hover: lighten($--color-success, 10%);
 $--btn-border-color--success--hover: $--btn-bg-color--success--hover;
-
 $--btn-color--primary:$--color-background;
 $--btn-bg-color--primary:$--color-primary;
 $--btn-border-color--primary:$--btn-bg-color--primary;
 $--btn-color--primary--hover: $--btn-color--primary;
 $--btn-bg-color--primary--hover: lighten($--color-primary, 10%);
 $--btn-border-color--primary--hover: $--btn-bg-color--primary--hover;
-
 $--btn-color--warning:$--color-background;
 $--btn-bg-color--warning:$--color-warning;
 $--btn-border-color--warning:$--btn-bg-color--warning;
 $--btn-color--warning--hover: $--btn-color--warning;
 $--btn-bg-color--warning--hover: lighten($--color-warning, 10%);
 $--btn-border-color--warning--hover: $--btn-bg-color--warning--hover;
-
 $--btn-color--error:$--color-background;
 $--btn-bg-color--error:$--color-error;
 $--btn-border-color--error:$--btn-bg-color--error;
 $--btn-color--error--hover: $--btn-color--error;
 $--btn-bg-color--error--hover: lighten($--color-error, 10%);
 $--btn-border-color--error--hover: $--btn-bg-color--error--hover;
-
 $--btn-color--info:$--color-background;
 $--btn-bg-color--info:$--color-info;
 $--btn-border-color--info:$--btn-bg-color--info;
 $--btn-color--info--hover: $--btn-color--info;
 $--btn-bg-color--info--hover: lighten($--color-info, 10%);
 $--btn-border-color--info--hover: $--btn-bg-color--info--hover;
-
 $--btn-color--text: $--color-text;
 $--btn-bg-color--text:$--btn-bg-color--default;
 $--btn-border-color--text:$--btn-bg-color--default;
 $--btn-color--text--hover:$--color-link;
-
 //input
 $--input-bg-color:$--color-background;
-$--input-bg-color--disabled:darken($--input-bg-color,5%);
+$--input-bg-color--disabled:darken($--input-bg-color, 5%);
 $--input-border-color: $--color-border;
 $--input-border-color--hover: #c0c4cc;
 $--input-border-color--focus:$--color-primary;
 $--input-suffix-bg-color:#f5f7fa;
+//radio
+$--radio-size: 1em;
+$--radio-color-active:$--color-primary;
+$--radio-color-text-active:$--color-background;
