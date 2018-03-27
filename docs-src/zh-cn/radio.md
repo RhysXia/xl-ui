@@ -20,7 +20,7 @@
 
 ```html
 <xl-radio v-model='value' label='123'></xl-radio>
-{{value}}
+<p>{{value}}</p>
 ```
 
 :::
@@ -30,7 +30,8 @@
 ::: demo 使用`disabled`禁用单选框
 
 ```html
-<xl-radio label='123' disabled></xl-radio>
+<xl-radio v-model='value' label='123' disabled></xl-radio>
+<p>{{value}}</p>
 ```
 
 :::
@@ -40,7 +41,8 @@
 ::: demo 使用`readonly`只读单选框
 
 ```html
-<xl-radio label='123' readonly></xl-radio>
+<xl-radio v-model='value' label='123' readonly></xl-radio>
+<p>{{value}}</p>
 ```
 
 :::
@@ -50,7 +52,8 @@
 ::: demo 使用`border`设置
 
 ```html
-<xl-radio label='123' border></xl-radio>
+<xl-radio v-model='value' label='123' border></xl-radio>
+<p>{{value}}</p>
 ```
 
 :::
@@ -61,7 +64,7 @@
 
 ```html
 <xl-radio label='123' true-value='TRUE' false-value='FALSE' v-model='customValue'></xl-radio>
-{{customValue}}
+<p>{{customValue}}</p>
 ```
 
 :::
@@ -89,7 +92,7 @@
     <xl-radio label='ccc'></xl-radio>
     <xl-radio label='ddd' readonly></xl-radio>
 </xl-radio-group>
-{{groupValue}}
+<p>{{groupValue}}</p>
 ```
 
 :::
@@ -105,7 +108,7 @@
     <xl-radio label='ccc'></xl-radio>
     <xl-radio label='ddd'></xl-radio>
 </xl-radio-group>
-{{groupValue}}
+<p>{{groupValue}}</p>
 ```
 
 :::

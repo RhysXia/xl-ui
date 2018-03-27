@@ -16,7 +16,7 @@ export default {
   },
   model: {
     prop: 'value',
-    event: 'on-input'
+    event: 'on-change'
   },
   props: {
     label: [String, Number],
