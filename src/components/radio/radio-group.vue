@@ -57,8 +57,10 @@ export default {
 </script>
 <style lang="scss">
 @import '../../styles/variables.scss';
+@import '../../styles/utils.scss';
 .#{$--clsPrefix}-radio-group {
   position: relative;
+  @include clearfix;
   .#{$--clsPrefix}-radio:not(:last-child) {
     margin-right: 0.5em;
   }
