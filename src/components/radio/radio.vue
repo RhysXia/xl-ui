@@ -127,11 +127,10 @@ export default {
       this.$emit('on-blur', e)
     }
   },
-  mounted() {
+  created() {
     if (this.isGroup) {
-      this.currentValue = this.value
-        ? this.xlRadioGroup.currentValue === this.value
-        : this.xlRadioGroup.currentValue === this.label
+      this.currentValue =
+        this.xlRadioGroup.currentValue === (this.value || this.label)
     } else {
       this.currentValue = this.value === this.trueValue
     }
@@ -144,7 +143,6 @@ export default {
 .#{$--clsPrefix}-radio {
   position: relative;
   display: inline-block;
-  line-height: 1;
   white-space: nowrap;
   vertical-align: middle;
   line-height: 1;

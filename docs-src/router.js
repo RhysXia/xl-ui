@@ -27,5 +27,10 @@ export default [
     path: '/radio',
     meta: '单选框',
     component: () => import('./zh-cn/radio.md')
+  },
+  {
+    path: '/checkbox',
+    meta: '多选框',
+    component: () => import('./zh-cn/checkbox.md')
   }
 ]

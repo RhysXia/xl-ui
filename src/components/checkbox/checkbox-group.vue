@@ -1,30 +1,27 @@
 <template lang="pug">
-  div(:class='classes')
+  div(:class="classes")
     slot
 </template>
 <script>
-const name = 'xl-radio-group'
-
-let i = 0
-
-const generateGrouName = () => {
-  return `${name}-group-name${i++}`
-}
-
+const name = 'xl-checkbox-group'
 export default {
   name,
-  provide() {
-    return {
-      xlRadioGroup: this
-    }
-  },
   model: {
     prop: 'value',
     event: 'on-change'
   },
+  provide() {
+    return {
+      xlCheckboxGroup: this
+    }
+  },
   props: {
-    value: [String, Number, Boolean],
+    value: {
+      type: Array,
+      default: () => []
+    },
     type: {
+      type: String,
       validator(val) {
         return ['button'].includes(val)
       }
@@ -32,14 +29,10 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value,
-      groupName: generateGrouName()
+      currentValue: this.value
     }
   },
   watch: {
-    value(val) {
-      this.currentValue = val
-    },
     currentValue(val) {
       this.$emit('on-change', val)
     }
@@ -58,15 +51,15 @@ export default {
 <style lang="scss">
 @import '../../styles/variables.scss';
 @import '../../styles/utils.scss';
-.#{$--clsPrefix}-radio-group {
-  position: relative;
-  .#{$--clsPrefix}-radio:not(:last-child) {
+.#{$--clsPrefix}-checkbox-group {
+  .#{$--clsPrefix}-checkbox:not(:last-child) {
     margin-right: 0.5em;
   }
 }
-.#{$--clsPrefix}-radio-group--button {
+
+.#{$--clsPrefix}-checkbox-group--button {
   @include clearfix;
-  .#{$--clsPrefix}-radio {
+  .#{$--clsPrefix}-checkbox {
     float: left;
     border: 1px solid $--color-border;
     padding: 0.4em 0.6em;
@@ -83,24 +76,24 @@ export default {
     &:not(:first-child) {
       margin-left: -1px;
     }
-    .#{$--clsPrefix}-radio__inner {
+    .#{$--clsPrefix}-checkbox__inner {
       display: none;
     }
-    .#{$--clsPrefix}-radio__label {
+    .#{$--clsPrefix}-checkbox__label {
       transition: all $--transition-time ease-in-out;
       padding-left: 0;
     }
   }
-  .#{$--clsPrefix}-radio--checked {
-    border-color: $--radio-color-active;
-    background-color: $--radio-color-active;
-    .#{$--clsPrefix}-radio__label {
-      color: $--radio-color-text-active;
+  .#{$--clsPrefix}-checkbox--checked {
+    border-color: $--checkbox-color-active;
+    background-color: $--checkbox-color-active;
+    .#{$--clsPrefix}-checkbox__label {
+      color: $--checkbox-color-text-active;
     }
   }
-  .#{$--clsPrefix}-radio--focused {
+  .#{$--clsPrefix}-checkbox--focused {
     box-shadow: $--box-shadow-size
-      rgba($--radio-color-active, $--box-shadow-transparency);
+      rgba($--checkbox-color-active, $--box-shadow-transparency);
   }
 }
 </style>
