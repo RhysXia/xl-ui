@@ -85,7 +85,7 @@ export default {
       return !!this.xlRadioGroup
     },
     groupName() {
-      return this.isGroup ? this.xlRadioGroup.groupName : this.name
+      return this.isGroup ? this.xlRadioGroup.name : this.name
     }
   },
   watch: {

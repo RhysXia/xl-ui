@@ -13,7 +13,7 @@
         slot(name="suffix")
 </template>
 <script>
-import calcTextareaHeight from '@/utils/calcTextareaHeight'
+import calcTextareaHeight from './calcTextareaHeight'
 import Icon from '../icon'
 const name = 'xl-input'
 export default {
@@ -196,7 +196,7 @@ export default {
     &:disabled {
       cursor: not-allowed;
       // background-color: $--input-bg-color--disabled;
-      opacity:$--disabled-opacity;
+      opacity: $--disabled-opacity;
     }
   }
   .#{$--clsPrefix}-input__prefix,

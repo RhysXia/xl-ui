@@ -1,6 +1,6 @@
 <template lang="pug">
   span(:class="checkboxClasses")
-    input(type='checkbox',:class="inputClasses",:disabled="disabled",:readonly="readonly",:checked="currentValue",@focus="_focusHandler",@blur="_blurHandler",@change="_changeHandler")
+    input(type='checkbox',:class="inputClasses",:name="groupName",:disabled="disabled",:readonly="readonly",:checked="currentValue",@focus="_focusHandler",@blur="_blurHandler",@change="_changeHandler")
     span(:class="innerClasses")
     span(:class="labelClasses",v-if="label||($slots&&$slots.default)")
         slot {{label}}
@@ -34,7 +34,8 @@ export default {
     label: String,
     border: Boolean,
     disabled: Boolean,
-    readonly: Boolean
+    readonly: Boolean,
+    name: String
   },
   data() {
     return {
@@ -66,11 +67,7 @@ export default {
       this.$emit('on-change', value)
     },
     'xlCheckboxGroup.currentValue'(val) {
-      if (this.value) {
-        this.currentValue = val.includes(this.value)
-      } else {
-        this.currentValue = val.includes(this.label)
-      }
+      this.currentValue = val.includes(this.value || this.label)
     }
   },
   computed: {
@@ -107,6 +104,9 @@ export default {
     },
     isGroup() {
       return !!this.xlCheckboxGroup
+    },
+    groupName() {
+      return this.isGroup ? this.xlCheckboxGroup.name : this.name
     }
   },
   methods: {

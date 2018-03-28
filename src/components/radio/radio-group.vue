@@ -8,7 +8,7 @@ const name = 'xl-radio-group'
 let i = 0
 
 const generateGrouName = () => {
-  return `${name}-group-name${i++}`
+  return `${name}-name${i++}`
 }
 
 export default {
@@ -28,12 +28,15 @@ export default {
       validator(val) {
         return ['button'].includes(val)
       }
+    },
+    name: {
+      type: String,
+      default: generateGrouName
     }
   },
   data() {
     return {
-      currentValue: this.value,
-      groupName: generateGrouName()
+      currentValue: this.value
     }
   },
   watch: {

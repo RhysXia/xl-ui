@@ -106,3 +106,50 @@
 ```
 
 :::
+
+## checkbox 属性
+
+| 参数        | 说明                                   | 类型                      | 可选值 | 默认值 |
+| ----------- | -------------------------------------- | ------------------------- | ------ | ------ |
+| label       | checkbox 显示值                        | string                    | -      | -      |
+| name        | checkbox 的 name（单独使用时有效）     | string                    | -      | -      |
+| value       | checkbox 单独使用时，支持 v-model 绑定 | string / number / boolean | -      | false  |
+| true-value  | 选中时的 value 值（单独使用时有效）    | string / number / boolean | —      | true   |
+| false-value | 未选中时的 value 值（单独使用时有效）  | string / number / boolean | —      | false  |
+| border      | 是否显示 checkbox 边框                 | boolean                   | —      | false  |
+| readonly    | 是否只读                               | boolean                   | —      | false  |
+| disabled    | 是否禁用状态                           | boolean                   | —      | false  |
+
+## checkbox 事件
+
+| 事件名    | 说明                  | 参数                    |
+| --------- | --------------------- | ----------------------- |
+| on-change | checkbox 改变事件     | 选中时的值（trueValue） |
+| on-focus  | checkbox 获得焦点事件 | 表单元素事件 e          |
+| on-blur   | checkbox 失去焦点事件 | 表单元素事件 e          |
+
+## checkbox slots
+
+| 名称    | 说明                                                                                    |
+| ------- | --------------------------------------------------------------------------------------- |
+| default | checkbox 显示的 label，如果没有设置插槽，默认使用 label 参数，如果 label 也没有，就为空 |
+
+## checkbox group 属性
+
+| 参数  | 说明                              | 类型   | 可选值 | 默认值 |
+| ----- | --------------------------------- | ------ | ------ | ------ |
+| value | 选中的 checkbox v-model 绑定      | array  | -      | []     |
+| name  | 多选框选框组的名称 ，默认随机生成 | string | -      | -      |
+| type  | 多选框组类型                      | string | button | -      |
+
+## checkbox group 事件
+
+| 事件名    | 说明              | 参数                   |
+| --------- | ----------------- | ---------------------- |
+| on-change | checkbox 选中事件 | 选中时的 checkbox 的值 |
+
+## checkbox group slots
+
+| 名称    | 说明                 |
+| ------- | -------------------- |
+| default | 用来设置 checkbox 组 |

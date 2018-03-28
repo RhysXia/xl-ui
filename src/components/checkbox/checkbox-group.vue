@@ -4,6 +4,13 @@
 </template>
 <script>
 const name = 'xl-checkbox-group'
+
+let i = 0
+
+const generateGrouName = () => {
+  return `${name}-name${i++}`
+}
+
 export default {
   name,
   model: {
@@ -25,6 +32,10 @@ export default {
       validator(val) {
         return ['button'].includes(val)
       }
+    },
+    name: {
+      type: String,
+      default: generateGrouName
     }
   },
   data() {
@@ -35,6 +46,9 @@ export default {
   watch: {
     currentValue(val) {
       this.$emit('on-change', val)
+    },
+    value(val) {
+      this.currentValue = val
     }
   },
   computed: {
