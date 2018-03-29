@@ -35,7 +35,8 @@ export default {
     border: Boolean,
     disabled: Boolean,
     readonly: Boolean,
-    name: String
+    name: String,
+    indeterminate: Boolean
   },
   data() {
     return {
@@ -73,7 +74,9 @@ export default {
   computed: {
     checkboxClasses() {
       const arr = [name]
-      if (this.currentValue) {
+      if (this.indeterminate) {
+        arr.push(`${name}--indeterminate`)
+      } else if (this.currentValue) {
         arr.push(`${name}--checked`)
       }
       if (this.focused) {
@@ -88,6 +91,7 @@ export default {
       if (this.border) {
         arr.push(`${name}--border`)
       }
+
       return arr
     },
     inputClasses() {
@@ -135,6 +139,7 @@ export default {
 </script>
 <style lang="scss">
 @import '../../styles/variables.scss';
+
 .#{$--clsPrefix}-checkbox {
   position: relative;
   display: inline-block;
@@ -169,16 +174,14 @@ export default {
     &:after {
       position: absolute;
       content: '';
-      border: 1px solid $--checkbox-color-bg;
-      border-left: 0;
-      border-top: 0;
-      height: $--checkbox-size * 0.55;
-      width: $--checkbox-size * 0.25;
-      left: $--checkbox-size * 0.3;
-      top: $--checkbox-size * 0.1;
-      transform: rotate(45deg) scale(0);
+      border: none;
+      height: 0;
+      width: 0;
+      left: $--checkbox-size * 0.2;
+      top: $--checkbox-size * 0.25;
+      transform: rotate(0) scale(0);
       transform-origin: center;
-      transition: transform $--transition-time ease-in-out;
+      transition: all $--transition-time ease-in-out;
     }
   }
   &__label {
@@ -186,11 +189,28 @@ export default {
   }
 }
 
+.#{$--clsPrefix}-checkbox--indeterminate {
+  .#{$--clsPrefix}-checkbox__inner {
+    background-color: $--checkbox-color-active;
+    &:after {
+      transform: rotate(0) scale(1);
+      border-bottom: 1px solid $--checkbox-color-bg;
+      left: $--checkbox-size * 0.25;
+      width: $--checkbox-size * 0.55;
+      height: $--checkbox-size * 0.2;
+    }
+  }
+}
+
 .#{$--clsPrefix}-checkbox--checked {
   .#{$--clsPrefix}-checkbox__inner {
     background-color: $--checkbox-color-active;
     &:after {
-      transform: rotate(45deg) scale(1);
+      border-bottom: 1px solid $--checkbox-color-bg;
+      border-left: 1px solid $--checkbox-color-bg;
+      height: $--checkbox-size * 0.25;
+      width: $--checkbox-size * 0.55;
+      transform: rotate(-45deg) scale(1);
     }
   }
   .#{$--clsPrefix}-checkbox__label {

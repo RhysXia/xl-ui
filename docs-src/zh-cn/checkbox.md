@@ -7,6 +7,14 @@
                 arr:[],
                 arr2:['123','456']
             }
+        },
+        computed:{
+            indeterminate(){
+                return this.arr2.length>0 && this.arr2.length<3
+            },
+            checkAll(){
+                return this.arr2.length===3
+            }
         }
     }
 </script>
@@ -107,18 +115,35 @@
 
 :::
 
+## indeterminate 状态
+
+::: demo 使用`indeterminate`实现多选框组
+
+```html
+<xl-checkbox :indeterminate="indeterminate" :value='checkAll'>全选</xl-checkbox>
+<xl-checkbox-group type='button' v-model='arr2'>
+    <xl-checkbox label='123'>aaa</xl-checkbox>
+    <xl-checkbox value='456'>bbb</xl-checkbox>
+    <xl-checkbox value='987' label='789'>ccc</xl-checkbox>
+</xl-checkbox-group>
+<p>{{arr2}}</p>
+```
+
+:::
+
 ## checkbox 属性
 
-| 参数        | 说明                                   | 类型                      | 可选值 | 默认值 |
-| ----------- | -------------------------------------- | ------------------------- | ------ | ------ |
-| label       | checkbox 显示值                        | string                    | -      | -      |
-| name        | checkbox 的 name（单独使用时有效）     | string                    | -      | -      |
-| value       | checkbox 单独使用时，支持 v-model 绑定 | string / number / boolean | -      | false  |
-| true-value  | 选中时的 value 值（单独使用时有效）    | string / number / boolean | —      | true   |
-| false-value | 未选中时的 value 值（单独使用时有效）  | string / number / boolean | —      | false  |
-| border      | 是否显示 checkbox 边框                 | boolean                   | —      | false  |
-| readonly    | 是否只读                               | boolean                   | —      | false  |
-| disabled    | 是否禁用状态                           | boolean                   | —      | false  |
+| 参数          | 说明                                           | 类型                      | 可选值 | 默认值 |
+| ------------- | ---------------------------------------------- | ------------------------- | ------ | ------ |
+| label         | checkbox 显示值                                | string                    | -      | -      |
+| name          | checkbox 的 name（单独使用时有效）             | string                    | -      | -      |
+| value         | checkbox 单独使用时，支持 v-model 绑定         | string / number / boolean | -      | false  |
+| true-value    | 选中时的 value 值（单独使用时有效）            | string / number / boolean | -      | true   |
+| false-value   | 未选中时的 value 值（单独使用时有效）          | string / number / boolean | -      | false  |
+| border        | 是否显示 checkbox 边框                         | boolean                   | -      | false  |
+| readonly      | 是否只读                                       | boolean                   | -      | false  |
+| disabled      | 是否禁用状态                                   | boolean                   | -      | false  |
+| indeterminate | 半选状态 (一旦为 true，多选框就不能为其他状态) | boolean                   | -      | false  |
 
 ## checkbox 事件
 

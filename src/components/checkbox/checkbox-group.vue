@@ -100,14 +100,19 @@ export default {
   }
   .#{$--clsPrefix}-checkbox--checked {
     border-color: $--checkbox-color-active;
+    border-right-color: $--checkbox-color-bg;
     background-color: $--checkbox-color-active;
     .#{$--clsPrefix}-checkbox__label {
       color: $--checkbox-color-text-active;
     }
   }
-  .#{$--clsPrefix}-checkbox--focused {
-    box-shadow: $--box-shadow-size
-      rgba($--checkbox-color-active, $--box-shadow-transparency);
+
+  .#{$--clsPrefix}-checkbox--checked + .#{$--clsPrefix}-checkbox--checked {
+    border-left-color: $--checkbox-color-bg;
   }
+
+  // .#{$--clsPrefix}-checkbox--focused {
+  //   box-shadow: $--box-shadow-size rgba($--checkbox-color-active, $--box-shadow-transparency);
+  // }
 }
 </style>
