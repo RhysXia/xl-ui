@@ -34,8 +34,13 @@ export default [
     component: () => import('./zh-cn/checkbox.md')
   },
   {
-    path: '/drop',
-    meta: '下拉组件（私用）',
-    component: () => import('./zh-cn/drop.md')
+    path: '/popup',
+    meta: '弹出框',
+    component: () => import('./zh-cn/popup.md')
+  },
+  {
+    path: '/dropdown',
+    meta: '下拉框',
+    component: () => import('./zh-cn/dropdown.md')
   }
 ]

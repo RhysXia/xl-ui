@@ -1,19 +1,15 @@
 <template lang="pug">
   div(:class="classes")
     slot
-    div(v-show="visiable && !isHidden",:class="contentClasses",ref='content')
-      slot(name="drop")
+    div(:class="contentClasses",ref='content')
+      slot(name="popup")
 </template>
 <script>
 import { getOffset } from '@/utils/utils.js'
-const name = 'xl-drop'
+const name = 'xl-popup'
 export default {
   name,
   props: {
-    value: {
-      type: Boolean,
-      default: false
-    },
     popupContainer: {
       type: Function,
       default: () => document.body
@@ -49,17 +45,7 @@ export default {
   },
   data() {
     return {
-      visiable: this.value,
-      container: null,
-      isHidden: false
-    }
-  },
-  watch: {
-    value(val) {
-      this.visiable = val
-    },
-    visiable(val) {
-      this.$emit('input', val)
+      container: null
     }
   },
   computed: {
@@ -74,14 +60,7 @@ export default {
   },
   methods: {
     _setPosition() {
-      if (this.isHidden) {
-        return
-      }
       if (!this.$el) {
-        return
-      }
-      if (!this.visiable) {
-        this.$refs.content.style = 'display:none;'
         return
       }
       let contentStyles = {}
@@ -177,17 +156,17 @@ export default {
     window.removeEventListener('resize', this._resizeEvent)
   },
   // keep-alive
-  activated() {
-    this.isHidden = false
-  },
   deactivated() {
-    this.isHidden = true
+    this.container.removeChild(this.$refs.content)
+  },
+  activated() {
+    this.container.appendChild(this.$refs.content)
   }
 }
 </script>
 <style lang="scss">
 @import '../../styles/variables.scss';
-.#{$--clsPrefix}-drop {
+.#{$--clsPrefix}-popup {
   position: relative;
   display: inline-block;
 

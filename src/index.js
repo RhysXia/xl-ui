@@ -5,7 +5,8 @@ import Input from './components/input'
 import { Checkbox, CheckboxGroup } from './components/checkbox'
 import { Button, ButtonGroup } from './components/button'
 import { Radio, RadioGroup } from './components/radio'
-import Drop from './components/drop'
+import Popup from './components/popup'
+import { Dropdown, DropdownMenu } from './components/dropdown'
 
 const components = {
   Row,
@@ -18,7 +19,9 @@ const components = {
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-  Drop
+  Popup,
+  Dropdown,
+  DropdownMenu
 }
 
 const install = (Vue, opts = {}) => {
