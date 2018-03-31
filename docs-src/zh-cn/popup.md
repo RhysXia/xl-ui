@@ -145,12 +145,12 @@
 
 ## Popup 属性
 
-| 参数           | 说明                                       | 类型     | 可选值                                                                                                      | 默认值            |
-| -------------- | ------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
+| 参数            | 说明                                       | 类型     | 可选值                                                                                                      | 默认值            |
+| --------------- | ------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
 | popup-container | 弹出框所处的父元素                         | function | -                                                                                                           | ()=>document.body |
-| placement      | 弹出框相对显示框的位置                     | string   | 'top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end' | top               |
-| position       | 弹出框位置                                 | string   | absolute/relative                                                                                           | absolute          |
-| render-duration | 修改窗口大小时重新渲染弹出框位置的时间间隔 | number   | -                                                                                                           | 200               |
+| placement       | 弹出框相对显示框的位置                     | string   | 'top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end' | top               |
+| position        | 弹出框位置                                 | string   | absolute/relative                                                                                           | absolute          |
+| render-duration | 修改窗口大小时重新渲染弹出框位置的时间间隔 | number   | -                                                                                                           | 100               |
 
 ## Popup slots
 

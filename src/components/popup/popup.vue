@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="classes")
     slot
-    div(:class="contentClasses",ref='content')
+    div(ref='content',:class="contentClasses")
       slot(name="popup")
 </template>
 <script>
@@ -40,7 +40,7 @@ export default {
     },
     renderDuration: {
       type: Number,
-      default: 200
+      default: 100
     }
   },
   data() {
@@ -54,8 +54,7 @@ export default {
       return arr
     },
     contentClasses() {
-      const arr = [`${name}__content`, `${name}__content--${this.placement}`]
-      return arr
+      return `${name}__content`
     }
   },
   methods: {
@@ -63,65 +62,48 @@ export default {
       if (!this.$el) {
         return
       }
-      let contentStyles = {}
+      const contentStyles = {
+        position: this.position
+      }
       const { bottom, left, right, top } = getOffset(this.$el, this.container)
-      if (this.placement === 'top-start' || this.placement === 'left-start') {
-        contentStyles = {
-          position: this.position,
-          left: left + 'px',
-          top: top + 'px'
-        }
+      const offsetWidth = this.$refs.content.offsetWidth
+      const offsetHeight = this.$refs.content.offsetHeight
+      if (this.placement === 'top-start') {
+        contentStyles.top = top - offsetHeight + 'px'
+        contentStyles.left = left + 'px'
       } else if (this.placement === 'top') {
-        contentStyles = {
-          position: this.position,
-          left: (left + right) / 2 + 'px',
-          top: top + 'px'
-        }
-      } else if (
-        this.placement === 'top-end' ||
-        this.placement === 'right-start'
-      ) {
-        contentStyles = {
-          position: this.position,
-          left: right + 'px',
-          top: top + 'px'
-        }
+        contentStyles.top = top - offsetHeight + 'px'
+        contentStyles.left = (left + right - offsetWidth) / 2 + 'px'
+      } else if (this.placement === 'top-end') {
+        contentStyles.top = top - offsetHeight + 'px'
+        contentStyles.left = right - offsetWidth + 'px'
+      } else if (this.placement === 'left-start') {
+        contentStyles.left = left - offsetWidth + 'px'
+        contentStyles.top = top + 'px'
       } else if (this.placement === 'left') {
-        contentStyles = {
-          position: this.position,
-          left: left + 'px',
-          top: (top + bottom) / 2 + 'px'
-        }
-      } else if (
-        this.placement === 'left-end' ||
-        this.placement === 'bottom-start'
-      ) {
-        contentStyles = {
-          position: this.position,
-          left: left + 'px',
-          top: bottom + 'px'
-        }
+        contentStyles.left = left - offsetWidth + 'px'
+        contentStyles.top = (top + bottom - offsetHeight) / 2 + 'px'
+      } else if (this.placement === 'left-end') {
+        contentStyles.left = left - offsetWidth + 'px'
+        contentStyles.top = bottom - offsetHeight + 'px'
+      } else if (this.placement === 'right-start') {
+        contentStyles.left = right + 'px'
+        contentStyles.top = top + 'px'
       } else if (this.placement === 'right') {
-        contentStyles = {
-          position: this.position,
-          left: right + 'px',
-          top: (top + bottom) / 2 + 'px'
-        }
-      } else if (
-        this.placement === 'right-end' ||
-        this.placement === 'bottom-end'
-      ) {
-        contentStyles = {
-          position: this.position,
-          left: right + 'px',
-          top: bottom + 'px'
-        }
+        contentStyles.left = right + 'px'
+        contentStyles.top = (top + bottom - offsetHeight) / 2 + 'px'
+      } else if (this.placement === 'right-end') {
+        contentStyles.left = right + 'px'
+        contentStyles.top = bottom - offsetHeight + 'px'
+      } else if (this.placement === 'bottom-start') {
+        contentStyles.top = bottom + 'px'
+        contentStyles.left = left + 'px'
       } else if (this.placement === 'bottom') {
-        contentStyles = {
-          position: this.position,
-          left: (left + right) / 2 + 'px',
-          top: bottom + 'px'
-        }
+        contentStyles.top = bottom + 'px'
+        contentStyles.left = (left + right - offsetWidth) / 2 + 'px'
+      } else if (this.placement === 'bottom-end') {
+        contentStyles.top = bottom + 'px'
+        contentStyles.left = right - offsetWidth + 'px'
       }
       let style = ''
       Object.keys(contentStyles).forEach(key => {
@@ -169,29 +151,10 @@ export default {
 .#{$--clsPrefix}-popup {
   position: relative;
   display: inline-block;
-  &__content--top-start,
-  &__content--right-end {
-    transform: translateY(-100%);
-  }
-  &__content--top {
-    transform: translate(-50%, -100%);
-  }
-  &__content--top-end,
-  &__content--left-end {
-    transform: translate(-100%, -100%);
-  }
-  &__content--left-start,
-  &__content--bottom-end {
-    transform: translateX(-100%);
-  }
-  &__content--left {
-    transform: translate(-100%, -50%);
-  }
-  &__content--right {
-    transform: translateY(-50%);
-  }
-  &__content--bottom {
-    transform: translateX(-50%);
+  box-sizing: border-box;
+  &__content {
+    display: inline-block;
+    box-sizing: border-box;
   }
 }
 </style>
