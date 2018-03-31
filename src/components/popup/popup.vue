@@ -169,7 +169,6 @@ export default {
 .#{$--clsPrefix}-popup {
   position: relative;
   display: inline-block;
-
   &__content--top-start,
   &__content--right-end {
     transform: translateY(-100%);

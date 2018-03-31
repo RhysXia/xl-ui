@@ -1,4 +1,5 @@
 import Dropdown from './dropdown'
 import DropdownMenu from './dropdown-menu'
+import DropdownItem from './dropdown-item'
 
-export { Dropdown, DropdownMenu }
+export { Dropdown, DropdownMenu, DropdownItem }
