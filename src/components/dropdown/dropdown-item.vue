@@ -7,11 +7,6 @@ const name = 'xl-dropdown-item'
 export default {
   name,
   inject: ['xlDropdown'],
-  provide() {
-    return {
-      xlDropdownItem: this
-    }
-  },
   props: {
     disabled: {
       type: Boolean,
