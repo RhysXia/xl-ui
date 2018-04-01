@@ -14,11 +14,6 @@ import clickoutside from '@/directives/clickoutside'
 const name = 'xl-dropdown'
 export default {
   name,
-  inject: {
-    xlDropdown: {
-      default: null
-    }
-  },
   provide() {
     return {
       xlDropdown: this
@@ -78,8 +73,7 @@ export default {
   },
   data() {
     return {
-      visiable: this.value,
-      isClicked: false
+      visiable: this.value
     }
   },
   watch: {
@@ -123,53 +117,25 @@ export default {
     }
   },
   methods: {
-    _keepVisiable() {
-      this.$nextTick(() => {
-        this.visiable = true
-      })
-      if (this.xlDropdown) {
-        this.xlDropdown._keepVisiable()
-      }
-    },
-    _hideIfNotThis(element) {
-      if (this.$refs.content.contains(element)) {
-        return
-      }
-      this.$nextTick(() => {
-        this.visiable = false
-      })
-      if (this.xlDropdown) {
-        this.xlDropdown._hideIfNotThis(element)
-      }
-    },
     _clickHandler() {
       if (this.trigger === 'custom') {
         return
       }
-      this.isClicked = true
-      this.visiable = true
+      this.visiable = !this.visiable
     },
     _mouseenterHandler() {
       if (this.trigger === 'custom') {
         return
       }
       if (this.trigger === 'hover') {
-        this.$nextTick(() => {
-          this.visiable = true
-        })
+        this.visiable = true
       }
     },
     _mouseleaveHandler(e) {
       if (this.trigger === 'custom') {
         return
       }
-      if (this.isClicked) {
-        return
-      }
-      // 判断是否进入子下拉菜单
-      this.$nextTick(() => {
-        this.visiable = false
-      })
+      this.visiable = false
     },
     _clickoutside(e) {
       if (this.trigger === 'custom') {
@@ -179,7 +145,6 @@ export default {
         return
       }
       this.visiable = false
-      this.isClicked = false
     }
   },
   components: {
