@@ -146,15 +146,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-@import '../../styles/variables.scss';
-.#{$--clsPrefix}-popup {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  &__content {
-    display: inline-block;
-    box-sizing: border-box;
-  }
-}
-</style>

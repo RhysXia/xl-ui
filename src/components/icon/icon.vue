@@ -44,10 +44,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-@import '../../styles/variables.scss';
-@import './ionicons/scss/ionicons.scss';
-.#{$--clsPrefix}-icon {
-  font-size: 1em;
-}
-</style>

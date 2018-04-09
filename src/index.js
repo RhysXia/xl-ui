@@ -1,12 +1,19 @@
 import './styles/index.scss'
-import { Row, Col } from './components/grid'
+
 import Icon from './components/icon'
 import Input from './components/input'
-import { Checkbox, CheckboxGroup } from './components/checkbox'
-import { Button, ButtonGroup } from './components/button'
-import { Radio, RadioGroup } from './components/radio'
+import Checkbox from './components/checkbox'
+import CheckboxGroup from './components/checkbox-group'
+import Button from './components/button'
+import ButtonGroup from './components/button-group'
+import Dropdown from './components/dropdown'
+import DropdownMenu from './components/dropdown-menu'
+import DropdownItem from './components/dropdown-item'
+import Row from './components/row'
+import Col from './components/col'
 import Popup from './components/popup'
-import { Dropdown, DropdownMenu, DropdownItem } from './components/dropdown'
+import Radio from './components/radio'
+import RadioGroup from './components/radio-group'
 
 const components = {
   Row,
