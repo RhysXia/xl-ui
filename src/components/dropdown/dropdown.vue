@@ -10,7 +10,7 @@
 </template>
 <script>
 import Popup from '../popup'
-import clickoutside from '@/directives/clickoutside'
+import clickoutside from '../../directives/clickoutside'
 const name = 'xl-dropdown'
 export default {
   name,

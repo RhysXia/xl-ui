@@ -1,6 +1,6 @@
 {
   "name": "xl-vision",
-  "version": "0.0.1-beta.4",
+  "version": "0.0.1-beta.5",
   "description": "A high quality  UI components Library with Vue.js",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "homepage": "https://rhysxia.github.io/xl-vision",
@@ -102,8 +102,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "dependencies": {
-    "vue": "^2.5.16"
-  }
+  ]
 }

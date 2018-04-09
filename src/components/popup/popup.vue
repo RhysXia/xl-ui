@@ -5,7 +5,7 @@
       slot(name="popup")
 </template>
 <script>
-import { getOffset } from '@/utils/utils.js'
+import { getOffset } from '../../utils/utils.js'
 const name = 'xl-popup'
 export default {
   name,
