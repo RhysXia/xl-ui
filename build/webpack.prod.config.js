@@ -25,13 +25,13 @@ module.exports = merge(webpackBaseConfig, {
       {
         test: /\.(gif|jpg|png)\??.*$/,
         loader:
-          'url-loader?limit=8192&name=[name].[ext]&outputPath=assets/&publicPath=../assets/'
+          'url-loader?limit=8192&&name=assets/[name].[ext]'
       },
       {
         test: /\.(woff|svg|eot|ttf)\??.*$/,
         loader:
-          'url-loader?limit=8192&&name=[name].[ext]&outputPath=style/fonts/&publicPath=fonts/'
-      }
+          'url-loader?limit=8192&&name=style/fonts/[name].[ext]'
+      },
     ].concat(
       utils.styleLoaders({
         extract: true,

@@ -44,7 +44,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('examples'), resolve('test')],
+        include: [resolve('src')],
         options: {
           formatter: require('eslint-friendly-formatter'),
           emitWarning: true
@@ -54,19 +54,19 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
-          sourceMap: true
+          sourceMap: false
         },
         exclude: /(node_modules|dist)/
       },
       {
         test: /\.(gif|jpg|png)\??.*$/,
         loader:
-          'url-loader?limit=8192&&name=[name].[ext]&outputPath=assets/&publicPath=../assets/'
+          'url-loader?limit=8192&&name=assets/[name].[ext]'
       },
       {
         test: /\.(woff|svg|eot|ttf)\??.*$/,
         loader:
-          'url-loader?limit=8192&&name=[name].[ext]&outputPath=style/fonts/&publicPath=fonts/'
+          'url-loader?limit=8192&&name=style/fonts/[name].[ext]'
       },
       {
         test: /\.(html|tpl)$/,
@@ -74,7 +74,7 @@ module.exports = {
       }
     ].concat(
       utils.styleLoaders({
-        sourceMap: true,
+        sourceMap: false,
         usePostCSS: true,
         extract: true
       })

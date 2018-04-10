@@ -1,6 +1,6 @@
 {
   "name": "xl-vision",
-  "version": "0.0.1-beta.5",
+  "version": "0.0.1-beta.10.6",
   "description": "A high quality  UI components Library with Vue.js",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "homepage": "https://rhysxia.github.io/xl-vision",
@@ -19,6 +19,10 @@
     "url": "https://github.com/RhysXia/xl-vision"
   },
   "main": "dist/xl-vision.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
     "build": "webpack --config build/webpack.prod.config.js",

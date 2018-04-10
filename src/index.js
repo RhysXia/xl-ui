@@ -15,6 +15,8 @@ import Popup from './components/popup'
 import Radio from './components/radio'
 import RadioGroup from './components/radio-group'
 
+import {version} from '../package.json'
+
 const components = {
   Row,
   Col,
@@ -44,4 +46,24 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export default { install }
+export default {
+  version,
+  install
+}
+
+export {
+  Row,
+  Col,
+  Icon,
+  Button,
+  ButtonGroup,
+  Input,
+  Radio,
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup,
+  Popup,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
+}
