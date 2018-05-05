@@ -7,6 +7,7 @@
 </template>
 <script>
 import Icon from '../icon'
+import { oneOf } from '../../utils/utils'
 const name = 'xl-button'
 export default {
   name,
@@ -19,15 +20,10 @@ export default {
     type: {
       default: 'default',
       validator(value) {
-        return [
-          'default',
-          'primary',
-          'success',
-          'warning',
-          'error',
-          'info',
-          'text'
-        ].includes(value)
+        return oneOf(
+          ['default', 'primary', 'success', 'warning', 'error', 'info', 'text'],
+          value
+        )
       }
     },
     disabled: {
@@ -45,7 +41,7 @@ export default {
     nativeType: {
       default: 'button',
       validator(val) {
-        return ['button', 'submit', 'reset'].includes(val)
+        return oneOf(['button', 'submit', 'reset'], val)
       }
     },
     long: {

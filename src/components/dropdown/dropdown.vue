@@ -9,6 +9,7 @@
               slot(name="dropdown")
 </template>
 <script>
+import { oneOf } from '../../utils/utils'
 import Popup from '../popup'
 import clickoutside from '../../directives/clickoutside'
 const name = 'xl-dropdown'
@@ -35,7 +36,7 @@ export default {
       type: String,
       default: 'hover',
       validator(val) {
-        return ['hover', 'click', 'custom'].includes(val)
+        return oneOf(['hover', 'click', 'custom'], val)
       }
     },
     popupContainer: {
@@ -54,20 +55,23 @@ export default {
       type: String,
       default: 'top',
       validator(val) {
-        return [
-          'top',
-          'top-start',
-          'top-end',
-          'bottom',
-          'bottom-start',
-          'bottom-end',
-          'left',
-          'left-start',
-          'left-end',
-          'right',
-          'right-start',
-          'right-end'
-        ].includes(val)
+        return oneOf(
+          [
+            'top',
+            'top-start',
+            'top-end',
+            'bottom',
+            'bottom-start',
+            'bottom-end',
+            'left',
+            'left-start',
+            'left-end',
+            'right',
+            'right-start',
+            'right-end'
+          ],
+          val
+        )
       }
     }
   },
@@ -101,15 +105,18 @@ export default {
       return { paddingLeft: space }
     },
     slideName() {
-      const flag = [
-        'bottom',
-        'bottom-start',
-        'bottom-end',
-        'left',
-        'left-start',
-        'right',
-        'right-start'
-      ].includes(this.placement)
+      const flag = oneOf(
+        [
+          'bottom',
+          'bottom-start',
+          'bottom-end',
+          'left',
+          'left-start',
+          'right',
+          'right-start'
+        ],
+        this.placement
+      )
       if (flag) {
         return `${name}--slide-down`
       }

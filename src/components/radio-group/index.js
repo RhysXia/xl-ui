@@ -1,3 +1,3 @@
-import RadioGroup from '../radio/radio-group.vue'
+import RadioGroup from '../radio/radio-group'
 
 export default RadioGroup

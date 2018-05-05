@@ -3,6 +3,7 @@
     slot
 </template>
 <script>
+import { oneOf } from '../../utils/utils'
 const name = 'xl-radio-group'
 
 let i = 0
@@ -26,7 +27,7 @@ export default {
     value: [String, Number, Boolean],
     type: {
       validator(val) {
-        return ['button'].includes(val)
+        return oneOf(['button'], val)
       }
     },
     name: {

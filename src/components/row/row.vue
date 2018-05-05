@@ -1,4 +1,5 @@
 <script>
+import { oneOf } from '../../utils/utils'
 const name = 'xl-row'
 export default {
   name,
@@ -14,23 +15,20 @@ export default {
     },
     type: {
       validator(value) {
-        return ['flex'].includes(value)
+        return oneOf(['flex'], value)
       }
     },
     align: {
       validator(value) {
-        return ['top', 'middle', 'bottom'].includes(value)
+        return oneOf(['top', 'middle', 'bottom'], value)
       }
     },
     justify: {
       validator(value) {
-        return [
-          'start',
-          'end',
-          'center',
-          'space-around',
-          'space-between'
-        ].includes(value)
+        return oneOf(
+          ['start', 'end', 'center', 'space-around', 'space-between'],
+          value
+        )
       }
     },
     gutter: {

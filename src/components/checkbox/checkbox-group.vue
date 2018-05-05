@@ -3,6 +3,7 @@
     slot
 </template>
 <script>
+import { oneOf } from '../../utils/utils'
 const name = 'xl-checkbox-group'
 
 let i = 0
@@ -30,7 +31,7 @@ export default {
     type: {
       type: String,
       validator(val) {
-        return ['button'].includes(val)
+        return oneOf(['button'], val)
       }
     },
     name: {

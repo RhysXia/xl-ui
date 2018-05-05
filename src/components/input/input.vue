@@ -13,6 +13,7 @@
         slot(name="suffix")
 </template>
 <script>
+import { oneOf } from '../../utils/utils'
 import calcTextareaHeight from './calcTextareaHeight'
 import Icon from '../icon'
 const name = 'xl-input'
@@ -35,14 +36,10 @@ export default {
     type: {
       default: 'text',
       validator(value) {
-        return [
-          'text',
-          'password',
-          'textarea',
-          'url',
-          'email',
-          'date'
-        ].includes(value)
+        return oneOf(
+          ['text', 'password', 'textarea', 'url', 'email', 'date'],
+          value
+        )
       }
     },
     value: String,

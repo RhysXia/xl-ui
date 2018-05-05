@@ -6,6 +6,7 @@
         slot {{label}}
 </template>
 <script>
+import { oneOf } from '../../utils/utils'
 const name = 'xl-checkbox'
 export default {
   name,
@@ -68,7 +69,7 @@ export default {
       this.$emit('on-change', value)
     },
     'xlCheckboxGroup.currentValue'(val) {
-      this.currentValue = val.includes(this.value || this.label)
+      this.currentValue = oneOf(val, this.value || this.label)
     }
   },
   computed: {
@@ -128,7 +129,8 @@ export default {
   },
   created() {
     if (this.isGroup) {
-      this.currentValue = this.xlCheckboxGroup.currentValue.includes(
+      this.currentValue = oneOf(
+        this.xlCheckboxGroup.currentValue,
         this.value || this.label
       )
     } else {

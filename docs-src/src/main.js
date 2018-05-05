@@ -1,12 +1,11 @@
+import '../../styles/theme-default/lib/index.css'
+import 'highlight.js/styles/github.css'
 import Vue from 'vue'
 import App from './App'
 import DemoBlock from './components/demo-block'
 import VueRouter from 'vue-router'
 import routes from './router'
-import xlVision from '../../dist/xl-vision'
-
-import '../../styles/theme-default/lib/index.css'
-import 'highlight.js/styles/github.css'
+import xlVision from '../../src/index'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)

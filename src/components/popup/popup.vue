@@ -5,7 +5,7 @@
       slot(name="popup")
 </template>
 <script>
-import { getOffset } from '../../utils/utils.js'
+import { getOffset, oneOf } from '../../utils/utils.js'
 const name = 'xl-popup'
 export default {
   name,
@@ -18,20 +18,23 @@ export default {
       type: String,
       default: 'top',
       validator(val) {
-        return [
-          'top',
-          'top-start',
-          'top-end',
-          'bottom',
-          'bottom-start',
-          'bottom-end',
-          'left',
-          'left-start',
-          'left-end',
-          'right',
-          'right-start',
-          'right-end'
-        ].includes(val)
+        return oneOf(
+          [
+            'top',
+            'top-start',
+            'top-end',
+            'bottom',
+            'bottom-start',
+            'bottom-end',
+            'left',
+            'left-start',
+            'left-end',
+            'right',
+            'right-start',
+            'right-end'
+          ],
+          val
+        )
       }
     },
     position: {
