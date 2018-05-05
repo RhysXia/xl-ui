@@ -1,0 +1,13 @@
+@import './commons/variables.scss';
+
+.#{$--clsPrefix}-dropdown-menu {
+  box-shadow: $--dropdown-box-shadow;
+  background-color: $--dropdown-color-bg;
+  border-radius: $--border-radius;
+  border: 1px solid $--color-border;
+}
+.#{$--clsPrefix}-dropdown-menu--divide {
+  .#{$--clsPrefix}-dropdown-item:not(:last-child) {
+    border-bottom: 1px solid $--color-border;
+  }
+}

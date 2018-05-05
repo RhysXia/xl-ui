@@ -1,5 +1,3 @@
-import './styles/index.scss'
-
 import Icon from './components/icon'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
@@ -14,7 +12,6 @@ import Col from './components/col'
 import Popup from './components/popup'
 import Radio from './components/radio'
 import RadioGroup from './components/radio-group'
-
 import {version} from '../package.json'
 
 const components = {

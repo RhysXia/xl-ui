@@ -1,116 +1,49 @@
 const path = require('path')
 const webpack = require('webpack')
 const pkg = require('../package.json')
-const striptags = require('./strip-tags')
-const slugify = require('transliteration').slugify
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const md = require('markdown-it')()
-
-function convert(str) {
-  str = str.replace(/(&#x)(\w{4});/gi, function($0) {
-    return String.fromCharCode(
-      parseInt(
-        encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'),
-        16
-      )
-    )
-  })
-  return str
-}
-
-var wrap = function(render) {
-  return function() {
-    return render
-      .apply(this, arguments)
-      .replace('<code v-pre class="', '<code class="hljs ')
-      .replace('<code>', '<code class="hljs">')
-  }
-}
-
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   entry: {
-    main: './docs-src/main',
-    verdors: ['vue', 'vue-router']
+    main: './src/index.js'
   },
   output: {
-    path: path.join(__dirname, '../docs'),
-    publicPath: '',
-    filename: '[name].[hash].js',
-    chunkFilename: '[name].[hash].js'
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/dist',
+    library: 'xl-vision',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
+  },
+  externals: {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
   },
   module: {
     rules: [
       {
-        test: /\.md$/,
-        loader: 'vue-markdown-loader',
-        options: {
-          preprocess: function(MarkdownIt, source) {
-            MarkdownIt.renderer.rules.table_open = function() {
-              return '<table class="table">'
-            }
-            MarkdownIt.renderer.rules.fence = wrap(
-              MarkdownIt.renderer.rules.fence
-            )
-            return source
-          },
-          use: [
-            [
-              require('markdown-it-anchor'),
-              {
-                level: 2,
-                slugify: slugify,
-                permalink: true,
-                permalinkBefore: true
-              }
-            ],
-            [
-              require('markdown-it-container'),
-              'demo',
-              {
-                validate: function(params) {
-                  return params.trim().match(/^demo\s*(.*)$/)
-                },
-
-                render: function(tokens, idx) {
-                  var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
-                  if (tokens[idx].nesting === 1) {
-                    var description = m && m.length > 1 ? m[1] : ''
-                    var content = tokens[idx + 1].content
-                    var html = convert(
-                      striptags.strip(content, ['script', 'style'])
-                    ).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
-                    var script = striptags.fetch(content, 'script')
-                    var style = striptags.fetch(content, 'style')
-                    var jsfiddle = { html: html, script: script, style: style }
-                    var descriptionHTML = description
-                      ? md.render(description)
-                      : ''
-
-                    jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
-
-                    return `<demo-block>
-                            ${html}
-                            <div slot="desc">${descriptionHTML}</div>
-                            <div slot="source">`
-                  }
-                  return '</div></demo-block>\n'
-                }
-              }
-            ]
-          ]
-        }
+        test: /\.vue$/,
+        loader: 'vue-loader'
+        // ,
+        // options: {
+        //   loaders: utils.cssLoaders({
+        //     sourceMap: true,
+        //     usePostCSS: true,
+        //     extract: true
+        //   })
+        // }
       },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('docs-src')],
+        include: [resolve('src')],
         options: {
           formatter: require('eslint-friendly-formatter'),
           emitWarning: true
@@ -120,15 +53,31 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
-          sourceMap: true
+          sourceMap: false
         },
         exclude: /(node_modules|dist)/
-      },
-      {
-        test: /\.(html|tpl)$/,
-        loader: 'html-loader'
       }
+      // ,
+      // {
+      //   test: /\.(gif|jpg|png)\??.*$/,
+      //   loader: 'url-loader?limit=8192&&name=assets/[name].[ext]'
+      // },
+      // {
+      //   test: /\.(woff|svg|eot|ttf)\??.*$/,
+      //   loader: 'url-loader?limit=8192&&name=style/fonts/[name].[ext]'
+      // },
+      // {
+      //   test: /\.(html|tpl)$/,
+      //   loader: 'html-loader'
+      // }
     ]
+    // .concat(
+    //   utils.styleLoaders({
+    //     sourceMap: false,
+    //     usePostCSS: true,
+    //     extract: true
+    //   })
+    // )
   },
   resolve: {
     extensions: ['.js', '.vue'],
@@ -139,15 +88,11 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.VERSION': `'${pkg.version}'`
-    })
-    // copy custom static assets
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, '../docs-src/static'),
-    //     to: '/docs/static',
-    //     ignore: ['.*']
-    //   }
-    // ])
+      'process.env': {
+        NODE_ENV: '"production"',
+        VERSION: `'${pkg.version}'`
+      }
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 }
