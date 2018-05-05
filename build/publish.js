@@ -37,6 +37,12 @@ inquirer
       message: '是否编译文档',
       type: 'confirm',
       default: true
+    },
+    {
+      name: 'npm',
+      message: '是否发布到npm中',
+      type: 'confirm',
+      defalut: false
     }
   ])
   .then(function(answers) {
@@ -85,6 +91,14 @@ inquirer
       console.log(chalk.red(`git提交失败`))
       exit(1)
     }
+
+    if (answers.npm) {
+      if (exec('npm publish')) {
+        console.log(chalk.red(`发布到npm中失败`))
+        exit(1)
+      }
+    }
+
     console.log(chalk.green(`发布成功,当前版本(${version})`))
   })
 

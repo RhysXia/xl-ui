@@ -1,6 +1,6 @@
 {
-  "name": "docs",
-  "version": "0.0.1-beta.3",
+  "name": "xl-vision-docs",
+  "version": "0.0.1-beta.5",
   "description": "the docs of xl-vision",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "private": true,
