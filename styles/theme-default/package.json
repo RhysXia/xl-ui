@@ -1,0 +1,24 @@
+{
+  "name": "xl-vision-theme-default",
+  "version": "1.0.0",
+  "description": "xl-vision component default theme.",
+  "main": "lib/index.css",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "xl-vision",
+    "theme"
+  ],
+  "author": "Rhys Xia",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {}
+}
