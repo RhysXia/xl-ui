@@ -37,12 +37,6 @@ inquirer
       message: '是否编译文档',
       type: 'confirm',
       default: true
-    },
-    {
-      name: 'npm',
-      message: '是否发布到npm中',
-      type: 'confirm',
-      defalut: false
     }
   ])
   .then(function(answers) {
@@ -102,14 +96,6 @@ inquirer
       exit(1)
     }
     console.log(chalk.green('成功生成组件并上传github'))
-
-    if (answers.npm) {
-      if (exec('npm publish')) {
-        console.log(chalk.red(`发布到npm库中失败`))
-        exit(1)
-      }
-      console.log(chalk.green('成功发布到npm库中'))
-    }
 
     console.log(chalk.green(`发布成功,当前版本(${version})`))
   })

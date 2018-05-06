@@ -1,6 +1,6 @@
 {
   "name": "xl-vision",
-  "version": "0.0.1-beta.16",
+  "version": "0.0.1-beta.16.2",
   "description": "A high quality  UI components Library with Vue.js",
   "author": "Rhys Xia <xrs4433@outlook.com>",
   "homepage": "https://rhysxia.github.io/xl-vision",
@@ -28,7 +28,7 @@
     "compress": "webpack --config build/webpack.compress.config.js",
     "dist": "npm run common && npm run compress",
     "lint": "eslint --fix --ext .js,.vue src",
-    "publish": "node build/publish.js"
+    "prepublishOnly": "node build/publish.js"
   },
   "peerDependencies": {
     "vue": "^2.5.2"
