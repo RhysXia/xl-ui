@@ -28,7 +28,9 @@ export default {
     prefixIcon: String,
     clearable: Boolean,
     // true/false/{minRows:1,maxRows:5}
-    autosize: [Boolean, Object],
+    autosize: {
+      type: [Boolean, Object]
+    },
     rows: {
       type: Number,
       default: 2
@@ -89,6 +91,11 @@ export default {
     },
     currentValue(val) {
       this.$emit('on-input', val)
+      this.$nextTick(() => {
+        this._resizeTextarea()
+      })
+    },
+    autosize(val) {
       this.$nextTick(() => {
         this._resizeTextarea()
       })

@@ -12,7 +12,9 @@ import Col from './components/col'
 import Popup from './components/popup'
 import Radio from './components/radio'
 import RadioGroup from './components/radio-group'
-import {version} from '../package.json'
+import FormItem from './components/form-item'
+import Form from './components/form'
+import { version } from '../package.json'
 
 const components = {
   Row,
@@ -28,7 +30,9 @@ const components = {
   Popup,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  FormItem,
+  Form
 }
 
 const install = (Vue, opts = {}) => {
@@ -62,5 +66,7 @@ export {
   Popup,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  FormItem,
+  Form
 }

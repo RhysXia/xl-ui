@@ -11,13 +11,11 @@
 .xl-dropdown--slide-up-enter-active,
 .xl-dropdown--slide-up-leave-active {
   -webkit-transform-origin: 0 100%;
-      -ms-transform-origin: 0 100%;
           transform-origin: 0 100%; }
 
 .xl-dropdown--slide-down-enter-active,
 .xl-dropdown--slide-down-leave-active {
   -webkit-transform-origin: 0 0;
-      -ms-transform-origin: 0 0;
           transform-origin: 0 0; }
 
 .xl-dropdown--slide-up-enter,
@@ -26,7 +24,6 @@
 .xl-dropdown--slide-down-leave-to {
   opacity: 0;
   -webkit-transform: scaleY(0.3);
-      -ms-transform: scaleY(0.3);
           transform: scaleY(0.3); }
 
 .xl-dropdown--slide-up-enter-to,
@@ -35,5 +32,4 @@
 .xl-dropdown--slide-down-leave {
   opacity: 1;
   -webkit-transform: scaleY(1);
-      -ms-transform: scaleY(1);
           transform: scaleY(1); }

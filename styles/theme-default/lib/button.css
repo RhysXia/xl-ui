@@ -25,7 +25,7 @@
     opacity: 0.6;
     cursor: not-allowed; }
   .xl-button .xl-icon + span {
-    padding-left: 0.25em; }
+    margin-left: 0.25em; }
 
 .xl-button--long {
   display: block;

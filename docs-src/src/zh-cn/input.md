@@ -96,18 +96,39 @@
 
 :::
 
+## 限制极限高度的自适应方式
+
+::: demo 将`autosize`设置成对象，其中包含 `minRows`和 `maxRows`，可以只设置其中一个
+
+```html
+<xl-input v-model="minRows" placeholder="最小高度"></xl-input>
+<xl-input v-model="maxRows" placeholder="最大高度"></xl-input>
+<xl-input type='textarea' :autosize="{minRows:Number(minRows),maxRows:Number(maxRows)}" placeholder='请输入内容'></xl-input>
+<script>
+    export default{
+        data(){
+            return {
+                minRows:'0',
+                maxRows:'5'
+            }
+        }
+    }
+</script>
+```
+:::
+
 ## input 属性
 
-| 参数        | 说明                             | 类型    | 可选值                                         | 默认值 |
-| ----------- | -------------------------------- | ------- | ---------------------------------------------- | ------ |
-| type        | 类型                             | string  | text / password /textarea / url / email / date | text   |
-| value       | 输入参数，支持 v-model 绑定      | string  | —                                              | -      |
-| prefix-icon | 前置图标                         | string  | —                                              | -      |
-| suffix-icon | 后置图标                         | string  | —                                              | -      |
-| autosize    | 针对 textarea 文本域的自适应高度 | boolean | -                                              | false  |
-| clearable   | 可清空输入框                     | boolean | -                                              | false  |
-| disabled    | 禁用文本框                       | boolean | -                                              | false  |
-| readonly    | 只读文本框                       | boolean | -                                              | false  |
+| 参数        | 说明                                                                      | 类型           | 可选值                                         | 默认值 |
+| ----------- | ------------------------------------------------------------------------- | -------------- | ---------------------------------------------- | ------ |
+| type        | 类型                                                                      | string         | text / password /textarea / url / email / date | text   |
+| value       | 输入参数，支持 v-model 绑定                                               | string         | —                                              | -      |
+| prefix-icon | 前置图标                                                                  | string         | —                                              | -      |
+| suffix-icon | 后置图标                                                                  | string         | —                                              | -      |
+| autosize    | 针对 textarea 文本域的自适应高度,设置成对象时格式为{minRows:1,maxRows:10} | boolean/object | -                                              | false  |
+| clearable   | 可清空输入框                                                              | boolean        | -                                              | false  |
+| disabled    | 禁用文本框                                                                | boolean        | -                                              | false  |
+| readonly    | 只读文本框                                                                | boolean        | -                                              | false  |
 
 ## input 方法
 
@@ -118,8 +139,8 @@
 
 ## input 事件
 
-| 事件名     | 说明             | 参数           |
-| ---------- | ---------------- | -------------- |
+| 事件名        | 说明             | 参数           |
+| ------------- | ---------------- | -------------- |
 | on-input      | 输入事件         | 输入框值       |
 | on-focus      | 获得焦点事件     | 原生事件对象 e |
 | on-blur       | 获得失去焦点事件 | 原生事件对象 e |

@@ -5,7 +5,7 @@
         h1 xl-vision
       .right
         xl-button-group
-          xl-button(@click='githubClick',icon='social-github')
+          xl-button(@on-click='githubClick',icon='social-github')
 </template>
 <script>
 export default {

@@ -1,7 +1,17 @@
 export default [
   {
     path: '/',
-    redirect: '/button'
+    redirect: '/install'
+  },
+  {
+    path: '/install',
+    meta: '安装',
+    component: () => import('./zh-cn/install.md')
+  },
+  {
+    path: '/start',
+    meta: '快速上手',
+    component: () => import('./zh-cn/start.md')
   },
   {
     path: '/button',
@@ -42,5 +52,10 @@ export default [
     path: '/dropdown',
     meta: '下拉框',
     component: () => import('./zh-cn/dropdown.md')
+  },
+  {
+    path: '/form',
+    meta: '表单',
+    component: () => import('./zh-cn/form.md')
   }
 ]

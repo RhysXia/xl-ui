@@ -2,18 +2,14 @@ const gulp = require('gulp')
 const cleanCSS = require('gulp-clean-css')
 const sass = require('gulp-sass')
 const rename = require('gulp-rename')
-const autoprefixer = require('gulp-autoprefixer')
+const postcss = require('gulp-postcss')
 
 // 编译scss
 gulp.task('css', function() {
   gulp
     .src('./src/*.scss')
     .pipe(sass())
-    .pipe(
-      autoprefixer({
-        browsers: ['last 2 versions', 'ie > 8']
-      })
-    )
+    .pipe(postcss())
     .pipe(gulp.dest('./lib'))
 })
 
@@ -21,15 +17,13 @@ gulp.task('minCss', function() {
   gulp
     .src('./src/*.scss')
     .pipe(sass())
+    .pipe(postcss())
+    .pipe(cleanCSS())
     .pipe(
-      autoprefixer({
-        browsers: ['last 2 versions', 'ie > 8']
+      rename(path => {
+        path.basename += '.min'
       })
     )
-    .pipe(cleanCSS())
-    .pipe(rename(path => {
-      path.basename += '.min'
-    }))
     .pipe(gulp.dest('./lib'))
 })
 
