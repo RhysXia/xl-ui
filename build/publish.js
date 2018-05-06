@@ -55,6 +55,9 @@ inquirer
 
     if (answers.style) {
       const stylePath = process.cwd() + '/styles/theme-default'
+      rmdirSync(stylePath + '/lib')
+      console.log(chalk.green('成功删除曾经生成的样式文件'))
+
       const stylePkg = require(stylePath + '/package.json')
       stylePkg.version = version
       fs.writeFileSync(
@@ -66,9 +69,12 @@ inquirer
         console.log(chalk.red(`编译样式文件失败`))
         exit(1)
       }
+      console.log(chalk.green('成功生成样式文件'))
     }
 
     if (answers.docs) {
+      rmdirSync(process.cwd() + '/docs')
+      console.log(chalk.green('成功删除曾经生成的文档'))
       const docsPath = process.cwd() + '/docs-src'
       const docsPkg = require(docsPath + '/package.json')
       docsPkg.version = version
@@ -81,7 +87,11 @@ inquirer
         console.log(chalk.red(`编译文档失败`))
         exit(1)
       }
+      console.log(chalk.green('成功生成文档'))
     }
+
+    rmdirSync(process.cwd() + '/dist')
+    console.log(chalk.green('成功删除曾经生成的组件'))
 
     const comment = answers.message || `update version to ${version}`
     //编译
@@ -91,12 +101,14 @@ inquirer
       console.log(chalk.red(`git提交失败`))
       exit(1)
     }
+    console.log(chalk.green('成功生成组件并上传github'))
 
     if (answers.npm) {
       if (exec('npm publish')) {
-        console.log(chalk.red(`发布到npm中失败`))
+        console.log(chalk.red(`发布到npm库中失败`))
         exit(1)
       }
+      console.log(chalk.green('成功发布到npm库中'))
     }
 
     console.log(chalk.green(`发布成功,当前版本(${version})`))
@@ -120,4 +132,21 @@ function getVersionList(version) {
   })
 
   return opts
+}
+
+function rmdirSync(path) {
+  if (fs.existsSync(path)) {
+    const files = fs.readdirSync(path)
+    files.forEach(function(file, index) {
+      var curPath = path + '/' + file
+      if (fs.statSync(curPath).isDirectory()) {
+        // recurse
+        rmdirSync(curPath)
+      } else {
+        // delete file
+        fs.unlinkSync(curPath)
+      }
+    })
+    fs.rmdirSync(path)
+  }
 }
