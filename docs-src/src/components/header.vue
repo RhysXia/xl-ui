@@ -27,7 +27,7 @@ $header-height: 60px;
   z-index: 1;
   box-shadow: 0 0 0.5em $--color-border;
   .header__wrapper {
-    width: 1250px;
+    min-width: 1250px;
     margin: 0 auto;
     height: $header-height;
     position: relative;

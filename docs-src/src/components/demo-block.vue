@@ -6,16 +6,24 @@
       .demo-desc
         slot(name='desc')
       xl-icon.demo-icon(:style='iconStyle',type='android-arrow-dropup-circle',@click='expand=!expand')
-    transition(name='slide')
+    transition(:css="false" @before-enter="beforeEnter",@enter="enter",@after-enter="afterEnter",@before-leave="beforeLeave",@leave="leave",@after-leave="afterLeave")
       .demo-source(v-show='expand')
         slot(name="source")
 </template>
 <script>
+const formatHeight = height => {
+  if (height) {
+    return Number(height.slice(0, height.length - 2))
+  }
+  return 0
+}
 export default {
   name: 'demo-block',
   data() {
     return {
-      expand: false
+      expand: false,
+      expandDuration: 800,
+      perHeight: 10
     }
   },
   computed: {
@@ -23,6 +31,62 @@ export default {
       return this.expand
         ? { transform: 'rotate(0deg)' }
         : { transform: 'rotate(180deg)' }
+    }
+  },
+  methods: {
+    beforeEnter(el) {
+      clearInterval(this._timer)
+      el.style.overflowY = 'hidden'
+    },
+    enter(el, done) {
+      const actualHeight = el.scrollHeight
+      const perHeight = this.perHeight
+      const initHeight = formatHeight(el.style.height)
+      let totalTimes = (actualHeight - initHeight) / perHeight
+      let leaveTimes = totalTimes
+      const duration = this.expandDuration / totalTimes
+      this._timer = setInterval(() => {
+        if (leaveTimes <= 0) {
+          clearInterval(this._timer)
+          done()
+          return
+        }
+
+        el.style.height = `${initHeight +
+          perHeight * (totalTimes - leaveTimes)}px`
+        leaveTimes--
+      }, duration)
+    },
+    afterEnter(el) {
+      el.style.height = ''
+      el.style.overflowY = ''
+    },
+    beforeLeave(el) {
+      clearInterval(this._timer)
+      el.style.overflowY = 'hidden'
+    },
+    leave(el, done) {
+      const actualHeight = el.scrollHeight
+      const perHeight = this.perHeight
+      const initHeight = formatHeight(el.style.height) || actualHeight
+      let totalTimes = initHeight / perHeight
+      let leaveTimes = totalTimes
+      const duration = this.expandDuration / totalTimes
+      this._timer = setInterval(() => {
+        if (leaveTimes <= 0) {
+          clearInterval(this._timer)
+          done()
+          return
+        }
+
+        el.style.height = `${initHeight -
+          perHeight * (totalTimes - leaveTimes)}px`
+        leaveTimes--
+      }, duration)
+    },
+    afterLeave(el) {
+      el.style.height = ''
+      el.style.overflowY = ''
     }
   }
 }
