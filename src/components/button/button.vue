@@ -16,6 +16,10 @@ export default {
       type: Boolean,
       default: false
     },
+    dash: {
+      type: Boolean,
+      default: false
+    },
     icon: String,
     type: {
       default: 'default',
@@ -71,6 +75,9 @@ export default {
       }
       if (this.loading) {
         arr.push(`${this.prefixCls}--loading`)
+      }
+      if (this.dash) {
+        arr.push(`${this.prefixCls}--dash`)
       }
       return arr
     }

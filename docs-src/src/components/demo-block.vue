@@ -54,6 +54,14 @@ export default {
         line-height: 2em;
         margin: 0.5em 0;
       }
+      code {
+        background-color: #e6effb;
+        display: inline-block;
+        margin: 0 0.2em;
+        padding: 0.1em 0.4em;
+        height: 1.1em;
+        line-height: 1.1em;
+      }
     }
     .demo-icon {
       position: absolute;

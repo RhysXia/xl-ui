@@ -27,6 +27,9 @@
     margin-left: 0.25em;
   }
 }
+.#{$--clsPrefix}-button--dash {
+  border-style: dashed;
+}
 .#{$--clsPrefix}-button--long {
   display: block;
   width: 100%;

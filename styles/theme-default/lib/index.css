@@ -339,6 +339,9 @@ body {
   .xl-button .xl-icon + span {
     margin-left: 0.25em; }
 
+.xl-button--dash {
+  border-style: dashed; }
+
 .xl-button--long {
   display: block;
   width: 100%; }

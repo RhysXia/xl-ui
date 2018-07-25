@@ -43,6 +43,15 @@
     <xl-button plain type="error">错误按钮</xl-button>
     <xl-button plain type="text">文本按钮</xl-button>
 </div>
+<div class='button-bottom'>
+    <xl-button dash plain @click='click'>默认按钮</xl-button>
+    <xl-button dash plain type="primary">主要按钮</xl-button>
+    <xl-button dash plain type="info">信息按钮</xl-button>
+    <xl-button dash plain type="success">成功按钮</xl-button>
+    <xl-button dash plain type="warning">警告按钮</xl-button>
+    <xl-button dash plain type="error">错误按钮</xl-button>
+    <xl-button dash plain type="text">文本按钮</xl-button>
+</div>
 <div>
     <xl-button round @click='click'>默认按钮</xl-button>
     <xl-button round type="primary">主要按钮</xl-button>
@@ -81,6 +90,15 @@
     <xl-button disabled plain type="error">错误按钮</xl-button>
     <xl-button disabled plain type="text">文本按钮</xl-button>
 </div>
+<div class='button-bottom'>
+    <xl-button dash disabled plain @click='click'>默认按钮</xl-button>
+    <xl-button dash disabled plain type="primary">主要按钮</xl-button>
+    <xl-button dash disabled plain type="info">信息按钮</xl-button>
+    <xl-button dash disabled plain type="success">成功按钮</xl-button>
+    <xl-button dash disabled plain type="warning">警告按钮</xl-button>
+    <xl-button dash disabled plain type="error">错误按钮</xl-button>
+    <xl-button dash disabled plain type="text">文本按钮</xl-button>
+</div>
 <div>
     <xl-button disabled round @click='click'>默认按钮</xl-button>
     <xl-button disabled round type="primary">主要按钮</xl-button>
@@ -103,7 +121,8 @@
 ```html
 <xl-button class='button-bottom' type="primary" long>默认按钮</xl-button>
 <xl-button class='button-bottom' type="primary" round long>默认按钮</xl-button>
-<xl-button type="primary" plain long>默认按钮</xl-button>
+<xl-button class='button-bottom' type="primary" plain long>默认按钮</xl-button>
+<xl-button type="primary" dash plain long>默认按钮</xl-button>
 ```
 
 :::
@@ -152,6 +171,24 @@
         </xl-button>
     </xl-button-group>
 </div>
+<div class='button-bottom'>
+    <xl-button-group>
+        <xl-button round dash>
+            <xl-icon type='chevron-left'></xl-icon>
+            上一页
+        </xl-button>
+        <xl-button>
+            下一页
+            <xl-icon type='chevron-right'></xl-icon>
+        </xl-button>
+    </xl-button-group>
+</div>
+<div class='button-bottom'>
+    <xl-button-group vertical>
+        <xl-button round dash icon='chevron-up'>上一页</xl-button>
+        <xl-button icon='chevron-down'>下一页</xl-button>
+    </xl-button-group>
+</div>
 <div>
     <xl-button-group vertical>
         <xl-button icon='chevron-up'>上一页</xl-button>
@@ -169,6 +206,7 @@
 | type        | 类型           | string  | default / primary / success / warning / error / info / text | default |
 | plain       | 是否朴素按钮   | boolean | —                                                           | false   |
 | round       | 是否圆形按钮   | boolean | —                                                           | false   |
+| dash       | 是否边框为虚线（在`plain`模式下使用，否则可能看不到效果）   | boolean | —                                                           | false   |
 | loading     | 是否加载中状态 | boolean | —                                                           | false   |
 | disabled    | 是否禁用状态   | boolean | —                                                           | false   |
 | icon        | 图标类名       | string  | —                                                           | —       |

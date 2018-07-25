@@ -6,6 +6,8 @@
     padding: 1em;
 }
 
+
+
 .table {
     border-collapse: collapse;
     width: 100%;
@@ -35,6 +37,14 @@
     td:first-child {
         padding-left: 10px;
     }
+    code {
+        background-color: #e6effb;
+        display: inline-block;
+        margin: 0 0.2em;
+        padding: 0.1em 0.4em;
+        height: 1.1em;
+        line-height: 1.1em;
+    }
 }
 
 h2 {
@@ -48,13 +58,3 @@ h2 {
     }
 }
 
-.demo-desc {
-    code {
-        background-color: #e6effb;
-        display: inline-block;
-        margin: 0 0.2em;
-        padding: 0.1em 0.4em;
-        height: 1.1em;
-        line-height: 1.1em;
-    }
-}
