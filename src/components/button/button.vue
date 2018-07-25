@@ -7,7 +7,7 @@
 </template>
 <script>
 import Icon from '../icon'
-import { oneOf } from '../../utils/utils'
+import { oneOf } from '../../utils/array'
 const name = 'xl-button'
 export default {
   name,

@@ -6,7 +6,7 @@
         slot {{label}}
 </template>
 <script>
-import { oneOf } from '../../utils/utils'
+import { oneOf } from '../../utils/array'
 const name = 'xl-checkbox'
 export default {
   name,

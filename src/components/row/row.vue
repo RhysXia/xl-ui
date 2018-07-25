@@ -1,5 +1,5 @@
 <script>
-import { oneOf } from '../../utils/utils'
+import { oneOf } from '../../utils/array'
 const name = 'xl-row'
 export default {
   name,

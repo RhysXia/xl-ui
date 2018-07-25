@@ -8,8 +8,9 @@
 import {
   requestAnimationFrame,
   cancelAnimationFrame
-} from '../../utils/requestAnimationFrame.js'
-import { getOffset, oneOf } from '../../utils/utils.js'
+} from '../../utils/requestAnimationFrame'
+import { getOffset } from '../../utils/element'
+import { oneOf } from '../../utils/array'
 const name = 'xl-popup'
 export default {
   name,

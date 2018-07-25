@@ -9,7 +9,7 @@
               slot(name="dropdown")
 </template>
 <script>
-import { oneOf } from '../../utils/utils'
+import { oneOf } from '../../utils/array'
 import Popup from '../popup'
 import clickoutside from '../../directives/clickoutside'
 const name = 'xl-dropdown'

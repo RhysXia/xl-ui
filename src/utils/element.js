@@ -38,12 +38,3 @@ export function getOffset(element, container = document.body) {
     bottom: elRect.bottom + top - clientTop
   }
 }
-
-export function oneOf(arr, item) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === item) {
-      return true
-    }
-  }
-  return false
-}

@@ -13,7 +13,7 @@
         slot(name="suffix")
 </template>
 <script>
-import { oneOf } from '../../utils/utils'
+import { oneOf } from '../../utils/array'
 import calcTextareaHeight from './calcTextareaHeight'
 import Icon from '../icon'
 const name = 'xl-input'
