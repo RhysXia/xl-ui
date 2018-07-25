@@ -131,18 +131,14 @@ export default {
       this.visiable = !this.visiable
     },
     _mouseenterHandler() {
-      if (this.trigger === 'custom') {
-        return
-      }
       if (this.trigger === 'hover') {
         this.visiable = true
       }
     },
     _mouseleaveHandler(e) {
-      if (this.trigger === 'custom') {
-        return
+      if (this.trigger === 'hover') {
+        this.visiable = false
       }
-      this.visiable = false
     },
     _clickoutside(e) {
       if (this.trigger === 'custom') {

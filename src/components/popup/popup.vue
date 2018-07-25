@@ -5,6 +5,10 @@
       slot(name="popup")
 </template>
 <script>
+import {
+  requestAnimationFrame,
+  cancelAnimationFrame
+} from '../../utils/requestAnimationFrame.js'
 import { getOffset, oneOf } from '../../utils/utils.js'
 const name = 'xl-popup'
 export default {
@@ -40,10 +44,6 @@ export default {
     position: {
       type: String,
       default: 'absolute'
-    },
-    renderDuration: {
-      type: Number,
-      default: 100
     }
   },
   data() {
@@ -128,10 +128,13 @@ export default {
       this._setPosition()
     })
     this._resizeEvent = () => {
-      clearTimeout(this._resizeTimer)
-      this._resizeTimer = setTimeout(() => {
-        this._setPosition()
-      }, this.renderDuration)
+      const oldTimer = this._timer
+      this._timer = requestAnimationFrame(() => {
+        cancelAnimationFrame(oldTimer)
+        this.$nextTick(() => {
+          this._setPosition()
+        })
+      })
     }
     window.addEventListener('resize', this._resizeEvent)
   },

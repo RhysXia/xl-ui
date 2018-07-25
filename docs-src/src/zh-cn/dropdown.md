@@ -33,7 +33,7 @@
 
 ## 禁用
 
-::: demo 禁止点击
+::: demo 禁止某一项点击
 
 ```html
 <xl-dropdown>
@@ -56,7 +56,7 @@
 
 ```html
 <xl-dropdown trigger='click'>
-    <xl-button>下拉菜单</xl-button>
+    <xl-button>下拉菜单(click)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
@@ -66,7 +66,7 @@
     </xl-dropdown-menu>
 </xl-dropdown>
 <xl-dropdown trigger='hover'>
-    <xl-button>下拉菜单</xl-button>
+    <xl-button>下拉菜单(hover)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
@@ -105,7 +105,7 @@
 
 ```html
 <xl-dropdown placement='top-end'>
-    <xl-button>下拉菜单</xl-button>
+    <xl-button>下拉菜单(上方)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
@@ -115,7 +115,7 @@
     </xl-dropdown-menu>
 </xl-dropdown>
 <xl-dropdown placement='right-end'>
-    <xl-button>下拉菜单</xl-button>
+    <xl-button>下拉菜单(右侧)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
@@ -134,7 +134,7 @@
 
 ```html
 <xl-dropdown :hide-on-click='true'>
-    <xl-button>下拉菜单</xl-button>
+    <xl-button>下拉菜单(点击关闭)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
@@ -144,7 +144,7 @@
     </xl-dropdown-menu>
 </xl-dropdown>
 <xl-dropdown :hide-on-click='false'>
-    <xl-button>下拉菜单</xl-button>
+    <xl-button>下拉菜单(点击不关闭)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
