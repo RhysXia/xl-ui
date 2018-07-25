@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       expand: false,
-      expandDuration: 800,
+      expandDuration: 400,
       perHeight: 10
     }
   },
@@ -37,6 +37,7 @@ export default {
     beforeEnter(el) {
       clearInterval(this._timer)
       el.style.overflowY = 'hidden'
+      el.style.height = el.style.height || '0px'
     },
     enter(el, done) {
       const actualHeight = el.scrollHeight
@@ -142,19 +143,6 @@ export default {
     pre {
       margin: 0;
     }
-  }
-  .slide-enter-active,
-  .slide-leave-active {
-    transform-origin: 0 0;
-    transition: transform $--transition-time ease-in-out;
-  }
-  .slide-enter,
-  .slide-leave-to {
-    transform: scaleY(0);
-  }
-  .slide-enter-to,
-  .slide-leave {
-    transform: scaleY(1);
   }
 }
 </style>
