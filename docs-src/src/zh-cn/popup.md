@@ -7,7 +7,7 @@
         },
         methods:{
           container(){
-            return document.getElementById('app')
+            return document.getElementById('container')
           }
         }
     }
@@ -25,6 +25,8 @@
 
     }
 </style>
+<div id="container"></div>
+
 
 # Popup 下拉组件
 
@@ -145,7 +147,6 @@
     </xl-col>
 </xl-row>
 ```
-
 :::
 
 ## 指定父容器
@@ -270,7 +271,7 @@
 
 | 参数            | 说明                                       | 类型     | 可选值                                                                                                      | 默认值            |
 | --------------- | ------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
-| popup-container | 指定弹出框的父元素(可以减小父容器样式的影响))   | function |                -                | ()=>document.body |
+| popup-container | 指定弹出框的父元素(可以减小父容器样式的影响)   | function |                -                | ()=>document.body |
 | placement       | 弹出框相对显示框的位置                     | string   | 'top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end' | top               |
 
 ## Popup slots

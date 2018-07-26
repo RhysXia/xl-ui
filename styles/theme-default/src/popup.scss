@@ -4,9 +4,14 @@
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    @at-root &__content {
-      position: absolute;
-      display: inline-block;
-      box-sizing: border-box;
+    @at-root &__content--wrapper {
+      position: relative;
+      .#{$--clsPrefix}-popup__content{
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        box-sizing: border-box;
+      }
     }
 }

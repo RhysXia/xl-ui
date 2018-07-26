@@ -1,8 +1,9 @@
 <template lang="pug">
   div(:class="classes")
     slot
-    div(ref='content',:class="contentClasses")
-      slot(name="popup")
+    div(ref='content-wrapper',:class="contentWrapperClasses")
+      div(ref='content',:class="contentClasses")
+        slot(name="popup")
 </template>
 <script>
 import {
@@ -46,8 +47,8 @@ export default {
   data() {
     return {
       container: null,
-      top:0,
-      left:0
+      top: 0,
+      left: 0
     }
   },
   computed: {
@@ -57,6 +58,9 @@ export default {
     },
     contentClasses() {
       return `${name}__content`
+    },
+    contentWrapperClasses() {
+      return `${name}__content--wrapper`
     }
   },
   methods: {
@@ -64,54 +68,49 @@ export default {
       if (!this.$el) {
         return
       }
-      const contentStyles = {
-      }
-      const {top, left, right, bottom} = getOffset(this.$el, this.container)
+      const {top, left, right, bottom} = getOffset(this.$el, this.$refs['content-wrapper'])
       const rect = this.$refs.content.getBoundingClientRect()
       const offsetWidth = rect.width
       const offsetHeight = rect.height
+      let toTop, toLeft
       if (this.placement === 'top-start') {
-        contentStyles.top = top - offsetHeight + 'px'
-        contentStyles.left = left + 'px'
+        toTop = top - offsetHeight
+        toLeft = left
       } else if (this.placement === 'top') {
-        contentStyles.top = top - offsetHeight + 'px'
-        contentStyles.left = (left + right - offsetWidth) / 2 + 'px'
+        toTop = top - offsetHeight
+        toLeft = (left + right - offsetWidth) / 2
       } else if (this.placement === 'top-end') {
-        contentStyles.top = top - offsetHeight + 'px'
-        contentStyles.left = right - offsetWidth + 'px'
+        toTop = top - offsetHeight
+        toLeft = right - offsetWidth
       } else if (this.placement === 'left-start') {
-        contentStyles.left = left - offsetWidth + 'px'
-        contentStyles.top = top + 'px'
+        toLeft = left - offsetWidth
+        toTop = top
       } else if (this.placement === 'left') {
-        contentStyles.left = left - offsetWidth + 'px'
-        contentStyles.top = (top + bottom - offsetHeight) / 2 + 'px'
+        toLeft = left - offsetWidth
+        toTop = (top + bottom - offsetHeight) / 2
       } else if (this.placement === 'left-end') {
-        contentStyles.left = left - offsetWidth + 'px'
-        contentStyles.top = bottom - offsetHeight + 'px'
+        toLeft = left - offsetWidth
+        toTop = bottom - offsetHeight
       } else if (this.placement === 'right-start') {
-        contentStyles.left = right + 'px'
-        contentStyles.top = top + 'px'
+        toLeft = right
+        toTop = top
       } else if (this.placement === 'right') {
-        contentStyles.left = right + 'px'
-        contentStyles.top = (top + bottom - offsetHeight) / 2 + 'px'
+        toLeft = right
+        toTop = (top + bottom - offsetHeight) / 2
       } else if (this.placement === 'right-end') {
-        contentStyles.left = right + 'px'
-        contentStyles.top = bottom - offsetHeight + 'px'
+        toLeft = right
+        toTop = bottom - offsetHeight
       } else if (this.placement === 'bottom-start') {
-        contentStyles.top = bottom + 'px'
-        contentStyles.left = left + 'px'
+        toTop = bottom
+        toLeft = left
       } else if (this.placement === 'bottom') {
-        contentStyles.top = bottom + 'px'
-        contentStyles.left = (left + right - offsetWidth) / 2 + 'px'
+        toTop = bottom
+        toLeft = (left + right - offsetWidth) / 2
       } else if (this.placement === 'bottom-end') {
-        contentStyles.top = bottom + 'px'
-        contentStyles.left = right - offsetWidth + 'px'
+        toTop = bottom
+        toLeft = right - offsetWidth
       }
-      let style = ''
-      Object.keys(contentStyles).forEach(key => {
-        style += `${key}:${contentStyles[key]};`
-      })
-      this.$refs.content.style = style
+      this.$refs.content.style = `left: ${toLeft}px;top: ${toTop}px`
     }
   },
   updated() {
@@ -122,7 +121,7 @@ export default {
   mounted() {
     // 获取当前元素位置
     this.container = this.popupContainer()
-    this.container.appendChild(this.$refs.content)
+    this.container.appendChild(this.$refs['content-wrapper'])
     this.$nextTick(() => {
       this._setPosition()
     })
@@ -138,16 +137,16 @@ export default {
     window.addEventListener('resize', this._resizeEvent)
   },
   beforeDestroy() {
-    this.container.removeChild(this.$refs.content)
+    this.container.removeChild(this.$refs['content-wrapper'])
     clearTimeout(this._resizeTimer)
     window.removeEventListener('resize', this._resizeEvent)
   },
   // keep-alive
   deactivated() {
-    this.container.removeChild(this.$refs.content)
+    this.container.removeChild(this.$refs['content-wrapper'])
   },
   activated() {
-    this.container.appendChild(this.$refs.content)
+    this.container.appendChild(this.$refs['content-wrapper'])
   }
 }
 </script>
