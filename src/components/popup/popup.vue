@@ -10,7 +10,7 @@ import {
   requestAnimationFrame,
   cancelAnimationFrame
 } from '../../utils/requestAnimationFrame'
-import { getOffset } from '../../utils/element'
+import { getOffset, containClass } from '../../utils/element'
 import { oneOf } from '../../utils/array'
 const name = 'xl-popup'
 export default {
@@ -68,7 +68,10 @@ export default {
       if (!this.$el) {
         return
       }
-      const {top, left, right, bottom} = getOffset(this.$el, this.$refs['content-wrapper'])
+      const { top, left, right, bottom } = getOffset(
+        this.$el,
+        this.$refs['content-wrapper']
+      )
       const rect = this.$refs.content.getBoundingClientRect()
       const offsetWidth = rect.width
       const offsetHeight = rect.height
@@ -111,6 +114,37 @@ export default {
         toLeft = right - offsetWidth
       }
       this.$refs.content.style = `left: ${toLeft}px;top: ${toTop}px`
+    },
+    _addEvent() {
+      this._resizeEvent = () => {
+        cancelAnimationFrame(this._timer)
+        this._timer = requestAnimationFrame(this._setPosition)
+      }
+      window.addEventListener('resize', this._resizeEvent)
+      const obersver = new MutationObserver((records, obersve) => {
+        const ele = records[0].target
+        let temp = ele
+        while (temp) {
+          if (containClass(temp, `${name}__content--wrapper`)) {
+            return
+          }
+          temp = temp.parentElement
+        }
+        this._resizeEvent()
+      })
+
+      this._obersver = obersver
+
+      obersver.observe(document.body, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style', 'width', 'height']
+      })
+    },
+    _removeEvent() {
+      window.removeEventListener('resize', this._resizeEvent)
+      this._obersver.disconnect()
+      this._obersver = null
     }
   },
   updated() {
@@ -125,28 +159,20 @@ export default {
     this.$nextTick(() => {
       this._setPosition()
     })
-    this._resizeEvent = () => {
-      const oldTimer = this._timer
-      this._timer = requestAnimationFrame(() => {
-        cancelAnimationFrame(oldTimer)
-        this.$nextTick(() => {
-          this._setPosition()
-        })
-      })
-    }
-    window.addEventListener('resize', this._resizeEvent)
+    this._addEvent()
   },
   beforeDestroy() {
     this.container.removeChild(this.$refs['content-wrapper'])
-    clearTimeout(this._resizeTimer)
-    window.removeEventListener('resize', this._resizeEvent)
+    this._removeEvent()
   },
   // keep-alive
   deactivated() {
     this.container.removeChild(this.$refs['content-wrapper'])
+    this._removeEvent()
   },
   activated() {
     this.container.appendChild(this.$refs['content-wrapper'])
+    this._addEvent()
   }
 }
 </script>

@@ -1,3 +1,4 @@
+import { oneOf } from './array'
 // 返回当前页面相对于窗口显示区左上角的 X ，Y 的位置
 export function getScroll(top) {
   let ret = window[`page${top ? 'Y' : 'X'}Offset`]
@@ -37,4 +38,13 @@ export function getOffset(element, container = document.body) {
     right: elRect.right + left - clientLeft,
     bottom: elRect.bottom + top - clientTop
   }
+}
+
+export function getClasses(element) {
+  const classes = (element.className || '').trim()
+  return classes.split(/\s+/)
+}
+
+export function containClass(element, className) {
+  return oneOf(getClasses(element), className)
 }
