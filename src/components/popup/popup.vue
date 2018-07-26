@@ -41,15 +41,13 @@ export default {
           val
         )
       }
-    },
-    position: {
-      type: String,
-      default: 'absolute'
     }
   },
   data() {
     return {
-      container: null
+      container: null,
+      top:0,
+      left:0
     }
   },
   computed: {
@@ -67,11 +65,11 @@ export default {
         return
       }
       const contentStyles = {
-        position: this.position
       }
-      const { bottom, left, right, top } = getOffset(this.$el, this.container)
-      const offsetWidth = this.$refs.content.offsetWidth
-      const offsetHeight = this.$refs.content.offsetHeight
+      const {top, left, right, bottom} = getOffset(this.$el, this.container)
+      const rect = this.$refs.content.getBoundingClientRect()
+      const offsetWidth = rect.width
+      const offsetHeight = rect.height
       if (this.placement === 'top-start') {
         contentStyles.top = top - offsetHeight + 'px'
         contentStyles.left = left + 'px'
@@ -139,7 +137,7 @@ export default {
     }
     window.addEventListener('resize', this._resizeEvent)
   },
-  beforeDestory() {
+  beforeDestroy() {
     this.container.removeChild(this.$refs.content)
     clearTimeout(this._resizeTimer)
     window.removeEventListener('resize', this._resizeEvent)

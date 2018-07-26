@@ -26,11 +26,12 @@ $header-height: 60px;
   margin-bottom: 1em;
   z-index: 1;
   box-shadow: 0 0 0.5em $--color-border;
+  min-width: 1250px;
   .header__wrapper {
-    min-width: 1250px;
-    margin: 0 2em;
-    height: $header-height;
     position: relative;
+    min-width: 1250px - 40px;
+    margin: 0 20px;
+    height: $header-height;
   }
   .logo {
     position: relative;

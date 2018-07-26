@@ -4,7 +4,8 @@
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    &__content {
+    @at-root &__content {
+      position: absolute;
       display: inline-block;
       box-sizing: border-box;
     }

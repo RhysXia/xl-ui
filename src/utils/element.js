@@ -14,11 +14,11 @@ export function getScroll(top) {
   return ret
 }
 
-// 获取元素top,left,right,bottom的绝对位置
+// 获取元素相对于容器的位置
 export function getOffset(element, container = document.body) {
   const elRect = element.getBoundingClientRect()
   const containerRect = container.getBoundingClientRect()
-  const clientTop = element.clientTop || container.clientTop || 0
+  const clientTop = element.clientTop || container.clientTop | 0
   const clientLeft = element.clientLeft || container.clientLeft || 0
   let top
   let left
