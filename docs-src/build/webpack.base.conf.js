@@ -70,6 +70,7 @@ module.exports = {
         test: /\.md$/,
         loader: 'vue-markdown-loader',
         options: {
+          preventExtract: true,
           preprocess: function(MarkdownIt, source) {
             MarkdownIt.renderer.rules.table_open = function() {
               return '<table class="table">'

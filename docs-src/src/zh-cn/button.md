@@ -1,19 +1,18 @@
 <script>
-    export default{
-        methods:{
-            click(){
-                alert('click')
-            }
-        }
+  export default{
+    methods:{
+      click(){
+          alert('click') 
+      }
     }
+  }
 </script>
-
+  
 <style>
-    .button-bottom{
-        margin-bottom:1em !important;
-    }
+  .button-bottom{
+    margin-bottom:1em !important;
+  }
 </style>
-
 # Button 按钮
 
 常用的操作按钮
@@ -26,7 +25,7 @@
 
 ```html
 <div class='button-bottom'>
-    <xl-button @click='click'>默认按钮</xl-button>
+    <xl-button @on-click='click'>默认按钮</xl-button>
     <xl-button type="primary">主要按钮</xl-button>
     <xl-button type="info">信息按钮</xl-button>
     <xl-button type="success">成功按钮</xl-button>
@@ -35,7 +34,7 @@
     <xl-button type="text">文本按钮</xl-button>
 </div>
 <div class='button-bottom'>
-    <xl-button plain @click='click'>默认按钮</xl-button>
+    <xl-button plain @on-click='click'>默认按钮</xl-button>
     <xl-button plain type="primary">主要按钮</xl-button>
     <xl-button plain type="info">信息按钮</xl-button>
     <xl-button plain type="success">成功按钮</xl-button>
@@ -44,7 +43,7 @@
     <xl-button plain type="text">文本按钮</xl-button>
 </div>
 <div class='button-bottom'>
-    <xl-button dash plain @click='click'>默认按钮</xl-button>
+    <xl-button dash plain @on-click='click'>默认按钮</xl-button>
     <xl-button dash plain type="primary">主要按钮</xl-button>
     <xl-button dash plain type="info">信息按钮</xl-button>
     <xl-button dash plain type="success">成功按钮</xl-button>
@@ -53,7 +52,7 @@
     <xl-button dash plain type="text">文本按钮</xl-button>
 </div>
 <div>
-    <xl-button round @click='click'>默认按钮</xl-button>
+    <xl-button round @on-click='click'>默认按钮</xl-button>
     <xl-button round type="primary">主要按钮</xl-button>
     <xl-button round type="info">信息按钮</xl-button>
     <xl-button round type="success">成功按钮</xl-button>
@@ -73,7 +72,7 @@
 
 ```html
 <div class='button-bottom'>
-    <xl-button disabled @click='click'>默认按钮</xl-button>
+    <xl-button disabled @on-click='click'>默认按钮</xl-button>
     <xl-button disabled type="primary">主要按钮</xl-button>
     <xl-button disabled type="info">信息按钮</xl-button>
     <xl-button disabled type="success">成功按钮</xl-button>
@@ -82,7 +81,7 @@
     <xl-button disabled type="text">文本按钮</xl-button>
 </div>
 <div class='button-bottom'>
-    <xl-button disabled plain @click='click'>默认按钮</xl-button>
+    <xl-button disabled plain @on-click='click'>默认按钮</xl-button>
     <xl-button disabled plain type="primary">主要按钮</xl-button>
     <xl-button disabled plain type="info">信息按钮</xl-button>
     <xl-button disabled plain type="success">成功按钮</xl-button>
@@ -91,7 +90,7 @@
     <xl-button disabled plain type="text">文本按钮</xl-button>
 </div>
 <div class='button-bottom'>
-    <xl-button dash disabled plain @click='click'>默认按钮</xl-button>
+    <xl-button dash disabled plain @on-click='click'>默认按钮</xl-button>
     <xl-button dash disabled plain type="primary">主要按钮</xl-button>
     <xl-button dash disabled plain type="info">信息按钮</xl-button>
     <xl-button dash disabled plain type="success">成功按钮</xl-button>
@@ -100,7 +99,7 @@
     <xl-button dash disabled plain type="text">文本按钮</xl-button>
 </div>
 <div>
-    <xl-button disabled round @click='click'>默认按钮</xl-button>
+    <xl-button disabled round @on-click='click'>默认按钮</xl-button>
     <xl-button disabled round type="primary">主要按钮</xl-button>
     <xl-button disabled round type="info">信息按钮</xl-button>
     <xl-button disabled round type="success">成功按钮</xl-button>
@@ -147,7 +146,7 @@
 ::: demo 使用`long`属性设置
 
 ```html
-<xl-button type="primary" @click="click" loading>加载中</xl-button>
+<xl-button type="primary" @on-click="click" loading>加载中</xl-button>
 ```
 
 :::
