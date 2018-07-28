@@ -4812,15 +4812,19 @@ body {
   display: inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
-  .xl-popup__content--wrapper {
-    position: relative; }
-    .xl-popup__content--wrapper .xl-popup__content {
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: inline-block;
-      -webkit-box-sizing: border-box;
-              box-sizing: border-box; }
+  .xl-popup__arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 0.5em solid transparent; }
+    .xl-popup__arrow--top {
+      border-top-color: red; }
+    .xl-popup__arrow--left {
+      border-left-color: red; }
+    .xl-popup__arrow--right {
+      border-right-color: red; }
+    .xl-popup__arrow--bottom {
+      border-bottom-color: red; }
 
 .xl-radio {
   position: relative;

@@ -15,28 +15,28 @@ export function getScroll(top) {
   return ret
 }
 
+// 获取元素的绝对坐标
+export function getPosition(element) {
+  const top = getScroll(true)
+  const left = getScroll()
+  const elRect = element.getBoundingClientRect()
+  return {
+    top: top + elRect.top,
+    bottom: top + elRect.bottom,
+    left: left + elRect.left,
+    right: left + elRect.right
+  }
+}
+
 // 获取元素相对于容器的位置
 export function getOffset(element, container = document.body) {
-  const elRect = element.getBoundingClientRect()
-  const containerRect = container.getBoundingClientRect()
-  const clientTop = element.clientTop || container.clientTop | 0
-  const clientLeft = element.clientLeft || container.clientLeft || 0
-  let top
-  let left
-
-  if (container === document.body) {
-    top = getScroll(true)
-    left = getScroll()
-  } else {
-    top = container.scrollTop - containerRect.top
-    left = container.scrollLeft - containerRect.left
-  }
-
+  const ePosition = getPosition(element)
+  const cPosition = getPosition(container)
   return {
-    top: elRect.top + top - clientTop,
-    left: elRect.left + left - clientLeft,
-    right: elRect.right + left - clientLeft,
-    bottom: elRect.bottom + top - clientTop
+    top: ePosition.top - cPosition.top,
+    bottom: cPosition.bottom - ePosition.bottom,
+    left: ePosition.left - cPosition.left,
+    right: cPosition.right - ePosition.right
   }
 }
 

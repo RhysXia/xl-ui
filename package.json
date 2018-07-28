@@ -74,8 +74,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "dependencies": {
-    "vue": "^2.5.16"
-  }
+  ]
 }

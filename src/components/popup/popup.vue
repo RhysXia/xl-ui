@@ -1,22 +1,23 @@
 <template lang="pug">
   div(:class="classes")
-    slot
-    div(ref='content-wrapper',:class="contentWrapperClasses")
-      div(ref='content',:class="contentClasses")
+    div(ref="content")
+      slot
+    div(ref="popupWrapper")
+      div(ref="arrow",:style="arrowStyles")
+        slot(name="arrow",:placement="placement")
+          div(:class="arrowInnerClasses")
+      div(ref="popup",:style="popupStyles")
         slot(name="popup")
 </template>
 <script>
-import {
-  requestAnimationFrame,
-  cancelAnimationFrame
-} from '../../utils/requestAnimationFrame'
-import { getOffset, containClass } from '../../utils/element'
 import { oneOf } from '../../utils/array'
+import { getPosition } from '../../utils/element'
 const name = 'xl-popup'
+
 export default {
   name,
   props: {
-    popupContainer: {
+    bound: {
       type: Function,
       default: () => document.body
     },
@@ -42,137 +43,214 @@ export default {
           val
         )
       }
+    },
+    placementOrder: {
+      type: Array,
+      default: () => ['top', 'bottom', 'left', 'right']
     }
   },
   data() {
     return {
-      container: null,
-      top: 0,
-      left: 0
+      boundElement: null,
+      contentPosition: {
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+      },
+      boundPosition: {
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0
+      },
+      arrowSize: {
+        height: 0,
+        width: 0
+      },
+      popupSize: {
+        height: 0,
+        width: 0
+      }
     }
   },
   computed: {
+    actualPlacement() {
+      const placement = this.placement
+      const order = this.placementOrder
+      if (this._checkPlacement(placement)) {
+        return placement
+      }
+      for (let i = 0; i < order.length; i++) {
+        if (placement.indexOf(order[i]) !== -1) {
+          continue
+        }
+        if (this._checkPlacement(order[i])) {
+          const arr = placement.split('-')
+          let suffix = ''
+          if (arr.length > 1) {
+            suffix = arr[1]
+          }
+          return order + suffix
+        }
+      }
+      return placement
+    },
+    popupPosition() {
+      let left = 0
+      let right = 0
+      let bottom = 0
+      let top = 0
+      const placement = this.actualPlacement
+      // const boundPos = this.boundPosition
+      const cntPos = this.contentPosition
+      const popupSize = this.popupSize
+      if (placement === 'top-start') {
+        top = cntPos.top - popupSize.height
+        left = cntPos.left
+      } else if (placement === 'top') {
+        top = cntPos.top - popupSize.height
+        left = (cntPos.left + cntPos.right - popupSize.width) / 2
+      } else if (placement === 'top-end') {
+        top = cntPos.top - popupSize.height
+        left = cntPos.right - popupSize.width
+      } else if (placement === 'bottom-start') {
+        top = cntPos.bottom
+        left = cntPos.left
+      } else if (placement === 'bottom') {
+        top = cntPos.bottom
+        left = cntPos.right - popupSize.width
+      } else if (placement === 'bottom-end') {
+        top = cntPos.bottom
+        left = (cntPos.left + cntPos.right - popupSize.width) / 2
+      } else if (placement === 'left-start') {
+        left = cntPos.left - popupSize.width
+        top = cntPos.top
+      } else if (placement === 'left') {
+        left = cntPos.left - popupSize.width
+        top = (cntPos.top + cntPos.bottom - popupSize.height) / 2
+      } else if (placement === 'left-end') {
+        left = cntPos.left - popupSize.width
+        top = cntPos.bottom - popupSize.height
+      } else if (placement === 'right-start') {
+        left = cntPos.right
+        top = cntPos.top
+      } else if (placement === 'right') {
+        left = cntPos.right
+        top = (cntPos.top + cntPos.bottom - popupSize.height) / 2
+      } else if (placement === 'right-end') {
+        left = cntPos.right
+        top = cntPos.bottom - popupSize.height
+      }
+      right = left + popupSize.width
+      bottom = top + popupSize.height
+
+      return {
+        left,
+        top,
+        bottom,
+        right
+      }
+    },
+    arrowPosition() {
+      let left = 0
+      let right = 0
+      let bottom = 0
+      let top = 0
+      return {
+        left,
+        top,
+        bottom,
+        right
+      }
+    },
     classes() {
-      const arr = [name]
+      return [name]
+    },
+    arrowInnerClasses() {
+      const arrow = name + '__arrow'
+      const arr = [arrow]
+      const direction = this.actualPlacement.split('-')[0]
+      arr.push(`${arrow}--${direction}`)
       return arr
     },
-    contentClasses() {
-      return `${name}__content`
+    arrowStyles() {
+      const styles = {
+        position: 'absolute',
+        display: 'inline-block',
+        left: this.arrowPosition.left + 'px',
+        top: this.arrowPosition.top + 'px'
+      }
+      return styles
     },
-    contentWrapperClasses() {
-      return `${name}__content--wrapper`
+    popupStyles() {
+      const style = {
+        position: 'absolute',
+        display: 'inline-block',
+        left: this.popupPosition.left + 'px',
+        top: this.popupPosition.top + 'px'
+      }
+      return style
     }
   },
   methods: {
-    _setPosition() {
-      if (!this.$el) {
-        return
+    _checkPlacement(placement) {
+      const needHeight = this.arrowSize.height + this.popupSize.height
+      const needWidth = this.arrowSize.width + this.popupSize.width
+      const left = this.contentPosition.left - this.boundPosition.left
+      const right = this.boundPosition.right - this.contentPosition.right
+      const bottom = this.boundPosition.bottom - this.contentPosition.bottom
+      const top = this.contentPosition.top - this.boundPosition.top
+      if (placement.indexOf('top') !== -1) {
+        return needHeight < top
       }
-      const { top, left, right, bottom } = getOffset(
-        this.$el,
-        this.$refs['content-wrapper']
-      )
-      const rect = this.$refs.content.getBoundingClientRect()
-      const offsetWidth = rect.width
-      const offsetHeight = rect.height
-      let toTop, toLeft
-      if (this.placement === 'top-start') {
-        toTop = top - offsetHeight
-        toLeft = left
-      } else if (this.placement === 'top') {
-        toTop = top - offsetHeight
-        toLeft = (left + right - offsetWidth) / 2
-      } else if (this.placement === 'top-end') {
-        toTop = top - offsetHeight
-        toLeft = right - offsetWidth
-      } else if (this.placement === 'left-start') {
-        toLeft = left - offsetWidth
-        toTop = top
-      } else if (this.placement === 'left') {
-        toLeft = left - offsetWidth
-        toTop = (top + bottom - offsetHeight) / 2
-      } else if (this.placement === 'left-end') {
-        toLeft = left - offsetWidth
-        toTop = bottom - offsetHeight
-      } else if (this.placement === 'right-start') {
-        toLeft = right
-        toTop = top
-      } else if (this.placement === 'right') {
-        toLeft = right
-        toTop = (top + bottom - offsetHeight) / 2
-      } else if (this.placement === 'right-end') {
-        toLeft = right
-        toTop = bottom - offsetHeight
-      } else if (this.placement === 'bottom-start') {
-        toTop = bottom
-        toLeft = left
-      } else if (this.placement === 'bottom') {
-        toTop = bottom
-        toLeft = (left + right - offsetWidth) / 2
-      } else if (this.placement === 'bottom-end') {
-        toTop = bottom
-        toLeft = right - offsetWidth
+      if (placement.indexOf('bottom' !== -1)) {
+        return needHeight < bottom
       }
-      this.$refs.content.style = `left: ${toLeft}px;top: ${toTop}px`
+      if (placement.indexOf('left') !== -1) {
+        return needWidth < left
+      }
+      if (placement.indexOf('right') !== -1) {
+        return needWidth < right
+      }
+      return false
     },
-    _addEvent() {
-      this._resizeEvent = () => {
-        cancelAnimationFrame(this._timer)
-        this._timer = requestAnimationFrame(this._setPosition)
-      }
-      window.addEventListener('resize', this._resizeEvent)
-      const obersver = new MutationObserver((records, obersve) => {
-        const ele = records[0].target
-        let temp = ele
-        while (temp) {
-          if (containClass(temp, `${name}__content--wrapper`)) {
-            return
-          }
-          temp = temp.parentElement
-        }
-        this._resizeEvent()
+    updatePosition() {
+      // 更新content位置
+      const contentPos = getPosition(this.$el)
+      Object.keys(contentPos).forEach(key => {
+        this.contentPosition[key] = contentPos[key]
       })
 
-      this._obersver = obersver
-
-      obersver.observe(document.body, {
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['style', 'width', 'height']
+      // 更新bound位置
+      const boundPos = getPosition(this.boundElement)
+      Object.keys(boundPos).forEach(key => {
+        this.boundPosition[key] = boundPos[key]
       })
-    },
-    _removeEvent() {
-      window.removeEventListener('resize', this._resizeEvent)
-      this._obersver.disconnect()
-      this._obersver = null
+
+      // 更新popup尺寸
+      const popupRect = this.$refs.popup.getBoundingClientRect()
+      this.popupSize.width = popupRect.width
+      this.popupSize.height = popupRect.height
+
+      // 更新arrow尺寸
+      const arrowRect = this.$refs.arrow.getBoundingClientRect()
+      this.arrowSize.width = arrowRect.width
+      this.arrowSize.height = arrowRect.height
     }
   },
-  updated() {
-    this.$nextTick(() => {
-      this._setPosition()
-    })
-  },
   mounted() {
-    // 获取当前元素位置
-    this.container = this.popupContainer()
-    this.container.appendChild(this.$refs['content-wrapper'])
-    this.$nextTick(() => {
-      this._setPosition()
-    })
-    this._addEvent()
+    document.body.appendChild(this.$refs.popupWrapper)
+    this.boundElement = this.bound()
+    this.updatePosition()
+    window.addEventListener('scroll', this.updatePosition)
   },
+  updated() {},
   beforeDestroy() {
-    this.container.removeChild(this.$refs['content-wrapper'])
-    this._removeEvent()
+    window.removeEventListener('scroll', this.updatePosition)
+    this.container.removeChild(this.$slots.popup)
   },
-  // keep-alive
-  deactivated() {
-    this.container.removeChild(this.$refs['content-wrapper'])
-    this._removeEvent()
-  },
-  activated() {
-    this.container.appendChild(this.$refs['content-wrapper'])
-    this._addEvent()
-  }
+  activated() {},
+  deactivated() {}
 }
 </script>

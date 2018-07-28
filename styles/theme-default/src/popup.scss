@@ -1,17 +1,29 @@
 @import './commons/variables.scss';
 
+$--popup-arrow-color: red;
+
 .#{$--clsPrefix}-popup {
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    @at-root &__content--wrapper {
-      position: relative;
-      .#{$--clsPrefix}-popup__content{
-        position: absolute;
-        left: 0;
-        top: 0;
+
+    @at-root .#{$--clsPrefix}-popup__arrow {
         display: inline-block;
-        box-sizing: border-box;
-      }
+        width: 0;
+        height: 0;
+        border: 0.5em solid transparent;
+        &--top {
+            border-top-color: $--popup-arrow-color;
+        }
+        &--left {
+            border-left-color: $--popup-arrow-color;
+        }
+        &--right {
+            border-right-color: $--popup-arrow-color;
+        }
+        &--bottom {
+            border-bottom-color: $--popup-arrow-color;
+        }
     }
+     
 }
