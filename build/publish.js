@@ -76,7 +76,7 @@ inquirer
     const child = exec(cmd)
     child.stdin.write("RhysXia\n")
     child.stdin.write("123\n")
-    if (exec(cmd).code) {
+    if (child.code) {
       console.log(chalk.red(`git提交失败`))
       exit(1)
     }
