@@ -1,112 +1,120 @@
-require('shelljs/global')
+'use strict'
+const shell = require('shelljs')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
-const package = require('../package.json')
 const semver = require('semver')
-const path = require('path')
 const fs = require('fs')
-const moment = require('moment')
 const ghpages = require('gh-pages')
+const {
+  resolvePath,
+  getSubDirs
+} = require('./utils')
+const pkg = require(resolvePath('package.json'))
 
-const oldVersion = package.version
+const oldVersion = pkg.version
 
 const versionList = getVersionList(oldVersion)
 
-inquirer
-  .prompt([
-    {
-      name: 'version',
-      message: `选择要升级的版本(当前版本${oldVersion})`,
-      type: 'list',
-      default: 0,
-      choices: versionList
-    },
-    {
-      name: 'message',
-      message: '版本发布说明',
-      type: 'input',
-      default: ''
-    },
-    {
-      name: 'style',
-      message: '是否重新编译样式文件',
-      type: 'confirm',
-      default: true
-    },
-    {
-      name: 'docs',
-      message: '是否重新生成文档',
-      type: 'confirm',
-      default: true
+inquirer.prompt([{
+    name: 'version',
+    message: `选择要升级的版本(当前版本${oldVersion})`,
+    type: 'list',
+    default: 0,
+    choices: versionList
+  },
+  {
+    name: 'message',
+    message: '版本发布说明',
+    type: 'input',
+    default: ''
+  },
+  {
+    name: 'style',
+    message: '是否重新编译样式文件',
+    type: 'confirm',
+    default: true
+  },
+  {
+    name: 'docs',
+    message: '是否重新生成文档',
+    type: 'confirm',
+    default: true
+  },
+  {
+    name: 'docsPublish',
+    message: '是否重新发布文档',
+    type: 'confirm',
+    default: true
+  }
+]).then(function (answers) {
+
+  if (answers.style) {
+    console.log(chalk.green('删除生成的样式文件'))
+
+    getSubDirs(resolvePath('style')).forEach(dir => {
+      rmdirSync(dir + '/lib')
+    })
+
+    console.log(chalk.green('编译样式文件'))
+
+    if (shell.exec(`npm run style:prod`).code) {
+      console.log(chalk.red(`编译样式文件失败`))
+      shell.exit(1)
     }
-  ])
-  .then(function (answers) {
-    const version = `${answers.version}`
-    package.version = version
+  }
+
+  console.log(chalk.green('删除生成的组件'))
+  rmdirSync(resolvePath('dist'))
+
+  console.log(chalk.green('编译组件'))
+
+  if (shell.exec(`npm run src:dist`).code) {
+    console.log(chalk.red('编译组件失败'))
+    shell.exit(1)
+  }
+
+  if (answers.docs) {
+    console.log(chalk.green('删除生成的文档'))
+    rmdirSync(resolvePath('docs-dist'))
+    console.log(chalk.green('编译文档'))
+    if (shell.exec(`npm run docs:prod`).code) {
+      console.log(chalk.red('编译组件失败'))
+      shell.exit(1)
+    }
+  }
+
+  const version = `${answers.version}`
+  pkg.version = version
+  fs.writeFileSync(
+    resolvePath('package.json'),
+    JSON.stringify(pkg, null, '  ')
+  )
+
+  console.log(chalk.green('git提交代码'))
+  //提交代码
+  const comment = answers.message || `update version to ${version}`
+
+  const cmd = `git add . && git commit -m'${comment}' && git push origin master`
+  if (shell.exec(cmd).code) {
+    pkg.version = oldVersion
     fs.writeFileSync(
-      process.cwd() + '/package.json',
-      JSON.stringify(package, null, '  ')
+      resolvePath('package.json'),
+      JSON.stringify(pkg, null, '  ')
     )
+    console.log(chalk.red(`git提交失败`))
+    shell.exit(1)
+  }
 
-    if (answers.style) {
-      const stylePath = process.cwd() + '/styles/theme-default'
-      rmdirSync(stylePath + '/lib')
-      console.log(chalk.green('成功删除曾经生成的样式文件'))
+  if (answers.docsPublish) {
+    console.log(chalk.green('发布文档'))
+    ghpages.publish(resolvePath('docs'), {}, err => {
+      console.log(chalk.red('发布文档失败'))
+      shell.exit(1)
+    })
+  }
 
-      const stylePkg = require(stylePath + '/package.json')
-      stylePkg.version = version
-      fs.writeFileSync(
-        stylePath + '/package.json',
-        JSON.stringify(stylePkg, null, '  ')
-      )
-      const cmd = `cd ${stylePath} && npm run build`
-      if (exec(cmd).code) {
-        console.log(chalk.red(`编译样式文件失败`))
-        exit(1)
-      }
-      console.log(chalk.green('成功生成样式文件'))
-    }
-
-    rmdirSync(process.cwd() + '/dist')
-    console.log(chalk.green('成功删除曾经生成的组件'))
-
-    const comment = answers.message || `update version to ${version}`
-    //编译
-    const cmd = `npm run dist && git add . && git commit -m'${comment}' && git push origin master`
-    const child = exec(cmd)
-    console.log(child)
-    child.stdin.write("RhysXia\n")
-    child.stdin.write("123\n")
-    if (child.code) {
-      console.log(chalk.red(`git提交失败`))
-      exit(1)
-    }
-    console.log(chalk.green('成功生成组件并上传github'))
-
-    if (answers.docs) {
-      rmdirSync(process.cwd() + '/docs-dist')
-      console.log(chalk.green('成功删除曾经生成的文档'))
-      const docsPath = process.cwd() + '/docs'
-      const docsPkg = require(docsPath + '/package.json')
-      docsPkg.version = version
-      fs.writeFileSync(
-        docsPath + '/package.json',
-        JSON.stringify(docsPkg, null, '  ')
-      )
-      const cmd = `cd ${docsPath} && npm run build'`
-      if (exec(cmd).code) {
-        console.log(chalk.red(`编译文档失败`))
-        exit(1)
-      }
-      console.log(chalk.green('成功生成文档'))
-      ghpages.publish(process.cwd() + '/docs', {}, err => {
-        console.log(chalk.red('同步文档失败'))
-      })
-      console.log(chalk.green('同步文档成功'))
-    }
-
-    console.log(chalk.green(`发布成功,当前版本(${version})`))
-  })
+  console.log(chalk.green(`发布成功,当前版本(${version})`))
+})
 
 function getVersionList(version) {
   var levels = [

@@ -1,22 +1,12 @@
 'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require('./config')
-const vueLoaderConfig = require('./vue-loader.conf')
 const slugify = require('transliteration').slugify
 const striptags = require('./strip-tags')
-const { resolvePath } = require('../utils')
-
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolvePath('src'), resolvePath('docs')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
+const {
+  resolvePath,
+  cssLoaders,
+  styleLoaders,
+  isProduction
+} = require('../utils')
 
 const md = require('markdown-it')()
 
@@ -42,27 +32,33 @@ const wrap = function (render) {
 }
 
 module.exports = {
-  context: path.resolve(__dirname, '../'),
+  context: resolvePath('docs'),
   entry: {
-    app: './src/main.js'
+    app: resolvePath('docs/src/main.js')
   },
   output: {
-    path: config.build.assetsRoot,
+    path: resolvePath('docs-dist'),
     filename: '[name].js',
-    publicPath:
-      process.env.NODE_ENV === 'production'
-        ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
+    publicPath: isProduction() ? '/xl-vision/' : '/'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
-      '@': resolvePath('src')
+      vue$: 'vue/dist/vue.esm.js'
     }
   },
   module: {
     rules: [
+      isProduction() ? {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolvePath('src'), resolvePath('docs')],
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: true
+        }
+      } : {},
       {
         test: /\.md$/,
         loader: 'vue-markdown-loader',
@@ -105,9 +101,7 @@ module.exports = {
                     ).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
                     // var script = striptags.fetch(content, 'script')
                     // var style = striptags.fetch(content, 'style')
-                    var descriptionHTML = description
-                      ? md.render(description)
-                      : ''
+                    var descriptionHTML = description ? md.render(description) : ''
 
                     // var jsfiddle = { html: html, script: script, style: style }
                     // jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
@@ -124,11 +118,23 @@ module.exports = {
           ]
         }
       },
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: {
+          loaders: cssLoaders({
+            sourceMap: true,
+            extract: isProduction()
+          }),
+          cssSourceMap: true,
+          cacheBusting: true,
+          transformToRequire: {
+            video: ['src', 'poster'],
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          }
+        }
       },
       {
         test: /\.js$/,
@@ -144,7 +150,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: isProduction() ? '/xl-vision/img/[name].[hash:7].[ext]' : 'static/img/[name].[hash:7].[ext]'
         }
       },
       {
@@ -152,7 +158,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          name: isProduction() ? '/xl-vision/media/[name].[hash:7].[ext]' : 'static/media/[name].[hash:7].[ext]'
         }
       },
       {
@@ -160,10 +166,13 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: isProduction() ? '/xl-vision/fonts/[name].[hash:7].[ext]' : 'static/fonts/[name].[hash:7].[ext]'
         }
       }
-    ]
+    ].concat(styleLoaders({
+      sourceMap: true,
+      extract: isProduction()
+    }))
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

@@ -1,21 +1,21 @@
 'use strict'
 const chalk = require('chalk')
 const semver = require('semver')
-const {resolvePath} = require('../utils')
+const {
+  resolvePath
+} = require('../utils')
 const packageConfig = require(resolvePath('package.json'))
 const shell = require('shelljs')
 
-function exec (cmd) {
+function exec(cmd) {
   return require('child_process').execSync(cmd).toString().trim()
 }
 
-const versionRequirements = [
-  {
-    name: 'node',
-    currentVersion: semver.clean(process.version),
-    versionRequirement: packageConfig.engines.node
-  }
-]
+const versionRequirements = [{
+  name: 'node',
+  currentVersion: semver.clean(process.version),
+  versionRequirement: packageConfig.engines.node
+}]
 
 if (shell.which('npm')) {
   versionRequirements.push({
