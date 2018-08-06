@@ -6,6 +6,7 @@ const semver = require('semver')
 const path = require('path')
 const fs = require('fs')
 const moment = require('moment')
+const ghpages = require('gh-pages')
 
 const oldVersion = package.version
 
@@ -34,12 +35,12 @@ inquirer
     },
     {
       name: 'docs',
-      message: '是否编译文档',
+      message: '是否重新生成文档',
       type: 'confirm',
       default: true
     }
   ])
-  .then(function(answers) {
+  .then(function (answers) {
     const version = `${answers.version}`
     package.version = version
     fs.writeFileSync(
@@ -66,24 +67,6 @@ inquirer
       console.log(chalk.green('成功生成样式文件'))
     }
 
-    if (answers.docs) {
-      rmdirSync(process.cwd() + '/docs')
-      console.log(chalk.green('成功删除曾经生成的文档'))
-      const docsPath = process.cwd() + '/docs-src'
-      const docsPkg = require(docsPath + '/package.json')
-      docsPkg.version = version
-      fs.writeFileSync(
-        docsPath + '/package.json',
-        JSON.stringify(docsPkg, null, '  ')
-      )
-      const cmd = `cd ${docsPath} && npm run build`
-      if (exec(cmd).code) {
-        console.log(chalk.red(`编译文档失败`))
-        exit(1)
-      }
-      console.log(chalk.green('成功生成文档'))
-    }
-
     rmdirSync(process.cwd() + '/dist')
     console.log(chalk.green('成功删除曾经生成的组件'))
 
@@ -97,6 +80,28 @@ inquirer
     }
     console.log(chalk.green('成功生成组件并上传github'))
 
+    if (answers.docs) {
+      rmdirSync(process.cwd() + '/docs-dist')
+      console.log(chalk.green('成功删除曾经生成的文档'))
+      const docsPath = process.cwd() + '/docs'
+      const docsPkg = require(docsPath + '/package.json')
+      docsPkg.version = version
+      fs.writeFileSync(
+        docsPath + '/package.json',
+        JSON.stringify(docsPkg, null, '  ')
+      )
+      const cmd = `cd ${docsPath} && npm run build'`
+      if (exec(cmd).code) {
+        console.log(chalk.red(`编译文档失败`))
+        exit(1)
+      }
+      console.log(chalk.green('成功生成文档'))
+      ghpages.publish(process.cwd() + '/docs', {}, err => {
+        console.log(chalk.red('同步文档失败'))
+      })
+      console.log(chalk.green('同步文档成功'))
+    }
+
     console.log(chalk.green(`发布成功,当前版本(${version})`))
   })
 
@@ -109,7 +114,7 @@ function getVersionList(version) {
   ]
   var opts = []
 
-  levels.forEach(function(item) {
+  levels.forEach(function (item) {
     var val = semver.inc(version, item[0], item[1])
     opts.push({
       name: val,
@@ -123,7 +128,7 @@ function getVersionList(version) {
 function rmdirSync(path) {
   if (fs.existsSync(path)) {
     const files = fs.readdirSync(path)
-    files.forEach(function(file, index) {
+    files.forEach(function (file, index) {
       var curPath = path + '/' + file
       if (fs.statSync(curPath).isDirectory()) {
         // recurse
