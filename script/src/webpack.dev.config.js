@@ -6,7 +6,7 @@ module.exports = merge(webpackBaseConfig, {
   output: {
     filename: 'xl-vision.js'
   },
-  plugins:[
+  plugins: [
     // new ExtractTextPlugin('dist/style/[name].css')
   ]
 })

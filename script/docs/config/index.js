@@ -2,13 +2,13 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-const path = require('path')
+const { resolvePath } = require('../utils')
 
 module.exports = {
   dev: {
 
     // Paths
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: resolvePath('docs/static'),
     assetsPublicPath: '/',
     proxyTable: {},
 
@@ -45,11 +45,11 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../../docs-dist/index.html'),
+    index: resolvePath('docs-dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../../docs-dist'),
-    assetsSubDirectory: 'static',
+    assetsRoot: resolvePath('docs-dist'),
+    assetsSubDirectory: resolvePath('docs/static'),
     assetsPublicPath: '/xl-vision/',
 
     /**

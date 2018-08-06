@@ -1,17 +1,14 @@
-const path = require('path')
 const webpack = require('webpack')
-const pkg = require('../package.json')
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
-}
+const {resolvePath} = require('../utils')
+const pkg = require(resolvePath('package.json'))
 
 module.exports = {
   devtool: 'source-map',
   entry: {
-    main: './src/index.js'
+    main: resolvePath('src/index.js')
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: resolvePath('dist'),
     publicPath: '/dist',
     library: 'xl-vision',
     libraryTarget: 'umd',
@@ -43,7 +40,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src')],
+        include: [resolvePath('src')],
         options: {
           formatter: require('eslint-friendly-formatter'),
           emitWarning: true
@@ -83,7 +80,7 @@ module.exports = {
     extensions: ['.js', '.vue'],
     alias: {
       vue: 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolvePath('src')
     }
   },
   plugins: [

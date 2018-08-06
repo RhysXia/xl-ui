@@ -1,20 +1,17 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const config = require('../config')
+const config = require('./config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const slugify = require('transliteration').slugify
 const striptags = require('./strip-tags')
-
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
-}
+const { resolvePath } = require('../utils')
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
+  include: [resolvePath('src'), resolvePath('docs')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
@@ -24,7 +21,7 @@ const createLintingRule = () => ({
 const md = require('markdown-it')()
 
 function convert(str) {
-  str = str.replace(/(&#x)(\w{4});/gi, function($0) {
+  str = str.replace(/(&#x)(\w{4});/gi, function ($0) {
     return String.fromCharCode(
       parseInt(
         encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'),
@@ -35,8 +32,8 @@ function convert(str) {
   return str
 }
 
-const wrap = function(render) {
-  return function() {
+const wrap = function (render) {
+  return function () {
     return render
       .apply(this, arguments)
       .replace('<code v-pre class="', '<code class="hljs ')
@@ -61,7 +58,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolvePath('src')
     }
   },
   module: {
@@ -71,8 +68,8 @@ module.exports = {
         loader: 'vue-markdown-loader',
         options: {
           preventExtract: true,
-          preprocess: function(MarkdownIt, source) {
-            MarkdownIt.renderer.rules.table_open = function() {
+          preprocess: function (MarkdownIt, source) {
+            MarkdownIt.renderer.rules.table_open = function () {
               return '<table class="table">'
             }
             MarkdownIt.renderer.rules.fence = wrap(
@@ -94,11 +91,11 @@ module.exports = {
               require('markdown-it-container'),
               'demo',
               {
-                validate: function(params) {
+                validate: function (params) {
                   return params.trim().match(/^demo\s*(.*)$/)
                 },
 
-                render: function(tokens, idx) {
+                render: function (tokens, idx) {
                   var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
                   if (tokens[idx].nesting === 1) {
                     var description = m && m.length > 1 ? m[1] : ''
@@ -137,10 +134,9 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [
-          resolve('src'),
-          resolve('../src'),
-          resolve('test'),
-          resolve('node_modules/webpack-dev-server/client')
+          resolvePath('src'),
+          resolvePath('docs/src'),
+          resolvePath('node_modules/webpack-dev-server/client')
         ]
       },
       {

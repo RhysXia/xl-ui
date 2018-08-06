@@ -24,11 +24,13 @@
     "src"
   ],
   "scripts": {
-    "common": "webpack --config build/webpack.common.config.js",
-    "compress": "webpack --config build/webpack.compress.config.js",
-    "dist": "npm run common && npm run compress",
+    "src:dev": "webpack --config script/src/webpack.dev.config.js",
+    "src:prod": "webpack --config script/src/webpack.prod.config.js",
+    "src:dist": "npm run src:dev && npm run src:prod",
+    "style:dev": "gulp dev --gulpfile script/style/gulpfile.js",
+    "style:prod": "gulp prod --gulpfile script/style/gulpfile.js",
     "lint": "eslint --fix --ext .js,.vue src",
-    "prepublishOnly": "node build/publish.js"
+    "prepublishOnly": "node script/publish.js"
   },
   "peerDependencies": {
     "vue": "^2.5.2"
@@ -44,6 +46,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "chalk": "^2.4.1",
+    "cheerio": "^0.22.0",
+    "copy-webpack-plugin": "^4.0.1",
     "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
@@ -55,6 +59,13 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.5.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "highlight.js": "^9.12.0",
+    "html-webpack-plugin": "^2.30.1",
+    "markdown-it": "^8.4.1",
+    "markdown-it-anchor": "^4.0.0",
+    "markdown-it-container": "^2.0.0",
     "gh-pages": "^1.2.0",
     "inquirer": "^5.2.0",
     "moment": "^2.22.1",
@@ -64,8 +75,19 @@
     "shelljs": "^0.8.1",
     "vue-loader": "^13.3.0",
     "vue-template-compiler": "^2.5.2",
+    "node-sass": "^4.9.0",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
     "webpack": "^3.11.0",
-    "webpack-merge": "^3.0.0"
+    "webpack-merge": "^3.0.0",
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-dev-server": "^2.9.1",
+    "autoprefixer": "^8.4.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1"
   },
   "engines": {
     "node": ">= 6.0.0",
