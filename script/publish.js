@@ -107,7 +107,7 @@ inquirer.prompt([{
 
   if (answers.docsPublish) {
     console.log(chalk.green('发布文档'))
-    ghpages.publish(resolvePath('docs'), {}, err => {
+    ghpages.publish(resolvePath('docs-dist'), {}, err => {
       console.log(chalk.red('发布文档失败'))
       shell.exit(1)
     })
