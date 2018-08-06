@@ -7,6 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const config = require('../config')
+
 const {
   resolvePath
 } = require('../utils')
@@ -14,7 +16,7 @@ const {
 const webpackConfig = merge(baseWebpackConfig, {
   devtool: 'source-map',
   output: {
-    path: resolvePath('docs-dist'),
+    path: config.docs.dist,
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[id].[chunkhash].js'
   },
@@ -52,7 +54,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolvePath('docs/index.html'),
+      template: config.docs.dir + '/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -98,8 +100,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 
     // copy custom static assets
     new CopyWebpackPlugin([{
-      from: resolvePath('docs/static'),
-      to: resolvePath('docs-dist/static'),
+      from: config.docs.dir + '/static',
+      to: config.docs.dist + '/static',
       ignore: ['.*']
     }])
   ]

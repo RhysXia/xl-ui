@@ -1,8 +1,11 @@
 'use strict'
+const config = require('../config')
+const {
+  resolvePath
+} = require('../utils')
 const slugify = require('transliteration').slugify
 const striptags = require('./strip-tags')
 const {
-  resolvePath,
   cssLoaders,
   styleLoaders,
   isProduction
@@ -31,13 +34,13 @@ const wrap = function (render) {
   }
 }
 
-module.exports = {
-  context: resolvePath('docs'),
+const webpackConfig = {
+  context: config.docs.dir,
   entry: {
-    app: resolvePath('docs/src/main.js')
+    app: config.docs.dir + '/src/main.js'
   },
   output: {
-    path: resolvePath('docs-dist'),
+    path: config.docs.dist,
     filename: '[name].js',
     publicPath: isProduction() ? '/xl-vision/' : '/'
   },
@@ -48,18 +51,7 @@ module.exports = {
     }
   },
   module: {
-    rules: [
-      isProduction() ? {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolvePath('src'), resolvePath('docs')],
-        options: {
-          formatter: require('eslint-friendly-formatter'),
-          emitWarning: true
-        }
-      } : {},
-      {
+    rules: [{
         test: /\.md$/,
         loader: 'vue-markdown-loader',
         options: {
@@ -140,8 +132,8 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [
-          resolvePath('src'),
-          resolvePath('docs/src'),
+          config.src.dir,
+          config.docs.dir,
           resolvePath('node_modules/webpack-dev-server/client')
         ]
       },
@@ -187,3 +179,19 @@ module.exports = {
     child_process: 'empty'
   }
 }
+
+
+if (!isProduction()) {
+  webpackConfig.module.rules.push({
+    test: /\.(js|vue)$/,
+    loader: 'eslint-loader',
+    enforce: 'pre',
+    include: [config.src, config.docs],
+    options: {
+      formatter: require('eslint-friendly-formatter'),
+      emitWarning: true
+    }
+  })
+}
+
+module.exports = webpackConfig

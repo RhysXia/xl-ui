@@ -1,8 +1,6 @@
 const merge = require('webpack-merge')
-const webpackBaseConfig = require('./webpack.base.config.js')
-const {
-  resolvePath
-} = require('../utils')
+const webpackBaseConfig = require('./webpack.base.conf.js')
+const config = require('../config')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = merge(webpackBaseConfig, {
@@ -14,7 +12,7 @@ module.exports = merge(webpackBaseConfig, {
       test: /\.(js|vue)$/,
       loader: 'eslint-loader',
       enforce: 'pre',
-      include: [resolvePath('src')],
+      include: [config.src.dir],
       options: {
         formatter: require('eslint-friendly-formatter'),
         emitWarning: true

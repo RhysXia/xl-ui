@@ -1,6 +1,6 @@
 'use strict'
 require('./check-versions')()
-
+const config = require('../config')
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
@@ -8,15 +8,12 @@ const rm = require('rimraf')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.prod.conf')
-const {
-  resolvePath
-} = require('../utils')
 
 const spinner = ora('building for production...')
 
 spinner.start()
 
-rm(resolvePath('docs-dist'), err => {
+rm(config.docs.dist, err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()

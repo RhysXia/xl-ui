@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const semver = require('semver')
 const fs = require('fs')
 const ghpages = require('gh-pages')
+const config = require('./config')
 const {
   resolvePath,
   getSubDirs
@@ -51,7 +52,7 @@ inquirer.prompt([{
   if (answers.style) {
     console.log(chalk.green('删除生成的样式文件'))
 
-    getSubDirs(resolvePath('style')).forEach(dir => {
+    getSubDirs(config.style.dir).forEach(dir => {
       rmdirSync(dir + '/lib')
     })
 
@@ -64,7 +65,7 @@ inquirer.prompt([{
   }
 
   console.log(chalk.green('删除生成的组件'))
-  rmdirSync(resolvePath('dist'))
+  rmdirSync(config.src.dist)
 
   console.log(chalk.green('编译组件'))
 
@@ -75,7 +76,7 @@ inquirer.prompt([{
 
   if (answers.docs) {
     console.log(chalk.green('删除生成的文档'))
-    rmdirSync(resolvePath('docs-dist'))
+    rmdirSync(config.docs.dist)
     console.log(chalk.green('编译文档'))
     if (shell.exec(`npm run docs:prod`).code) {
       console.log(chalk.red('编译组件失败'))
@@ -107,7 +108,7 @@ inquirer.prompt([{
 
   if (answers.docsPublish) {
     console.log(chalk.green('发布文档'))
-    ghpages.publish(resolvePath('docs-dist'), {}, err => {
+    ghpages.publish(config.docs.dist, {}, err => {
       console.log(chalk.red('发布文档失败'))
       shell.exit(1)
     })

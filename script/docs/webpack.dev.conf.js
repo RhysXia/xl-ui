@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const config = require('../config')
 const {
   resolvePath
 } = require('../utils')
@@ -66,12 +67,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolvePath('docs/index.html'),
+      template: config.docs.dir + '/index.html',
       inject: true
     }),
     // copy custom static assets
     new CopyWebpackPlugin([{
-      from: resolvePath('docs/static'),
+      from: config.docs.dir + '/static',
       to: '/',
       ignore: ['.*']
     }])

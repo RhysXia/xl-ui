@@ -3,13 +3,12 @@ const cleanCSS = require('gulp-clean-css')
 const sass = require('gulp-sass')
 const rename = require('gulp-rename')
 const postcss = require('gulp-postcss')
+const config = require('../config')
 const {
-  resolvePath,
   getSubDirs
 } = require('../utils')
-const basePath = resolvePath('styles')
 
-const dirs = getSubDirs(basePath)
+const dirs = getSubDirs(config.style.dir)
 // 编译scss
 gulp.task('css', function () {
   dirs.forEach(dir => {

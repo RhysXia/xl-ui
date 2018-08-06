@@ -1,6 +1,6 @@
 const webpack = require('webpack')
+const config = require('../config')
 const {
-  resolvePath,
   cssLoaders,
   styleLoaders
 } = require('../utils')
@@ -9,11 +9,11 @@ const {
 module.exports = {
   devtool: 'source-map',
   entry: {
-    main: resolvePath('src/index.js')
+    main: config.src.dir + '/index.js'
   },
   output: {
-    path: resolvePath('dist'),
-    publicPath: '/dist',
+    path: config.src.dist,
+    publicPath: config.src.publicPath,
     library: 'xl-vision',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -29,8 +29,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      vue: 'vue/dist/vue.esm.js',
-      '@': resolvePath('src')
+      vue$: 'vue/dist/vue.esm.js',
+      '@': config.src.dir
     }
   },
   module: {
