@@ -74,6 +74,7 @@ inquirer
     //编译
     const cmd = `npm run dist && git add . && git commit -m'${comment}' && git push origin master`
     const child = exec(cmd)
+    console.log(child)
     child.stdin.write("RhysXia\n")
     child.stdin.write("123\n")
     if (child.code) {
