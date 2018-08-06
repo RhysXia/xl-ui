@@ -73,7 +73,8 @@ inquirer
     const comment = answers.message || `update version to ${version}`
     //编译
     const cmd = `npm run dist && git add . && git commit -m'${comment}' && git push origin master`
-
+    const child = exec(cmd)
+    child.stdin.write("abc")
     if (exec(cmd).code) {
       console.log(chalk.red(`git提交失败`))
       exit(1)
