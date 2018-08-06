@@ -74,7 +74,8 @@ inquirer
     //编译
     const cmd = `npm run dist && git add . && git commit -m'${comment}' && git push origin master`
     const child = exec(cmd)
-    child.stdin.write("abc")
+    child.stdin.write("RhysXia\n")
+    child.stdin.write("123\n")
     if (exec(cmd).code) {
       console.log(chalk.red(`git提交失败`))
       exit(1)
