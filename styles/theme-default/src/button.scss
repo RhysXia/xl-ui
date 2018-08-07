@@ -1,5 +1,4 @@
 @import './commons/variables.scss';
-
 .#{$--clsPrefix}-button {
   font-size: 1em;
   display: inline-block;
@@ -12,30 +11,32 @@
   outline: none;
   margin: 0;
   border-radius: $--border-radius;
-  padding: 0.4em 0.6em;
-  border: 1px solid;
-  transition: background-color $--transition-time ease,
-    border-color $--transition-time ease, box-shadow $--transition-time ease;
+  padding: $--btn-padding-width $--btn-padding-height;
+  border: $--btn-border-width solid;
+  transition: background-color $--transition-time ease, border-color $--transition-time ease, box-shadow $--transition-time ease;
   &::-moz-focus-inner {
     border: 0;
-  } 
+  }
   &:disabled {
-    opacity: $--disabled-opacity;
+    opacity: $--opacity--disabled;
     cursor: not-allowed;
   }
-  .#{$--clsPrefix}-icon + span {
-    margin-left: 0.25em;
+  .#{$--clsPrefix}-icon+span {
+    padding-left: $--btn-padding-width / 1.5;
   }
 }
+
 .#{$--clsPrefix}-button--dash {
   border-style: dashed;
 }
+
 .#{$--clsPrefix}-button--long {
   display: block;
   width: 100%;
 }
+
 .#{$--clsPrefix}-button--round {
-  border-radius: 1em * 0.5 + 0.4em; //字体高度的一半+padding
+  border-radius: 1em * 0.5 + $--btn-padding-width; //字体高度的一半+padding
 }
 
 .#{$--clsPrefix}-button--plain {
@@ -57,7 +58,7 @@
 .#{$--clsPrefix}-button--loading {
   cursor: default;
   pointer-events: none;
-  opacity: $--disabled-opacity;
+  opacity: $--opacity--disabled;
   .#{$--clsPrefix}-icon {
     animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
   }
@@ -66,32 +67,30 @@
 .#{$--clsPrefix}-button--default {
   background-color: $--btn-bg-color--default;
   border-color: $--btn-border-color--default;
-  color: $--btn-color--default;
+  color: $--btn-font-color--default;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
     background-color: $--btn-bg-color--default--hover;
     border-color: $--btn-border-color--default--hover;
-    color: $--btn-color--default--hover;
+    color: $--btn-font-color--default--hover;
   }
   &:not(:disabled):focus {
-    box-shadow: $--box-shadow-size
-      rgba($--btn-border-color--default--hover, $--box-shadow-transparency);
+    box-shadow: $--btn-box-shadow-size rgba($--btn-border-color--default--hover, $--btn-box-shadow-transparency);
   }
 }
 
 .#{$--clsPrefix}-button--success {
   background-color: $--btn-bg-color--success;
   border-color: $--btn-border-color--success;
-  color: $--btn-color--success;
+  color: $--btn-font-color--success;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
     background-color: $--btn-bg-color--success--hover;
     border-color: $--btn-border-color--success--hover;
-    color: $--btn-color--success--hover;
+    color: $--btn-font-color--success--hover;
   }
   &:not(:disabled):focus {
-    box-shadow: $--box-shadow-size
-      rgba($--btn-border-color--success--hover, $--box-shadow-transparency);
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--success--hover, $--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--success;
@@ -105,16 +104,15 @@
 .#{$--clsPrefix}-button--primary {
   background-color: $--btn-bg-color--primary;
   border-color: $--btn-border-color--primary;
-  color: $--btn-color--primary;
+  color: $--btn-font-color--primary;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
     background-color: $--btn-bg-color--primary--hover;
     border-color: $--btn-border-color--primary--hover;
-    color: $--btn-color--primary--hover;
+    color: $--btn-font-color--primary--hover;
   }
   &:not(:disabled):focus {
-    box-shadow: $--box-shadow-size
-      rgba($--btn-border-color--primary--hover, $--box-shadow-transparency);
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--primary--hover, $--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--primary;
@@ -128,16 +126,15 @@
 .#{$--clsPrefix}-button--warning {
   background-color: $--btn-bg-color--warning;
   border-color: $--btn-border-color--warning;
-  color: $--btn-color--warning;
+  color: $--btn-font-color--warning;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
     background-color: $--btn-bg-color--warning--hover;
     border-color: $--btn-border-color--warning--hover;
-    color: $--btn-color--warning--hover;
+    color: $--btn-font-color--warning--hover;
   }
   &:not(:disabled):focus {
-    box-shadow: $--box-shadow-size
-      rgba($--btn-border-color--warning--hover, $--box-shadow-transparency);
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--warning--hover, $--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--warning;
@@ -151,16 +148,15 @@
 .#{$--clsPrefix}-button--error {
   background-color: $--btn-bg-color--error;
   border-color: $--btn-border-color--error;
-  color: $--btn-color--error;
+  color: $--btn-font-color--error;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
     background-color: $--btn-bg-color--error--hover;
     border-color: $--btn-border-color--error--hover;
-    color: $--btn-color--error--hover;
+    color: $--btn-font-color--error--hover;
   }
   &:not(:disabled):focus {
-    box-shadow: $--box-shadow-size
-      rgba($--btn-border-color--error--hover, $--box-shadow-transparency);
+    box-shadow: $--box-shadow-size rgba($--btn-border-color--error--hover, $--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--error;
@@ -174,16 +170,15 @@
 .#{$--clsPrefix}-button--info {
   background-color: $--btn-bg-color--info;
   border-color: $--btn-border-color--info;
-  color: $--btn-color--info;
+  color: $--btn-font-color--info;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
     background-color: $--btn-bg-color--info--hover;
     border-color: $--btn-border-color--info--hover;
-    color: $--btn-color--info--hover;
+    color: $--btn-font-color--info--hover;
   }
   &:not(:disabled):focus {
-    box-shadow: $--box-shadow-size
-      rgba($--btn-border-color--info--hover, $--box-shadow-transparency);
+    box-shadow: $--btn-box-shadow-size rgba($--btn-border-color--info--hover, $--box-shadow-transparency);
   }
   &.#{$--clsPrefix}-button--plain {
     color: $--btn-bg-color--info;
@@ -197,9 +192,9 @@
 .#{$--clsPrefix}-button--text {
   background-color: $--btn-bg-color--text;
   border-color: $--btn-border-color--text;
-  color: $--btn-color--text;
+  color: $--btn-font-color--text;
   &:not(:disabled):hover,
   &:not(:disabled):focus {
-    color: $--btn-color--text--hover;
+    color: $--btn-font-color--text--hover;
   }
 }

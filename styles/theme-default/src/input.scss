@@ -33,7 +33,7 @@
       border-radius: $--border-radius;
       resize: none;
       outline: none;
-      color: $--color-text;
+      color: $--font-color;
       width: 100%;
       appearance: none;
       background-color: $--input-bg-color;
@@ -53,14 +53,14 @@
       &:disabled {
         cursor: not-allowed;
         // background-color: $--input-bg-color--disabled;
-        opacity: $--disabled-opacity;
+        opacity: $--opacity--disabled;
       }
     }
     .#{$--clsPrefix}-input__prefix,
     .#{$--clsPrefix}-input__suffix {
-      color: $--color-text--secondary;
+      color: $--font-color--secondary;
       width: 1px;
-      background-color: $--input-suffix-bg-color;
+      background-color: $--input-color-suffix-bg;
       text-align: center;
       white-space: nowrap;
       display: table-cell;

@@ -13,7 +13,7 @@
   // }
 }
 .#{$--clsPrefix}-dropdown-item--disabled {
-  opacity: $--disabled-opacity;
+  opacity: $--opacity--disabled;
   cursor: not-allowed;
   &:hover {
     color: $--dropdown-color;

@@ -2,12 +2,12 @@
 
 .#{$--clsPrefix}-dropdown-menu {
   box-shadow: $--dropdown-box-shadow;
-  background-color: $--dropdown-color-bg;
+  background-color: $--dropdown-bg-color;
   border-radius: $--border-radius;
-  border: 1px solid $--color-border;
+  border: 1px solid $--border-color;
 }
 .#{$--clsPrefix}-dropdown-menu--divide {
   .#{$--clsPrefix}-dropdown-item:not(:last-child) {
-    border-bottom: 1px solid $--color-border;
+    border-bottom: 1px solid $--border-color;
   }
 }

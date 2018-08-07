@@ -15,7 +15,7 @@ export default {
 <style lang="scss">
 @import '../../../styles/theme-default/src/commons/variables.scss';
 .menu-list {
-  border-right: 1px solid $--color-border;
+  border-right: 1px solid $--border-color;
   list-style: none;
   margin: 0 1em 0 0;
   padding: 0;

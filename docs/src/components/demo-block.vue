@@ -95,18 +95,18 @@ export default {
 <style lang="scss">
 @import '../../../styles/theme-default/src/commons/variables.scss';
 .demo-block {
-  border: 1px solid $--color-border;
+  border: 1px solid $--border-color;
   font-size: 1em;
   transition: box-shadow $--transition-time ease-in-out;
   code {
     font-family: Menlo, Monaco, Consolas, Courier, monospace;
   }
   &:hover {
-    box-shadow: 0 0 0.5em $--color-border;
+    box-shadow: 0 0 0.5em $--border-color;
   }
   .demo-code {
     padding: 1em;
-    border-bottom: 1px solid $--color-border;
+    border-bottom: 1px solid $--border-color;
     margin-bottom: 1em;
   }
   .demo-bottom {
@@ -139,7 +139,7 @@ export default {
     }
   }
   .demo-source {
-    border-top: 1px solid $--color-border;
+    border-top: 1px solid $--border-color;
     pre {
       margin: 0;
     }

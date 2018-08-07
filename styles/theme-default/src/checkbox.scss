@@ -28,7 +28,7 @@
     top: 0;
     height: $--checkbox-size;
     width: $--checkbox-size;
-    border: 1px solid $--color-border;
+    border: 1px solid $--border-color;
     border-radius: $--border-radius;
     transition: all $--transition-time ease-in-out;
     &:after {
@@ -54,7 +54,7 @@
     background-color: $--checkbox-color-active;
     &:after {
       transform: rotate(0) scale(1);
-      border-bottom: 1px solid $--checkbox-color-bg;
+      border-bottom: 1px solid $--checkbox-bg-color;
       left: $--checkbox-size * 0.25;
       width: $--checkbox-size * 0.55;
       height: $--checkbox-size * 0.2;
@@ -66,8 +66,8 @@
   .#{$--clsPrefix}-checkbox__inner {
     background-color: $--checkbox-color-active;
     &:after {
-      border-bottom: 1px solid $--checkbox-color-bg;
-      border-left: 1px solid $--checkbox-color-bg;
+      border-bottom: 1px solid $--checkbox-bg-color;
+      border-left: 1px solid $--checkbox-bg-color;
       height: $--checkbox-size * 0.25;
       width: $--checkbox-size * 0.55;
       transform: rotate(-45deg) scale(1);
@@ -84,7 +84,7 @@
   }
 }
 .#{$--clsPrefix}-checkbox--disabled {
-  opacity: $--disabled-opacity;
+  opacity: $--opacity--disabled;
   .#{$--clsPrefix}-checkbox__input {
     cursor: not-allowed;
   }
@@ -94,7 +94,7 @@
   pointer-events: none;
 }
 .#{$--clsPrefix}-checkbox--border {
-  border: 1px solid $--color-border;
+  border: 1px solid $--border-color;
   padding: 0.4em 0.6em;
   border-radius: $--border-radius;
   &.#{$--clsPrefix}-checkbox--checked {

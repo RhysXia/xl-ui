@@ -28,7 +28,7 @@
       top: 0;
       width: $--radio-size;
       height: $--radio-size;
-      border: 1px solid $--color-border;
+      border: 1px solid $--border-color;
       border-radius: 50%;
       text-align: center;
       vertical-align: middle;
@@ -50,7 +50,7 @@
   }
   
   .#{$--clsPrefix}-radio--border {
-    border: 1px solid $--color-border;
+    border: 1px solid $--border-color;
     padding: 0.4em 0.6em;
     border-radius: $--border-radius;
     &.#{$--clsPrefix}-radio--checked {
@@ -66,14 +66,14 @@
   }
   
   .#{$--clsPrefix}-radio--disabled {
-    opacity: $--disabled-opacity;
+    opacity: $--opacity--disabled;
     .#{$--clsPrefix}-radio__input {
       cursor: not-allowed;
     }
   }
   .#{$--clsPrefix}-radio--readonly {
     pointer-events: none;
-    // opacity: $--disabled-opacity;
+    // opacity: $--opacity--disabled;
   }
   
   .#{$--clsPrefix}-radio--focused {
