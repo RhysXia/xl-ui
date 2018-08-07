@@ -24,7 +24,7 @@ export default {
 @import './style/base.scss';
 #app {
   .container {
-    width: 1250px;
+    width: 1450px;
     margin: 0 auto;
     background: #fff;
     padding: 1em;

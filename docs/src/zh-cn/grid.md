@@ -75,7 +75,7 @@
 :::
 
 ## 分栏间隔支持响应式
-::: demo 设置`gutter`为对象形式
+::: demo 设置`gutter`为对象形式,支持`xs`,`sm`,`md`,`lg`,`xl`,`xxl`
 
 ```html
 <xl-row :gutter='{xs:10,sm:20,md:30,lg:40,xl:50,xxl:60}'>
@@ -230,13 +230,13 @@
 | ------ | -------------------------------------- | ------------------------------------------ | ------ | ------ |
 | order  | 栅格顺序，flex 布局模式下有效          | number                                     | —      | —      |
 | tag    | 自定义元素标签                         | string                                     | —      | div    |
-| span   | 栅格占据的列数                         | number                                     | 0-24   | —      |
+| span   | 栅格占据的列数(**0表示隐藏**)                        | number                                     | 0-24   | —      |
 | offset | 栅格左侧的间隔列数，间隔内不可以有栅格 | number                                     | 1-24   | —      |
 | push   | 栅格向右移动的列数                     | number                                     | 1-24   | —      |
 | pull   | 栅格向左移动的列数                     | number                                     | 1-24   | —      |
-| xs     | ≥0 响应式栅格数或者栅格属性对象        | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| sm     | ≥576px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| md     | ≥768px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| lg     | ≥992px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| xl     | ≥1200px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| xxl     | ≥1600px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| xs     | ≥0 响应式栅格数或者栅格属性对象(**0表示隐藏**)        | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| sm     | ≥576px 响应式栅格数或者栅格属性对象(**0表示隐藏**)    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| md     | ≥768px 响应式栅格数或者栅格属性对象(**0表示隐藏**)    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| lg     | ≥992px 响应式栅格数或者栅格属性对象(**0表示隐藏**)   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| xl     | ≥1200px 响应式栅格数或者栅格属性对象(**0表示隐藏**)   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| xxl     | ≥1600px 响应式栅格数或者栅格属性对象(**0表示隐藏**)   | number/object(例如： {span: 4, offset: 4}) | —      | —      |

@@ -74,7 +74,6 @@ export default {
       }
       if (typeof gutter === 'object') {
         const screens = this.screens
-        console.log(screens)
         for (let i = 0; i < breakpoints.length; i++) {
           const key = breakpoints[i]
           if (screens[key] && gutter[key]) {
