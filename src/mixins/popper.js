@@ -1,9 +1,13 @@
 import Vue from 'vue'
 const isServer = Vue.prototype.$isServer
 
-const Popper = isServer ? function() {} : require('popper.js/dist/umd/popper')
+const Popper = isServer ? function () {} : require('popper.js/dist/umd/popper')
 
 export default {
+  model: {
+    prop: 'value',
+    event: 'on-input'
+  },
   props: {
     reference: Object,
     popper: Object,
@@ -27,7 +31,7 @@ export default {
     },
     options: {
       type: Object,
-      default() {
+      default () {
         return {
           modifiers: {
             computeStyle: {
@@ -52,7 +56,7 @@ export default {
       immediate: true,
       handler(val) {
         this.visible = val
-        this.$emit('input', val)
+        this.$emit('on-input', val)
       }
     },
     visible(val) {
@@ -62,7 +66,7 @@ export default {
       } else {
         this.$emit('on-popper-hide')
       }
-      this.$emit('input', val)
+      this.$emit('on-input', val)
     }
   },
   methods: {
@@ -82,10 +86,10 @@ export default {
       }
       options.modifiers.offset.offset = this.offset
       options.onCreate = () => {
-        this.$emit('popper-created', this)
+        this.$emit('on-popper-created', this)
       }
       options.onUpdate = (obj) => {
-        this.$emit('popper-updated', this)
+        this.$emit('on-popper-updated', this)
       }
       this.popperJS = new Popper(reference, popper, options)
     },

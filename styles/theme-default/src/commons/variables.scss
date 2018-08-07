@@ -27,8 +27,8 @@ $--border-color--focus: $--color-primary !default;
 $--border-radius: 0.2em !default;
 $--border-width: 1px !default;
 //padding
-$--padding-width--l: 0.4em !default;
-$--padding-height--l: 0.6em !default;
+$--padding-width--l: 0.6em !default;
+$--padding-height--l: 0.4em !default;
 //font
 $--font-color: $--color-text !default;
 $--font-color--secondary: lighten($--font-color, 15%) !default;
@@ -119,10 +119,10 @@ $--checkbox-bg-color:$--bg-color !default;
 $--checkbox-font-color-active:$--bg-color !default;
 //poptip
 $--poptip-color: #eee !default;
-$--poptip-padding: $--padding-width--l $--padding-width--l !default;
-$--poptip-box-shadow-size: $--box-shadow-size !default;
-$--poptip-box-shadow-transparency: $--box-shadow-transparency !default;
+$--poptip-arrow-size: 0.8em !default;
+$--poptip-padding: $--padding-width--l !default;
 $--poptip-border-color: $--border-color !default;
+$--poptip-box-shadow: 0 1px 6px rgba(#000, .2);
 $--poptip-bg-color: #fff !default;
 //dropdown
 $--dropdown-box-shadow:0 0.1em 0.5em $--border-color !default;

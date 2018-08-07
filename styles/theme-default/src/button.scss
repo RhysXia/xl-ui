@@ -11,7 +11,7 @@
   outline: none;
   margin: 0;
   border-radius: $--border-radius;
-  padding: $--btn-padding-width $--btn-padding-height;
+  padding: $--btn-padding-height $--btn-padding-width;
   border: $--btn-border-width solid;
   transition: background-color $--transition-time ease, border-color $--transition-time ease, box-shadow $--transition-time ease;
   &::-moz-focus-inner {
