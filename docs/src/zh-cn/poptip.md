@@ -39,111 +39,111 @@
 ```html
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='top-start'>
+        <xl-poptip placement='top-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>top-start</div>
             </div>
-        </xl-popup>
+        </xl-popu>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='top'>
+        <xl-poptip placement='top'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>top</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='top-end'>
+        <xl-poptip placement='top-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>top-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='left-start'>
+        <xl-poptip placement='left-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>left-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-popup placement='right-start'>
+        <xl-poptip placement='right-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>right-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='left'>
+        <xl-poptip placement='left'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>left</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='right'>
+        <xl-poptip placement='right'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>right</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='left-end'>
+        <xl-poptip placement='left-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>left-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-popup placement='right-end'>
+        <xl-poptip placement='right-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>right-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='bottom-start'>
+        <xl-poptip placement='bottom-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>bottom-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='bottom'>
+        <xl-poptip placement='bottom'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>bottom</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='bottom-end'>
+        <xl-poptip placement='bottom-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>bottom-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 ```
@@ -156,111 +156,111 @@
 ```html
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='top-start' :popup-container="container">
+        <xl-poptip placement='top-start' :popup-container="container">
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>top-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='top'>
+        <xl-poptip placement='top'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>top</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='top-end'>
+        <xl-poptip placement='top-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>top-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='left-start'>
+        <xl-poptip placement='left-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>left-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-popup placement='right-start'>
+        <xl-poptip placement='right-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>right-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='left'>
+        <xl-poptip placement='left'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>left</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='right'>
+        <xl-poptip placement='right'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>right</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='left-end'>
+        <xl-poptip placement='left-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>left-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-popup placement='right-end'>
+        <xl-poptip placement='right-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>right-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 <xl-row class='demo-popup'>
     <xl-col :span='4' :offset='4'>
-        <xl-popup placement='bottom-start'>
+        <xl-poptip placement='bottom-start'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>bottom-start</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='bottom'>
+        <xl-poptip placement='bottom'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>bottom</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-popup placement='bottom-end'>
+        <xl-poptip placement='bottom-end'>
             <xl-button>下拉菜单</xl-button>
             <div slot="popup">
                 <div class='demo-content'>bottom-end</div>
             </div>
-        </xl-popup>
+        </xl-poptip>
     </xl-col>
 </xl-row>
 ```

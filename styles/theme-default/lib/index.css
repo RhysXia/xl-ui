@@ -4818,13 +4818,13 @@ body {
     height: 0;
     border: 0.5em solid transparent; }
     .xl-popup__arrow--top {
-      border-top-color: red; }
+      border-top-color: #eee; }
     .xl-popup__arrow--left {
-      border-left-color: red; }
+      border-left-color: #eee; }
     .xl-popup__arrow--right {
-      border-right-color: red; }
+      border-right-color: #eee; }
     .xl-popup__arrow--bottom {
-      border-bottom-color: red; }
+      border-bottom-color: #eee; }
 
 .xl-radio {
   position: relative;

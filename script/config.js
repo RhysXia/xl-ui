@@ -14,6 +14,6 @@ module.exports = {
     dist: resolvePath('docs-dist')
   },
   style: {
-      dir: resolvePath('style')
+      dir: resolvePath('styles')
   }
 }

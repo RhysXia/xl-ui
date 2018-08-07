@@ -44,15 +44,15 @@ export default [
     component: () => import('./zh-cn/checkbox.md')
   },
   {
-    path: '/popup',
+    path: '/poptip',
     meta: '弹出框',
-    component: () => import('./zh-cn/popup.md')
+    component: () => import('./zh-cn/poptip.md')
   },
-  {
-    path: '/dropdown',
-    meta: '下拉框',
-    component: () => import('./zh-cn/dropdown.md')
-  },
+  // {
+  //   path: '/dropdown',
+  //   meta: '下拉框',
+  //   component: () => import('./zh-cn/dropdown.md')
+  // },
   {
     path: '/form',
     meta: '表单',

@@ -10,7 +10,7 @@
 </template>
 <script>
 import { oneOf } from '../../utils/array'
-import Popup from '../popup'
+import Poptip from '../poptip'
 import clickoutside from '../../directives/clickoutside'
 const name = 'xl-dropdown'
 export default {
@@ -151,7 +151,7 @@ export default {
     }
   },
   components: {
-    Popup
+    Poptip
   }
 }
 </script>

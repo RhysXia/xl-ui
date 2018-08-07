@@ -5,16 +5,26 @@ const rename = require('gulp-rename')
 const postcss = require('gulp-postcss')
 const config = require('../config')
 const {
-  getSubDirs
+  getSubDirs,
+  rmdirSync
 } = require('../utils')
 
 const dirs = getSubDirs(config.style.dir)
+
+dirs.forEach(dir => {
+  rmdirSync(dir + '/lib')
+})
+
 // 编译scss
 gulp.task('css', function () {
   dirs.forEach(dir => {
     gulp
       .src(dir + '/src/*.scss')
       .pipe(sass())
+      .on('error', error => {
+        console.error(error.toString())
+        this.emit('end')
+      })
       .pipe(postcss())
       .pipe(gulp.dest(dir + '/lib'))
   })
@@ -42,11 +52,9 @@ gulp.task('fonts', function () {
     gulp.src(dir + '/src/commons/ionicons/fonts/*').pipe(gulp.dest(dir + '/lib/fonts'))
   })
 })
-
 gulp.task('watch', function () {
-  dirs.forEach(dir => {
-    gulp.watch(dir + '/src/**/*.scss', ['css'])
-  })
+  const arr = dirs.map(dir => dir + '/src/**/*.scss')
+  gulp.watch(arr, ['css'])
 })
 
 gulp.task('prod', ['css', 'minCss', 'fonts'])

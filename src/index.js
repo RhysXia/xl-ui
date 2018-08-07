@@ -9,7 +9,7 @@ import DropdownMenu from './components/dropdown-menu'
 import DropdownItem from './components/dropdown-item'
 import Row from './components/row'
 import Col from './components/col'
-import Popup from './components/popup'
+import Poptip from './components/poptip'
 import Radio from './components/radio'
 import RadioGroup from './components/radio-group'
 import FormItem from './components/form-item'
@@ -27,7 +27,7 @@ const components = {
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-  Popup,
+  Poptip,
   Dropdown,
   DropdownMenu,
   DropdownItem,
@@ -63,7 +63,7 @@ export {
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-  Popup,
+  Poptip,
   Dropdown,
   DropdownMenu,
   DropdownItem,

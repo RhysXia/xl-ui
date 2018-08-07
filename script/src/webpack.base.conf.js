@@ -2,11 +2,13 @@ const webpack = require('webpack')
 const config = require('../config')
 const {
   cssLoaders,
-  styleLoaders
+  styleLoaders,
+  rmdirSync
 } = require('../utils')
 
+rmdirSync(config.src.dist)
 
-module.exports = {
+const webpackConfig = {
   devtool: 'source-map',
   entry: {
     main: config.src.dir + '/index.js'
@@ -35,28 +37,28 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: cssLoaders({
-            sourceMap: true,
-            extract: true
-          }),
-          cssSourceMap: true,
-          cacheBusting: true,
-          transformToRequire: {
-            video: ['src', 'poster'],
-            source: 'src',
-            img: 'src',
-            image: 'xlink:href'
-          }
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        loaders: cssLoaders({
+          sourceMap: true,
+          extract: true
+        }),
+        cssSourceMap: true,
+        cacheBusting: true,
+        transformToRequire: {
+          video: ['src', 'poster'],
+          source: 'src',
+          img: 'src',
+          image: 'xlink:href'
         }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
       }
+    },
+    {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
+    }
     ].concat(styleLoaders({
       sourceMap: true,
       extract: true,
@@ -67,3 +69,5 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin()
   ]
 }
+
+module.exports = webpackConfig

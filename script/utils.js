@@ -18,6 +18,33 @@ exports.getSubDirs = dir => {
   return dirs
 }
 
+const rmdirSync = (path, cb) => {
+  try {
+    if (fs.existsSync(path)) {
+      const files = fs.readdirSync(path)
+      files.forEach(file => {
+        var curPath = path + '/' + file
+        if (fs.statSync(curPath).isDirectory()) {
+          // recurse
+          rmdirSync(curPath)
+        } else {
+          // delete file
+          fs.unlinkSync(curPath)
+        }
+      })
+      fs.rmdirSync(path)
+    }
+  } catch (err) {
+    if (cb) {
+      cb(err)
+    } else {
+      throw err
+    }
+  }
+}
+
+exports.rmdirSync = rmdirSync
+
 exports.isProduction = () => process.env.NODE_ENV === 'production'
 
 exports.cssLoaders = function (options) {
