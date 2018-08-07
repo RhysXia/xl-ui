@@ -37,12 +37,6 @@ inquirer.prompt([{
   },
   {
     name: 'docs',
-    message: '是否重新生成文档',
-    type: 'confirm',
-    default: true
-  },
-  {
-    name: 'docsPublish',
     message: '是否重新发布文档',
     type: 'confirm',
     default: true
@@ -74,16 +68,6 @@ inquirer.prompt([{
     shell.exit(1)
   }
 
-  if (answers.docs) {
-    console.log(chalk.green('删除生成的文档'))
-    rmdirSync(config.docs.dist)
-    console.log(chalk.green('编译文档'))
-    if (shell.exec(`npm run docs:prod`).code) {
-      console.log(chalk.red('编译组件失败'))
-      shell.exit(1)
-    }
-  }
-
   const version = `${answers.version}`
   pkg.version = version
   fs.writeFileSync(
@@ -106,7 +90,15 @@ inquirer.prompt([{
     shell.exit(1)
   }
 
-  if (answers.docsPublish) {
+  if (answers.docs) {
+    console.log(chalk.green('删除生成的文档'))
+    rmdirSync(config.docs.dist)
+    console.log(chalk.green('编译文档'))
+    if (shell.exec(`npm run docs:prod`).code) {
+      console.log(chalk.red('编译组件失败'))
+      shell.exit(1)
+    }
+
     console.log(chalk.green('发布文档'))
     ghpages.publish(config.docs.dist, {}, err => {
       console.log(chalk.red('发布文档失败'))

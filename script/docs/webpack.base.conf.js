@@ -180,13 +180,12 @@ const webpackConfig = {
   }
 }
 
-
 if (!isProduction()) {
   webpackConfig.module.rules.push({
     test: /\.(js|vue)$/,
     loader: 'eslint-loader',
     enforce: 'pre',
-    include: [config.src, config.docs],
+    include: [config.src.dir, config.docs.dir],
     options: {
       formatter: require('eslint-friendly-formatter'),
       emitWarning: true
