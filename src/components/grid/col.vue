@@ -1,4 +1,10 @@
 <script>
+import { breakpoints } from './media-query'
+const mediaProps = {}
+breakpoints.forEach(key => {
+  mediaProps[key] = [Number, Object]
+})
+
 const name = 'xl-col'
 export default {
   name: name,
@@ -23,11 +29,7 @@ export default {
     order: {
       type: Number
     },
-    xs: [Number, Object],
-    sm: [Number, Object],
-    md: [Number, Object],
-    lg: [Number, Object],
-    xl: [Number, Object]
+    ...mediaProps
   },
   data() {
     return {
@@ -36,7 +38,7 @@ export default {
   },
   computed: {
     gutter() {
-      return this.xlRow.gutter
+      return this.xlRow.actualGutter
     },
     classes() {
       let classList = [this.prefixCls]
@@ -51,8 +53,7 @@ export default {
         }
       })
 
-      props = ['xs', 'sm', 'md', 'lg', 'xl']
-      props.forEach(size => {
+      breakpoints.forEach(size => {
         if (typeof this[size] === 'number') {
           classList.push(`${this.prefixCls}-${size}-${this[size]}`)
         } else if (typeof this[size] === 'object') {

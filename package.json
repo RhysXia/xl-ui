@@ -109,6 +109,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "enquire.js": "^2.1.6",
     "popper.js": "^1.14.4"
   }
 }

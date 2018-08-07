@@ -74,6 +74,20 @@
 
 :::
 
+## 分栏间隔支持响应式
+::: demo 设置`gutter`为对象形式
+
+```html
+<xl-row :gutter='{xs:10,sm:20,md:30,lg:40,xl:50,xxl:60}'>
+    <xl-col :span='6'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='6'><div class='grid-content  bg-purple--light'></div></xl-col>
+    <xl-col :span='6'><div class='grid-content bg-purple'></div></xl-col>
+    <xl-col :span='6'><div class='grid-content  bg-purple--light'></div></xl-col>
+</xl-row>
+```
+
+:::
+
 ## 混合布局
 
 使用不同大小的分栏混合布局
@@ -132,7 +146,7 @@
 
 支持根据设备宽度进行响应式布局
 
-::: demo 预设了五个响应尺寸：`xs`、`sm`、`md`、`lg` 和 `xl`,设置为 0 时表示隐藏
+::: demo 预设了六个响应尺寸：`xs`、`sm`、`md`、`lg`、`xl` 和 `xxl`,设置为 0 时表示隐藏
 
 ```html
 <xl-row>
@@ -149,7 +163,7 @@
 
 响应式布局也可以进行偏移
 
-::: demo `xs`、`sm`、`md`、`lg` 和 `xl`设置成对象的形式,`span` `pull` `push` `offset` `order` 属性可以通过内嵌到`xs`、`sm`、`md`、`lg` 和 `xl`属性中来使用
+::: demo `xs`、`sm`、`md`、`lg`、`xl` 和 `xxl`设置成对象的形式,`span` `pull` `push` `offset` `order` 属性可以通过内嵌到`xs`、`sm`、`md`、`lg`、`xl` 和 `xxl`属性中来使用
 
 ```html
 <xl-row>
@@ -208,6 +222,7 @@
 | tag     | 自定义元素标签                        | string | —                                           | div    |
 | justify | flex 布局下的水平排列方式             | string | start/end/center/space-around/space-between | start  |
 | align   | flex 布局下的垂直排列方式             | string | top/middle/bottom                           | top    |
+| gutter   | 设置每个栅格之间的间隔，支持响应式    | number/object | -                  | 0    |
 
 ## Col 属性
 
@@ -220,7 +235,8 @@
 | push   | 栅格向右移动的列数                     | number                                     | 1-24   | —      |
 | pull   | 栅格向左移动的列数                     | number                                     | 1-24   | —      |
 | xs     | ≥0 响应式栅格数或者栅格属性对象        | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| sm     | ≥768px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| md     | ≥992px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| lg     | ≥1200px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
-| xl     | ≥1920px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| sm     | ≥576px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| md     | ≥768px 响应式栅格数或者栅格属性对象    | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| lg     | ≥992px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| xl     | ≥1200px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |
+| xxl     | ≥1600px 响应式栅格数或者栅格属性对象   | number/object(例如： {span: 4, offset: 4}) | —      | —      |

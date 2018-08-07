@@ -42,17 +42,17 @@ Helvetica,
 Arial,
 sans-serif !default;
 //grid断点
-$--sm: 768px !default;
-$--md: 992px !default;
-$--lg: 1200px !default;
-$--xl: 1920px !default;
-$--grid-breakpoints: ( 'xs': (min-width: 0), 'sm': (min-width: $--sm), 'md': (min-width: $--md), 'lg': (min-width: $--lg), 'xl': (min-width: $--xl));
+$--sm: 576px !default;
+$--md: 768px !default;
+$--lg: 992px !default;
+$--xl: 1200px !default;
+$--xxl: 1600px !default;
+$--grid-breakpoints: ( 'xs': (min-width: 0), 'sm': (min-width: $--sm), 'md': (min-width: $--md), 'lg': (min-width: $--lg), 'xl': (min-width: $--xl), 'xxl':(min-width:$--xxl));
 //button
 $--btn-box-shadow-size: $--box-shadow-size !default;
 $--btn-box-shadow-transparency: $--box-shadow-transparency !default;
 $--btn-padding-width: $--padding-width--l;
 $--btn-padding-height: $--padding-height--l;
-
 $--btn-border-width: $--border-width;
 //default btn
 $--btn-font-color--default:$--font-color !default;
