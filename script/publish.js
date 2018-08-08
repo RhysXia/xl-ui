@@ -106,7 +106,7 @@ inquirer.prompt([{
 
   if(answers.tag){
     console.log(chalk.green(`git发布版本${version}`))
-    cmd =  ` && git tag -a ${version} -m "${comment}" && git push origin ${version}`
+    cmd =  `git tag -a ${version} -m "${comment}" && git push origin ${version}`
     if (shell.exec(cmd).code) {
       console.log(chalk.red(`git发布版本${version}失败`))
       shell.exit(1)
