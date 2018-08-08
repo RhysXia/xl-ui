@@ -2,13 +2,9 @@
     export default{
         data(){
             return{
-                visiable:false
+                disabled:false,
+                always: false
             }
-        },
-        methods:{
-          container(){
-            return document.getElementById('container')
-          }
         }
     }
 </script>
@@ -106,9 +102,9 @@
 
 ## 长文本
 
-:::demo 通过指定`trigger`改变激活方式
+:::demo 通过指定`width`改变弹出框的长度
 ```html
-<xl-tooltip content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
+<xl-tooltip :width="{min:150,max:300}" content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
     <xl-button>长文本</xl-button>
 </xl-tooltip>
 ```
@@ -126,21 +122,31 @@
 
 :::
 
-## 指定激活方式
+## 延迟显示
 
-:::demo 通过指定`trigger`改变激活方式
+:::demo 通过指定`dealy`延迟显示
 ```html
-<xl-tooltip content="点击激活" trigger="click">
-    <xl-button>点击激活</xl-button>
-</xl-tooltip>
-<xl-tooltip content="悬停激活" trigger="hover">
-    <xl-button>悬停激活</xl-button>
+<xl-tooltip content="显示消息" :delay="1000">
+    <xl-button>延迟1s显示</xl-button>
 </xl-tooltip>
 ```
 
 :::
 
+## 总是显示
 
+:::demo 通过指定`always`
+```html
+<xl-checkbox v-model="always" label="是否总显示"></xl-checkbox>
+<xl-checkbox v-model="disabled" label="是否总不显示"></xl-checkbox>
+<br/>
+<br/>
+<xl-tooltip content="显示消息" :always="always" :disabled="disabled">
+    <xl-button>{{disabled?"禁止提示框":always?"总是显示提示框":"鼠标悬浮显示"}}</xl-button>
+</xl-tooltip>
+```
+
+:::
 
 
 
@@ -150,25 +156,19 @@
 | --------------- | ---------------------------- | -------- | ---------------- | ----------------- |
 | transfer | 是否将弹出框置于body中   | boolean |                -             | false |
 | placement       | 弹出框相对显示框的位置                     | string   | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom               |
-| trigger       | 激活方式                   | string   | click/hover/custom | hover               |
 | width       | 弹出框宽,通过设置{min:10,max:20}来设置最小宽度和最大宽度                   | string/number/object   | - | {min: 150,max: 300}               |
-| value       | 弹出框状态，支持`v-model`                   | boolean  | - | false              |
-| title       | 标题                   | string  | - | -              |
 | content       | 内容                   | string   | - | -              |
 | padding       | 自定义边距                   | string   | - | '0.5em,1em'              |
-| options       | 自定义popper.js的配置项，具体配置见[popper.js文档](https://popper.js.org/popper-documentation.html)                  | string   | - | '0.5em,1em'              |
-| pop-class       | 自定义弹出框样式         | string   | - | -        |
 | dangerous-html      | 允许嵌入HTML         | boolean   | - | false        |
+| delay      | 延迟显示         | number(ms)   | - | 0        |
+| disabled      | 是否总不显示         | boolean   | - | false        |
+| always      | 是否总是显示(`disabled=false`下可用)         | boolean   | - | false        |
 
 
 ## Tooltip 事件
 
 | 名称    | 说明       |参数                    |
 | ------- | ---------- |----------------------- |
-| on-popper-show | 在提示框显示时触发 |  -  |
-| on-popper-hide   | 在提示框消失时触发 |  -  |
-| on-popper-created   | popper创建完成时触发 |  this  |
-| on-popper-updated   | popper更新完成时触发 |  this  |
 | on-input   | 弹出框状态改变时触发 | boolean，true：弹出框显示，false：弹出框隐藏  |
 
 ## Tooltip slots

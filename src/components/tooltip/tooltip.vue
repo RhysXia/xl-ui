@@ -1,18 +1,13 @@
 <template lang="pug">
-  Poptip(:dangerousHtml="dangerousHtml",:placement="placement",:pop-class="popClass",:content="content",v-model="visible",:transfer="transfer",:width="width",:padding="padding",trigger="custom",@on-click="_click",@on-clickoutside="_clickoutside",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
+  Poptip(:dangerousHtml="dangerousHtml",:placement="placement",:pop-class="popClass",:content="content",:value="actualVisible",:transfer="transfer",:width="width",:padding="padding",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
     slot
 </template>
 <script>
 import Poptip from '../poptip'
-import clickoutside from '../../directives/clickoutside'
-import { oneOf } from '../../utils/array'
 
 const name = 'xl-tooltip'
 export default {
   name,
-  directives: {
-    clickoutside
-  },
   props: {
     placement: {
       type: String,
@@ -27,50 +22,62 @@ export default {
       default: false
     },
     content: String,
-    trigger: {
-      default: 'hover',
-      validator(val) {
-        return oneOf(['hover', 'click'], val)
-      }
-    },
     width: {
       type: [String, Number, Object],
       default: () => ({
-        min: 100,
-        max: 300
+        min: 100
       })
     },
     padding: {
       type: String,
       default: '0.5em 1em'
+    },
+    delay: {
+      type: Number,
+      default: 0
+    },
+    always: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      visible: false,
-      transferClicked: false
+      visible: false
     }
   },
   computed: {
     popClass() {
       return `${name}__popper`
+    },
+    actualVisible() {
+      if (this.disabled) {
+        return false
+      }
+      if (this.always) {
+        return true
+      }
+      return this.visible
     }
   },
   methods: {
-    _clickoutside(e) {
-      this.visible = false
-    },
     _mouseleave() {
-      if (this.trigger !== 'hover') {
-        return
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
       }
       this.visible = false
     },
     _mouseenter() {
-      if (this.trigger !== 'hover') {
-        return
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
       }
-      this.visible = true
+      this._enterTimer = setTimeout(() => {
+        this.visible = true
+      }, this.delay)
     },
     _click() {
       this.visible = true

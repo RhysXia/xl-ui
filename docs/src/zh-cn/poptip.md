@@ -4,11 +4,6 @@
             return{
                 visiable:false
             }
-        },
-        methods:{
-          container(){
-            return document.getElementById('container')
-          }
         }
     }
 </script>
@@ -106,9 +101,9 @@
 
 ## 长文本
 
-:::demo 通过指定`trigger`改变激活方式
+:::demo 通过指定`width`改变弹出框的长度
 ```html
-<xl-poptip content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
+<xl-poptip :width="{min:150,max:300}" content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
     <xl-button>长文本</xl-button>
 </xl-poptip>
 ```
