@@ -1,5 +1,7 @@
 'use strict'
 const config = require('../config')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const {
   resolvePath
 } = require('../utils')
@@ -178,7 +180,15 @@ const webpackConfig = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    // copy custom static assets
+    new CopyWebpackPlugin([{
+      from: config.docs.dir + '/static',
+      to: isProduction() ? config.docs.dist + '/static' : 'static',
+      ignore: ['.*']
+    }])
+  ]
 }
 
 if (!isProduction()) {
