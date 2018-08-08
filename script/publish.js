@@ -11,6 +11,12 @@ const {
   getSubDirs,
   rmdirSync
 } = require('./utils')
+
+if (!shell.which('git')) {
+  shell.echo('git不存在，请先安装git');
+  shell.exit(1);
+}
+
 const pkg = require(resolvePath('package.json'))
 
 const oldVersion = pkg.version
@@ -35,6 +41,12 @@ inquirer.prompt([{
     message: '是否重新编译样式文件',
     type: 'confirm',
     default: true
+  },
+  {
+    name: 'tag',
+    message: '是否发布版本',
+    type: 'confirm',
+    default: false
   },
   {
     name: 'docs',
@@ -76,11 +88,12 @@ inquirer.prompt([{
     JSON.stringify(pkg, null, '  ')
   )
 
-  console.log(chalk.green('git提交代码'))
   //提交代码
-  const comment = answers.message || `update version to ${version}`
+  const comment = answers.message || `:rocket:update version to ${version}`
 
-  const cmd = `git add . && git tag -a ${version} -m '${comment}' && git push origin ${version}`
+  console.log(chalk.green('git提交代码'))
+
+  let cmd = `git add . && git commit -m "${comment}" && git push origin master`
   if (shell.exec(cmd).code) {
     pkg.version = oldVersion
     fs.writeFileSync(
@@ -89,6 +102,15 @@ inquirer.prompt([{
     )
     console.log(chalk.red(`git提交失败`))
     shell.exit(1)
+  }
+
+  if(answers.tag){
+    console.log(chalk.green(`git发布版本${version}`))
+    cmd =  ` && git tag -a ${version} -m "${comment}" && git push origin ${version}`
+    if (shell.exec(cmd).code) {
+      console.log(chalk.red(`git发布版本${version}失败`))
+      shell.exit(1)
+    }
   }
 
   if (answers.docs) {
