@@ -104,15 +104,16 @@ inquirer.prompt([{
     shell.exit(1)
   }
 
-  if(answers.tag){
+  if (answers.tag) {
     console.log(chalk.green(`git发布版本${version}`))
-    cmd =  `git tag -a ${version} -m "${comment}" && git push origin ${version}`
+    cmd = `git tag -a ${version} -m "${comment}" && git push origin ${version}`
     if (shell.exec(cmd).code) {
       console.log(chalk.red(`git发布版本${version}失败`))
       shell.exit(1)
     }
   }
 
+  let promise = new Promise()
   if (answers.docs) {
     console.log(chalk.green('删除生成的文档'))
     rmdirSync(config.docs.dist)
@@ -123,13 +124,15 @@ inquirer.prompt([{
     }
 
     console.log(chalk.green('发布文档'))
-    ghpages.publish(config.docs.dist, {}, err => {
+    promise = ghpages.publish(config.docs.dist, {}, err => {
       console.log(chalk.red('发布文档失败'))
       shell.exit(1)
     })
   }
 
-  console.log(chalk.green(`发布成功,当前版本(${version})`))
+  promise.then(() => {
+    console.log(chalk.green(`发布成功,当前版本(${version})`))
+  })
 })
 
 function getVersionList(version) {
