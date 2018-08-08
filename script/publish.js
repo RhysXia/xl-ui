@@ -80,7 +80,7 @@ inquirer.prompt([{
   //提交代码
   const comment = answers.message || `update version to ${version}`
 
-  const cmd = `git add . && git tag -a ${version} -m'${comment}' && git push origin ${version}`
+  const cmd = `git add . && git tag -a ${version} -m '${comment}' && git push origin ${version}`
   if (shell.exec(cmd).code) {
     pkg.version = oldVersion
     fs.writeFileSync(
