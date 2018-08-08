@@ -3,7 +3,7 @@
     div(ref="reference",:class="refClasses",@click="_click")
       slot
     transition(:name="transitionName")
-      div(v-show="visible",:class="popClasses",ref="popper",:style="{zIndex}",:data-transfer="transfer", v-transfer-dom="")
+      div(v-show="visible",:class="popClasses",ref="popper",:style="{zIndex}",:data-transfer="transfer", v-transfer-dom="",@click="_transferClick",@mouseleave="_mouseleave",@mouseenter="_mouseenter")
         div(:class="arrowClasses" x-arrow)
         div(:class="bodyClasses",:style="bodyStyles")
           div(:class="titleClasses",v-if="this.$slots.title||title")
@@ -49,11 +49,16 @@ export default {
     padding: {
       type: String,
       default: '0.5em 1em'
+    },
+    transitionName: {
+      type: String,
+      default: `${name}-fade`
     }
   },
   data() {
     return {
-      zIndex: generateZIndex()
+      zIndex: generateZIndex(),
+      transferClicked: false
     }
   },
   computed: {
@@ -83,9 +88,6 @@ export default {
     bodyClasses() {
       return `${name}__popper__body`
     },
-    transitionName() {
-      return `${name}-fade`
-    },
     bodyStyles() {
       const styles = {
         padding: this.padding
@@ -111,27 +113,48 @@ export default {
       }
       return width
     },
-    _clickoutside() {
+    _clickoutside(e) {
       if (this.trigger === 'custom') {
+        return
+      }
+      if (this.transferClicked) {
+        this.transferClicked = false
         return
       }
       this.visible = false
     },
     _mouseleave() {
-      if (this.trigger === 'hover') {
-        this.visible = false
+      if (this.trigger !== 'hover') {
+        return
       }
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
+      this._enterTimer = setTimeout(() => {
+        this.visible = false
+      }, 100)
     },
     _mouseenter() {
-      if (this.trigger === 'hover') {
-        this.visible = true
+      if (this.trigger !== 'hover') {
+        return
       }
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
+      this._enterTimer = setTimeout(() => {
+        this.visible = true
+      }, 100)
     },
     _click() {
       if (this.trigger === 'custom') {
         return
       }
       this.visible = true
+    },
+    _transferClick() {
+      if (this.transfer) {
+        this.transferClicked = true
+      }
     }
   },
   mounted() {
