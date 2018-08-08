@@ -165,16 +165,8 @@
 | always      | 是否总是显示(`disabled=false`下可用)         | boolean   | - | false        |
 
 
-## Tooltip 事件
-
-| 名称    | 说明       |参数                    |
-| ------- | ---------- |----------------------- |
-| on-input   | 弹出框状态改变时触发 | boolean，true：弹出框显示，false：弹出框隐藏  |
-
 ## Tooltip slots
 
 | 名称    | 说明       |
 | ------- | ---------- |
 | default | 插入显示框 |
-| title   | 弹出框标题，定义此 slot 时，会覆盖 props `title` |
-| content   | 弹出框内容，定义此 slot 时，会覆盖 props `content` |
