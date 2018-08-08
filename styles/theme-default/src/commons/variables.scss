@@ -121,7 +121,7 @@ $--checkbox-font-color-active:$--bg-color !default;
 $--poptip-color: #eee !default;
 $--poptip-arrow-size: 0.8em !default;
 $--poptip-padding: $--padding-width--l !default;
-$--poptip-border-color: $--border-color !default;
+$--poptip-border-color: rgba(#000, .1) !default;
 $--poptip-box-shadow: 0 1px 6px rgba(#000, .2);
 $--poptip-bg-color: #fff !default;
 //dropdown

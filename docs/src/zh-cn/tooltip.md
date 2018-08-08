@@ -14,7 +14,7 @@
 </script>
 
 <style>
-    .demo-popup{
+    .demo-tooltip{
         margin-bottom:2em;
     }
 </style>
@@ -28,77 +28,77 @@
 ::: demo 基本的使用方法
 
 ```html
-<xl-row class='demo-popup'>
+<xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-poptip placement='top-start' title="标题" content="top-start">
+        <xl-tooltip placement='top-start' title="标题" content="top-start">
             <xl-button>下拉菜单</xl-button>
         </xl-popu>
     </xl-col>
     <xl-col :span='4'>
-        <xl-poptip placement='top' title="标题" content="top">
+        <xl-tooltip placement='top' title="标题" content="top">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-poptip placement='top-end' title="标题" content="top-end">
+        <xl-tooltip placement='top-end' title="标题" content="top-end">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
 </xl-row>
 
-<xl-row class='demo-popup'>
+<xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-poptip placement='left-start' title="标题" content="left-start">
+        <xl-tooltip placement='left-start' title="标题" content="left-start">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-poptip placement='right-start' title="标题" content="right-start">
+        <xl-tooltip placement='right-start' title="标题" content="right-start">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
 </xl-row>
 
-<xl-row class='demo-popup'>
+<xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-poptip placement='left' title="标题" content="left">
+        <xl-tooltip placement='left' title="标题" content="left">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
     <xl-col :span='4' :offset='4'>
-        <xl-poptip placement='right' title="标题" content="right">
+        <xl-tooltip placement='right' title="标题" content="right">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
 </xl-row>
 
-<xl-row class='demo-popup'>
+<xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-poptip placement='left-end' title="标题" content="left-end">
+        <xl-tooltip placement='left-end' title="标题" content="left-end">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-poptip placement='right-end' title="标题" content="right-end">
+        <xl-tooltip placement='right-end' title="标题" content="right-end">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
 </xl-row>
-<xl-row class='demo-popup'>
+<xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-poptip placement='bottom-start' title="标题" content="bottom-start">
+        <xl-tooltip placement='bottom-start' title="标题" content="bottom-start">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-poptip placement='bottom' title="标题" content="bottom">
+        <xl-tooltip placement='bottom' title="标题" content="bottom">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-poptip placement='bottom-end' title="标题" content="bottom-end">
+        <xl-tooltip placement='bottom-end' title="标题" content="bottom-end">
             <xl-button>下拉菜单</xl-button>
-        </xl-poptip>
+        </xl-tooltip>
     </xl-col>
 </xl-row>
 ```
@@ -108,9 +108,9 @@
 
 :::demo 通过指定`trigger`改变激活方式
 ```html
-<xl-poptip content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
+<xl-tooltip content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
     <xl-button>长文本</xl-button>
-</xl-poptip>
+</xl-tooltip>
 ```
 
 :::
@@ -119,15 +119,15 @@
 
 :::demo 通过指定`trigger`改变激活方式
 ```html
-<xl-poptip content="点击激活" trigger="click">
+<xl-tooltip content="点击激活" trigger="click">
     <xl-button>点击激活</xl-button>
-</xl-poptip>
-<xl-poptip content="悬停激活" trigger="hover">
+</xl-tooltip>
+<xl-tooltip content="悬停激活" trigger="hover">
     <xl-button>悬停激活</xl-button>
-</xl-poptip>
-<xl-poptip content="自定义激活" v-model="visiable" trigger="custom">
+</xl-tooltip>
+<xl-tooltip content="自定义激活" v-model="visiable" trigger="custom">
     <xl-checkbox v-model="visiable">自定义激活</xl-checkbox>
-</xl-poptip>
+</xl-tooltip>
 ```
 
 :::
@@ -138,10 +138,10 @@
 
 :::demo 通过slot `content`自定义内容
 ```html
-<xl-poptip>
+<xl-tooltip>
     <xl-button>点击激活</xl-button>
     <xl-input type="textarea" slot="content"></xl-input>
-</xl-poptip>
+</xl-tooltip>
 
 ```
 

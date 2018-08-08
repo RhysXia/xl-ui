@@ -26,6 +26,7 @@ export default {
     clickoutside
   },
   props: {
+    popClass: String,
     transfer: {
       type: Boolean,
       default: false
@@ -64,7 +65,11 @@ export default {
       return `${name}__ref`
     },
     popClasses() {
-      return `${name}__popper`
+      const arr = [`${name}__popper`]
+      if (this.popClass) {
+        arr.push(this.popClass)
+      }
+      return arr
     },
     arrowClasses() {
       return `${name}__popper__arrow`
@@ -107,6 +112,9 @@ export default {
       return width
     },
     _clickoutside() {
+      if (this.trigger === 'custom') {
+        return
+      }
       this.visible = false
     },
     _mouseleave() {

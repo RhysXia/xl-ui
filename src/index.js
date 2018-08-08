@@ -10,6 +10,7 @@ import DropdownItem from './components/dropdown-item'
 import Row from './components/row'
 import Col from './components/col'
 import Poptip from './components/poptip'
+import Tooltip from './components/tooltip'
 import Radio from './components/radio'
 import RadioGroup from './components/radio-group'
 import FormItem from './components/form-item'
@@ -32,7 +33,8 @@ const components = {
   DropdownMenu,
   DropdownItem,
   FormItem,
-  Form
+  Form,
+  Tooltip
 }
 
 const install = (Vue, opts = {}) => {
@@ -68,5 +70,6 @@ export {
   DropdownMenu,
   DropdownItem,
   FormItem,
-  Form
+  Form,
+  Tooltip
 }

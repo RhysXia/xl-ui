@@ -48,6 +48,11 @@ export default [
     meta: '弹出框',
     component: () => import('./zh-cn/poptip.md')
   },
+  {
+    path: '/tooltip',
+    meta: '文字提示框',
+    component: () => import('./zh-cn/tooltip.md')
+  },
   // {
   //   path: '/dropdown',
   //   meta: '下拉框',
