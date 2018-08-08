@@ -1,0 +1,115 @@
+@import './commons/variables.scss';
+
+.#{$--clsPrefix}-input {
+    position: relative;
+    display: table;
+    box-sizing: border-box;
+    width: 100%;
+    .#{$--clsPrefix}-input__prefix,
+    .#{$--clsPrefix}-input__suffix,
+    .#{$--clsPrefix}-input__inner,
+    textarea {
+      position: relative;
+      box-sizing: border-box;
+      padding: 0.5em 1em;
+      border: 1px solid $--input-border-color;
+      font-size: 1em;
+      // z-index: 1;
+    }
+    .#{$--clsPrefix}-input__inner-wrapper:not(:first-child) {
+      .#{$--clsPrefix}-input__inner {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+    .#{$--clsPrefix}-input__inner-wrapper:not(:last-child) {
+      .#{$--clsPrefix}-input__inner {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+    .#{$--clsPrefix}-input__inner,
+    textarea {
+      border-radius: $--border-radius;
+      resize: none;
+      outline: none;
+      color: $--font-color;
+      width: 100%;
+      appearance: none;
+      background-color: $--input-bg-color;
+      background-image: none;
+      transition: border-color $--transition-time ease,
+        box-shadow $--transition-time ease;
+      &:not(:disabled):not(:read-only) {
+        &:hover {
+          border-color: $--input-border-color--hover;
+        }
+        &:focus {
+          border-color: $--input-border-color--focus;
+          box-shadow: $--box-shadow-size
+            rgba($--input-border-color--focus, $--box-shadow-transparency);
+        }
+      }
+      &:disabled {
+        cursor: not-allowed;
+        // background-color: $--input-bg-color--disabled;
+        opacity: $--opacity--disabled;
+      }
+    }
+    .#{$--clsPrefix}-input__prefix,
+    .#{$--clsPrefix}-input__suffix {
+      color: $--font-color--secondary;
+      width: 1px;
+      background-color: $--input-color-suffix-bg;
+      text-align: center;
+      white-space: nowrap;
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .#{$--clsPrefix}-input__prefix {
+      border-right: none;
+      border-top-left-radius: $--border-radius;
+      border-bottom-left-radius: $--border-radius;
+    }
+    .#{$--clsPrefix}-input__suffix {
+      border-left: none;
+      border-bottom-right-radius: $--border-radius;
+      border-top-right-radius: $--border-radius;
+    }
+    .#{$--clsPrefix}-input__inner-wrapper {
+      position: relative;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  
+    .#{$--clsPrefix}-input__inner--prefix-icon {
+      padding-left: 2em;
+    }
+    .#{$--clsPrefix}-input__inner--suffix-icon {
+      padding-right: 2em;
+    }
+  
+    .#{$--clsPrefix}-input__prefix-icon,
+    .#{$--clsPrefix}-input__suffix-icon {
+      position: absolute;
+      top: 2px;
+      height: 2em;
+      width: 2em;
+      line-height: 2em;
+      text-align: center;
+      font-size: 1em;
+      z-index: 3;
+      cursor: pointer;
+    }
+    .#{$--clsPrefix}-input__prefix-icon {
+      left: 0;
+    }
+    .#{$--clsPrefix}-input__suffix-icon {
+      right: 0;
+    }
+  }
+  .#{$--clsPrefix}-input--autosize {
+    textarea {
+      transition: height $--transition-time ease-in-out;
+    }
+  }

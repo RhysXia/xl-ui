@@ -1,0 +1,36 @@
+@import './commons/variables.scss';
+
+.#{$--clsPrefix}-dropdown {
+  display: inline-block;
+}
+.#{$--clsPrefix}-dropdown--slide-up-enter-active,
+.#{$--clsPrefix}-dropdown--slide-down-enter-active,
+.#{$--clsPrefix}-dropdown--slide-up-leave-active,
+.#{$--clsPrefix}-dropdown--slide-down-leave-active {
+  transition: all $--transition-time ease-in-out;
+}
+.#{$--clsPrefix}-dropdown--slide-up-enter-active,
+.#{$--clsPrefix}-dropdown--slide-up-leave-active {
+  transform-origin: 0 100%;
+}
+
+.#{$--clsPrefix}-dropdown--slide-down-enter-active,
+.#{$--clsPrefix}-dropdown--slide-down-leave-active {
+  transform-origin: 0 0;
+}
+
+.#{$--clsPrefix}-dropdown--slide-up-enter,
+.#{$--clsPrefix}-dropdown--slide-down-enter,
+.#{$--clsPrefix}-dropdown--slide-up-leave-to,
+.#{$--clsPrefix}-dropdown--slide-down-leave-to {
+  opacity: 0;
+  transform: scaleY(0.3);
+}
+
+.#{$--clsPrefix}-dropdown--slide-up-enter-to,
+.#{$--clsPrefix}-dropdown--slide-down-enter-to,
+.#{$--clsPrefix}-dropdown--slide-up-leave,
+.#{$--clsPrefix}-dropdown--slide-down-leave {
+  opacity: 1;
+  transform: scaleY(1);
+}
