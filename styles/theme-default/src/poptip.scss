@@ -57,14 +57,16 @@
   }
   &-fade-enter-active,
   &-fade-leave-active {
-    transition: opacity $--transition-time ease-in-out
+    transition: opacity $--transition-time ease-in-out,transform $--transition-time ease-in-out
   }
   &-fade-enter,
   &-fade-leave-to {
     opacity: 0;
+    transform: scale(0.5)
   }
   &-fade-enter-to,
   &-fade-leave {
     opacity: 1;
+    transform: scale(1)
   }
 }

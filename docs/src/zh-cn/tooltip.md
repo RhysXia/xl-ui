@@ -19,9 +19,9 @@
     }
 </style>
 
-# Popup 下拉组件
+# Tooltip 文字提示框组件
 
-将动作或菜单折叠到下拉菜单中。
+对某些信息进行文字提示。
 
 ## 基本用法
 
@@ -30,17 +30,17 @@
 ```html
 <xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-tooltip placement='top-start' title="标题" content="top-start">
+        <xl-tooltip placement='top-start' content="top-start">
             <xl-button>下拉菜单</xl-button>
         </xl-popu>
     </xl-col>
     <xl-col :span='4'>
-        <xl-tooltip placement='top' title="标题" content="top">
+        <xl-tooltip placement='top' content="top">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-tooltip placement='top-end' title="标题" content="top-end">
+        <xl-tooltip placement='top-end' content="top-end">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
@@ -48,12 +48,12 @@
 
 <xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-tooltip placement='left-start' title="标题" content="left-start">
+        <xl-tooltip placement='left-start' content="left-start">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-tooltip placement='right-start' title="标题" content="right-start">
+        <xl-tooltip placement='right-start' content="right-start">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
@@ -61,12 +61,12 @@
 
 <xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-tooltip placement='left' title="标题" content="left">
+        <xl-tooltip placement='left' content="left">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
     <xl-col :span='4' :offset='4'>
-        <xl-tooltip placement='right' title="标题" content="right">
+        <xl-tooltip placement='right' content="right">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
@@ -74,29 +74,29 @@
 
 <xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-tooltip placement='left-end' title="标题" content="left-end">
+        <xl-tooltip placement='left-end' content="left-end">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
     <xl-col :offset='4' :span='4'>
-        <xl-tooltip placement='right-end' title="标题" content="right-end">
+        <xl-tooltip placement='right-end' content="right-end">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
 </xl-row>
 <xl-row class='demo-tooltip'>
     <xl-col :span='4' :offset='4'>
-        <xl-tooltip placement='bottom-start' title="标题" content="bottom-start">
+        <xl-tooltip placement='bottom-start' content="bottom-start">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-tooltip placement='bottom' title="标题" content="bottom">
+        <xl-tooltip placement='bottom' content="bottom">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
     <xl-col :span='4'>
-        <xl-tooltip placement='bottom-end' title="标题" content="bottom-end">
+        <xl-tooltip placement='bottom-end' content="bottom-end">
             <xl-button>下拉菜单</xl-button>
         </xl-tooltip>
     </xl-col>
@@ -115,6 +115,17 @@
 
 :::
 
+## 标题和内容支持html
+
+:::demo 通过指定`dangerousHtml`支持HTML
+```html
+<xl-tooltip dangerous-html content="<b>这是加粗的内容</b>">
+    <xl-button>富文本</xl-button>
+</xl-tooltip>
+```
+
+:::
+
 ## 指定激活方式
 
 :::demo 通过指定`trigger`改变激活方式
@@ -125,31 +136,15 @@
 <xl-tooltip content="悬停激活" trigger="hover">
     <xl-button>悬停激活</xl-button>
 </xl-tooltip>
-<xl-tooltip content="自定义激活" v-model="visiable" trigger="custom">
-    <xl-checkbox v-model="visiable">自定义激活</xl-checkbox>
-</xl-tooltip>
 ```
 
 :::
 
 
 
-## 自定义内容
-
-:::demo 通过slot `content`自定义内容
-```html
-<xl-tooltip>
-    <xl-button>点击激活</xl-button>
-    <xl-input type="textarea" slot="content"></xl-input>
-</xl-tooltip>
-
-```
-
-:::
 
 
-
-## Popup 属性
+## Tooltip 属性
 
 | 参数            | 说明                                | 类型     | 可选值                 | 默认值            |
 | --------------- | ---------------------------- | -------- | ---------------- | ----------------- |
@@ -163,8 +158,10 @@
 | padding       | 自定义边距                   | string   | - | '0.5em,1em'              |
 | options       | 自定义popper.js的配置项，具体配置见[popper.js文档](https://popper.js.org/popper-documentation.html)                  | string   | - | '0.5em,1em'              |
 | pop-class       | 自定义弹出框样式         | string   | - | -        |
+| dangerous-html      | 允许嵌入HTML         | boolean   | - | false        |
 
-## Popup 事件
+
+## Tooltip 事件
 
 | 名称    | 说明       |参数                    |
 | ------- | ---------- |----------------------- |
@@ -174,7 +171,7 @@
 | on-popper-updated   | popper更新完成时触发 |  this  |
 | on-input   | 弹出框状态改变时触发 | boolean，true：弹出框显示，false：弹出框隐藏  |
 
-## Popup slots
+## Tooltip slots
 
 | 名称    | 说明       |
 | ------- | ---------- |

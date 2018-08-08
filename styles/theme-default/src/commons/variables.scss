@@ -118,14 +118,14 @@ $--checkbox-color-active:$--color-primary !default;
 $--checkbox-bg-color:$--bg-color !default;
 $--checkbox-font-color-active:$--bg-color !default;
 //poptip
-$--poptip-color: #eee !default;
 $--poptip-arrow-size: 0.8em !default;
 $--poptip-padding: $--padding-width--l !default;
 $--poptip-border-color: rgba(#000, .1) !default;
 $--poptip-box-shadow: 0 1px 6px rgba(#000, .2);
 $--poptip-bg-color: #fff !default;
 //tooltip
-$--tooltip-color: rgba(0, 0, 0, 0.65);
+$--tooltip-bg-color: rgba(0, 0, 0, 0.65);
+$--tooltip-font-color: $--bg-color;
 //dropdown
 $--dropdown-box-shadow:0 0.1em 0.5em $--border-color !default;
 $--dropdown-bg-color:#fff !default;

@@ -7,9 +7,13 @@
         div(:class="arrowClasses" x-arrow)
         div(:class="bodyClasses",:style="bodyStyles")
           div(:class="titleClasses",v-if="this.$slots.title||title")
-            slot(name="title") {{title}}
+            slot(name="title")
+              div(v-if="dangerousHtml",v-html="title")
+              div(v-else,v-text="title")
           div(:class="contentClasses")
-            slot(name="content") {{content}}
+            slot(name="content")
+              div(v-if="dangerousHtml",v-html="content")
+              div(v-else,v-text="content")
 </template>
 <script>
 import Popper from '../../mixins/popper'
@@ -28,6 +32,10 @@ export default {
   props: {
     popClass: String,
     transfer: {
+      type: Boolean,
+      default: false
+    },
+    dangerousHtml: {
       type: Boolean,
       default: false
     },
@@ -115,6 +123,7 @@ export default {
     },
     _clickoutside(e) {
       if (this.trigger === 'custom') {
+        this.$emit('on-clickoutside', e)
         return
       }
       if (this.transferClicked) {
@@ -122,9 +131,11 @@ export default {
         return
       }
       this.visible = false
+      this.$emit('on-clickoutside', e)
     },
     _mouseleave() {
       if (this.trigger !== 'hover') {
+        this.$emit('on-mouseleave')
         return
       }
       if (this._enterTimer) {
@@ -132,10 +143,12 @@ export default {
       }
       this._enterTimer = setTimeout(() => {
         this.visible = false
+        this.$emit('on-mouseleave')
       }, 100)
     },
     _mouseenter() {
       if (this.trigger !== 'hover') {
+        this.$emit('on-mouseenter')
         return
       }
       if (this._enterTimer) {
@@ -143,9 +156,11 @@ export default {
       }
       this._enterTimer = setTimeout(() => {
         this.visible = true
+        this.$emit('on-mouseenter')
       }, 100)
     },
     _click() {
+      this.$emit('on-click')
       if (this.trigger === 'custom') {
         return
       }

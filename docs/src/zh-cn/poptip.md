@@ -14,21 +14,21 @@
 </script>
 
 <style>
-    .demo-popup{
+    .demo-poptip{
         margin-bottom:2em;
     }
 </style>
 
-# Popup 下拉组件
+# Poptip 弹出框组件
 
-将动作或菜单折叠到下拉菜单中。
+将提示信息放在弹出框中。
 
 ## 基本用法
 
 ::: demo 基本的使用方法
 
 ```html
-<xl-row class='demo-popup'>
+<xl-row class='demo-poptip'>
     <xl-col :span='4' :offset='4'>
         <xl-poptip placement='top-start' title="标题" content="top-start">
             <xl-button>下拉菜单</xl-button>
@@ -46,7 +46,7 @@
     </xl-col>
 </xl-row>
 
-<xl-row class='demo-popup'>
+<xl-row class='demo-poptip'>
     <xl-col :span='4' :offset='4'>
         <xl-poptip placement='left-start' title="标题" content="left-start">
             <xl-button>下拉菜单</xl-button>
@@ -59,7 +59,7 @@
     </xl-col>
 </xl-row>
 
-<xl-row class='demo-popup'>
+<xl-row class='demo-poptip'>
     <xl-col :span='4' :offset='4'>
         <xl-poptip placement='left' title="标题" content="left">
             <xl-button>下拉菜单</xl-button>
@@ -72,7 +72,7 @@
     </xl-col>
 </xl-row>
 
-<xl-row class='demo-popup'>
+<xl-row class='demo-poptip'>
     <xl-col :span='4' :offset='4'>
         <xl-poptip placement='left-end' title="标题" content="left-end">
             <xl-button>下拉菜单</xl-button>
@@ -84,7 +84,7 @@
         </xl-poptip>
     </xl-col>
 </xl-row>
-<xl-row class='demo-popup'>
+<xl-row class='demo-poptip'>
     <xl-col :span='4' :offset='4'>
         <xl-poptip placement='bottom-start' title="标题" content="bottom-start">
             <xl-button>下拉菜单</xl-button>
@@ -110,6 +110,17 @@
 ```html
 <xl-poptip content="史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。">
     <xl-button>长文本</xl-button>
+</xl-poptip>
+```
+
+:::
+
+## 标题和内容支持html
+
+:::demo 通过指定`dangerousHtml`支持HTML
+```html
+<xl-poptip dangerous-html title="<h1>这是加粗的标题</h1>" content="<b>这是加粗的内容</b>">
+    <xl-button>富文本</xl-button>
 </xl-poptip>
 ```
 
@@ -149,7 +160,7 @@
 
 
 
-## Popup 属性
+## Poptip 属性
 
 | 参数            | 说明                                | 类型     | 可选值                 | 默认值            |
 | --------------- | ---------------------------- | -------- | ---------------- | ----------------- |
@@ -163,8 +174,10 @@
 | padding       | 自定义边距                   | string   | - | '0.5em,1em'              |
 | options       | 自定义popper.js的配置项，具体配置见[popper.js文档](https://popper.js.org/popper-documentation.html)                  | string   | - | '0.5em,1em'              |
 | pop-class       | 自定义弹出框样式         | string   | - | -        |
+| transition-name       | 自定义弹出框动画         | string   | - | xl-poptip-fade        |
+| dangerous-html      | 允许嵌入HTML         | boolean   | - | false        |
 
-## Popup 事件
+## Poptip 事件
 
 | 名称    | 说明       |参数                    |
 | ------- | ---------- |----------------------- |
@@ -173,8 +186,12 @@
 | on-popper-created   | popper创建完成时触发 |  this  |
 | on-popper-updated   | popper更新完成时触发 |  this  |
 | on-input   | 弹出框状态改变时触发 | boolean，true：弹出框显示，false：弹出框隐藏  |
+| on-click   | 弹出框附着的元素被点击时触发 | -  |
+| on-clickoutside   | 弹出框外点击时触发 | 实际被点击的元素e  |
+| on-mouseenter   | 鼠标进入组件时触发 | -  |
+| on-mouseleave   | 鼠标离开组件时触发 | -  |
 
-## Popup slots
+## Poptip slots
 
 | 名称    | 说明       |
 | ------- | ---------- |

@@ -16,39 +16,39 @@
       box-sizing: content-box;
       position: absolute;
       display: block;
-      left: -$width /2;
-      top: -$width /2;
+      left: (-$width + $borderWidth) /2;
+      top: (-$width + $borderWidth) /2;
       content: "";
       height: 0;
       width: 0;
-      border: $width / 2 solid transparent;
+      border: ($width - $borderWidth) / 2 solid transparent;
     }
     @if($direction==top) {
       border-bottom-color: $borderColor;
       &:after {
         border-bottom-color: $bgColor;
-        margin-top: $borderWidth;
+        margin-top: $borderWidth / 2;
       }
     }
     @if($direction==bottom) {
       border-top-color: $borderColor;
       &:after {
         border-top-color: $bgColor;
-        margin-top: -$borderWidth;
+        margin-top: -$borderWidth / 2;
       }
     }
     @if($direction==left) {
       border-right-color: $borderColor;
       &:after {
         border-right-color: $bgColor;
-        margin-left: $borderWidth;
+        margin-left: $borderWidth / 2;
       }
     }
     @if($direction==right) {
       border-left-color: $borderColor;
       &:after {
         border-left-color: $bgColor;
-        margin-left: -$borderWidth;
+        margin-left: -$borderWidth / 2;
       }
     }
   }

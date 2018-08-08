@@ -1,78 +1,83 @@
 <template lang="pug">
-  div(v-clickoutside="_clickoutside",@mouseleave="_mouseleave",@mouseenter="_mouseenter")
-    Poptip(:pop-class="popClass",v-model="visible",:transfer="transfer",:width="width",:padding="padding",:trigger="custom")
-      div(@click="_click")
-        slot
-      template(slot="content") {{content}}
+  Poptip(:dangerousHtml="dangerousHtml",:placement="placement",:pop-class="popClass",:content="content",v-model="visible",:transfer="transfer",:width="width",:padding="padding",trigger="custom",@on-click="_click",@on-clickoutside="_clickoutside",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
+    slot
 </template>
 <script>
-import Poptip from "../poptip";
-import clickoutside from "../../directives/clickoutside";
-import { oneOf } from "../../utils/array";
+import Poptip from '../poptip'
+import clickoutside from '../../directives/clickoutside'
+import { oneOf } from '../../utils/array'
 
-const name = "xl-tooltip";
+const name = 'xl-tooltip'
 export default {
   name,
   directives: {
     clickoutside
   },
   props: {
+    placement: {
+      type: String,
+      default: 'bottom'
+    },
+    dangerousHtml: {
+      type: Boolean,
+      default: false
+    },
     transfer: {
       type: Boolean,
-      default: true
+      default: false
     },
     content: String,
     trigger: {
-      default: "hover",
+      default: 'hover',
       validator(val) {
-        return oneOf(["hover", "click"], val);
+        return oneOf(['hover', 'click'], val)
       }
     },
     width: {
       type: [String, Number, Object],
       default: () => ({
-        min: 150,
+        min: 100,
         max: 300
       })
     },
     padding: {
       type: String,
-      default: "0.5em 1em"
+      default: '0.5em 1em'
     }
   },
   data() {
     return {
-      visible: false
-    };
+      visible: false,
+      transferClicked: false
+    }
   },
   computed: {
     popClass() {
-      return `${name}__popper`;
+      return `${name}__popper`
     }
   },
   methods: {
-    _clickoutside() {
-      this.visible = false;
+    _clickoutside(e) {
+      this.visible = false
     },
     _mouseleave() {
-      if (this.trigger === "hover") {
-        this.visible = false;
+      if (this.trigger !== 'hover') {
+        return
       }
+      this.visible = false
     },
     _mouseenter() {
-      if (this.trigger === "hover") {
-        this.visible = true;
+      if (this.trigger !== 'hover') {
+        return
       }
+      this.visible = true
     },
     _click() {
-      if (this.trigger === "click") {
-        this.visible = true;
-      }
+      this.visible = true
     }
   },
-  mounted() {},
   components: {
     Poptip
   }
-};
+}
 </script>
