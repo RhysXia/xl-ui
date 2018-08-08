@@ -111,21 +111,23 @@ $--input-color-suffix-bg:#f5f7fa !default;
 //radio
 $--radio-size: 1em !default;
 $--radio-color-active:$--color-primary !default;
+$--radio-color--hover: lighten($--radio-color-active, 10%) !default;
 $--radio-font-color-active:$--bg-color !default;
 //checkbox
 $--checkbox-size:1em !default;
 $--checkbox-color-active:$--color-primary !default;
+$--checkbox-color--hover: lighten($--checkbox-color-active, 10%) !default;
 $--checkbox-bg-color:$--bg-color !default;
 $--checkbox-font-color-active:$--bg-color !default;
 //poptip
 $--poptip-arrow-size: 0.8em !default;
 $--poptip-padding: $--padding-width--l !default;
 $--poptip-border-color: rgba(#000, .1) !default;
-$--poptip-box-shadow: 0 1px 6px rgba(#000, .2);
+$--poptip-box-shadow: 0 1px 6px rgba(#000, .2) !default;
 $--poptip-bg-color: #fff !default;
 //tooltip
-$--tooltip-bg-color: rgba(0, 0, 0, 0.65);
-$--tooltip-font-color: $--bg-color;
+$--tooltip-bg-color: rgba(0, 0, 0, 0.65) !default;
+$--tooltip-font-color: $--bg-color !default;
 //dropdown
 $--dropdown-box-shadow:0 0.1em 0.5em $--border-color !default;
 $--dropdown-bg-color:#fff !default;

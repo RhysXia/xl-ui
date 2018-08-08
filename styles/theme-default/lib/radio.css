@@ -3,9 +3,7 @@
   display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
-  line-height: 1;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out; }
+  line-height: 1; }
   .xl-radio__input {
     display: block;
     position: absolute;
@@ -50,7 +48,9 @@
 .xl-radio--border {
   border: 1px solid #dddee1;
   padding: 0.4em 0.6em;
-  border-radius: 0.2em; }
+  border-radius: 0.2em;
+  -webkit-transition: border-color 0.25s ease-in-out;
+  transition: border-color 0.25s ease-in-out; }
   .xl-radio--border.xl-radio--checked {
     border-color: #409eff; }
   .xl-radio--border.xl-radio--focused {
@@ -80,3 +80,12 @@
 
 .xl-radio--checked .xl-radio__label {
   color: #409eff; }
+
+.xl-radio:hover:not(.xl-radio--disabled) .xl-radio__inner {
+  border-color: #73b8ff; }
+
+.xl-radio:hover:not(.xl-radio--disabled).xl-radio--border {
+  border-color: #73b8ff; }
+
+.xl-radio:hover:not(.xl-radio--disabled).xl-radio--checked .xl-radio__inner:after {
+  background-color: #73b8ff; }

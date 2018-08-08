@@ -53,6 +53,8 @@
 
 ```html
 <xl-radio v-model='value' label='123' border></xl-radio>
+<xl-radio v-model='value' label='123' border readonly></xl-radio>
+<xl-radio v-model='value' label='123' border disabled></xl-radio>
 <p>{{value}}</p>
 ```
 
@@ -106,6 +108,13 @@
     <xl-radio label='aaa'></xl-radio>
     <xl-radio label='bbb'></xl-radio>
     <xl-radio label='ccc'></xl-radio>
+    <xl-radio label='ddd'></xl-radio>
+</xl-radio-group>
+<br/>
+<xl-radio-group v-model='groupValue' type='button'>
+    <xl-radio label='aaa' disabled></xl-radio>
+    <xl-radio label='bbb'></xl-radio>
+    <xl-radio label='ccc' readonly></xl-radio>
     <xl-radio label='ddd'></xl-radio>
 </xl-radio-group>
 <p>{{groupValue}}</p>

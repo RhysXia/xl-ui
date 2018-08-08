@@ -1,5 +1,4 @@
 @import './commons/variables.scss';
-
 .#{$--clsPrefix}-checkbox {
   position: relative;
   display: inline-block;
@@ -28,7 +27,7 @@
     top: 0;
     height: $--checkbox-size;
     width: $--checkbox-size;
-    border: 1px solid $--border-color;
+    border: $--border-width solid $--border-color;
     border-radius: $--border-radius;
     transition: all $--transition-time ease-in-out;
     &:after {
@@ -54,7 +53,7 @@
     background-color: $--checkbox-color-active;
     &:after {
       transform: rotate(0) scale(1);
-      border-bottom: 1px solid $--checkbox-bg-color;
+      border-bottom: $--border-width solid $--checkbox-bg-color;
       left: $--checkbox-size * 0.25;
       width: $--checkbox-size * 0.55;
       height: $--checkbox-size * 0.2;
@@ -64,10 +63,11 @@
 
 .#{$--clsPrefix}-checkbox--checked {
   .#{$--clsPrefix}-checkbox__inner {
+    border-color: $--checkbox-color-active;
     background-color: $--checkbox-color-active;
     &:after {
-      border-bottom: 1px solid $--checkbox-bg-color;
-      border-left: 1px solid $--checkbox-bg-color;
+      border-bottom: $--border-width solid $--checkbox-bg-color;
+      border-left: $--border-width solid $--checkbox-bg-color;
       height: $--checkbox-size * 0.25;
       width: $--checkbox-size * 0.55;
       transform: rotate(-45deg) scale(1);
@@ -77,12 +77,13 @@
     color: $--checkbox-color-active;
   }
 }
+
 .#{$--clsPrefix}-checkbox--focused {
   .#{$--clsPrefix}-checkbox__inner {
-    box-shadow: $--box-shadow-size
-      rgba($--radio-color-active, $--box-shadow-transparency);
+    box-shadow: $--box-shadow-size rgba($--radio-color-active, $--box-shadow-transparency);
   }
 }
+
 .#{$--clsPrefix}-checkbox--disabled {
   opacity: $--opacity--disabled;
   .#{$--clsPrefix}-checkbox__input {
@@ -93,18 +94,35 @@
 .#{$--clsPrefix}-checkbox--readonly {
   pointer-events: none;
 }
+
 .#{$--clsPrefix}-checkbox--border {
-  border: 1px solid $--border-color;
+  border: $--border-width solid $--border-color;
   padding: 0.4em 0.6em;
   border-radius: $--border-radius;
+  transition: border-color $--transition-time ease-in-out;
   &.#{$--clsPrefix}-checkbox--checked {
     border-color: $--checkbox-color-active;
   }
   &.#{$--clsPrefix}-checkbox--focused {
-    box-shadow: $--box-shadow-size
-      rgba($--checkbox-color-active, $--box-shadow-transparency);
+    box-shadow: $--box-shadow-size rgba($--checkbox-color-active, $--box-shadow-transparency);
     .#{$--clsPrefix}-checkbox__inner {
       box-shadow: none;
+    }
+  }
+}
+
+.#{$--clsPrefix}-checkbox {
+  &:hover:not(&--disabled) {
+    .#{$--clsPrefix}-checkbox__inner {
+      border-color: $--checkbox-color--hover;
+    }
+    &.#{$--clsPrefix}-checkbox--border {
+      border-color: $--checkbox-color--hover;
+    }
+    &.#{$--clsPrefix}-checkbox--checked {
+      .#{$--clsPrefix}-checkbox__inner {
+        background-color: $--checkbox-color--hover;
+      }
     }
   }
 }

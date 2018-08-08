@@ -58,6 +58,7 @@
     height: 0.2em; }
 
 .xl-checkbox--checked .xl-checkbox__inner {
+  border-color: #409eff;
   background-color: #409eff; }
   .xl-checkbox--checked .xl-checkbox__inner:after {
     border-bottom: 1px solid #f7f7f7;
@@ -85,7 +86,9 @@
 .xl-checkbox--border {
   border: 1px solid #dddee1;
   padding: 0.4em 0.6em;
-  border-radius: 0.2em; }
+  border-radius: 0.2em;
+  -webkit-transition: border-color 0.25s ease-in-out;
+  transition: border-color 0.25s ease-in-out; }
   .xl-checkbox--border.xl-checkbox--checked {
     border-color: #409eff; }
   .xl-checkbox--border.xl-checkbox--focused {
@@ -94,3 +97,12 @@
     .xl-checkbox--border.xl-checkbox--focused .xl-checkbox__inner {
       -webkit-box-shadow: none;
               box-shadow: none; }
+
+.xl-checkbox:hover:not(.xl-checkbox--disabled) .xl-checkbox__inner {
+  border-color: #73b8ff; }
+
+.xl-checkbox:hover:not(.xl-checkbox--disabled).xl-checkbox--border {
+  border-color: #73b8ff; }
+
+.xl-checkbox:hover:not(.xl-checkbox--disabled).xl-checkbox--checked .xl-checkbox__inner {
+  background-color: #73b8ff; }
