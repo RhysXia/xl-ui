@@ -1,5 +1,5 @@
 <script>
-import { oneOf } from '../../utils/array'
+import { oneOf } from '@/utils/array'
 import { breakpointMap, breakpoints } from './media-query'
 let enquire
 if (typeof window !== 'undefined') {

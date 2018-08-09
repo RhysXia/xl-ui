@@ -48,12 +48,7 @@ const webpackConfig = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-      '@': config.src.dir,
-      '@docs': config.docs.dir + '/src',
-      '@style': config.style.dir + '/theme-default/'
-    }
+    alias: config.alias
   },
   module: {
     rules: [{

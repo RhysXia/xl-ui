@@ -16,16 +16,16 @@
 
 <script>
 export default {
-  name: "xl-node",
+  name: 'xl-node',
   props: {
     menus: Array
   },
   computed: {
     actualMenus() {
-      return this.menus.filter(it => it.title);
+      return this.menus.filter(it => it.title)
     }
   }
-};
+}
 </script>
 <style lang="scss">
 @import "@docs/style/variables.scss";

@@ -17,5 +17,11 @@ const config = {
     dir: resolvePath('styles')
   }
 }
+config.alias = {
+  vue$: 'vue/dist/vue.esm.js',
+  '@': config.src.dir,
+  '@docs': config.docs.dir + '/src',
+  '@style': config.style.dir + '/theme-default/'
+}
 
 module.exports = config

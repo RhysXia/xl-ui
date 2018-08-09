@@ -30,10 +30,7 @@ const webpackConfig = {
   },
   resolve: {
     extensions: ['.js', '.vue'],
-    alias: {
-      vue$: 'vue/dist/vue.esm.js',
-      '@': config.src.dir
-    }
+    alias: config.alias
   },
   module: {
     rules: [{

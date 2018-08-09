@@ -86,11 +86,17 @@ export default [
         icon: 'chatbox-working',
         component: () => import('./zh-cn/tooltip.md')
       }
-      // {
-      //   path: '/dropdown',
-      //   meta: '下拉框',
-      //   component: () => import('./zh-cn/dropdown.md')
-      // },
+    ]
+  },
+  {
+    title: '导航',
+    children: [
+      {
+        path: '/dropdown',
+        title: '下拉框',
+        icon: 'android-arrow-dropdown-circle',
+        component: () => import('./zh-cn/dropdown.md')
+      }
     ]
   }
 ]

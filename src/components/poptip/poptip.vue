@@ -16,11 +16,11 @@
               div(v-else,v-text="content")
 </template>
 <script>
-import Popper from '../../mixins/popper'
-import transferDom from '../../directives/transfer-dom'
-import clickoutside from '../../directives/clickoutside'
-import { oneOf } from '../../utils/array'
-import { generateZIndex } from '../../utils/zIndex-manager'
+import Popper from '@/mixins/popper'
+import transferDom from '@/directives/transfer-dom'
+import clickoutside from '@/directives/clickoutside'
+import { oneOf } from '@/utils/array'
+import { generateZIndex } from '@/utils/zIndex-manager'
 const name = 'xl-poptip'
 export default {
   name,

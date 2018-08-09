@@ -3,7 +3,7 @@
     slot
 </template>
 <script>
-import { oneOf } from '../../utils/array'
+import { oneOf } from '@/utils/array'
 const name = 'xl-checkbox-group'
 
 let i = 0
