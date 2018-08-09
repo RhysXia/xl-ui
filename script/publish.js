@@ -71,6 +71,13 @@ inquirer.prompt([{
     }
   }
 
+  const version = `${answers.version}`
+  pkg.version = version
+  fs.writeFileSync(
+    resolvePath('package.json'),
+    JSON.stringify(pkg, null, '  ')
+  )
+
   console.log(chalk.green('删除生成的组件'))
   rmdirSync(config.src.dist)
 
@@ -80,13 +87,6 @@ inquirer.prompt([{
     console.log(chalk.red('编译组件失败'))
     shell.exit(1)
   }
-
-  const version = `${answers.version}`
-  pkg.version = version
-  fs.writeFileSync(
-    resolvePath('package.json'),
-    JSON.stringify(pkg, null, '  ')
-  )
 
   //提交代码
   const comment = answers.message || `:bookmark:update version to ${version}`
