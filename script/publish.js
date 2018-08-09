@@ -1,5 +1,4 @@
 'use strict'
-const { spawn } = require('child_process')
 const shell = require('shelljs')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
@@ -77,17 +76,17 @@ inquirer.prompt([{
 
   console.log(chalk.green('编译组件'))
 
-  // if (shell.exec(`npm run src:dist`).code) {
-  //   console.log(chalk.red('编译组件失败'))
-  //   shell.exit(1)
-  // }
+  if (shell.exec(`npm run src:dist`).code) {
+    console.log(chalk.red('编译组件失败'))
+    shell.exit(1)
+  }
 
   const version = `${answers.version}`
-  // pkg.version = version
-  // fs.writeFileSync(
-  //   resolvePath('package.json'),
-  //   JSON.stringify(pkg, null, '  ')
-  // )
+  pkg.version = version
+  fs.writeFileSync(
+    resolvePath('package.json'),
+    JSON.stringify(pkg, null, '  ')
+  )
 
   //提交代码
   const comment = answers.message || `:bookmark:update version to ${version}`
@@ -95,14 +94,8 @@ inquirer.prompt([{
   console.log(chalk.green('git提交代码'))
 
   let cmd = `git add . && git commit -m "${comment}" && git push origin master`
-  const childProcess = shell.exec(cmd,{async: true})
-  childProcess.stdout.pipe(process.stdout)
-  process.stdin.pipe(childProcess.stdin)
-  return
-  const ch = shell.exec(cmd, {
-    stdio: [0, 'pipe']
-  })
-  if (ch.code) {
+
+  if (shell.exec(cmd).code) {
     pkg.version = oldVersion
     fs.writeFileSync(
       resolvePath('package.json'),
@@ -141,6 +134,7 @@ inquirer.prompt([{
     console.log(chalk.green(`发布成功,当前版本(${version})`))
   }).catch(err => {
     console.log(chalk.red('发布文档失败'))
+    console.log(chalk.red(err))
   })
 })
 

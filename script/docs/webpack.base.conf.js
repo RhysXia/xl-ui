@@ -50,7 +50,9 @@ const webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': config.src.dir
+      '@': config.src.dir,
+      '@docs': config.docs.dir + '/src',
+      '@style': config.style.dir + '/theme-default/'
     }
   },
   module: {
@@ -137,6 +139,7 @@ const webpackConfig = {
       include: [
         config.src.dir,
         config.docs.dir,
+        config.style.dir,
         resolvePath('node_modules/webpack-dev-server/client')
       ]
     },

@@ -2,7 +2,7 @@ const {
   resolvePath
 } = require('./utils')
 
-module.exports = {
+const config = {
   src: {
     dir: resolvePath('src'),
     dist: resolvePath('dist'),
@@ -14,6 +14,8 @@ module.exports = {
     dist: resolvePath('docs-dist')
   },
   style: {
-      dir: resolvePath('styles')
+    dir: resolvePath('styles')
   }
 }
+
+module.exports = config
