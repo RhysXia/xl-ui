@@ -39,9 +39,9 @@ export default {
         return oneOf(['hover', 'click', 'custom'], val)
       }
     },
-    popupContainer: {
-      type: Function,
-      default: () => document.body
+    transfer: {
+      type: Boolean,
+      default: false
     },
     hideOnClick: {
       type: Boolean,

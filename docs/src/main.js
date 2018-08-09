@@ -17,6 +17,11 @@ const addRoute = menus => {
   menus.forEach(menu => {
     if (menu.children) {
       addRoute(menu.children)
+    } else if (menu.redirect) {
+      routes.push({
+        path: menu.path,
+        redirect: menu.redirect
+      })
     } else {
       routes.push({
         path: menu.path,
