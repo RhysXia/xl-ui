@@ -89,12 +89,15 @@ inquirer.prompt([{
   )
 
   //提交代码
-  const comment = answers.message || `:rocket:update version to ${version}`
+  const comment = answers.message || `:bookmark:update version to ${version}`
 
   console.log(chalk.green('git提交代码'))
 
   let cmd = `git add . && git commit -m "${comment}" && git push origin master`
-  if (shell.exec(cmd).code) {
+  const ch = shell.exec(cmd)
+  process.stdin.pipe(ch.stdin)
+  ch.stdout.pipe(process.stdout)
+  if (ch.code) {
     pkg.version = oldVersion
     fs.writeFileSync(
       resolvePath('package.json'),
