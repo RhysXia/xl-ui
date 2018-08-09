@@ -2,11 +2,8 @@ const webpack = require('webpack')
 const config = require('../config')
 const {
   cssLoaders,
-  styleLoaders,
-  rmdirSync
+  styleLoaders
 } = require('../utils')
-
-rmdirSync(config.src.dist)
 
 const webpackConfig = {
   devtool: 'source-map',
