@@ -24,36 +24,36 @@ const oldVersion = pkg.version
 const versionList = getVersionList(oldVersion)
 
 inquirer.prompt([{
-    name: 'version',
-    message: `选择要升级的版本(当前版本${oldVersion})`,
-    type: 'list',
-    default: 0,
-    choices: versionList
-  },
-  {
-    name: 'message',
-    message: '版本发布说明',
-    type: 'input',
-    default: ''
-  },
-  {
-    name: 'style',
-    message: '是否重新编译样式文件',
-    type: 'confirm',
-    default: true
-  },
-  {
-    name: 'tag',
-    message: '是否发布版本',
-    type: 'confirm',
-    default: false
-  },
-  {
-    name: 'docs',
-    message: '是否重新发布文档',
-    type: 'confirm',
-    default: true
-  }
+  name: 'version',
+  message: `选择要升级的版本(当前版本${oldVersion})`,
+  type: 'list',
+  default: 0,
+  choices: versionList
+},
+{
+  name: 'message',
+  message: '版本发布说明',
+  type: 'input',
+  default: ''
+},
+{
+  name: 'style',
+  message: '是否重新编译样式文件',
+  type: 'confirm',
+  default: true
+},
+{
+  name: 'tag',
+  message: '是否发布版本',
+  type: 'confirm',
+  default: false
+},
+{
+  name: 'docs',
+  message: '是否重新发布文档',
+  type: 'confirm',
+  default: true
+}
 ]).then(function (answers) {
 
   if (answers.style) {
@@ -94,9 +94,9 @@ inquirer.prompt([{
   console.log(chalk.green('git提交代码'))
 
   let cmd = `git add . && git commit -m "${comment}" && git push origin master`
-  const ch = shell.exec(cmd)
-  process.stdin.pipe(ch.stdin)
-  ch.stdout.pipe(process.stdout)
+  const ch = shell.exec(cmd, {
+    stdio: [0, 'pipe']
+  })
   if (ch.code) {
     pkg.version = oldVersion
     fs.writeFileSync(
