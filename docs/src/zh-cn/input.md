@@ -7,7 +7,16 @@
         margin-top:1em;
     }
 </style>
-
+<script>
+    export default{
+        data(){
+            return {
+                minRows:'0',
+                maxRows:'5'
+            }
+        }
+    }
+</script>
 # input 输入框
 
 通过鼠标或键盘输入字符
@@ -104,16 +113,6 @@
 <xl-input v-model="minRows" placeholder="最小高度"></xl-input>
 <xl-input v-model="maxRows" placeholder="最大高度"></xl-input>
 <xl-input type='textarea' :autosize="{minRows:Number(minRows),maxRows:Number(maxRows)}" placeholder='请输入内容'></xl-input>
-<script>
-    export default{
-        data(){
-            return {
-                minRows:'0',
-                maxRows:'5'
-            }
-        }
-    }
-</script>
 ```
 :::
 

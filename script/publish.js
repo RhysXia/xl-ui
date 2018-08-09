@@ -13,7 +13,7 @@ const {
 } = require('./utils')
 
 if (!shell.which('git')) {
-  shell.echo('git不存在，请先安装git');
+  console.log(chalk.red('git不存在，请先安装git'))
   shell.exit(1);
 }
 
@@ -113,7 +113,7 @@ inquirer.prompt([{
     }
   }
 
-  let promise = new Promise()
+  let promise = Promise.resolve()
   if (answers.docs) {
     console.log(chalk.green('删除生成的文档'))
     rmdirSync(config.docs.dist)
@@ -124,14 +124,15 @@ inquirer.prompt([{
     }
 
     console.log(chalk.green('发布文档'))
-    promise = ghpages.publish(config.docs.dist, {}, err => {
-      console.log(chalk.red('发布文档失败'))
-      shell.exit(1)
+    promise.then(() => {
+      return ghpages.publish(config.docs.dist)
     })
   }
 
   promise.then(() => {
     console.log(chalk.green(`发布成功,当前版本(${version})`))
+  }).catch(err => {
+    console.log(chalk.red('发布文档失败'))
   })
 })
 
