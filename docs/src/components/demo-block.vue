@@ -11,8 +11,7 @@
 
 </template>
 <script>
-import version from '@'
-
+import {version} from '@'
 console.log(version)
 
 export default {
