@@ -1,3 +1,4 @@
+import Row from './components/row'
 import Icon from './components/icon'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
@@ -7,7 +8,6 @@ import ButtonGroup from './components/button-group'
 import Dropdown from './components/dropdown'
 import DropdownMenu from './components/dropdown-menu'
 import DropdownItem from './components/dropdown-item'
-import Row from './components/row'
 import Col from './components/col'
 import Poptip from './components/poptip'
 import Tooltip from './components/tooltip'
@@ -49,27 +49,10 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export default {
+const API = {
   version,
-  install
+  install,
+  ...components
 }
 
-export {
-  Row,
-  Col,
-  Icon,
-  Button,
-  ButtonGroup,
-  Input,
-  Radio,
-  RadioGroup,
-  Checkbox,
-  CheckboxGroup,
-  Poptip,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  FormItem,
-  Form,
-  Tooltip
-}
+module.exports.default = module.exports = API

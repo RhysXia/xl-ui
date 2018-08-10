@@ -91,15 +91,15 @@ const webpackConfig = {
                   var html = convert(
                     striptags.strip(content, ['script', 'style'])
                   ).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
-                  // var script = striptags.fetch(content, 'script')
-                  // var style = striptags.fetch(content, 'style')
+                  var script = striptags.fetch(content, 'script')
+                  var style = striptags.fetch(content, 'style')
                   var descriptionHTML = description ? md.render(description) : ''
 
-                  // var jsfiddle = { html: html, script: script, style: style }
-                  // jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
+                  var jsfiddle = { html: html, script: script, style: style }
+                  jsfiddle = md.utils.escapeHtml(JSON.stringify(jsfiddle))
 
-                  return `<demo-block>
-                            ${html}
+                  return `<demo-block :jsfiddle="${jsfiddle}">
+                            <div>${html}</div>
                             <div slot="desc">${descriptionHTML}</div>
                             <div slot="source">`
                 }

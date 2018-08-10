@@ -2,23 +2,27 @@
   .demo-block
     .demo-code
       slot
-    .demo-bottom
-      .demo-desc
-        slot(name='desc')
+    .demo-desc
+      slot(name='desc')
       xl-icon.demo-icon(:style='iconStyle',type='android-arrow-dropup-circle',@click='expand=!expand')
-    transition(:css="false" @before-enter="beforeEnter",@enter="enter",@after-enter="afterEnter",@before-leave="beforeLeave",@leave="leave",@after-leave="afterLeave")
-      .demo-source(v-show='expand')
-        slot(name="source")
+    .demo-source(v-show='expand')
+      slot(name="source")
+      .code-view
+
 </template>
 <script>
-const formatHeight = height => {
-  if (height) {
-    return Number(height.slice(0, height.length - 2))
-  }
-  return 0
-}
+import version from '@'
+
+console.log(version)
+
 export default {
   name: 'demo-block',
+  props: {
+    jsfiddle: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       expand: false,
@@ -34,66 +38,11 @@ export default {
     }
   },
   methods: {
-    beforeEnter(el) {
-      clearInterval(this._timer)
-      el.style.overflowY = 'hidden'
-      el.style.height = el.style.height || '0px'
-    },
-    enter(el, done) {
-      const actualHeight = el.scrollHeight
-      const perHeight = this.perHeight
-      const initHeight = formatHeight(el.style.height)
-      let totalTimes = (actualHeight - initHeight) / perHeight
-      let leaveTimes = totalTimes
-      const duration = this.expandDuration / totalTimes
-      this._timer = setInterval(() => {
-        if (leaveTimes <= 0) {
-          clearInterval(this._timer)
-          done()
-          return
-        }
-
-        el.style.height = `${initHeight +
-          perHeight * (totalTimes - leaveTimes)}px`
-        leaveTimes--
-      }, duration)
-    },
-    afterEnter(el) {
-      el.style.height = ''
-      el.style.overflowY = ''
-    },
-    beforeLeave(el) {
-      clearInterval(this._timer)
-      el.style.overflowY = 'hidden'
-    },
-    leave(el, done) {
-      const actualHeight = el.scrollHeight
-      const perHeight = this.perHeight
-      const initHeight = formatHeight(el.style.height) || actualHeight
-      let totalTimes = initHeight / perHeight
-      let leaveTimes = totalTimes
-      const duration = this.expandDuration / totalTimes
-      this._timer = setInterval(() => {
-        if (leaveTimes <= 0) {
-          clearInterval(this._timer)
-          done()
-          return
-        }
-
-        el.style.height = `${initHeight -
-          perHeight * (totalTimes - leaveTimes)}px`
-        leaveTimes--
-      }, duration)
-    },
-    afterLeave(el) {
-      el.style.height = ''
-      el.style.overflowY = ''
-    }
   }
 }
 </script>
 <style lang="scss">
-@import '@docs/style/variables.scss';
+@import "@docs/style/variables.scss";
 .demo-block {
   border: 1px solid $--border-color;
   font-size: 1em;
