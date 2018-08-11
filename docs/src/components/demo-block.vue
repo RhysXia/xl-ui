@@ -8,7 +8,9 @@
     .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
       slot(name="source")
       transition(name="icon-fade")
-        xl-icon.demo-source__icon(v-show="iconShow",type="code-working",@click="jsfiddleClick")
+        form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
+          input(type="hidden",name="data",:value="codepenData")
+          xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
 
 </template>
 <script>
@@ -33,6 +35,39 @@ export default {
       return this.expand
         ? { transform: 'rotate(0deg)' }
         : { transform: 'rotate(180deg)' }
+    },
+    html() {
+      const resourcesTpl =
+        '<scr' +
+        'ipt src="//unpkg.com/vue/dist/vue.js"></scr' +
+        'ipt>' +
+        '\n<scr' +
+        `ipt src="//unpkg.com/xl-vision@${version}"></scr` +
+        'ipt>'
+      return `${resourcesTpl}\n<div id="app">\n${this.jsfiddle.html.trim()}\n</div>`
+    },
+    style() {
+      return `@import url("//unpkg.com/xl-vision@${version}/styles/theme-default/lib/index.css");\n${(
+        this.jsfiddle.style || ''
+      ).trim()}\n`
+    },
+    script() {
+      let jsTpl = (this.jsfiddle.script || '')
+        .replace(/export default/, 'var Main =')
+        .trim()
+      return jsTpl
+        ? jsTpl + "\nvar Ctor = Vue.extend(Main)\nnew Ctor().$mount('#app')"
+        : "new Vue().$mount('#app')"
+    },
+    codepenData() {
+      const data = {
+        title: 'xl-vision demo',
+        js: this.script,
+        css: this.style,
+        html: this.html,
+        editors: '001'
+      }
+      return JSON.stringify(data)
     }
   },
   methods: {
@@ -41,42 +76,6 @@ export default {
     },
     mouseenter() {
       this.iconShow = true
-    },
-    jsfiddleClick() {
-      const { script, html, style } = this.jsfiddle
-      const resourcesTpl = '<scr' + 'ipt src="//unpkg.com/vue/dist/vue.js"></scr' + 'ipt>' +
-        '\n<scr' + `ipt src="//unpkg.com/xl-vision@${version}/dist/xl-vision.min.js"></scr` + 'ipt>'
-      let jsTpl = (script || '').replace(/export default/, 'var Main =').trim()
-      let htmlTpl = `${resourcesTpl}\n<div id="app">\n${html.trim()}\n</div>`
-      let cssTpl = `@import url("//unpkg.com/xl-vision@${version}/styles/theme-default/lib/index.css");\n${(
-        style || ''
-      ).trim()}\n`
-      jsTpl = jsTpl
-        ? jsTpl + "\nvar Ctor = Vue.extend(Main)\nnew Ctor().$mount('#app')"
-        : "new Vue().$mount('#app')"
-      const data = {
-        js: jsTpl,
-        css: cssTpl,
-        html: htmlTpl,
-        panel_js: 3,
-        panel_css: 1
-      }
-      const form =
-        document.getElementById('fiddle-form') || document.createElement('form')
-      form.innerHTML = ''
-      const node = document.createElement('textarea')
-      form.method = 'post'
-      form.action = 'https://jsfiddle.net/api/post/library/pure/'
-      form.target = '_blank'
-      for (let name in data) {
-        node.name = name
-        node.value = data[name].toString()
-        form.appendChild(node.cloneNode())
-      }
-      form.setAttribute('id', 'fiddle-form')
-      form.style.display = 'none'
-      document.body.appendChild(form)
-      form.submit()
     }
   }
 }
