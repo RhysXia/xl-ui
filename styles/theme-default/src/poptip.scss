@@ -6,6 +6,7 @@
   display: inline-block;
   &__ref {
     display: inline-block;
+    position: relative;
   }
   @at-root &__popper {
     &__arrow {

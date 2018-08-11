@@ -10,7 +10,7 @@
   
 <style>
   .button-bottom{
-    margin-bottom:1em !important;
+    margin-bottom:1em;
   }
 </style>
 # Button 按钮
@@ -60,6 +60,21 @@
     <xl-button round type="error">错误按钮</xl-button>
     <xl-button round type="text">文本按钮</xl-button>
 </div>
+
+<script>
+  export default{
+    methods:{
+      click(){
+          alert('click') 
+      }
+    }
+  }
+</script>
+<style>
+  .button-bottom{
+    margin-bottom:1em;
+  }
+</style>
 ```
 
 :::

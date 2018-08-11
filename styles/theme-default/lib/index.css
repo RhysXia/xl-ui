@@ -5099,7 +5099,8 @@ body {
 .xl-poptip {
   display: inline-block; }
   .xl-poptip__ref {
-    display: inline-block; }
+    display: inline-block;
+    position: relative; }
   .xl-poptip__popper__arrow {
     position: absolute; }
   .xl-poptip__popper[x-placement^=top] {

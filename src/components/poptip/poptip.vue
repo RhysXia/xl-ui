@@ -107,6 +107,9 @@ export default {
         }
         if (width.max) {
           styles.maxWidth = this._formatWidth(width.max)
+        } else {
+          // 如果只有最小宽度，说明不希望换行
+          styles.whiteSpace = 'nowrap'
         }
       } else {
         styles.width = this._formatWidth(width)

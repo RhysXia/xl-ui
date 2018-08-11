@@ -8,9 +8,11 @@
     .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
       slot(name="source")
       transition(name="icon-fade")
-        form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
+        form.code-form(action="https://codepen.io/pen/define",method="post",target="_blank")
           input(type="hidden",name="data",:value="codepenData")
-          xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
+          .form-btn
+            xl-tooltip(transfer,content="在codepen中打开")
+              xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
 
 </template>
 <script>
@@ -47,7 +49,7 @@ export default {
       return `${resourcesTpl}\n<div id="app">\n${this.jsfiddle.html.trim()}\n</div>`
     },
     style() {
-      return `@import url("//unpkg.com/xl-vision@${version}/styles/theme-default/lib/index.css");\n${(
+      return `@import url("//unpkg.com/xl-vision@${version}/styles/theme-default/lib/index.css");\n#app{margin:20px;}\n${(
         this.jsfiddle.style || ''
       ).trim()}\n`
     },
@@ -65,7 +67,7 @@ export default {
         js: this.script,
         css: this.style,
         html: this.html,
-        editors: '001'
+        editors: '100'
       }
       return JSON.stringify(data)
     }
@@ -100,6 +102,10 @@ export default {
     position: relative;
     padding: 1em 3em 1em 1em;
     .demo-desc__icon {
+      position: absolute;
+      display: block;
+      cursor: pointer;
+      color: #888;
       font-size: 2.5em;
       right: 0.3em;
       top: 0.25em;
@@ -125,23 +131,21 @@ export default {
     pre {
       margin: 0;
     }
-    .demo-source__icon {
-      font-size: 1.5em;
+    .code-form {
+      position: absolute;
+      display: block;
       right: 0.3em;
       top: 0.3em;
+      font-size: 1.5em;
+      color: #888;
+    }
+    .demo-source__icon {
       padding: 0.5em;
+      cursor: pointer;
       &:hover {
         color: $--link-color;
       }
     }
-  }
-
-  .demo-desc__icon,
-  .demo-source__icon {
-    position: absolute;
-    display: block;
-    cursor: pointer;
-    color: #888;
   }
 
   .icon-fade-enter-active,
