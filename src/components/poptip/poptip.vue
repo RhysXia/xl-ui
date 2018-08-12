@@ -69,6 +69,13 @@ export default {
       transferClicked: false
     }
   },
+  watch: {
+    visible(val) {
+      if (val) {
+        this.zIndex = generateZIndex()
+      }
+    }
+  },
   computed: {
     classes() {
       const arr = [name]
@@ -125,16 +132,15 @@ export default {
       return width
     },
     _clickoutside(e) {
-      if (this.trigger === 'custom') {
-        this.$emit('on-clickoutside', e)
-        return
-      }
       if (this.transferClicked) {
         this.transferClicked = false
         return
       }
-      this.visible = false
       this.$emit('on-clickoutside', e)
+      if (this.trigger === 'custom') {
+        return
+      }
+      this.visible = false
     },
     _mouseleave() {
       if (this.trigger !== 'hover') {

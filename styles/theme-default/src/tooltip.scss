@@ -2,38 +2,28 @@
 
 .#{$--clsPrefix}-tooltip__popper{
   .#{$--clsPrefix}-poptip__popper__arrow{
-    box-shadow: none;
+    &:after{
+      border: none !important;
+    }
   }
   &[x-placement^=top]{
     .#{$--clsPrefix}-poptip__popper__arrow{
-      border-top-color: transparent;
-      &:after{
-        border-top-color: $--tooltip-bg-color;
-      }
+      border-top-color: $--tooltip-bg-color;
     }
   }
   &[x-placement^=bottom]{
     .#{$--clsPrefix}-poptip__popper__arrow{
-      border-bottom-color: transparent;
-      &:after{
-        border-bottom-color: $--tooltip-bg-color;
-      }
+      border-bottom-color: $--tooltip-bg-color;
     }
   }
   &[x-placement^=left]{
     .#{$--clsPrefix}-poptip__popper__arrow{
-      border-left-color: transparent;
-      &:after{
-        border-left-color: $--tooltip-bg-color;
-      }
+      border-left-color: $--tooltip-bg-color;
     }
   }
   &[x-placement^=right]{
     .#{$--clsPrefix}-poptip__popper__arrow{
-      border-right-color: transparent;
-      &:after{
-        border-right-color: $--tooltip-bg-color;
-      }
+      border-right-color: $--tooltip-bg-color;
     }
   }
   .#{$--clsPrefix}-poptip__popper__body{

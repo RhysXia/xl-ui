@@ -4,11 +4,13 @@
       slot
     .demo-desc
       slot(name='desc')
-      xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@click='expand=!expand')
+      .code-btn
+        xl-tooltip(:content="expand?'隐藏代码':'显示代码'",transfer)
+          xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@click='expand=!expand')
     .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
       slot(name="source")
       transition(name="icon-fade")
-        form.code-form(action="https://codepen.io/pen/define",method="post",target="_blank")
+        form.code-form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
           input(type="hidden",name="data",:value="codepenData")
           .form-btn
             xl-tooltip(transfer,content="在codepen中打开")
@@ -101,14 +103,16 @@ export default {
   .demo-desc {
     position: relative;
     padding: 1em 3em 1em 1em;
-    .demo-desc__icon {
+    .code-btn {
       position: absolute;
+      right: 0.4em;
+      top: 0.4em;
+    }
+    .demo-desc__icon {
       display: block;
       cursor: pointer;
       color: #888;
       font-size: 2.5em;
-      right: 0.3em;
-      top: 0.25em;
       transition: transform $--transition-time ease-in-out;
     }
     p {

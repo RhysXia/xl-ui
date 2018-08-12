@@ -96,17 +96,21 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^3.0.0"
   },
+  "dependencies": {
+    "enquire.js": "^2.1.6",
+    "popper.js": "^1.14.4"
+  },
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
-  "dependencies": {
-    "enquire.js": "^2.1.6",
-    "popper.js": "^1.14.4"
-  }
+    "last 3 Chrome versions",
+    "last 3 Firefox versions",
+    "Safari >= 10",
+    "Explorer >= 11",
+    "Edge >= 12",
+    "iOS >= 10",
+    "Android >= 6"
+  ]
 }

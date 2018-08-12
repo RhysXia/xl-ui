@@ -1,7 +1,5 @@
 @import './commons/variables.scss';
 @import './commons/mixins.scss';
-
-
 .#{$--clsPrefix}-poptip {
   display: inline-block;
   &__ref {
@@ -45,20 +43,17 @@
       box-sizing: border-box;
       border-radius: $--border-radius;
       background-color: $--poptip-bg-color;
-      box-shadow: $--poptip-box-shadow;
-      // white-space: nowrap;
+      box-shadow: $--poptip-box-shadow; // white-space: nowrap;
     }
     &__title {
       padding-bottom: $--poptip-padding;
       margin-bottom: $--poptip-padding;
       border-bottom: $--border-width solid $--poptip-border-color;
     }
-    &__content {
-    }
   }
   &-fade-enter-active,
   &-fade-leave-active {
-    transition: opacity $--transition-time ease-in-out,transform $--transition-time ease-in-out
+    transition: opacity $--transition-time ease-in-out, transform $--transition-time ease-in-out
   }
   &-fade-enter,
   &-fade-leave-to {

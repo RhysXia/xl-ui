@@ -25,7 +25,7 @@ export default {
     width: {
       type: [String, Number, Object],
       default: () => ({
-        min: 100
+        min: 0
       })
     },
     padding: {
