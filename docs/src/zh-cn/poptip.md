@@ -145,7 +145,7 @@
 :::demo 通过slot `content`自定义内容
 ```html
 <xl-poptip>
-    <xl-button>点击激活</xl-button>
+    <xl-button>自定义内容</xl-button>
     <xl-input type="textarea" slot="content"></xl-input>
 </xl-poptip>
 

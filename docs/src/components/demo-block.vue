@@ -5,7 +5,7 @@
     .demo-desc
       slot(name='desc')
       .code-btn
-        xl-tooltip(:content="expand?'隐藏代码':'显示代码'",transfer)
+        xl-tooltip(:content="expand?'隐藏代码':'显示代码'")
           xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@click='expand=!expand')
     .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
       slot(name="source")
@@ -13,7 +13,7 @@
         form.code-form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
           input(type="hidden",name="data",:value="codepenData")
           .form-btn
-            xl-tooltip(transfer,content="在codepen中打开")
+            xl-tooltip(content="在codepen中打开")
               xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
 
 </template>

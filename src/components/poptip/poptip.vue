@@ -3,7 +3,7 @@
     div(ref="reference",:class="refClasses",@click="_click")
       slot
     transition(:name="transitionName")
-      div(v-show="visible",:class="popClasses",ref="popper",:style="{zIndex}",:data-transfer="transfer", v-transfer-dom="",@click="_transferClick",@mouseleave="_mouseleave",@mouseenter="_mouseenter")
+      div(v-show="visible",:class="popClasses",ref="popper",:style="{zIndex}",:data-transfer="transfer", v-transfer-dom="",@click="_transferClick",@mouseleave="_transferMouseleave",@mouseenter="_transferMouseenter")
         div(:class="arrowClasses" x-arrow)
         div(:class="bodyClasses",:style="bodyStyles")
           div(:class="titleClasses",v-if="this.$slots.title||title")
@@ -143,29 +143,45 @@ export default {
       this.visible = false
     },
     _mouseleave() {
-      if (this.trigger !== 'hover') {
-        this.$emit('on-mouseleave')
-        return
-      }
       if (this._enterTimer) {
         clearTimeout(this._enterTimer)
       }
       this._enterTimer = setTimeout(() => {
-        this.visible = false
+        if (this.trigger === 'hover') {
+          this.visible = false
+        }
         this.$emit('on-mouseleave')
       }, 100)
     },
     _mouseenter() {
-      if (this.trigger !== 'hover') {
-        this.$emit('on-mouseenter')
-        return
-      }
       if (this._enterTimer) {
         clearTimeout(this._enterTimer)
       }
       this._enterTimer = setTimeout(() => {
-        this.visible = true
+        if (this.trigger === 'hover') {
+          this.visible = true
+        }
         this.$emit('on-mouseenter')
+      }, 100)
+    },
+    _transferMouseleave() {
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
+      if (!this.transfer) {
+        return
+      }
+      this._enterTimer = setTimeout(() => {
+        if (this.trigger === 'hover') {
+          this.visible = false
+        }
+      }, 100)
+    },
+    _transferMouseenter() {
+      this._enterTimer = setTimeout(() => {
+        if (this.trigger === 'hover') {
+          this.visible = true
+        }
       }, 100)
     },
     _click() {
