@@ -52,15 +52,16 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
 <div class='input-search'>
     <xl-input placeholder='搜索图标' v-model='value'></xl-input>
 </div>
-<div class='icon-item' :key='index' v-for='(icon,index) in filters'>
+<button class='icon-item' :key='index' v-for='(icon,index) in filters' :data-clipboard-text="`<xl-icon type='${icon.name}'></xl-icon>`">
     <xl-icon :size='3' :type='icon.name'></xl-icon>
     <div class="icon-name">
         <xl-tooltip content="复制图标">
             <p>{{icon.name}}</p>
         </xl-tooltip>
     </div>
-</div>
+</button>
 <script>
+    const ClipboardJS = require('clipboard')
     import icons from '../data/icons'
     export default{
         data(){
@@ -72,11 +73,20 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
             filters(){
                 return icons.filter(icon => icon.tag.indexOf(this.value) > -1);
             }
+        },
+        mounted() {
+            this.clipboard = new ClipboardJS('.icon-item')
+        },
+        beforeDestroy() {
+            this.clipboard.destroy()
         }
     }
 </script>
 <style>
 .icon-item{
+    border: none;
+    outline: none;
+    background: transparent;
     display:inline-block;
     text-align:center;
     width:10em;
@@ -85,6 +95,7 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
 }
 .icon-name{
     background-color: #eee;
+    border-radius: 3px;
 }
 .icon-name p {
     margin: 0;
