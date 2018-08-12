@@ -99,6 +99,11 @@
         </xl-tooltip>
     </xl-col>
 </xl-row>
+<style>
+    .demo-tooltip{
+        margin-bottom:2em;
+    }
+</style>
 ```
 :::
 
@@ -139,13 +144,30 @@
 
 :::demo 通过指定`always`
 ```html
-<xl-checkbox v-model="always" label="是否总显示"></xl-checkbox>
-<xl-checkbox v-model="disabled" label="是否总不显示"></xl-checkbox>
-<br/>
-<br/>
+<div class="demo-tooltip">
+    <xl-checkbox v-model="always" label="是否总显示"></xl-checkbox>
+</div>
+<div class="demo-tooltip">
+    <xl-checkbox v-model="disabled" label="是否总不显示"></xl-checkbox>
+</div>
 <xl-tooltip content="显示消息" :always="always" :disabled="disabled">
     <xl-button>{{disabled?"禁止提示框":always?"总是显示提示框":"鼠标悬浮显示"}}</xl-button>
 </xl-tooltip>
+<script>
+    export default{
+        data(){
+            return{
+                disabled:false,
+                always: false
+            }
+        }
+    }
+</script>
+<style>
+    .demo-tooltip{
+        margin-bottom:2em;
+    }
+</style>
 ```
 
 :::

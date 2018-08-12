@@ -96,6 +96,11 @@
         </xl-poptip>
     </xl-col>
 </xl-row>
+<style>
+    .demo-poptip{
+        margin-bottom:2em;
+    }
+</style>
 ```
 :::
 
@@ -125,15 +130,34 @@
 
 :::demo 通过指定`trigger`改变激活方式
 ```html
-<xl-poptip content="点击激活" trigger="click">
-    <xl-button>点击激活</xl-button>
-</xl-poptip>
-<xl-poptip content="悬停激活" trigger="hover">
-    <xl-button>悬停激活</xl-button>
-</xl-poptip>
+<div class="demo-poptip">
+    <xl-poptip content="点击激活" trigger="click">
+        <xl-button>点击激活</xl-button>
+    </xl-poptip>
+</div>
+<div class="demo-poptip">
+    <xl-poptip content="悬停激活" trigger="hover">
+        <xl-button>悬停激活</xl-button>
+    </xl-poptip>
+</div>
 <xl-poptip content="自定义激活" v-model="visiable" trigger="custom">
     <xl-checkbox v-model="visiable">自定义激活</xl-checkbox>
 </xl-poptip>
+<script>
+    export default{
+        data(){
+            return{
+                visiable:false
+            }
+        }
+    }
+</script>
+
+<style>
+    .demo-poptip{
+        margin-bottom:2em;
+    }
+</style>
 ```
 
 :::
@@ -152,7 +176,6 @@
 ```
 
 :::
-
 
 
 ## Poptip 属性

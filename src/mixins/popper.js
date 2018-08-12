@@ -97,7 +97,11 @@ export default {
     },
     updatePopper() {
       if (isServer || !this.visible) return
-      this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper()
+      if (this.popperJS) {
+        this.popperJS.scheduleUpdate()
+      } else {
+        this.createPopper()
+      }
     },
     doDestroy() {
       if (isServer) return

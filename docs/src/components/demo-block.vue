@@ -5,7 +5,7 @@
     .demo-desc
       slot(name='desc')
       .code-btn
-        xl-tooltip(:content="expand?'隐藏代码':'显示代码'")
+        xl-tooltip(placement="top",:content="expand?'隐藏代码':'显示代码'")
           xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@click='expand=!expand')
     .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
       slot(name="source")
