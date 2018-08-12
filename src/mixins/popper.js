@@ -62,8 +62,10 @@ export default {
     visible(val) {
       if (val) {
         this.updatePopper()
+        this.popperJS && this.popperJS.enableEventListeners()
         this.$emit('on-popper-show')
       } else {
+        this.popperJS && this.popperJS.disableEventListeners()
         this.$emit('on-popper-hide')
       }
       this.$emit('on-input', val)
@@ -94,12 +96,11 @@ export default {
       this.popperJS = new Popper(reference, popper, options)
     },
     updatePopper() {
-      if (isServer) return
-      this.popperJS ? this.popperJS.update() : this.createPopper()
+      if (isServer || !this.visible) return
+      this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper()
     },
     doDestroy() {
       if (isServer) return
-      if (this.visible) return
       this.popperJS.destroy()
       this.popperJS = null
     }

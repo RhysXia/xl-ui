@@ -140,10 +140,10 @@ export default {
       display: block;
       right: 0.3em;
       top: 0.3em;
-      font-size: 1.5em;
       color: #888;
     }
     .demo-source__icon {
+      font-size: 1.5em;
       padding: 0.5em;
       cursor: pointer;
       &:hover {

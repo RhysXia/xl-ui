@@ -54,7 +54,11 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
 </div>
 <div class='icon-item' :key='index' v-for='(icon,index) in filters'>
     <xl-icon :size='3' :type='icon.name'></xl-icon>
-    <p>{{icon.name}}</p>
+    <div class="icon-name">
+        <xl-tooltip content="复制图标">
+            <p>{{icon.name}}</p>
+        </xl-tooltip>
+    </div>
 </div>
 <script>
     import icons from '../data/icons'
@@ -75,8 +79,16 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
 .icon-item{
     display:inline-block;
     text-align:center;
-    width:8em;
+    width:10em;
     cursor:pointer;
+    margin: 1em;
+}
+.icon-name{
+    background-color: #eee;
+}
+.icon-name p {
+    margin: 0;
+    padding: 0.5em 1em;
 }
 .input-search{
     margin-bottom:2em;   
