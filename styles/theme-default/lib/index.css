@@ -35,8 +35,7 @@ h1 {
    * 2. Show the overflow in Edge and IE.
    */
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   /* 1 */
   height: 0;
   /* 1 */
@@ -203,8 +202,7 @@ fieldset {
    *    `fieldset` elements in all browsers.
    */
 legend {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* 1 */
   color: inherit;
   /* 2 */
@@ -235,8 +233,7 @@ textarea {
    */
 [type="checkbox"],
 [type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */ }
@@ -320,17 +317,13 @@ body {
      -moz-appearance: none;
           appearance: none;
   text-align: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   outline: none;
   margin: 0;
   border-radius: 0.2em;
   padding: 0.4em 0.6em;
   border: 1px solid;
-  -webkit-transition: background-color 0.25s ease, border-color 0.25s ease, -webkit-box-shadow 0.25s ease;
-  transition: background-color 0.25s ease, border-color 0.25s ease, -webkit-box-shadow 0.25s ease;
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, -webkit-box-shadow 0.25s ease; }
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
   .xl-button::-moz-focus-inner {
     border: 0; }
   .xl-button:disabled {
@@ -354,29 +347,18 @@ body {
   .xl-button--plain:hover {
     background-color: transparent !important; }
 
-@-webkit-keyframes xl-button-loading-loop {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
 @keyframes xl-button-loading-loop {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
+    transform: rotate(0deg); }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
+    transform: rotate(360deg); } }
 
 .xl-button--loading {
   cursor: default;
   pointer-events: none;
   opacity: 0.6; }
   .xl-button--loading .xl-icon {
-    -webkit-animation: xl-button-loading-loop 1s linear infinite;
-            animation: xl-button-loading-loop 1s linear infinite; }
+    animation: xl-button-loading-loop 1s linear infinite; }
 
 .xl-button--default {
   background-color: transparent;
@@ -387,8 +369,7 @@ body {
     border-color: #409eff;
     color: #409eff; }
   .xl-button--default:not(:disabled):focus {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
 
 .xl-button--success {
   background-color: #67c23a;
@@ -399,8 +380,7 @@ body {
     border-color: #85cf60;
     color: #f7f7f7; }
   .xl-button--success:not(:disabled):focus {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(133, 207, 96, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(133, 207, 96, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(133, 207, 96, 0.3); }
   .xl-button--success.xl-button--plain {
     color: #67c23a; }
     .xl-button--success.xl-button--plain:not(:disabled):hover, .xl-button--success.xl-button--plain:not(:disabled):focus {
@@ -415,8 +395,7 @@ body {
     border-color: #73b8ff;
     color: #f7f7f7; }
   .xl-button--primary:not(:disabled):focus {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(115, 184, 255, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(115, 184, 255, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(115, 184, 255, 0.3); }
   .xl-button--primary.xl-button--plain {
     color: #409eff; }
     .xl-button--primary.xl-button--plain:not(:disabled):hover, .xl-button--primary.xl-button--plain:not(:disabled):focus {
@@ -431,8 +410,7 @@ body {
     border-color: #ecb869;
     color: #f7f7f7; }
   .xl-button--warning:not(:disabled):focus {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(236, 184, 105, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(236, 184, 105, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(236, 184, 105, 0.3); }
   .xl-button--warning.xl-button--plain {
     color: #e6a23c; }
     .xl-button--warning.xl-button--plain:not(:disabled):hover, .xl-button--warning.xl-button--plain:not(:disabled):focus {
@@ -447,8 +425,7 @@ body {
     border-color: #f89c9c;
     color: #f7f7f7; }
   .xl-button--error:not(:disabled):focus {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(248, 156, 156, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(248, 156, 156, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(248, 156, 156, 0.3); }
   .xl-button--error.xl-button--plain {
     color: #f56c6c; }
     .xl-button--error.xl-button--plain:not(:disabled):hover, .xl-button--error.xl-button--plain:not(:disabled):focus {
@@ -463,8 +440,7 @@ body {
     border-color: #abadb1;
     color: #f7f7f7; }
   .xl-button--info:not(:disabled):focus {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(171, 173, 177, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(171, 173, 177, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(171, 173, 177, 0.3); }
   .xl-button--info.xl-button--plain {
     color: #909399; }
     .xl-button--info.xl-button--plain:not(:disabled):hover, .xl-button--info.xl-button--plain:not(:disabled):focus {
@@ -533,8 +509,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     cursor: pointer;
     opacity: 0; }
   .xl-checkbox__inner {
@@ -547,7 +522,6 @@ body {
     width: 1em;
     border: 1px solid #dddee1;
     border-radius: 0.2em;
-    -webkit-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
     .xl-checkbox__inner:after {
       position: absolute;
@@ -557,11 +531,8 @@ body {
       width: 0;
       left: 0.2em;
       top: 0.25em;
-      -webkit-transform: rotate(0) scale(0);
-              transform: rotate(0) scale(0);
-      -webkit-transform-origin: center;
-              transform-origin: center;
-      -webkit-transition: all 0.25s ease-in-out;
+      transform: rotate(0) scale(0);
+      transform-origin: center;
       transition: all 0.25s ease-in-out; }
   .xl-checkbox__label {
     padding-left: 0.3em; }
@@ -569,8 +540,7 @@ body {
 .xl-checkbox--indeterminate .xl-checkbox__inner {
   background-color: #409eff; }
   .xl-checkbox--indeterminate .xl-checkbox__inner:after {
-    -webkit-transform: rotate(0) scale(1);
-            transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
     border-bottom: 1px solid #f7f7f7;
     left: 0.25em;
     width: 0.55em;
@@ -584,15 +554,13 @@ body {
     border-left: 1px solid #f7f7f7;
     height: 0.25em;
     width: 0.55em;
-    -webkit-transform: rotate(-45deg) scale(1);
-            transform: rotate(-45deg) scale(1); }
+    transform: rotate(-45deg) scale(1); }
 
 .xl-checkbox--checked .xl-checkbox__label {
   color: #409eff; }
 
 .xl-checkbox--focused .xl-checkbox__inner {
-  -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-          box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+  box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
 
 .xl-checkbox--disabled {
   opacity: 0.6; }
@@ -606,16 +574,13 @@ body {
   border: 1px solid #dddee1;
   padding: 0.4em 0.6em;
   border-radius: 0.2em;
-  -webkit-transition: border-color 0.25s ease-in-out;
   transition: border-color 0.25s ease-in-out; }
   .xl-checkbox--border.xl-checkbox--checked {
     border-color: #409eff; }
   .xl-checkbox--border.xl-checkbox--focused {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
     .xl-checkbox--border.xl-checkbox--focused .xl-checkbox__inner {
-      -webkit-box-shadow: none;
-              box-shadow: none; }
+      box-shadow: none; }
 
 .xl-checkbox:hover:not(.xl-checkbox--disabled) .xl-checkbox__inner {
   border-color: #73b8ff; }
@@ -641,7 +606,6 @@ body {
     padding: 0.4em 0.6em;
     margin-right: 0 !important;
     text-align: center;
-    -webkit-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
     transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out; }
     .xl-checkbox-group--button .xl-checkbox:first-child {
       border-top-left-radius: 0.2em;
@@ -654,7 +618,6 @@ body {
     .xl-checkbox-group--button .xl-checkbox .xl-checkbox__inner {
       display: none; }
     .xl-checkbox-group--button .xl-checkbox .xl-checkbox__label {
-      -webkit-transition: color 0.25s ease-in-out;
       transition: color 0.25s ease-in-out;
       padding-left: 0; }
   .xl-checkbox-group--button .xl-checkbox--checked {
@@ -680,38 +643,32 @@ body {
 .xl-dropdown--slide-down-enter-active,
 .xl-dropdown--slide-up-leave-active,
 .xl-dropdown--slide-down-leave-active {
-  -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out; }
 
 .xl-dropdown--slide-up-enter-active,
 .xl-dropdown--slide-up-leave-active {
-  -webkit-transform-origin: 0 100%;
-          transform-origin: 0 100%; }
+  transform-origin: 0 100%; }
 
 .xl-dropdown--slide-down-enter-active,
 .xl-dropdown--slide-down-leave-active {
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0; }
+  transform-origin: 0 0; }
 
 .xl-dropdown--slide-up-enter,
 .xl-dropdown--slide-down-enter,
 .xl-dropdown--slide-up-leave-to,
 .xl-dropdown--slide-down-leave-to {
   opacity: 0;
-  -webkit-transform: scaleY(0.3);
-          transform: scaleY(0.3); }
+  transform: scaleY(0.3); }
 
 .xl-dropdown--slide-up-enter-to,
 .xl-dropdown--slide-down-enter-to,
 .xl-dropdown--slide-up-leave,
 .xl-dropdown--slide-down-leave {
   opacity: 1;
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1); }
+  transform: scaleY(1); }
 
 .xl-dropdown-menu {
-  -webkit-box-shadow: 0 0.1em 0.5em #dddee1;
-          box-shadow: 0 0.1em 0.5em #dddee1;
+  box-shadow: 0 0.1em 0.5em #dddee1;
   background-color: #fff;
   border-radius: 0.2em;
   border: 1px solid #dddee1; }
@@ -734,59 +691,37 @@ body {
 
 .xl-row {
   position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   *zoom: 1; }
   .xl-row:after {
     content: "";
     display: table;
     clear: both; }
   .xl-row--flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row; }
+    flex-direction: row; }
     .xl-row--flex:after {
       display: none; }
     .xl-row--flex.xl-row--start {
-      -webkit-box-pack: start;
-          -ms-flex-pack: start;
-              justify-content: flex-start; }
+      justify-content: flex-start; }
     .xl-row--flex.xl-row--end {
-      -webkit-box-pack: end;
-          -ms-flex-pack: end;
-              justify-content: flex-end; }
+      justify-content: flex-end; }
     .xl-row--flex.xl-row--center {
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center; }
+      justify-content: center; }
     .xl-row--flex.xl-row--space-around {
-      -ms-flex-pack: distribute;
-          justify-content: space-around; }
+      justify-content: space-around; }
     .xl-row--flex.xl-row--space-between {
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between; }
+      justify-content: space-between; }
     .xl-row--flex.xl-row--top {
-      -webkit-box-align: start;
-          -ms-flex-align: start;
-              align-items: flex-start; }
+      align-items: flex-start; }
     .xl-row--flex.xl-row--middle {
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center; }
+      align-items: center; }
     .xl-row--flex.xl-row--bottom {
-      -webkit-box-align: end;
-          -ms-flex-align: end;
-              align-items: flex-end; }
+      align-items: flex-end; }
 
 .xl-col {
   float: left;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 .xl-col-0 {
   display: none; }
@@ -4997,16 +4932,14 @@ body {
 .xl-input {
   position: relative;
   display: table;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%; }
   .xl-input .xl-input__prefix,
   .xl-input .xl-input__suffix,
   .xl-input .xl-input__inner,
   .xl-input textarea {
     position: relative;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     padding: 0.5em 1em;
     border: 1px solid #dddee1;
     font-size: 1em; }
@@ -5028,10 +4961,7 @@ body {
             appearance: none;
     background-color: #f7f7f7;
     background-image: none;
-    -webkit-transition: border-color 0.25s ease, -webkit-box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, -webkit-box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, -webkit-box-shadow 0.25s ease; }
+    transition: border-color 0.25s ease, box-shadow 0.25s ease; }
     .xl-input .xl-input__inner:not(:disabled):not(:-moz-read-only):hover,
     .xl-input textarea:not(:disabled):not(:-moz-read-only):hover {
       border-color: #c0c4cc; }
@@ -5045,8 +4975,7 @@ body {
     .xl-input .xl-input__inner:not(:disabled):not(:read-only):focus,
     .xl-input textarea:not(:disabled):not(:read-only):focus {
       border-color: #409eff;
-      -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-              box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+      box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
     .xl-input .xl-input__inner:disabled,
     .xl-input textarea:disabled {
       cursor: not-allowed;
@@ -5093,7 +5022,6 @@ body {
     right: 0; }
 
 .xl-input--autosize textarea {
-  -webkit-transition: height 0.25s ease-in-out;
   transition: height 0.25s ease-in-out; }
 
 .xl-poptip {
@@ -5189,29 +5117,22 @@ body {
         margin-left: 0.08em; }
   .xl-poptip__popper__body {
     background-clip: padding-box;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     border-radius: 0.2em;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
   .xl-poptip__popper__title {
     padding-bottom: 0.6em;
     margin-bottom: 0.6em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .xl-poptip-fade-enter-active, .xl-poptip-fade-leave-active {
-    -webkit-transition: opacity 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out; }
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; }
   .xl-poptip-fade-enter, .xl-poptip-fade-leave-to {
     opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5); }
+    transform: scale(0.5); }
   .xl-poptip-fade-enter-to, .xl-poptip-fade-leave {
     opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1); }
+    transform: scale(1); }
 
 .xl-tooltip__popper .xl-poptip__popper__arrow:after {
   border: none !important; }
@@ -5229,8 +5150,7 @@ body {
   border-right-color: rgba(0, 0, 0, 0.65); }
 
 .xl-tooltip__popper .xl-poptip__popper__body {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background-color: rgba(0, 0, 0, 0.65);
   color: #f7f7f7; }
 
@@ -5251,8 +5171,7 @@ body {
     height: 100%;
     opacity: 0;
     z-index: 1;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     cursor: pointer; }
   .xl-radio__inner {
     position: relative;
@@ -5265,7 +5184,6 @@ body {
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
-    -webkit-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
     .xl-radio__inner:after {
       display: block;
@@ -5274,10 +5192,8 @@ body {
       border-radius: 50%;
       width: 100%;
       height: 100%;
-      -webkit-transition: all 0.25s ease-in-out;
       transition: all 0.25s ease-in-out;
-      -webkit-transform: scale(0);
-              transform: scale(0); }
+      transform: scale(0); }
   .xl-radio__label {
     padding-left: 0.3em; }
 
@@ -5285,16 +5201,13 @@ body {
   border: 1px solid #dddee1;
   padding: 0.4em 0.6em;
   border-radius: 0.2em;
-  -webkit-transition: border-color 0.25s ease-in-out;
   transition: border-color 0.25s ease-in-out; }
   .xl-radio--border.xl-radio--checked {
     border-color: #409eff; }
   .xl-radio--border.xl-radio--focused {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
     .xl-radio--border.xl-radio--focused .xl-radio__inner {
-      -webkit-box-shadow: none;
-              box-shadow: none; }
+      box-shadow: none; }
 
 .xl-radio--disabled {
   opacity: 0.6; }
@@ -5305,14 +5218,12 @@ body {
   pointer-events: none; }
 
 .xl-radio--focused .xl-radio__inner {
-  -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-          box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+  box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
 
 .xl-radio--checked .xl-radio__inner {
   border-color: #409eff; }
   .xl-radio--checked .xl-radio__inner:after {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7); }
+    transform: scale(0.7); }
 
 .xl-radio--checked .xl-radio__label {
   color: #409eff; }
@@ -5343,7 +5254,6 @@ body {
     padding: 0.4em 0.6em;
     margin-right: 0 !important;
     text-align: center;
-    -webkit-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
     .xl-radio-group--button .xl-radio:first-child {
       border-top-left-radius: 0.2em;
@@ -5356,7 +5266,6 @@ body {
     .xl-radio-group--button .xl-radio .xl-radio__inner {
       display: none; }
     .xl-radio-group--button .xl-radio .xl-radio__label {
-      -webkit-transition: all 0.25s ease-in-out;
       transition: all 0.25s ease-in-out;
       padding-left: 0; }
   .xl-radio-group--button .xl-radio--checked {
@@ -5366,8 +5275,7 @@ body {
     .xl-radio-group--button .xl-radio--checked .xl-radio__label {
       color: #f7f7f7; }
   .xl-radio-group--button .xl-radio--focused {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
 
 .xl-radio-group--button .xl-radio:not(.xl-radio--disabled):hover {
   z-index: 1;

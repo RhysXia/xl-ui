@@ -1,7 +1,6 @@
 .xl-col {
   float: left;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 .xl-col-0 {
   display: none; }

@@ -1,6 +1,5 @@
 .xl-dropdown-menu {
-  -webkit-box-shadow: 0 0.1em 0.5em #dddee1;
-          box-shadow: 0 0.1em 0.5em #dddee1;
+  box-shadow: 0 0.1em 0.5em #dddee1;
   background-color: #fff;
   border-radius: 0.2em;
   border: 1px solid #dddee1; }

@@ -91,26 +91,19 @@
         margin-left: 0.08em; }
   .xl-poptip__popper__body {
     background-clip: padding-box;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     border-radius: 0.2em;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
   .xl-poptip__popper__title {
     padding-bottom: 0.6em;
     margin-bottom: 0.6em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .xl-poptip-fade-enter-active, .xl-poptip-fade-leave-active {
-    -webkit-transition: opacity 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out; }
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; }
   .xl-poptip-fade-enter, .xl-poptip-fade-leave-to {
     opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5); }
+    transform: scale(0.5); }
   .xl-poptip-fade-enter-to, .xl-poptip-fade-leave {
     opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1); }
+    transform: scale(1); }

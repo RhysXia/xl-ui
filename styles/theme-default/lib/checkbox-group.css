@@ -13,7 +13,6 @@
     padding: 0.4em 0.6em;
     margin-right: 0 !important;
     text-align: center;
-    -webkit-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
     transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out; }
     .xl-checkbox-group--button .xl-checkbox:first-child {
       border-top-left-radius: 0.2em;
@@ -26,7 +25,6 @@
     .xl-checkbox-group--button .xl-checkbox .xl-checkbox__inner {
       display: none; }
     .xl-checkbox-group--button .xl-checkbox .xl-checkbox__label {
-      -webkit-transition: color 0.25s ease-in-out;
       transition: color 0.25s ease-in-out;
       padding-left: 0; }
   .xl-checkbox-group--button .xl-checkbox--checked {

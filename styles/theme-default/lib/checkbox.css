@@ -14,8 +14,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     cursor: pointer;
     opacity: 0; }
   .xl-checkbox__inner {
@@ -28,7 +27,6 @@
     width: 1em;
     border: 1px solid #dddee1;
     border-radius: 0.2em;
-    -webkit-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out; }
     .xl-checkbox__inner:after {
       position: absolute;
@@ -38,11 +36,8 @@
       width: 0;
       left: 0.2em;
       top: 0.25em;
-      -webkit-transform: rotate(0) scale(0);
-              transform: rotate(0) scale(0);
-      -webkit-transform-origin: center;
-              transform-origin: center;
-      -webkit-transition: all 0.25s ease-in-out;
+      transform: rotate(0) scale(0);
+      transform-origin: center;
       transition: all 0.25s ease-in-out; }
   .xl-checkbox__label {
     padding-left: 0.3em; }
@@ -50,8 +45,7 @@
 .xl-checkbox--indeterminate .xl-checkbox__inner {
   background-color: #409eff; }
   .xl-checkbox--indeterminate .xl-checkbox__inner:after {
-    -webkit-transform: rotate(0) scale(1);
-            transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
     border-bottom: 1px solid #f7f7f7;
     left: 0.25em;
     width: 0.55em;
@@ -65,15 +59,13 @@
     border-left: 1px solid #f7f7f7;
     height: 0.25em;
     width: 0.55em;
-    -webkit-transform: rotate(-45deg) scale(1);
-            transform: rotate(-45deg) scale(1); }
+    transform: rotate(-45deg) scale(1); }
 
 .xl-checkbox--checked .xl-checkbox__label {
   color: #409eff; }
 
 .xl-checkbox--focused .xl-checkbox__inner {
-  -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-          box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+  box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
 
 .xl-checkbox--disabled {
   opacity: 0.6; }
@@ -87,16 +79,13 @@
   border: 1px solid #dddee1;
   padding: 0.4em 0.6em;
   border-radius: 0.2em;
-  -webkit-transition: border-color 0.25s ease-in-out;
   transition: border-color 0.25s ease-in-out; }
   .xl-checkbox--border.xl-checkbox--checked {
     border-color: #409eff; }
   .xl-checkbox--border.xl-checkbox--focused {
-    -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-            box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+    box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
     .xl-checkbox--border.xl-checkbox--focused .xl-checkbox__inner {
-      -webkit-box-shadow: none;
-              box-shadow: none; }
+      box-shadow: none; }
 
 .xl-checkbox:hover:not(.xl-checkbox--disabled) .xl-checkbox__inner {
   border-color: #73b8ff; }

@@ -15,10 +15,13 @@
           .form-btn
             xl-tooltip(content="在codepen中打开")
               xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
+            xl-tooltip(content="复制代码")
+              xl-button.demo-source__icon.copy-btn(type="text",icon="ios-copy-outline",:data-clipboard-text="clipboardText")
 
 </template>
 <script>
 import { version } from '@'
+const ClipboardJS = require('clipboard')
 
 export default {
   name: 'demo-block',
@@ -63,6 +66,23 @@ export default {
         ? jsTpl + "\nvar Ctor = Vue.extend(Main)\nnew Ctor().$mount('#app')"
         : "new Vue().$mount('#app')"
     },
+    clipboardText() {
+      let ret = ''
+      const { style, html, script } = this.jsfiddle
+      if (style) {
+        ret += `<style>${style}</style>\n`
+      }
+
+      if (html) {
+        ret += html + '\n'
+      }
+
+      if (script) {
+        ret += '<scr' + 'ipt>' + script + '</scr' + 'ipt>'
+      }
+
+      return ret
+    },
     codepenData() {
       const data = {
         title: 'xl-vision demo',
@@ -81,6 +101,12 @@ export default {
     mouseenter() {
       this.iconShow = true
     }
+  },
+  mounted() {
+    this.clipboard = new ClipboardJS('.copy-btn')
+  },
+  beforeDestroy() {
+    this.clipboard.destroy()
   }
 }
 </script>

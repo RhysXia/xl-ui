@@ -1,16 +1,14 @@
 .xl-input {
   position: relative;
   display: table;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%; }
   .xl-input .xl-input__prefix,
   .xl-input .xl-input__suffix,
   .xl-input .xl-input__inner,
   .xl-input textarea {
     position: relative;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     padding: 0.5em 1em;
     border: 1px solid #dddee1;
     font-size: 1em; }
@@ -32,10 +30,7 @@
             appearance: none;
     background-color: #f7f7f7;
     background-image: none;
-    -webkit-transition: border-color 0.25s ease, -webkit-box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, -webkit-box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, -webkit-box-shadow 0.25s ease; }
+    transition: border-color 0.25s ease, box-shadow 0.25s ease; }
     .xl-input .xl-input__inner:not(:disabled):not(:-moz-read-only):hover,
     .xl-input textarea:not(:disabled):not(:-moz-read-only):hover {
       border-color: #c0c4cc; }
@@ -49,8 +44,7 @@
     .xl-input .xl-input__inner:not(:disabled):not(:read-only):focus,
     .xl-input textarea:not(:disabled):not(:read-only):focus {
       border-color: #409eff;
-      -webkit-box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3);
-              box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
+      box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
     .xl-input .xl-input__inner:disabled,
     .xl-input textarea:disabled {
       cursor: not-allowed;
@@ -97,5 +91,4 @@
     right: 0; }
 
 .xl-input--autosize textarea {
-  -webkit-transition: height 0.25s ease-in-out;
   transition: height 0.25s ease-in-out; }
