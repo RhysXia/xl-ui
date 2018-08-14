@@ -178,6 +178,26 @@
 :::
 
 
+## 多级嵌套
+
+:::demo 多级嵌套，基于此可以实现类似菜单栏的结构
+```html
+<xl-poptip padding="0">
+    <xl-button>按钮1</xl-button>
+    <xl-poptip slot="content" padding="0">
+        <xl-button>按钮2</xl-button>
+        <xl-poptip slot="content" padding="0">
+            <xl-button>按钮3</xl-button>
+            <xl-button slot="content">按钮3</xl-button>
+        </xl-poptip>
+    </xl-poptip>
+</xl-poptip>
+
+```
+
+:::
+
+
 ## Poptip 属性
 
 | 参数            | 说明                                | 类型     | 可选值                 | 默认值            |
