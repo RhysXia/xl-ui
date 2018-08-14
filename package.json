@@ -25,6 +25,7 @@
     "src:dist": "npm run src:dev && npm run src:prod",
     "docs:dev": "webpack-dev-server --inline --progress --config script/docs/webpack.dev.conf.js",
     "docs:prod": "node script/docs/build.js",
+    "docs:deploy": "gh-pages -d docs-dist",
     "style:dev": "gulp dev --gulpfile script/style/gulpfile.js",
     "style:prod": "gulp prod --gulpfile script/style/gulpfile.js",
     "lint": "eslint --fix --ext .js,.vue src",
