@@ -36,7 +36,8 @@ const addRoute = menus => {
 addRoute(menus)
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 Vue.component('demo-block', DemoBlock)
