@@ -6,8 +6,10 @@ import DemoBlock from './components/demo-block'
 import VueRouter from 'vue-router'
 import menus from './menus'
 import xlVision from '@'
+import Meta from 'vue-meta'
 
 Vue.config.productionTip = false
+Vue.use(Meta)
 Vue.use(VueRouter)
 Vue.use(xlVision)
 

@@ -14,6 +14,20 @@ import SideNav from './components/side-nav'
 import Header from './components/header'
 export default {
   name: 'App',
+  metaInfo: {
+    script: [
+      {
+        type: 'text/javascript',
+        innerHTML: `var _hmt = _hmt || [];
+                    (function() {
+                      var hm = document.createElement("script");
+                      hm.src = "https://hm.baidu.com/hm.js?54ab865ac74959c54237d33393eee05d";
+                      var s = document.getElementsByTagName("script")[0]; 
+                      s.parentNode.insertBefore(hm, s);
+                    })();`
+      }
+    ]
+  },
   components: {
     SideNav,
     Header

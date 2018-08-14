@@ -126,6 +126,19 @@
 
 :::
 
+## 不显示箭头
+
+:::demo 通过`arrow`属性配置
+```html
+<xl-poptip :arrow="false" content="箭头不会显示">
+    <xl-button>自定义内容</xl-button>
+</xl-poptip>
+
+```
+
+:::
+
+
 ## 指定激活方式
 
 :::demo 通过指定`trigger`改变激活方式
@@ -214,6 +227,7 @@
 | pop-class       | 自定义弹出框样式         | string   | - | -        |
 | transition-name       | 自定义弹出框动画         | string   | - | xl-poptip-fade        |
 | dangerous-html      | 允许嵌入HTML         | boolean   | - | false        |
+| arrow     | 是否显示箭头         | boolean   | - | true        |
 
 ## Poptip 事件
 
