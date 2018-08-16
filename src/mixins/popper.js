@@ -93,7 +93,6 @@ export default {
         this.$emit('on-popper-created', this)
       }
       options.onUpdate = (obj) => {
-        console.log(obj)
         this.actualPlacement = obj.placement
         this.$emit('on-popper-updated', this)
       }

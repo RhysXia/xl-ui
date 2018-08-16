@@ -1,14 +1,16 @@
 <template lang="pug">
-    Poptip(:placement="placement",:arrow="false")
-      slot
-      div(slot="content")
+    div
+      div(ref="reference")
+        slot
+      div(ref="popper")
         slot(name="dropdown")
 </template>
 <script>
-import Poptip from '../poptip'
+import popper from '@/mixins/popper'
 const name = 'xl-dropdown'
 export default {
   name,
+  mixins: [popper],
   provide() {
     return {
       xlDropdown: this
@@ -19,9 +21,6 @@ export default {
       type: String,
       default: 'bottom'
     }
-  },
-  components: {
-    Poptip
   }
 }
 </script>
