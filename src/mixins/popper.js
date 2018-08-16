@@ -1,7 +1,7 @@
 import Vue from 'vue'
 const isServer = Vue.prototype.$isServer
 
-const Popper = isServer ? function () {} : require('popper.js/dist/umd/popper')
+const Popper = isServer ? function () { } : require('popper.js/dist/umd/popper')
 
 export default {
   model: {
@@ -15,12 +15,8 @@ export default {
       type: String,
       default: 'bottom',
       validator(val) {
-        return /^(top|bottom|left|right)(-start|-end)?$/g.test(val)
+        return /^(auto|top|bottom|left|right)(-start|-end)?$/g.test(val)
       }
-    },
-    boundariesPadding: {
-      type: Number,
-      default: 5
     },
     offset: {
       default: 0
@@ -31,7 +27,7 @@ export default {
     },
     options: {
       type: Object,
-      default () {
+      default() {
         return {
           modifiers: {
             computeStyle: {
@@ -73,24 +69,32 @@ export default {
   },
   methods: {
     createPopper() {
+      const defaultOptions = {
+        placement: this.placement,
+        eventsEnabled: this.visible
+      }
       if (isServer) return
-      const options = this.options
       const popper = this.$refs.popper || this.popper
       const reference = this.$refs.reference || this.reference
       if (!popper || !reference) return
       if (this.popperJS && this.popperJS.hasOwnProperty('destroy')) {
         this.popperJS.destroy()
       }
-      options.placement = this.placement
+
+      const options = Object.assign(this.options, defaultOptions)
 
       if (!options.modifiers.offset) {
         options.modifiers.offset = {}
       }
       options.modifiers.offset.offset = this.offset
-      options.onCreate = () => {
+
+      options.onCreate = (obj) => {
+        this.actualPlacement = obj.placement
         this.$emit('on-popper-created', this)
       }
       options.onUpdate = (obj) => {
+        console.log(obj)
+        this.actualPlacement = obj.placement
         this.$emit('on-popper-updated', this)
       }
       this.popperJS = new Popper(reference, popper, options)
@@ -109,8 +113,10 @@ export default {
       this.popperJS = null
     }
   },
-  updated() {
-    this.$nextTick(() => this.updatePopper())
+  mounted() {
+    this.$nextTick(() => {
+      this.updatePopper()
+    })
   },
   beforeDestroy() {
     if (isServer) return
