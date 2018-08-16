@@ -58,11 +58,9 @@
   &-fade-enter,
   &-fade-leave-to {
     opacity: 0;
-    transform: scale(0.5)
   }
   &-fade-enter-to,
   &-fade-leave {
     opacity: 1;
-    transform: scale(1)
   }
 }

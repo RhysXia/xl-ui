@@ -102,8 +102,6 @@
   .xl-poptip-fade-enter-active, .xl-poptip-fade-leave-active {
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; }
   .xl-poptip-fade-enter, .xl-poptip-fade-leave-to {
-    opacity: 0;
-    transform: scale(0.5); }
+    opacity: 0; }
   .xl-poptip-fade-enter-to, .xl-poptip-fade-leave {
-    opacity: 1;
-    transform: scale(1); }
+    opacity: 1; }
