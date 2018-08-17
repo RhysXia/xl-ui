@@ -100,6 +100,30 @@
 
 :::
 
+## 多选框组可以和grid结合使用
+
+::: demo 结合使用`xl-checkbox-group`组件和`grid`组件实现布局
+
+```html
+<xl-checkbox-group v-model='arr'>
+    <xl-row :gutter="20">
+        <xl-col :span="8">
+            <xl-checkbox label='123'></xl-checkbox>
+        </xl-col>
+        <xl-col :span="8">
+            <xl-checkbox value='456'></xl-checkbox>
+        </xl-col>
+        <xl-col :span="8">
+            <xl-checkbox value='987' label='789'></xl-checkbox>
+        </xl-col>
+    </xl-row>
+</xl-checkbox-group>
+<p>{{arr}}</p>
+
+```
+
+:::
+
 ## 按钮样式的多选框组
 
 ::: demo 使用`type="button"`实现多选框组

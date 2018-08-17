@@ -2,8 +2,8 @@
   span(:class="checkboxClasses")
     input(type='checkbox',:class="inputClasses",:name="groupName",:disabled="disabled",:readonly="readonly",:checked="currentValue",@focus="_focusHandler",@blur="_blurHandler",@change="_changeHandler")
     span(:class="innerClasses")
-    span(:class="labelClasses",v-if="label||($slots&&$slots.default)")
-        slot {{label}}
+    span(:class="labelClasses")
+        slot {{showedLabel}}
 </template>
 <script>
 import { oneOf } from '@/utils/array'
@@ -73,6 +73,12 @@ export default {
     }
   },
   computed: {
+    showedLabel() {
+      if (this.label) {
+        return this.label
+      }
+      return this.value
+    },
     checkboxClasses() {
       const arr = [name]
       if (this.indeterminate) {
