@@ -11,10 +11,6 @@ const {
 
 const dirs = getSubDirs(config.style.dir)
 
-dirs.forEach(dir => {
-  rmdirSync(dir + '/lib')
-})
-
 // 编译scss
 gulp.task('css', function () {
   dirs.forEach(dir => {
@@ -57,6 +53,12 @@ gulp.task('watch', function () {
   gulp.watch(arr, ['css'])
 })
 
-gulp.task('prod', ['css', 'minCss', 'fonts'])
+gulp.task('remove', function () {
+  dirs.forEach(dir => {
+    rmdirSync(dir + '/lib')
+  })
+})
+
+gulp.task('prod', ['remove', 'css', 'minCss', 'fonts'])
 
 gulp.task('dev', ['css', 'fonts', 'watch'])

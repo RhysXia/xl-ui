@@ -28,7 +28,7 @@
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    background-color: #f7f7f7;
+    background-color: #fff;
     background-image: none;
     transition: border-color 0.25s ease, box-shadow 0.25s ease; }
     .xl-input .xl-input__inner:not(:disabled):not(:-moz-read-only):hover,

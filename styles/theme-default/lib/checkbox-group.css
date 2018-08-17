@@ -31,9 +31,9 @@
     border-color: #409eff;
     background-color: #409eff; }
     .xl-checkbox-group--button .xl-checkbox--checked .xl-checkbox__label {
-      color: #f7f7f7; }
+      color: #fff; }
   .xl-checkbox-group--button .xl-checkbox--checked + .xl-checkbox--checked {
-    border-left-color: #f7f7f7; }
+    border-left-color: #fff; }
 
 .xl-checkbox-group--button .xl-checkbox:hover:not(.xl-checkbox--disabled) {
   border: 1px solid #73b8ff; }
@@ -41,4 +41,4 @@
     background-color: #73b8ff; }
 
 .xl-checkbox-group--button .xl-checkbox--checked + .xl-checkbox--checked:hover:not(.xl-checkbox--disabled) {
-  border-left-color: #f7f7f7; }
+  border-left-color: #fff; }

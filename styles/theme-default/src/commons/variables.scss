@@ -9,7 +9,7 @@ $--color-warning: #e6a23c !default;
 $--color-error: #f56c6c !default;
 $--color-text: #495060 !default;
 //background
-$--bg-color: #f7f7f7 !default;
+$--bg-color: #fff !default;
 // $--bg-color--secondary: #f5f7fa;
 //link
 $--link-color: $--color-primary !default;
@@ -27,8 +27,10 @@ $--border-color--focus: $--color-primary !default;
 $--border-radius: 0.2em !default;
 $--border-width: 1px !default;
 //padding
-$--padding-width--l: 0.6em !default;
-$--padding-height--l: 0.4em !default;
+$--padding-width--m: 0.6em !default;
+$--padding-height--m: 0.4em !default;
+$--padding-width--x: 1.2em !default;
+$--padding-height--x: 0.8em !default;
 //font
 $--font-color: $--color-text !default;
 $--font-color--secondary: lighten($--font-color, 15%) !default;
@@ -51,8 +53,8 @@ $--grid-breakpoints: ( 'xs': (min-width: 0), 'sm': (min-width: $--sm), 'md': (mi
 //button
 $--btn-box-shadow-size: $--box-shadow-size !default;
 $--btn-box-shadow-transparency: $--box-shadow-transparency !default;
-$--btn-padding-width: $--padding-width--l;
-$--btn-padding-height: $--padding-height--l;
+$--btn-padding-width: $--padding-width--m;
+$--btn-padding-height: $--padding-height--m;
 $--btn-border-width: $--border-width;
 //default btn
 $--btn-font-color--default:$--font-color !default;
@@ -121,15 +123,20 @@ $--checkbox-bg-color:$--bg-color !default;
 $--checkbox-font-color-active:$--bg-color !default;
 //poptip
 $--poptip-arrow-size: 0.8em !default;
-$--poptip-padding: $--padding-width--l !default;
+$--poptip-padding: $--padding-width--m !default;
 $--poptip-border-color: rgba(#000, .1) !default;
 $--poptip-box-shadow: 0 1px 6px rgba(#000, .2) !default;
-$--poptip-bg-color: #fff !default;
+$--poptip-bg-color: $--bg-color !default;
 //tooltip
 $--tooltip-bg-color: rgba(0, 0, 0, 0.65) !default;
 $--tooltip-font-color: $--bg-color !default;
 //dropdown
 $--dropdown-box-shadow:0 0.1em 0.5em $--border-color !default;
-$--dropdown-bg-color:#fff !default;
+$--dropdown-bg-color:$--bg-color !default;
 $--dropdown-color:$--font-color !default;
 $--dropdown-color--active:$--color-primary !default;
+//card
+$--card-padding-width: $--padding-width--x !default;
+$--card-padding-height: $--padding-height--x !default;
+$--card-border-radius: $--border-radius * 2 !default;
+$--card-box-shadow: 0 1px 6px rgba(#000, .2) !default;

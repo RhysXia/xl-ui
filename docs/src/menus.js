@@ -39,6 +39,12 @@ export default [
         title: '栅格系统',
         icon: 'grid',
         component: () => import('./zh-cn/grid.md')
+      },
+      {
+        path: '/card',
+        title: '卡片',
+        icon: 'card',
+        component: () => import('./zh-cn/card.md')
       }
     ]
   },

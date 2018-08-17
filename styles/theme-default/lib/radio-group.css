@@ -34,7 +34,7 @@
     background-color: #409eff;
     z-index: 2; }
     .xl-radio-group--button .xl-radio--checked .xl-radio__label {
-      color: #f7f7f7; }
+      color: #fff; }
   .xl-radio-group--button .xl-radio--focused {
     box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
 

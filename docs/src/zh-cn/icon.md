@@ -47,6 +47,12 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
 | size  | 图标大小，字符串或者数字，数字时，后缀为 em | string/number | —      | -      |
 | color | 图标颜色                                    | string        | -      | -      |
 
+## icon 事件
+
+| 事件名        | 说明             | 参数           |
+| ------------- | ---------------- | -------------- |
+| on-click | 图标点击事件     | event原生点击事件             |
+
 ## 图标搜索
 
 <div class='input-search'>

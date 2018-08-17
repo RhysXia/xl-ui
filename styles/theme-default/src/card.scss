@@ -1,0 +1,36 @@
+@import './commons/variables.scss';
+.#{$--clsPrefix}-card {
+  border-radius: $--card-border-radius;
+  background-color: $--bg-color;
+  transition: box-shadow $--transition-time ease-in-out;
+  &__header {
+    position: relative;
+    padding: $--card-padding-height $--card-padding-width;
+    border-bottom: $--border-width solid $--border-color;
+    &__title{
+      font-weight: bold;
+    }
+
+    &__extra{
+      position: absolute;
+      padding: $--card-padding-height $--card-padding-width;
+      right: 0;
+      top: 0;
+    }
+
+  }
+  &__body {
+    padding: $--card-padding-height $--card-padding-width;
+  }
+
+  &__footer {
+    padding: $--card-padding-height $--card-padding-width;
+    border-top: $--border-width solid $--border-color;
+  }
+  &--border {
+    border: $--border-width solid $--border-color;
+  }
+  &--shadow {
+    box-shadow: $--card-box-shadow;
+  }
+}

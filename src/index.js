@@ -15,6 +15,7 @@ import Radio from './components/radio'
 import RadioGroup from './components/radio-group'
 import FormItem from './components/form-item'
 import Form from './components/form'
+import Card from './components/card'
 import { version } from '../package.json'
 
 const components = {
@@ -34,7 +35,8 @@ const components = {
   DropdownItem,
   FormItem,
   Form,
-  Tooltip
+  Tooltip,
+  Card
 }
 
 const install = (Vue, opts = {}) => {

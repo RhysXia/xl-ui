@@ -2,7 +2,7 @@
     div
       div(ref="reference")
         slot
-      div(ref="popper")
+      div(ref="popper",v-show="visible",)
         slot(name="dropdown")
 </template>
 <script>
