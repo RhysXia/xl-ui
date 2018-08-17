@@ -1,3 +1,3 @@
-import RadioGroup from '../radio/radio-group'
+import Radio from '../radio'
 
-export default RadioGroup
+export default Radio.Group

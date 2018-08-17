@@ -1,3 +1,3 @@
-import Row from '../grid/row'
+import Grid from '../grid'
 
-export default Row
+export default Grid.Row

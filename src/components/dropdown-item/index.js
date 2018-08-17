@@ -1,3 +1,3 @@
-import DropdownItem from '../dropdown/dropdown-item'
+import Dropdown from '../dropdown'
 
-export default DropdownItem
+export default Dropdown.Item

@@ -1,3 +1,3 @@
-import DropdownMenu from '../dropdown/dropdown-menu'
+import Dropdown from '../dropdown'
 
-export default DropdownMenu
+export default Dropdown.Menu

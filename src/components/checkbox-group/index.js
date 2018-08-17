@@ -1,3 +1,3 @@
-import CheckboxGroup from '../checkbox/checkbox-group'
+import Checkbox from '../checkbox'
 
-export default CheckboxGroup
+export default Checkbox.Group

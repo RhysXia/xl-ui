@@ -1,3 +1,3 @@
-import Col from '../grid/col'
+import Grid from '../grid'
 
-export default Col
+export default Grid.Col

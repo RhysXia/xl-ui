@@ -1,3 +1,3 @@
-import ButtonGroup from '../button/button-group'
+import Button from '../button'
 
-export default ButtonGroup
+export default Button.Group

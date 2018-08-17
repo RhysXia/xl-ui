@@ -1,3 +1,3 @@
-import FormItem from '../form/form-item'
+import Form from '../form'
 
-export default FormItem
+export default Form.Item

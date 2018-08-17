@@ -2,6 +2,6 @@ import Dropdown from './dropdown'
 import DropdownMenu from './dropdown-menu'
 import DropdownItem from './dropdown-item'
 
-export { Dropdown, DropdownMenu, DropdownItem }
-
+Dropdown.Menu = DropdownMenu
+Dropdown.Item = DropdownItem
 export default Dropdown
