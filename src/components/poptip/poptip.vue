@@ -6,7 +6,7 @@
       div(v-show="visible",:class="popClasses",ref="popper",:style="popStyles",:data-transfer="transfer", v-transfer-dom="",@click="_transferClick",@mouseleave="_transferMouseleave",@mouseenter="_transferMouseenter")
         div(:class="arrowClasses",x-arrow,v-if="arrow")
         div(:class="bodyClasses",:style="bodyStyles")
-          div(:class="titleClasses",v-if="this.$slots.title||title")
+          div(:class="titleClasses",v-if="$slots.title||title")
             slot(name="title")
               div(v-if="dangerousHtml",v-html="title")
               div(v-else,v-text="title")

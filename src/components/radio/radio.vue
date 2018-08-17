@@ -2,7 +2,7 @@
   label(:class='radioClasses')
     input(type='radio',:name='groupName',:class='inputClasses',@focus='_focusHandler',@blur='_blurHandler',:checked='currentValue',@change='_changeHandler',:disabled="disabled",:readonly='readonly')
     span(:class='innerClasses')
-    span(:class='labelClasses',v-if='label||($slots&&$slots.default)')
+    span(:class='labelClasses',v-if='label||$slots.default')
       slot {{label}}
 </template>
 <script>

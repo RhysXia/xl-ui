@@ -1,13 +1,13 @@
 <template lang="pug">
   div(:class="classes",@mouseenter="_mouseenter",@mouseleave="_mouseleave")
-    div(:class="headerClasses",:style="headerStyle",v-if="this.$slots.title||title||this.$slots.extra")
-      div(:class="titleClasses",v-if="this.$slots.title||title")
+    div(:class="headerClasses",:style="headerStyle",v-if="$slots.title||title||$slots.extra")
+      div(:class="titleClasses",v-if="$slots.title||title")
         slot(name="title") {{title}}
-      div(:class="extraClasses",v-if="this.$slots.extra")
+      div(:class="extraClasses",v-if="$slots.extra")
         slot(name="extra")
     div(:class="bodyClasses",:style="bodyStyle")
       slot
-    div(:class="footerClasses",:style="footerStyle",v-if="this.$slots.footer")
+    div(:class="footerClasses",:style="footerStyle",v-if="$slots.footer")
       slot(name="footer")
 </template>
 <script>
