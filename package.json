@@ -26,8 +26,8 @@
     "docs:dev": "webpack-dev-server --inline --progress --config script/docs/webpack.dev.conf.js",
     "docs:prod": "node script/docs/build.js",
     "docs:deploy": "gh-pages -d docs-dist",
-    "style:dev": "gulp dev --gulpfile script/style/gulpfile.js",
-    "style:prod": "gulp prod --gulpfile script/style/gulpfile.js",
+    "style:dev": "gulp dev --gulpfile script/style/gulpfile.js --cwd .",
+    "style:prod": "gulp prod --gulpfile script/style/gulpfile.js --cwd .",
     "lint": "eslint --fix --ext .js,.vue src",
     "prepublishOnly": "node script/publish.js"
   },
@@ -66,7 +66,6 @@
     "friendly-errors-webpack-plugin": "^1.6.1",
     "gh-pages": "^1.2.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
     "gulp-clean-css": "^3.9.4",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
@@ -111,7 +110,7 @@
     "last 3 Chrome versions",
     "last 3 Firefox versions",
     "Safari >= 10",
-    "Explorer >= 11",
+    "ie >= 11",
     "Edge >= 12",
     "iOS >= 10",
     "Android >= 6"

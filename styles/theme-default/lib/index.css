@@ -5305,3 +5305,26 @@ body {
     border: 1px solid #dddee1; }
   .xl-card--shadow {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
+
+.xl-layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto; }
+  .xl-layout--sider {
+    flex-direction: row; }
+  .xl-layout .xl-header,
+  .xl-layout .xl-footer {
+    flex: 0 0 auto; }
+  .xl-layout .xl-header {
+    padding: 0 3em;
+    height: 4em;
+    line-height: 4em; }
+  .xl-layout .xl-content {
+    flex: auto; }
+  .xl-layout .xl-footer {
+    padding: 0 3em;
+    height: 4em;
+    line-height: 4em; }
+  .xl-layout .xl-sider {
+    flex: 0 1 auto;
+    min-width: 0; }

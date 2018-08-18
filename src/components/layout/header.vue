@@ -1,9 +1,15 @@
 <template lang="pug">
-    div
+    div(:class="classes")
+      slot
 </template>
 <script>
 const name = 'xl-header'
 export default {
-  name
+  name,
+  computed: {
+    classes() {
+      return name
+    }
+  }
 }
 </script>

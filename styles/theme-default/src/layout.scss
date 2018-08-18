@@ -1,0 +1,30 @@
+@import './commons/variables.scss';
+.#{$--clsPrefix}-layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  &--sider {
+    flex-direction: row;
+  }
+  .#{$--clsPrefix}-header,
+  .#{$--clsPrefix}-footer {
+    flex: 0 0 auto;
+  }
+  .#{$--clsPrefix}-header {
+    padding: $--layout-header-padding;
+    height: $--layout-header-height;
+    line-height: $--layout-header-height;
+  }
+  .#{$--clsPrefix}-content {
+    flex: auto;
+  }
+  .#{$--clsPrefix}-footer {
+    padding: $--layout-footer-padding;
+    height: $--layout-footer-height;
+    line-height: $--layout-footer-height;
+  }
+  .#{$--clsPrefix}-sider {
+      flex: 0 1 auto;
+      min-width: 0;
+  }
+}
