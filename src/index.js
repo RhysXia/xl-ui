@@ -1,44 +1,44 @@
-import Row from './components/row'
+import Grid from './components/grid'
 import Icon from './components/icon'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
-import CheckboxGroup from './components/checkbox-group'
 import Button from './components/button'
-import ButtonGroup from './components/button-group'
 import Dropdown from './components/dropdown'
-import DropdownMenu from './components/dropdown-menu'
-import DropdownItem from './components/dropdown-item'
-import Col from './components/col'
 import Poptip from './components/poptip'
 import Tooltip from './components/tooltip'
 import Radio from './components/radio'
-import RadioGroup from './components/radio-group'
-import FormItem from './components/form-item'
 import Form from './components/form'
 import Card from './components/card'
-import { version } from '../package.json'
+import Layout from './components/layout'
+import {
+  version
+} from '../package.json'
 
 const components = {
-  Row,
-  Col,
+  Row: Grid.Row,
+  Col: Grid.Col,
   Icon,
   Button,
-  ButtonGroup,
+  ButtonGroup: Button.Group,
   Input,
   Radio,
-  RadioGroup,
+  RadioGroup: Radio.Group,
   Checkbox,
-  CheckboxGroup,
+  CheckboxGroup: Checkbox.Group,
   Poptip,
   Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  FormItem,
+  DropdownMenu: Dropdown.Menu,
+  DropdownItem: Dropdown.Item,
   Form,
+  FormItem: Form.Item,
   Tooltip,
-  Card
+  Card,
+  Layout,
+  Header: Layout.Header,
+  Sider: Layout.Sider,
+  Content: Layout.Content,
+  Footer: Layout.Footer
 }
-
 const install = (Vue, opts = {}) => {
   Object.values(components).forEach(component => {
     if (component.name) {

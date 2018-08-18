@@ -41,6 +41,12 @@ export default [
         component: () => import('./zh-cn/grid.md')
       },
       {
+        path: '/layout',
+        title: '布局',
+        icon: 'ios-grid-view-outline',
+        component: () => import('./zh-cn/layout.md')
+      },
+      {
         path: '/card',
         title: '卡片',
         icon: 'card',
