@@ -41,7 +41,7 @@ export default {
       default: false
     },
     name: String,
-    border: Boolean
+    bordered: Boolean
   },
   data() {
     return {
@@ -64,8 +64,8 @@ export default {
       if (this.readonly) {
         arr.push(`${name}--readonly`)
       }
-      if (this.border) {
-        arr.push(`${name}--border`)
+      if (this.bordered) {
+        arr.push(`${name}--bordered`)
       }
       return arr
     },

@@ -75,22 +75,22 @@
 .xl-checkbox--readonly {
   pointer-events: none; }
 
-.xl-checkbox--border {
+.xl-checkbox--bordered {
   border: 1px solid #dddee1;
   padding: 0.4em 0.6em;
   border-radius: 0.2em;
   transition: border-color 0.25s ease-in-out; }
-  .xl-checkbox--border.xl-checkbox--checked {
+  .xl-checkbox--bordered.xl-checkbox--checked {
     border-color: #409eff; }
-  .xl-checkbox--border.xl-checkbox--focused {
+  .xl-checkbox--bordered.xl-checkbox--focused {
     box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
-    .xl-checkbox--border.xl-checkbox--focused .xl-checkbox__inner {
+    .xl-checkbox--bordered.xl-checkbox--focused .xl-checkbox__inner {
       box-shadow: none; }
 
 .xl-checkbox:hover:not(.xl-checkbox--disabled) .xl-checkbox__inner {
   border-color: #73b8ff; }
 
-.xl-checkbox:hover:not(.xl-checkbox--disabled).xl-checkbox--border {
+.xl-checkbox:hover:not(.xl-checkbox--disabled).xl-checkbox--bordered {
   border-color: #73b8ff; }
 
 .xl-checkbox:hover:not(.xl-checkbox--disabled).xl-checkbox--checked .xl-checkbox__inner {

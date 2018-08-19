@@ -1,8 +1,8 @@
 <template lang="pug">
   span(:class="checkboxClasses")
-    input(type='checkbox',:class="inputClasses",:name="groupName",:disabled="disabled",:readonly="readonly",:checked="currentValue",@focus="_focusHandler",@blur="_blurHandler",@change="_changeHandler")
+    input(type='checkbox',:class="inputClasses",:name="groupName",:disabled="disabled",:readonly="readonly",:checked="checked",@focus="_focusHandler",@blur="_blurHandler",@change="_changeHandler")
     span(:class="innerClasses")
-    span(:class="labelClasses")
+    span(:class="labelClasses",v-if="$slots.default||showedLabel")
         slot {{showedLabel}}
 </template>
 <script>
@@ -12,7 +12,7 @@ export default {
   name,
   inject: {
     xlCheckboxGroup: {
-      default: null
+      default: () => null
     }
   },
   model: {
@@ -33,7 +33,7 @@ export default {
       default: false
     },
     label: String,
-    border: Boolean,
+    bordered: Boolean,
     disabled: Boolean,
     readonly: Boolean,
     name: String,
@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      currentValue: false,
+      checked: false,
       focused: false
     }
   },
@@ -50,26 +50,25 @@ export default {
       if (this.isGroup) {
         return
       }
-      this.currentValue = val === this.trueValue
+      this.checked = val === this.trueValue
     },
-    currentValue(val) {
+    checked(val) {
       if (this.isGroup) {
-        // value不存在时或者为false时使用label
-        const checked = this.value || this.label
-        const value = this.xlCheckboxGroup.currentValue.filter(
-          it => it !== checked
+        const value = this.value
+        const currentValue = this.xlCheckboxGroup.currentValue.filter(
+          it => it !== value
         )
         if (val) {
-          value.push(checked)
+          currentValue.push(value)
         }
-        this.xlCheckboxGroup.currentValue = value
+        this.xlCheckboxGroup.currentValue = currentValue
         return
       }
       const value = val ? this.trueValue : this.falseValue
       this.$emit('on-change', value)
     },
     'xlCheckboxGroup.currentValue'(val) {
-      this.currentValue = oneOf(val, this.value || this.label)
+      this.checked = oneOf(val, this.value || this.label)
     }
   },
   computed: {
@@ -77,13 +76,16 @@ export default {
       if (this.label) {
         return this.label
       }
-      return this.value
+      if (this.isGroup) {
+        return this.value
+      }
+      return false
     },
     checkboxClasses() {
       const arr = [name]
       if (this.indeterminate) {
         arr.push(`${name}--indeterminate`)
-      } else if (this.currentValue) {
+      } else if (this.checked) {
         arr.push(`${name}--checked`)
       }
       if (this.focused) {
@@ -95,8 +97,8 @@ export default {
       if (this.readonly) {
         arr.push(`${name}--readonly`)
       }
-      if (this.border) {
-        arr.push(`${name}--border`)
+      if (this.bordered) {
+        arr.push(`${name}--bordered`)
       }
 
       return arr
@@ -122,7 +124,8 @@ export default {
   },
   methods: {
     _changeHandler(e) {
-      this.currentValue = e.target.checked
+      const checked = e.target.checked
+      this.checked = checked
     },
     _focusHandler(e) {
       this.focused = true
@@ -135,12 +138,9 @@ export default {
   },
   created() {
     if (this.isGroup) {
-      this.currentValue = oneOf(
-        this.xlCheckboxGroup.currentValue,
-        this.value || this.label
-      )
+      this.checked = oneOf(this.xlCheckboxGroup.value, this.value)
     } else {
-      this.currentValue = this.value === this.trueValue
+      this.checked = this.value === this.trueValue
     }
   }
 }

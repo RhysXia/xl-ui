@@ -51,6 +51,12 @@ export default [
         title: '卡片',
         icon: 'card',
         component: () => import('./zh-cn/card.md')
+      },
+      {
+        path: '/collapse',
+        title: '折叠面板',
+        icon: 'ios-folder-outline',
+        component: () => import('./zh-cn/collapse.md')
       }
     ]
   },

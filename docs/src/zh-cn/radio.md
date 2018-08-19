@@ -49,12 +49,12 @@
 
 ## 带边框
 
-::: demo 使用`border`设置
+::: demo 使用`bordered`设置
 
 ```html
-<xl-radio v-model='value' label='123' border></xl-radio>
-<xl-radio v-model='value' label='123' border readonly></xl-radio>
-<xl-radio v-model='value' label='123' border disabled></xl-radio>
+<xl-radio v-model='value' label='123' bordered></xl-radio>
+<xl-radio v-model='value' label='123' bordered readonly></xl-radio>
+<xl-radio v-model='value' label='123' bordered disabled></xl-radio>
 <p>{{value}}</p>
 ```
 

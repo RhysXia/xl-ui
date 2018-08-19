@@ -10,6 +10,7 @@ import Radio from './components/radio'
 import Form from './components/form'
 import Card from './components/card'
 import Layout from './components/layout'
+import Collapse from './components/collapse'
 import {
   version
 } from '../package.json'
@@ -37,7 +38,9 @@ const components = {
   Header: Layout.Header,
   Sider: Layout.Sider,
   Content: Layout.Content,
-  Footer: Layout.Footer
+  Footer: Layout.Footer,
+  Collapse,
+  Panel: Collapse.Panel
 }
 const install = (Vue, opts = {}) => {
   Object.values(components).forEach(component => {

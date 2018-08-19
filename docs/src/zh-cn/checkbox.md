@@ -5,15 +5,25 @@
                 value:false,
                 value2:'TRUE',
                 arr:[],
-                arr2:['123','456']
+                arr2:[],
+                arr3:[],
             }
         },
         computed:{
             indeterminate(){
-                return this.arr2.length>0 && this.arr2.length<3
+                return this.arr3.length>0 && this.arr3.length<3
             },
-            checkAll(){
-                return this.arr2.length===3
+            checkAll() {
+                return this.arr3.length === 3
+            } 
+        },
+        methods: {
+            click() {
+                if(!this.checkAll){
+                    this.arr3 = ['123','456','789']
+                }else{
+                    this.arr3 = []
+                }
             }
         }
     }
@@ -30,6 +40,16 @@
 ```html
 <xl-checkbox v-model="value" label='选择框'></xl-checkbox>
 <p>{{value}}</p>
+
+<script>
+    export default{
+        data(){
+            return {
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -41,6 +61,15 @@
 ```html
 <xl-checkbox v-model="value2" true-value='TRUE' false-value='FALSE' label='选择框'></xl-checkbox>
 <p>{{value2}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value2:'TRUE'
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -52,6 +81,15 @@
 ```html
 <xl-checkbox v-model="value" disabled label='选择框'></xl-checkbox>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -63,16 +101,25 @@
 ```html
 <xl-checkbox v-model="value" readonly label='选择框'></xl-checkbox>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
 
 ## 边框
 
-::: demo 使用`border`给多选框设置边框
+::: demo 使用`bordered`给多选框设置边框
 
 ```html
-<xl-checkbox v-model="value" border label='选择框'></xl-checkbox>
+<xl-checkbox v-model="value" bordered label='选择框'></xl-checkbox>
 <p>{{value}}</p>
 ```
 
@@ -80,46 +127,58 @@
 
 ## 多选框组
 
-::: demo 使用`xl-checkbox-group`实现多选框组
+::: demo 使用`xl-checkbox-group`实现多选框组,必须制定每个 checkbox 的`value`值，`label`不存在的时候，默认使用`value`值作为 label
 
 ```html
 <xl-checkbox-group v-model='arr'>
-    <xl-checkbox label='123'></xl-checkbox>
-    <xl-checkbox value='456'></xl-checkbox>
-    <xl-checkbox value='987' label='789'></xl-checkbox>
+    <xl-checkbox value='a' label='A'></xl-checkbox>
+    <xl-checkbox value='b'></xl-checkbox>
+    <xl-checkbox value='c' label='C'></xl-checkbox>
 </xl-checkbox-group>
 <p>{{arr}}</p>
 
-<xl-checkbox-group v-model='arr2'>
-    <xl-checkbox label='123'></xl-checkbox>
-    <xl-checkbox value='456'></xl-checkbox>
-    <xl-checkbox value='987' label='789'></xl-checkbox>
-</xl-checkbox-group>
-<p>{{arr2}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                arr:[]
+            }
+        }
+    }
+</script>
 ```
 
 :::
 
-## 多选框组可以和grid结合使用
+## 多选框组可以和 grid 结合使用
 
 ::: demo 结合使用`xl-checkbox-group`组件和`grid`组件实现布局
 
 ```html
-<xl-checkbox-group v-model='arr'>
+<xl-checkbox-group v-model='arr2'>
     <xl-row :gutter="20">
         <xl-col :span="8">
-            <xl-checkbox label='123'></xl-checkbox>
+            <xl-checkbox value='a'></xl-checkbox>
         </xl-col>
         <xl-col :span="8">
-            <xl-checkbox value='456'></xl-checkbox>
+            <xl-checkbox value='b'></xl-checkbox>
         </xl-col>
         <xl-col :span="8">
-            <xl-checkbox value='987' label='789'></xl-checkbox>
+            <xl-checkbox value='c' label='C'></xl-checkbox>
         </xl-col>
     </xl-row>
 </xl-checkbox-group>
-<p>{{arr}}</p>
+<p>{{arr2}}</p>
 
+<script>
+    export default{
+        data(){
+            return {
+                arr2:['123','456']
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -129,12 +188,11 @@
 ::: demo 使用`type="button"`实现多选框组
 
 ```html
-<xl-checkbox-group type='button' v-model='arr2'>
-    <xl-checkbox label='123'>aaa</xl-checkbox>
+<xl-checkbox-group type='button'>
+    <xl-checkbox value='123'>aaa</xl-checkbox>
     <xl-checkbox value='456'>bbb</xl-checkbox>
     <xl-checkbox value='987' label='789'>ccc</xl-checkbox>
 </xl-checkbox-group>
-<p>{{arr2}}</p>
 ```
 
 :::
@@ -144,13 +202,39 @@
 ::: demo 使用`indeterminate`实现多选框组
 
 ```html
-<xl-checkbox :indeterminate="indeterminate" :value='checkAll'>全选</xl-checkbox>
-<xl-checkbox-group type='button' v-model='arr2'>
-    <xl-checkbox label='123'>aaa</xl-checkbox>
+<xl-checkbox :indeterminate="indeterminate" :value="checkAll" @click.prevent.native="click">全选</xl-checkbox>
+<xl-checkbox-group type='button' v-model='arr3'>
+    <xl-checkbox value='123'>aaa</xl-checkbox>
     <xl-checkbox value='456'>bbb</xl-checkbox>
-    <xl-checkbox value='987' label='789'>ccc</xl-checkbox>
+    <xl-checkbox value='789'>ccc</xl-checkbox>
 </xl-checkbox-group>
-<p>{{arr2}}</p>
+<p>{{arr3}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                arr3:[]
+            }
+        },
+        computed:{
+            indeterminate(){
+                return this.arr3.length>0 && this.arr3.length<3
+            },
+            checkAll() {
+                return this.arr3.length === 3
+            } 
+        },
+        methods: {
+            click() {
+                if(!this.checkAll){
+                    this.arr3 = ['123','456','789']
+                }else{
+                    this.arr3 = []
+                }
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -164,7 +248,7 @@
 | value         | checkbox 单独使用时，支持 v-model 绑定         | string / number / boolean | -      | false  |
 | true-value    | 选中时的 value 值（单独使用时有效）            | string / number / boolean | -      | true   |
 | false-value   | 未选中时的 value 值（单独使用时有效）          | string / number / boolean | -      | false  |
-| border        | 是否显示 checkbox 边框                         | boolean                   | -      | false  |
+| bordered      | 是否显示 checkbox 边框                         | boolean                   | -      | false  |
 | readonly      | 是否只读                                       | boolean                   | -      | false  |
 | disabled      | 是否禁用状态                                   | boolean                   | -      | false  |
 | indeterminate | 半选状态 (一旦为 true，多选框就不能为其他状态) | boolean                   | -      | false  |

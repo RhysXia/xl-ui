@@ -47,7 +47,7 @@
   }
 }
 
-.#{$--clsPrefix}-radio--border {
+.#{$--clsPrefix}-radio--bordered {
   border: 1px solid $--border-color;
   padding: 0.4em 0.6em;
   border-radius: $--border-radius;
@@ -97,7 +97,7 @@
     .#{$--clsPrefix}-radio__inner {
       border-color: $--radio-color--hover;
     }
-    &.#{$--clsPrefix}-radio--border{
+    &.#{$--clsPrefix}-radio--bordered{
       border-color: $--radio-color--hover;
     }
     &.#{$--clsPrefix}-radio--checked {

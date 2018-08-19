@@ -95,7 +95,7 @@
   pointer-events: none;
 }
 
-.#{$--clsPrefix}-checkbox--border {
+.#{$--clsPrefix}-checkbox--bordered {
   border: $--border-width solid $--border-color;
   padding: 0.4em 0.6em;
   border-radius: $--border-radius;
@@ -116,7 +116,7 @@
     .#{$--clsPrefix}-checkbox__inner {
       border-color: $--checkbox-color--hover;
     }
-    &.#{$--clsPrefix}-checkbox--border {
+    &.#{$--clsPrefix}-checkbox--bordered {
       border-color: $--checkbox-color--hover;
     }
     &.#{$--clsPrefix}-checkbox--checked {
