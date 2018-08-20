@@ -7,20 +7,22 @@
       .code-btn
         xl-tooltip(placement="top",:content="expand?'隐藏代码':'显示代码'")
           xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@on-click='expand=!expand')
-    .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
-      slot(name="source")
-      transition(name="icon-fade")
-        form.code-form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
-          input(type="hidden",name="data",:value="codepenData")
-          .form-btn
-            xl-tooltip(content="在codepen中打开")
-              xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
-            xl-tooltip(content="复制代码")
-              xl-button.demo-source__icon.copy-btn(type="text",icon="ios-copy-outline",:data-clipboard-text="clipboardText")
+    CollapseTransition
+      .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
+        slot(name="source")
+        transition(name="icon-fade")
+          form.code-form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
+            input(type="hidden",name="data",:value="codepenData")
+            .form-btn
+              xl-tooltip(content="在codepen中打开")
+                xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
+              xl-tooltip(content="复制代码")
+                xl-button.demo-source__icon.copy-btn(type="text",icon="ios-copy-outline",:data-clipboard-text="clipboardText")
 
 </template>
 <script>
 import { version } from '@'
+import CollapseTransition from '@/components/base/collapse-transition'
 const ClipboardJS = require('clipboard')
 
 export default {
@@ -107,6 +109,9 @@ export default {
   },
   beforeDestroy() {
     this.clipboard.destroy()
+  },
+  components: {
+    CollapseTransition
   }
 }
 </script>
@@ -189,6 +194,10 @@ export default {
   .icon-fade-enter-to,
   .icon-fade-leave {
     opacity: 1;
+  }
+
+  .collapse-transition{
+    transition: all $--transition-time ease-in-out;
   }
 }
 </style>
