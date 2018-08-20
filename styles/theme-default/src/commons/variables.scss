@@ -145,4 +145,9 @@ $--layout-header-padding: 0 3em;
 $--layout-header-height: 4em;
 $--layout-footer-padding: 0 3em;
 $--layout-footer-height: 4em;
-
+//collapse
+$--collapse-header-padding: $--padding-height--x $--padding-height--x !default;
+$--collapse-header-bg-color: #f7f7f7 !default;
+$--collapse-header-icon-margin-right: 1em !default;
+$--collapse-body-padding: $--padding-height--x $--padding-height--x !default;
+$--collapse-border-radius: $--border-radius !default;

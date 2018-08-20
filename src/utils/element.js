@@ -48,3 +48,19 @@ export function getClasses(element) {
 export function containClass(element, className) {
   return oneOf(getClasses(element), className)
 }
+
+export function addClass(element, className) {
+  if (containClass(element, className)) {
+    return
+  }
+  let _className = (element.className || '') + ` ${className}`
+  element.className = _className.replace(/\s+/, ' ')
+}
+
+export function removeClass(element, className) {
+  if (!containClass(element, className)) {
+    return
+  }
+  let _className = (element.className || '').replace(className, ' ')
+  element.className = _className.replace(/\s+/, ' ')
+}

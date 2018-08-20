@@ -1,5 +1,5 @@
 <template lang="pug">
-    div
+    div(:class="classes")
       slot
 </template>
 <script>
@@ -37,12 +37,10 @@ export default {
       this.$emit('on-input', val)
     }
   },
-  methods: {
-    toggle(index) {
-      if (this.accordion) {
-        this.activeIndex = index
-      } else {
-      }
+  computed: {
+    classes() {
+      const arr = [name]
+      return arr
     }
   }
 }
