@@ -8,11 +8,11 @@
       padding: $--collapse-header-padding;
       background-color: $--collapse-header-bg-color;
       cursor: pointer;
-      &__icon{
+      &__icon {
         margin-right: $--collapse-header-icon-margin-right;
         transition: transform $--transition-time ease-in-out;
         transform-origin: 50% 50%;
-        &--actived{
+        &--actived {
           transform: rotate(90deg)
         }
       }
@@ -26,8 +26,18 @@
         border-top: none;
       }
     }
-    .collapse-transition{
+    .collapse-transition {
       transition: all $--transition-time ease-in-out;
+    }
+  }
+}
+
+.#{$--clsPrefix}-collapse--simple {
+  border-left: none;
+  border-right: none;
+  .#{$--clsPrefix}-panel {
+    &__header {
+      background-color: $--bg-color;
     }
   }
 }

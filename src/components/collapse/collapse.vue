@@ -8,7 +8,7 @@ export default {
   name,
   model: {
     prop: 'value',
-    event: 'on-input'
+    event: 'on-change'
   },
   provide() {
     return {
@@ -22,6 +22,14 @@ export default {
     },
     value: {
       type: [Array, Number]
+    },
+    simple: {
+      type: Boolean,
+      default: false
+    },
+    hideArrow: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -34,12 +42,15 @@ export default {
       this.activeIndex = val
     },
     activeIndex(val) {
-      this.$emit('on-input', val)
+      this.$emit('on-change', val)
     }
   },
   computed: {
     classes() {
       const arr = [name]
+      if (this.simple) {
+        arr.push(`${name}--simple`)
+      }
       return arr
     }
   }

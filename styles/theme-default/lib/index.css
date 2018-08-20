@@ -5350,3 +5350,9 @@ body {
     border-top: none; }
   .xl-collapse .xl-panel .collapse-transition {
     transition: all 0.25s ease-in-out; }
+
+.xl-collapse--simple {
+  border-left: none;
+  border-right: none; }
+  .xl-collapse--simple .xl-panel__header {
+    background-color: #fff; }

@@ -1,14 +1,14 @@
 <template lang="pug">
     div(:class="classes")
         div(:class="headerClasses",@click="click")
-            Icon(:class="iconClasses",type="chevron-right",v-if="!hideArrow")
+            Icon(:class="iconClasses",type="chevron-right",v-if="!isHiddenArrow")
             slot(name="title") {{title}}
         CollapseTransition
           div(:class="bodyClasses",v-show="isActived")
             slot
 </template>
 <script>
-import {oneOf} from '@/utils/array'
+import { oneOf } from '@/utils/array'
 import Icon from '../icon'
 import CollapseTransition from '../base/collapse-transition'
 const name = 'xl-panel'
@@ -26,7 +26,7 @@ export default {
     },
     hideArrow: {
       type: Boolean,
-      default: false
+      default: undefined
     }
   },
   computed: {
@@ -58,6 +58,12 @@ export default {
     },
     isAccordion() {
       return this.xlCollapse.accordion
+    },
+    isHiddenArrow() {
+      if (this.hideArrow !== undefined) {
+        return this.hideArrow
+      }
+      return this.xlCollapse.hideArrow
     }
   },
   methods: {
