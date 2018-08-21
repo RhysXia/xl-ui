@@ -13,205 +13,64 @@
     margin-bottom:1em;
   }
 </style>
-# Button 按钮
+# Alert 警告提示
 
-常用的操作按钮
+静态地呈现一些警告信息，可手动关闭
 
 ## 基础用法
 
-基础的按钮用法
-
-::: demo 使用`type`,`plain`,`round`定义按钮样式
+::: demo 使用`type`指定样式，有四种样式可以选择`info`、`success`、`warning`、`error`
 
 ```html
-<div class='button-bottom'>
-    <xl-button @on-click='click'>默认按钮</xl-button>
-    <xl-button type="primary">主要按钮</xl-button>
-    <xl-button type="info">信息按钮</xl-button>
-    <xl-button type="success">成功按钮</xl-button>
-    <xl-button type="warning">警告按钮</xl-button>
-    <xl-button type="error">错误按钮</xl-button>
-    <xl-button type="text">文本按钮</xl-button>
-</div>
-<div class='button-bottom'>
-    <xl-button plain @on-click='click'>默认按钮</xl-button>
-    <xl-button plain type="primary">主要按钮</xl-button>
-    <xl-button plain type="info">信息按钮</xl-button>
-    <xl-button plain type="success">成功按钮</xl-button>
-    <xl-button plain type="warning">警告按钮</xl-button>
-    <xl-button plain type="error">错误按钮</xl-button>
-    <xl-button plain type="text">文本按钮</xl-button>
-</div>
-<div class='button-bottom'>
-    <xl-button dash plain @on-click='click'>默认按钮</xl-button>
-    <xl-button dash plain type="primary">主要按钮</xl-button>
-    <xl-button dash plain type="info">信息按钮</xl-button>
-    <xl-button dash plain type="success">成功按钮</xl-button>
-    <xl-button dash plain type="warning">警告按钮</xl-button>
-    <xl-button dash plain type="error">错误按钮</xl-button>
-    <xl-button dash plain type="text">文本按钮</xl-button>
-</div>
-<div>
-    <xl-button round @on-click='click'>默认按钮</xl-button>
-    <xl-button round type="primary">主要按钮</xl-button>
-    <xl-button round type="info">信息按钮</xl-button>
-    <xl-button round type="success">成功按钮</xl-button>
-    <xl-button round type="warning">警告按钮</xl-button>
-    <xl-button round type="error">错误按钮</xl-button>
-    <xl-button round type="text">文本按钮</xl-button>
-</div>
-
-<script>
-  export default{
-    methods:{
-      click(){
-          alert('click') 
-      }
-    }
-  }
-</script>
-<style>
-  .button-bottom{
-    margin-bottom:1em;
-  }
-</style>
+<xl-alert>info alert</xl-alert>
+<xl-alert type="success">success alert</xl-alert>
+<xl-alert type="warning">warning alert</xl-alert>
+<xl-alert type="error">error alert</xl-alert>
 ```
 
 :::
 
-## 禁用按钮
+## 附带描述信息
 
-按钮处于禁用状态，不可点击
-
-::: demo 使用`disabled`属性将按钮设置成禁用状态
+::: demo 使用`desc`插槽
 
 ```html
-<div class='button-bottom'>
-    <xl-button disabled @on-click='click'>默认按钮</xl-button>
-    <xl-button disabled type="primary">主要按钮</xl-button>
-    <xl-button disabled type="info">信息按钮</xl-button>
-    <xl-button disabled type="success">成功按钮</xl-button>
-    <xl-button disabled type="warning">警告按钮</xl-button>
-    <xl-button disabled type="error">错误按钮</xl-button>
-    <xl-button disabled type="text">文本按钮</xl-button>
-</div>
-<div class='button-bottom'>
-    <xl-button disabled plain @on-click='click'>默认按钮</xl-button>
-    <xl-button disabled plain type="primary">主要按钮</xl-button>
-    <xl-button disabled plain type="info">信息按钮</xl-button>
-    <xl-button disabled plain type="success">成功按钮</xl-button>
-    <xl-button disabled plain type="warning">警告按钮</xl-button>
-    <xl-button disabled plain type="error">错误按钮</xl-button>
-    <xl-button disabled plain type="text">文本按钮</xl-button>
-</div>
-<div class='button-bottom'>
-    <xl-button dash disabled plain @on-click='click'>默认按钮</xl-button>
-    <xl-button dash disabled plain type="primary">主要按钮</xl-button>
-    <xl-button dash disabled plain type="info">信息按钮</xl-button>
-    <xl-button dash disabled plain type="success">成功按钮</xl-button>
-    <xl-button dash disabled plain type="warning">警告按钮</xl-button>
-    <xl-button dash disabled plain type="error">错误按钮</xl-button>
-    <xl-button dash disabled plain type="text">文本按钮</xl-button>
-</div>
-<div>
-    <xl-button disabled round @on-click='click'>默认按钮</xl-button>
-    <xl-button disabled round type="primary">主要按钮</xl-button>
-    <xl-button disabled round type="info">信息按钮</xl-button>
-    <xl-button disabled round type="success">成功按钮</xl-button>
-    <xl-button disabled round type="warning">警告按钮</xl-button>
-    <xl-button disabled round type="error">错误按钮</xl-button>
-    <xl-button disabled round type="text">文本按钮</xl-button>
-</div>
+<xl-alert>
+  info alert
+  <template slot="desc">Content of alert. Content of alert. Content of alert. Content of alert.</template>
+</xl-alert>
+<xl-alert type="success">
+  success alert
+  <template slot="desc">Content of alert. Content of alert. Content of alert. Content of alert.</template>
+</xl-alert>
+<xl-alert type="warning">
+  warning alert
+  <template slot="desc">Content of alert. Content of alert. Content of alert. Content of alert.</template>
+</xl-alert>
+<xl-alert type="error">
+  error alert
+  <template slot="desc">Content of alert. Content of alert. Content of alert. Content of alert.</template>
+</xl-alert>
 ```
 
 :::
 
-## 长按钮
+## 支持点击关闭
 
-100%宽度的按钮
-
-::: demo 使用`long`属性设置成长按钮
+::: demo指定`closable`，点击关闭
 
 ```html
-<xl-button class='button-bottom' type="primary" long>默认按钮</xl-button>
-<xl-button class='button-bottom' type="primary" round long>默认按钮</xl-button>
-<xl-button class='button-bottom' type="primary" plain long>默认按钮</xl-button>
-<xl-button type="primary" dash plain long>默认按钮</xl-button>
+<xl-alert closable>
+  info alert
+</xl-alert>
+<xl-alert closable>
+  success alert
+  <template slot="desc">Content of alert. Content of alert. Content of alert. Content of alert.</template>
+</xl-alert>
 ```
 
 :::
 
-## 图标按钮
-
-按钮中包含图标
-
-::: demo 使用`icon`属性设置图标
-
-```html
-<xl-button type="primary" icon="locked"></xl-button>
-<xl-button type="primary" icon="locked"/>图标按钮</xl-button>
-```
-
-:::
-
-## loading 按钮
-
-表示正在加载的按钮,加载中的按钮是不能点击的
-
-::: demo 使用`long`属性设置
-
-```html
-<xl-button type="primary" @on-click="click" loading>加载中</xl-button>
-```
-
-:::
-
-## 按钮组
-
-以按钮组的方式出现，常用于多项类似操作
-
-::: demo 使用`button-group`嵌套按钮
-
-```html
-<div class='button-bottom'>
-    <xl-button-group>
-        <xl-button>
-            <xl-icon type='chevron-left'></xl-icon>
-            上一页
-        </xl-button>
-        <xl-button>
-            下一页
-            <xl-icon type='chevron-right'></xl-icon>
-        </xl-button>
-    </xl-button-group>
-</div>
-<div class='button-bottom'>
-    <xl-button-group>
-        <xl-button round dash>
-            <xl-icon type='chevron-left'></xl-icon>
-            上一页
-        </xl-button>
-        <xl-button>
-            下一页
-            <xl-icon type='chevron-right'></xl-icon>
-        </xl-button>
-    </xl-button-group>
-</div>
-<div class='button-bottom'>
-    <xl-button-group vertical>
-        <xl-button round dash icon='chevron-up'>上一页</xl-button>
-        <xl-button icon='chevron-down'>下一页</xl-button>
-    </xl-button-group>
-</div>
-<div>
-    <xl-button-group vertical>
-        <xl-button icon='chevron-up'>上一页</xl-button>
-        <xl-button icon='chevron-down'>下一页</xl-button>
-    </xl-button-group>
-</div>
-```
-
-:::
 
 ## button 属性
 

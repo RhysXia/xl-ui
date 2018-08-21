@@ -8,6 +8,8 @@ $--color-success: #67c23a !default;
 $--color-warning: #e6a23c !default;
 $--color-error: #f56c6c !default;
 $--color-text: #495060 !default;
+
+
 //background
 $--bg-color: #fff !default;
 // $--bg-color--secondary: #f5f7fa;
@@ -151,3 +153,13 @@ $--collapse-header-bg-color: #f7f7f7 !default;
 $--collapse-header-icon-margin-right: 1em !default;
 $--collapse-body-padding: $--padding-height--x $--padding-height--x !default;
 $--collapse-border-radius: $--border-radius !default;
+//alert
+$--alert-padding: $--padding-height--m $--padding-width--m !default;
+$--alert-color--info: $--bg-color !default;
+$--alert-bg-color--info: lighten($--color-info, 20%) !default;
+$--alert-color--success: $--color-success !default;
+$--alert-bg-color--success: lighten($--alert-color--success, 20%) !default;
+$--alert-color--warning: $--color-warning !default;
+$--alert-bg-color--warning: lighten($--alert-color--warning, 20%) !default;
+$--alert-color--error: $--color-error !default;
+$--alert-bg-color--error: lighten($--alert-color--error, 20%) !default;

@@ -114,7 +114,14 @@ export default [
   },
   {
     title: '提示',
-    children: []
+    children: [
+      {
+        path: '/alert',
+        title: '警告提示',
+        icon: 'alert-circled',
+        component: () => import('./zh-cn/alert.md')
+      }
+    ]
   },
   {
     title: '导航',
