@@ -11,11 +11,11 @@ export default [
   {
     path: '/start',
     title: '快速上手',
-    icon: '',
+    icon: 'flag',
     component: () => import('./zh-cn/start.md')
   },
   {
-    title: '基础组件',
+    title: '基础',
     children: [
       {
         path: '/button',
@@ -28,6 +28,12 @@ export default [
         title: '图标',
         icon: 'heart',
         component: () => import('./zh-cn/icon.md')
+      },
+      {
+        title: '动画',
+        icon: 'load-a',
+        path: '/animation',
+        component: () => import('./zh-cn/animation.md')
       }
     ]
   },
@@ -45,23 +51,11 @@ export default [
         title: '布局',
         icon: 'ios-grid-view-outline',
         component: () => import('./zh-cn/layout.md')
-      },
-      {
-        path: '/card',
-        title: '卡片',
-        icon: 'card',
-        component: () => import('./zh-cn/card.md')
-      },
-      {
-        path: '/collapse',
-        title: '折叠面板',
-        icon: 'ios-folder-outline',
-        component: () => import('./zh-cn/collapse.md')
       }
     ]
   },
   {
-    title: '表单组件',
+    title: '表单',
     children: [
       {
         path: '/input',
@@ -80,13 +74,13 @@ export default [
         title: '多选框',
         icon: 'android-checkbox',
         component: () => import('./zh-cn/checkbox.md')
-      },
-      {
-        path: '/form',
-        title: '表单',
-        icon: 'android-list',
-        component: () => import('./zh-cn/form.md')
       }
+      // {
+      //   path: '/form',
+      //   title: '表单',
+      //   icon: 'android-list',
+      //   component: () => import('./zh-cn/form.md')
+      // }
     ]
   },
   {
@@ -103,24 +97,34 @@ export default [
         title: '文字提示框',
         icon: 'chatbox-working',
         component: () => import('./zh-cn/tooltip.md')
+      },
+      {
+        path: '/card',
+        title: '卡片',
+        icon: 'card',
+        component: () => import('./zh-cn/card.md')
+      },
+      {
+        path: '/collapse',
+        title: '折叠面板',
+        icon: 'ios-folder-outline',
+        component: () => import('./zh-cn/collapse.md')
       }
     ]
+  },
+  {
+    title: '提示',
+    children: []
   },
   {
     title: '导航',
     children: [
-      {
-        path: '/dropdown',
-        title: '下拉框',
-        icon: 'android-arrow-dropdown-circle',
-        component: () => import('./zh-cn/dropdown.md')
-      }
+      // {
+      //   path: '/dropdown',
+      //   title: '下拉框',
+      //   icon: 'android-arrow-dropdown-circle',
+      //   component: () => import('./zh-cn/dropdown.md')
+      // }
     ]
-  },
-  {
-    title: '动画组件',
-    icon: 'load-a',
-    path: '/animation',
-    component: () => import('./zh-cn/animation.md')
   }
 ]

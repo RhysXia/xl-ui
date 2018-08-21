@@ -1,12 +1,13 @@
 <template lang='pug'>
   #app
     Header
-    xl-row.container(type='flex')
-      xl-col(:span="4")
-        SideNav
-      xl-col.content(:span="20")
-        keep-alive
-          router-view
+    .container
+      xl-row(type='flex',:gutter="20")
+        xl-col(:span="4")
+          SideNav
+        xl-col.content(:span="20")
+          keep-alive
+            router-view
 </template>
 
 <script>

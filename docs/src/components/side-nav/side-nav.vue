@@ -22,7 +22,10 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '@style/src/commons/variables.scss';
+
 .side-nav{
   margin: 0 0.5em;
+  border-right: 1px solid $--border-color;
 }
 </style>
