@@ -64,3 +64,10 @@ export function removeClass(element, className) {
   let _className = (element.className || '').replace(className, ' ')
   element.className = _className.replace(/\s+/, ' ')
 }
+
+export function getPxNumber(px) {
+  if (typeof px === 'number') {
+    return px
+  }
+  return Number(px.substring(0, px.length - 2))
+}
