@@ -116,5 +116,11 @@ export default [
         component: () => import('./zh-cn/dropdown.md')
       }
     ]
+  },
+  {
+    title: '动画组件',
+    icon: 'load-a',
+    path: '/animation',
+    component: () => import('./zh-cn/animation.md')
   }
 ]

@@ -65,7 +65,7 @@ const Transition = {
   leave(el) {
     if (el.scrollHeight !== 0) {
       // for safari: add class after set height, or it will jump to zero height suddenly, weired
-      addClass(el, 'collapse-transition')
+      addClass(el, className)
       el.style.height = 0
       el.style.paddingTop = 0
       el.style.paddingBottom = 0
