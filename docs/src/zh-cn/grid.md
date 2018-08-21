@@ -53,6 +53,19 @@
     <xl-col :span='4'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :span='4'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
 ```
 
 :::
@@ -70,6 +83,19 @@
     <xl-col :span='6'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :span='6'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
 ```
 
 :::
@@ -84,6 +110,19 @@
     <xl-col :span='6'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :span='6'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
 ```
 
 :::
@@ -101,6 +140,19 @@
     <xl-col :span='7'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :span='8'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
 ```
 
 :::
@@ -138,6 +190,20 @@
     <xl-col :span='4'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :span='4' :pull='2'><div class='grid-content bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
+
 ```
 
 :::
@@ -155,6 +221,20 @@
     <xl-col :xl='6' :lg='8' :sm='10'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :xl='6' :lg='6' :sm='8'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
+
 ```
 
 :::
@@ -172,6 +252,20 @@
     <xl-col :lg='{span:4,offset:2}' :sm='{span:4,offset:2}'><div class='grid-content bg-purple'></div></xl-col>
     <xl-col :lg='{span:5,offset:1}' :sm='{span:4,offset:2}'><div class='grid-content  bg-purple--light'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+</style>
+
 ```
 
 :::
@@ -210,6 +304,28 @@
     <xl-col :span='6'><div class='grid-content  bg-purple--light'></div></xl-col>
     <xl-col :span='6'><div class='grid-content bg-purple'></div></xl-col>
 </xl-row>
+<style>
+    .grid-content{
+        border-radius: 0.25em;
+        min-height:2em;
+        margin-bottom:1em;
+    }
+    .bg-purple{
+        background-color:#d3dce6;
+    }
+    .bg-purple--light{
+        background-color:#e5e9f2;
+    }
+    .row-bg{
+        height: 4em;
+        background-color:#f9fafc;
+        margin-bottom:1em;
+    }
+    .row-bg .grid-content{
+        margin-bottom:0 !important;
+    }
+</style>
+
 ```
 
 :::

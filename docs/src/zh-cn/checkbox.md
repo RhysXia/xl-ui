@@ -121,6 +121,15 @@
 ```html
 <xl-checkbox v-model="value" bordered label='选择框'></xl-checkbox>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::

@@ -1,10 +1,6 @@
 <style>
-    .content .xl-input{
+    .demo-input{
         width: 20em;
-    }
-
-    .content .xl-input + .xl-input{
-        margin-top:1em;
     }
 </style>
 <script>
@@ -26,7 +22,12 @@
 ::: demo 基本的使用方式
 
 ```html
-<xl-input placeholder='请输入内容'></xl-input>
+<xl-input class="demo-input" placeholder='请输入内容'></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -36,7 +37,12 @@
 ::: demo 使用`disabled`禁止输入
 
 ```html
-<xl-input placeholder='请输入内容' disabled></xl-input>
+<xl-input class="demo-input" placeholder='请输入内容' disabled></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -46,7 +52,12 @@
 ::: demo 使用`readonly`只读
 
 ```html
-<xl-input placeholder='请输入内容' readonly></xl-input>
+<xl-input class="demo-input" placeholder='请输入内容' readonly></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -56,7 +67,12 @@
 ::: demo 使用`clearable`
 
 ```html
-<xl-input placeholder='请输入内容' clearable></xl-input>
+<xl-input class="demo-input" placeholder='请输入内容' clearable></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -66,8 +82,13 @@
 ::: demo 使用`suffix-icon`添加后置图标，使用`prefix-icon`添加前置图标
 
 ```html
-<xl-input placeholder='请输入内容' suffix-icon='calendar'></xl-input>
-<xl-input placeholder='请输入内容' prefix-icon='search'></xl-input>
+<xl-input class="demo-input" placeholder='请输入内容' suffix-icon='calendar'></xl-input>
+<xl-input class="demo-input" style="margin-top: 2em;" placeholder='请输入内容' prefix-icon='search'></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -77,10 +98,15 @@
 ::: demo 使用 slot 名`suffix`添加后置元素，使用 slot 名`prefix`添加前置元素
 
 ```html
-<xl-input placeholder='请输入内容'>
+<xl-input class="demo-input" placeholder='请输入内容'>
     <span slot='prefix'>Http://</span>
     <span slot='suffix'>.com</span>
 </xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -90,7 +116,12 @@
 ::: demo 使用`type`='textarea'
 
 ```html
-<xl-input type='textarea' placeholder='请输入内容'></xl-input>
+<xl-input class="demo-input" type='textarea' placeholder='请输入内容'></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -100,7 +131,12 @@
 ::: demo 使用`autosize`
 
 ```html
-<xl-input type='textarea' autosize placeholder='请输入内容'></xl-input>
+<xl-input class="demo-input" type='textarea' autosize placeholder='请输入内容'></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 
 :::
@@ -110,9 +146,24 @@
 ::: demo 将`autosize`设置成对象，其中包含 `minRows`和 `maxRows`，可以只设置其中一个
 
 ```html
-<xl-input v-model="minRows" placeholder="最小高度"></xl-input>
-<xl-input v-model="maxRows" placeholder="最大高度"></xl-input>
-<xl-input type='textarea' :autosize="{minRows:Number(minRows),maxRows:Number(maxRows)}" placeholder='请输入内容'></xl-input>
+<xl-input class="demo-input" v-model="minRows" placeholder="最小高度"></xl-input>
+<xl-input class="demo-input" style="margin-top:2em;" v-model="maxRows" placeholder="最大高度"></xl-input>
+<xl-input class="demo-input" style="margin-top:2em;" type='textarea' :autosize="{minRows:Number(minRows),maxRows:Number(maxRows)}" placeholder='请输入内容'></xl-input>
+<script>
+    export default{
+        data(){
+            return {
+                minRows:'0',
+                maxRows:'5'
+            }
+        }
+    }
+</script>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
 ```
 :::
 

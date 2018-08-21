@@ -1,10 +1,11 @@
 <style>
-  .demo-item1{
+  .demo-item{
     height: 4em;
+  }
+  .demo-item1{
     background-color: #409eff;
   }
   .demo-item2{
-    height: 4em;
     background-color: #67c23a;
   }
   .demo-item3{
@@ -15,8 +16,8 @@
     cursor: pointer;
     font-weight: bold;
   }
-  .collapse-transition{
-    transition: all 2s ease-in-out;
+  .collapse1.collapse-transition{
+    transition: all 2s ease-in-out !important;
   }
 </style>
 <script>
@@ -45,21 +46,22 @@
 ```html
 <div class='demo-item2 demo-item3' @click="click1">点击{{show1?'隐藏':'展开'}}</div>
 <xl-collapse-transition>
-  <div v-show="show1">
-    <div class='demo-item1'></div>
-    <div class='demo-item2'></div>
-    <div class='demo-item1'></div>
-    <div class='demo-item2'></div>
+  <div v-show="show1" class="collapse1">
+    <div class='demo-item demo-item1'></div>
+    <div class='demo-item demo-item2'></div>
+    <div class='demo-item demo-item1'></div>
+    <div class='demo-item demo-item2'></div>
   </div>
 </xl-collapse-transition>
 
 <style>
-  .demo-item1{
+  .demo-item{
     height: 4em;
+  }
+  .demo-item1{
     background-color: #409eff;
   }
   .demo-item2{
-    height: 4em;
     background-color: #67c23a;
   }
   .demo-item3{
@@ -70,7 +72,7 @@
     cursor: pointer;
     font-weight: bold;
   }
-  .collapse-transition{
+  .collapse1.collapse-transition{
     transition: all 2s ease-in-out;
   }
 </style>

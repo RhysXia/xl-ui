@@ -21,6 +21,15 @@
 ```html
 <xl-radio v-model='value' label='123'></xl-radio>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -32,6 +41,15 @@
 ```html
 <xl-radio v-model='value' label='123' disabled></xl-radio>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -43,6 +61,15 @@
 ```html
 <xl-radio v-model='value' label='123' readonly></xl-radio>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -56,6 +83,15 @@
 <xl-radio v-model='value' label='123' bordered readonly></xl-radio>
 <xl-radio v-model='value' label='123' bordered disabled></xl-radio>
 <p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                value:false
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -67,6 +103,15 @@
 ```html
 <xl-radio label='123' true-value='TRUE' false-value='FALSE' v-model='customValue'></xl-radio>
 <p>{{customValue}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                customValue:''
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -95,6 +140,15 @@
     <xl-radio label='ddd' readonly></xl-radio>
 </xl-radio-group>
 <p>{{groupValue}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                groupValue:'bbb'
+            }
+        }
+    }
+</script>
 ```
 
 :::
@@ -118,6 +172,15 @@
     <xl-radio label='ddd'></xl-radio>
 </xl-radio-group>
 <p>{{groupValue}}</p>
+<script>
+    export default{
+        data(){
+            return{
+                groupValue:'bbb'
+            }
+        }
+    }
+</script>
 ```
 
 :::
