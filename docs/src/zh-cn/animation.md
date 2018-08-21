@@ -13,6 +13,7 @@
     text-align: center;
     line-height: 4em;
     cursor: pointer;
+    font-weight: bold;
   }
   .collapse-transition{
     transition: all 2s ease-in-out;
@@ -42,7 +43,7 @@
 :::demo 折叠组件,可以指定class `collapse-transition`来自定义动画效果，通常内容是`transition: all 2s ease-in-out;`
 
 ```html
-<div class='demo-item2 demo-item3' @click="click1">{{show1?'隐藏':'展开'}}</div>
+<div class='demo-item2 demo-item3' @click="click1">点击{{show1?'隐藏':'展开'}}</div>
 <xl-collapse-transition>
   <div v-show="show1">
     <div class='demo-item1'></div>
@@ -67,6 +68,7 @@
     text-align: center;
     line-height: 4em;
     cursor: pointer;
+    font-weight: bold;
   }
   .collapse-transition{
     transition: all 2s ease-in-out;
