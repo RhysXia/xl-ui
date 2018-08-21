@@ -7,7 +7,7 @@
       .code-btn
         xl-tooltip(placement="top",:content="expand?'隐藏代码':'显示代码'")
           xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@on-click='expand=!expand')
-    CollapseTransition
+    xl-collapse-transition
       .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
         slot(name="source")
         transition(name="icon-fade")
@@ -22,7 +22,6 @@
 </template>
 <script>
 import { version } from '@'
-import CollapseTransition from '@/components/base/collapse-transition'
 const ClipboardJS = require('clipboard')
 
 export default {
@@ -109,9 +108,6 @@ export default {
   },
   beforeDestroy() {
     this.clipboard.destroy()
-  },
-  components: {
-    CollapseTransition
   }
 }
 </script>

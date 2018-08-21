@@ -10,7 +10,7 @@
 <script>
 import { oneOf } from '@/utils/array'
 import Icon from '../icon'
-import CollapseTransition from '../base/collapse-transition'
+import CollapseTransition from '../animation/collapse-transition'
 const name = 'xl-panel'
 export default {
   name,

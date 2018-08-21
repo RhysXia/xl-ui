@@ -117,8 +117,7 @@
     <xl-panel title="史蒂夫·乔布斯" :index="1">
         <p>史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。</p>
     </xl-panel>
-    <xl-panel :hide-arrow="false
-    " title=" 斯蒂夫·盖瑞·沃兹尼亚克" :index="2">
+    <xl-panel :hide-arrow="false" title=" 斯蒂夫·盖瑞·沃兹尼亚克" :index="2">
         <p>斯蒂夫·盖瑞·沃兹尼亚克（Stephen Gary Wozniak），美国电脑工程师，曾与史蒂夫·乔布斯合伙创立苹果电脑（今之苹果公司）。斯蒂夫·盖瑞·沃兹尼亚克曾就读于美国科罗拉多大学，后转学入美国著名高等学府加州大学伯克利分校（UC Berkeley）并获得电机工程及计算机（EECS）本科学位（1987年）。</p>
     </xl-panel>
     <xl-panel title=" 乔纳森·伊夫" :index="3">
@@ -131,7 +130,7 @@
 
 ## 支持数据绑定
 
-::: demo 使用v-model绑定数据
+::: demo 使用`v-model`绑定数据
 
 ```html
 <p>展开的panel的index为:{{value1}}</p>

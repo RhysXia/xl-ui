@@ -88,7 +88,7 @@ const Transition = {
 }
 
 export default {
-  name: 'CollapseTransition',
+  name: 'xl-collapse-transition',
   functional: true,
   render(h, { children }) {
     const data = {

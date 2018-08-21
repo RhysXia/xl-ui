@@ -11,6 +11,8 @@ import Form from './components/form'
 import Card from './components/card'
 import Layout from './components/layout'
 import Collapse from './components/collapse'
+import Alert from './components/alert'
+import Animation from './components/animation'
 import {
   version
 } from '../package.json'
@@ -40,7 +42,9 @@ const components = {
   Content: Layout.Content,
   Footer: Layout.Footer,
   Collapse,
-  Panel: Collapse.Panel
+  Panel: Collapse.Panel,
+  Alert,
+  CollapseTransition: Animation.CollapseTransition
 }
 const install = (Vue, opts = {}) => {
   Object.values(components).forEach(component => {
