@@ -1,6 +1,6 @@
 //前缀
 $--clsPrefix: 'xl' !default;
-$--font-path: './fonts';
+$--font-path: './fonts' !default;
 //base color
 $--color-primary: #409eff !default;
 $--color-info: #909399 !default;
@@ -8,8 +8,6 @@ $--color-success: #67c23a !default;
 $--color-warning: #e6a23c !default;
 $--color-error: #f56c6c !default;
 $--color-text: #495060 !default;
-
-
 //background
 $--bg-color: #fff !default;
 // $--bg-color--secondary: #f5f7fa;
