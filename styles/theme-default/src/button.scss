@@ -1,6 +1,5 @@
 @import './commons/var';
 .#{$--clsPrefix}-button {
-  // font-size: $--btn-font-size;
   display: inline-block;
   line-height: 1;
   white-space: nowrap;
@@ -24,81 +23,92 @@
   .#{$--clsPrefix}-icon+span {
     padding-left: $--btn-padding-horizontal / 1.5;
   }
-}
-
-.#{$--clsPrefix}-button--dash {
-  border-style: dashed;
-}
-
-.#{$--clsPrefix}-button--long {
-  display: block;
-  width: 100%;
-}
-
-.#{$--clsPrefix}-button--round {
-  // border-radius: 1em * 0.5 + $--btn-padding-horizontal; //字体高度的一半+padding
-}
-
-.#{$--clsPrefix}-button--plain {
-  background-color: transparent !important;
-  &:hover {
-    background-color: transparent !important;
+  &.#{$--clsPrefix}-button--dash {
+    border-style: dashed;
   }
-}
-
-.#{$--clsPrefix}-button--loading {
-  cursor: default;
-  pointer-events: none;
-  opacity: $--btn-opacity--disabled;
-  .#{$--clsPrefix}-icon {
-    animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
+  &.#{$--clsPrefix}-button--long {
+    display: block;
+    width: 100%;
   }
-  @keyframes #{$--clsPrefix}-button-loading-loop {
-    from {
-      transform: rotate(0deg);
+  &.#{$--clsPrefix}-button--round {
+    border-radius: $--btn-border-radius--round; //字体高度的一半+padding
+  }
+  &.#{$--clsPrefix}-button--loading {
+    cursor: default;
+    pointer-events: none;
+    opacity: $--btn-opacity--disabled;
+    .#{$--clsPrefix}-icon {
+      animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
     }
-    to {
-      transform: rotate(360deg);
+    @keyframes #{$--clsPrefix}-button-loading-loop {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
   }
 }
 
-.#{$--clsPrefix}-button--default {
-  // // background-color: $--btn-bg-color--default;
-  // border-color: $--btn-border-color--default;
-  // color: $--btn-font-color--default;
-  // &:not(:disabled):hover,
-  // &:not(:disabled):focus {
-  //   background-color: $--btn-bg-color--default--hover;
-  //   border-color: $--btn-border-color--default--hover;
-  //   color: $--btn-font-color--default--hover;
-  // }
-  // &:not(:disabled):focus {
-  //   box-shadow: $--btn-box-shadow-size rgba($--btn-border-color--default--hover, $--btn-box-shadow-transparency);
-  // }
-}
-
-// .#{$--clsPrefix}-button--success {
-//   background-color: $--btn-bg-color--success;
-//   border-color: $--btn-border-color--success;
-//   color: $--btn-font-color--success;
-//   &:not(:disabled):hover,
-//   &:not(:disabled):focus {
-//     background-color: $--btn-bg-color--success--hover;
-//     border-color: $--btn-border-color--success--hover;
-//     color: $--btn-font-color--success--hover;
-//   }
-//   &:not(:disabled):focus {
-//     box-shadow: $--box-shadow-size rgba($--btn-border-color--success--hover, $--box-shadow-transparency);
-//   }
-//   &.#{$--clsPrefix}-button--plain {
-//     color: $--btn-bg-color--success;
-//     &:not(:disabled):hover,
-//     &:not(:disabled):focus {
-//       color: $--btn-bg-color--success--hover;
-//     }
+// .#{$--clsPrefix}-button--plain {
+//   background-color: transparent !important;
+//   &:hover {
+//     background-color: transparent !important;
 //   }
 // }
+.#{$--clsPrefix}-button--default {
+  background-color: $--btn-default-bg-color;
+  border-color: $--btn-default-border-color;
+  color: $--btn-default-color;
+  &:not(:disabled):hover {
+    background-color: $--btn-default-bg-color--hover;
+    border-color: $--btn-default-border-color--hover;
+    color: $--btn-default-color--hover;
+  }
+  &:not(:disabled):focus {
+    background-color: $--btn-default-bg-color--focus;
+    border-color: $--btn-default-border-color--focus;
+    color: $--btn-default-color--focus;
+    box-shadow: $--btn-default-box-shadow--focus;
+  }
+  &.#{$--clsPrefix}-button--plain {
+    background-color: $--btn-default-bg-color;
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      background-color: $--btn-default-bg-color;
+    }
+  }
+}
+
+.#{$--clsPrefix}-button--success {
+  background-color: $--btn-success-bg-color;
+  border-color: $--btn-success-border-color;
+  color: $--btn-success-color;
+  &:not(:disabled):hover {
+    background-color: $--btn-success-bg-color--hover;
+    border-color: $--btn-success-border-color--hover;
+    color: $--btn-success-color--hover;
+  }
+  &:not(:disabled):focus {
+    background-color: $--btn-success-bg-color--focus;
+    border-color: $--btn-success-border-color--focus;
+    color: $--btn-success-color--focus;
+    box-shadow: $--btn-success-box-shadow--focus;
+  }
+  &.#{$--clsPrefix}-button--plain {
+    background-color: $--btn-default-bg-color;
+    color: $--btn-success-bg-color;
+    &:not(:disabled):hover{
+      color: $--btn-success-bg-color--hover;
+      background-color: $--btn-default-bg-color;
+    }
+    &:not(:disabled):focus {
+      color: $--btn-success-bg-color--focus;
+      background-color: $--btn-default-bg-color;
+    }
+  }
+}
 
 // .#{$--clsPrefix}-button--primary {
 //   background-color: $--btn-bg-color--primary;
@@ -121,7 +131,6 @@
 //     }
 //   }
 // }
-
 // .#{$--clsPrefix}-button--warning {
 //   background-color: $--btn-bg-color--warning;
 //   border-color: $--btn-border-color--warning;
@@ -143,7 +152,6 @@
 //     }
 //   }
 // }
-
 // .#{$--clsPrefix}-button--error {
 //   background-color: $--btn-bg-color--error;
 //   border-color: $--btn-border-color--error;
@@ -165,7 +173,6 @@
 //     }
 //   }
 // }
-
 // .#{$--clsPrefix}-button--info {
 //   background-color: $--btn-bg-color--info;
 //   border-color: $--btn-border-color--info;
@@ -187,7 +194,6 @@
 //     }
 //   }
 // }
-
 // .#{$--clsPrefix}-button--text {
 //   background-color: $--btn-bg-color--text;
 //   border-color: $--btn-border-color--text;

@@ -1,26 +1,121 @@
 //前缀
-$--clsPrefix:                 'xl'      !default;
+$--clsPrefix: 'xl' !default;
 //font
-$--font-family:               "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif !default;
-$--font-path:                 './fonts' !default;
-
+$--font-family: "Helvetica Neue",
+Helvetica,
+"PingFang SC",
+"Hiragino Sans GB",
+"Microsoft YaHei",
+"微软雅黑",
+Arial,
+sans-serif !default;
+$--font-path: './fonts' !default;
+$--font-size--base: 14px !default;
 //color
-$--color-primary:           #409eff   !default;
-$--color-info:              #909399   !default;
-$--color-success:           #67c23a   !default;
-$--color-warning:           #e6a23c   !default;
-$--color-error:             #f56c6c   !default;
-$--color-text:              #495060   !default;
-$--color-bg:                #ffffff   !default;
-$--color-border:            #dddee1   !default;
-
+$--color-white: #ffffff !default;
+$--color-primary: #409eff !default;
+$--color-primary--light1: lighten($--color-primary, 5%);
+$--color-primary--light2: lighten($--color-primary, 10%);
+$--color-primary--light3: lighten($--color-primary, 15%);
+$--color-primary--light4: lighten($--color-primary, 20%);
+$--color-primary--light5: lighten($--color-primary, 25%);
+$--color-primary--light6: lighten($--color-primary, 30%);
+$--color-primary--light7: lighten($--color-primary, 35%);
+$--color-primary--light8: lighten($--color-primary, 40%);
+$--color-primary--light9: lighten($--color-primary, 45%);
+$--color-info: #909399 !default;
+$--color-info--light1: lighten($--color-info, 5%);
+$--color-info--light2: lighten($--color-info, 10%);
+$--color-info--light3: lighten($--color-info, 15%);
+$--color-info--light4: lighten($--color-info, 20%);
+$--color-info--light5: lighten($--color-info, 25%);
+$--color-info--light6: lighten($--color-info, 30%);
+$--color-info--light7: lighten($--color-info, 35%);
+$--color-info--light8: lighten($--color-info, 40%);
+$--color-info--light9: lighten($--color-info, 45%);
+$--color-success: #67c23a !default;
+$--color-success--light1: lighten($--color-success, 5%);
+$--color-success--light2: lighten($--color-success, 10%);
+$--color-success--light3: lighten($--color-success, 15%);
+$--color-success--light4: lighten($--color-success, 20%);
+$--color-success--light5: lighten($--color-success, 25%);
+$--color-success--light6: lighten($--color-success, 30%);
+$--color-success--light7: lighten($--color-success, 35%);
+$--color-success--light8: lighten($--color-success, 40%);
+$--color-success--light9: lighten($--color-success, 45%);
+$--color-warning: #e6a23c !default;
+$--color-warning--light1: lighten($--color-warning, 5%);
+$--color-warning--light2: lighten($--color-warning, 10%);
+$--color-warning--light3: lighten($--color-warning, 15%);
+$--color-warning--light4: lighten($--color-warning, 20%);
+$--color-warning--light5: lighten($--color-warning, 25%);
+$--color-warning--light6: lighten($--color-warning, 30%);
+$--color-warning--light7: lighten($--color-warning, 35%);
+$--color-warning--light8: lighten($--color-warning, 40%);
+$--color-warning--light9: lighten($--color-warning, 45%);
+$--color-error: #f56c6c !default;
+$--color-error--light1: lighten($--color-error, 5%);
+$--color-error--light2: lighten($--color-error, 10%);
+$--color-error--light3: lighten($--color-error, 15%);
+$--color-error--light4: lighten($--color-error, 20%);
+$--color-error--light5: lighten($--color-error, 25%);
+$--color-error--light6: lighten($--color-error, 30%);
+$--color-error--light7: lighten($--color-error, 35%);
+$--color-error--light8: lighten($--color-error, 40%);
+$--color-error--light9: lighten($--color-error, 45%);
+$--color-text: #495060 !default;
+$--color-text--light1: lighten($--color-text, 5%);
+$--color-text--light2: lighten($--color-text, 10%);
+$--color-text--light3: lighten($--color-text, 15%);
+$--color-text--light4: lighten($--color-text, 20%);
+$--color-text--light5: lighten($--color-text, 25%);
+$--color-text--light6: lighten($--color-text, 30%);
+$--color-text--light7: lighten($--color-text, 35%);
+$--color-text--light8: lighten($--color-text, 40%);
+$--color-text--light9: lighten($--color-text, 45%);
+$--color-bg: $--color-white !default;
+$--color-border: #dddee1 !default;
 //opacity
-$--opacity--disabled:         0.4       !default;
+$--opacity--disabled: 0.4 !default;
+//grid断点
+$--sm: 576px !default;
+$--md: 768px !default;
+$--lg: 992px !default;
+$--xl: 1200px !default;
+$--xxl: 1600px !default;
+$--grid-breakpoints: ( 'xs': (min-width: 0), 'sm': (min-width: $--sm), 'md': (min-width: $--md), 'lg': (min-width: $--lg), 'xl': (min-width: $--xl), 'xxl':(min-width:$--xxl));
 //button
-$--btn-padding-vertical: 0.2em;
-$--btn-padding-horizontal: 0.2em;
+$--btn-padding-vertical: 0.4em;
+$--btn-padding-horizontal: 0.6em;
 $--btn-border-radius: 0.2em;
+$--btn-border-radius--round: 1em * 0.5+$--btn-padding-horizontal;
 $--btn-border-width: 1px;
 $--btn-transition-time: .4s;
-$--btn-transition: background-color $--btn-transition-time ease, border-color $--btn-transition-time ease,box-shadow $--btn-transition-time ease;
+$--btn-transition: background-color $--btn-transition-time ease,
+border-color $--btn-transition-time ease,
+box-shadow $--btn-transition-time ease;
 $--btn-opacity--disabled: $--opacity--disabled;
+$--btn-box-shadow-size: 0 0 0 0.15em;
+$--btn-box-shadow-transparency: 0.3;
+//default
+$--btn-default-color: $--color-text;
+$--btn-default-bg-color: $--color-bg;
+$--btn-default-border-color: $--color-border;
+$--btn-default-color--hover: $--color-primary;
+$--btn-default-border-color--hover: $--color-primary--light3;
+$--btn-default-bg-color--hover: $--color-primary--light6;
+$--btn-default-color--focus: $--btn-default-color--hover;
+$--btn-default-border-color--focus: $--btn-default-border-color--hover;
+$--btn-default-bg-color--focus: $--btn-default-bg-color--hover;
+$--btn-default-box-shadow--focus: $--btn-box-shadow-size rgba($--btn-default-border-color--focus, $--btn-box-shadow-transparency);
+//success
+$--btn-success-color: $--color-white;
+$--btn-success-bg-color: $--color-success;
+$--btn-success-border-color: $--color-success--light3;
+$--btn-success-color--hover: $--color-white;
+$--btn-success-border-color--hover: $--color-success--light3;
+$--btn-success-bg-color--hover: $--color-success--light6;
+$--btn-success-color--focus: $--btn-success-color--hover;
+$--btn-success-border-color--focus: $--btn-success-border-color--hover;
+$--btn-success-bg-color--focus: $--btn-success-bg-color--hover;
+$--btn-success-box-shadow--focus: $--btn-box-shadow-size rgba($--btn-success-border-color--focus, $--btn-box-shadow-transparency);

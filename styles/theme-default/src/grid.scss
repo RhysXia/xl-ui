@@ -1,5 +1,5 @@
-@import './commons/variables.scss';
-@import './commons/mixins.scss';
+@import './commons/var';
+@import './commons/mixins';
 .#{$--clsPrefix}-row {
   position: relative;
   box-sizing: border-box;
