@@ -1,0 +1,26 @@
+//前缀
+$--clsPrefix:                 'xl'      !default;
+//font
+$--font-family:               "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif !default;
+$--font-path:                 './fonts' !default;
+
+//color
+$--color-primary:           #409eff   !default;
+$--color-info:              #909399   !default;
+$--color-success:           #67c23a   !default;
+$--color-warning:           #e6a23c   !default;
+$--color-error:             #f56c6c   !default;
+$--color-text:              #495060   !default;
+$--color-bg:                #ffffff   !default;
+$--color-border:            #dddee1   !default;
+
+//opacity
+$--opacity--disabled:         0.4       !default;
+//button
+$--btn-padding-vertical: 0.2em;
+$--btn-padding-horizontal: 0.2em;
+$--btn-border-radius: 0.2em;
+$--btn-border-width: 1px;
+$--btn-transition-time: .4s;
+$--btn-transition: background-color $--btn-transition-time ease, border-color $--btn-transition-time ease,box-shadow $--btn-transition-time ease;
+$--btn-opacity--disabled: $--opacity--disabled;
