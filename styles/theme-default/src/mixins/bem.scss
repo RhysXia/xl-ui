@@ -1,33 +1,54 @@
 @import 'config';
 @import '../commons/var';
 @import "config";
-@mixin b($block) {
+@mixin b($block, $root: true) {
   $B: $namespace+'-'+$block !global;
-  @at-root {
+  @if $root {
+    @at-root {
+      .#{$B} {
+        @content;
+      }
+    }
+  }
+  @else {
     .#{$B} {
       @content;
     }
   }
 }
 
-@mixin e($element) {
+@mixin e($element, $root: true) {
   $currentSelector: '';
   @each $unit in $element {
     $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + " "};
   }
-  @at-root {
+  @if $root {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+  @else {
     #{$currentSelector} {
       @content;
     }
   }
 }
 
-@mixin m($modifier) {
+@mixin m($modifier, $root: true) {
   $currentSelector: "";
   @each $unit in $modifier {
     $currentSelector: #{$currentSelector + & + $modifier-separator + $unit};
   }
-  @at-root {
+  @if $root {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+  @else {
     #{$currentSelector} {
       @content;
     }

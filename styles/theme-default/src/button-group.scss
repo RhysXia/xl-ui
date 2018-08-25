@@ -3,15 +3,16 @@
 @include b(button-group) {
   position: relative;
   display: inline-block;
-
-  @include m(horizontal) {
-    @include b(button) {
-      float: left;
-      position: relative;
+  @include b(button, false) {
+    position: relative;
     &:focus,
     &:hover {
       z-index: 1;
     }
+  }
+  @include m(horizontal) {
+    @include b(button, false) {
+      float: left;
       &:first-child:not(:last-child) {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -19,16 +20,16 @@
       &:last-child:not(:first-child) {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        margin-left: -1px;
+        margin-left: -$--btn-border-width;
       }
       &:not(:first-child):not(:last-child) {
         border-radius: 0;
-        margin-left: -1px;
+        margin-left: -$--btn-border-width;
       }
     }
   }
-  @include m(vertical){
-    @include b(button){
+  @include m(vertical) {
+    @include b(button, false) {
       display: block;
       &:first-child:not(:last-child) {
         border-bottom-left-radius: 0;
@@ -37,13 +38,12 @@
       &:last-child:not(:first-child) {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        margin-top: -1px;
+        margin-top: -$--btn-border-width;
       }
       &:not(:first-child):not(:last-child) {
         border-radius: 0;
-        margin-top: -1px;
+        margin-top: -$--btn-border-width;
       }
     }
   }
 }
-

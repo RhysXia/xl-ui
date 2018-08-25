@@ -217,11 +217,11 @@
 </div>
 <div class='button-bottom'>
     <xl-button-group>
-        <xl-button round dash>
+        <xl-button round dashed>
             <xl-icon type='chevron-left'></xl-icon>
             上一页
         </xl-button>
-        <xl-button>
+        <xl-button round>
             下一页
             <xl-icon type='chevron-right'></xl-icon>
         </xl-button>
@@ -229,8 +229,8 @@
 </div>
 <div class='button-bottom'>
     <xl-button-group vertical>
-        <xl-button round dash icon='chevron-up'>上一页</xl-button>
-        <xl-button icon='chevron-down'>下一页</xl-button>
+        <xl-button round dashed icon='chevron-up'>上一页</xl-button>
+        <xl-button round icon='chevron-down'>下一页</xl-button>
     </xl-button-group>
 </div>
 <div>

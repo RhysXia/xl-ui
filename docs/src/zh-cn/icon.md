@@ -33,7 +33,7 @@ xl-vision 的图标使用了开源项目<a href='http://ionicons.com' target='_b
 ::: demo 通过指定`size`选择标签
 
 ```html
-<xl-icon type='locked' :size='1' style='margin-right:1em;'></xl-icon>
+<xl-icon type='locked' size='2rem' style='margin-right:1em;'></xl-icon>
 <xl-icon type='arrow-swap' size='20px'></xl-icon>
 ```
 

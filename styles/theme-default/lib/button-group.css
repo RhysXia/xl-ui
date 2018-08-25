@@ -1,13 +1,12 @@
-/* BEM support Func
- -------------------------- */
 .xl-button-group {
   position: relative;
   display: inline-block; }
-  .xl-button-group--horizontal .xl-button {
-    float: left;
+  .xl-button-group .xl-button {
     position: relative; }
-    .xl-button-group--horizontal .xl-button:focus, .xl-button-group--horizontal .xl-button:hover {
+    .xl-button-group .xl-button:focus, .xl-button-group .xl-button:hover {
       z-index: 1; }
+  .xl-button-group--horizontal .xl-button {
+    float: left; }
     .xl-button-group--horizontal .xl-button:first-child:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0; }

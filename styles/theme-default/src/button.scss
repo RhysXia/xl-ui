@@ -57,6 +57,7 @@
   font-weight: $--btn-font-weight;
   text-align: center;
   vertical-align: middle;
+  white-space: nowrap;
   user-select: none;
   border: $--btn-border-width solid transparent;
   padding: $--btn-padding-y $--btn-padding-x;
@@ -100,7 +101,7 @@
         transform: rotate(360deg);
       }
     }
-    .xl-icon{
+    .xl-icon {
       animation: loading $--btn-loading-time linear infinite;
     }
   }
