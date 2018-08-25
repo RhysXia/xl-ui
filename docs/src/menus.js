@@ -18,16 +18,16 @@ export default [
     title: '基础',
     children: [
       {
-        path: '/button',
-        title: '按钮',
-        icon: 'play',
-        component: () => import('./zh-cn/button.md')
-      },
-      {
         path: '/icon',
         title: '图标',
         icon: 'heart',
         component: () => import('./zh-cn/icon.md')
+      },
+      {
+        path: '/button',
+        title: '按钮',
+        icon: 'play',
+        component: () => import('./zh-cn/button.md')
       },
       {
         title: '动画',

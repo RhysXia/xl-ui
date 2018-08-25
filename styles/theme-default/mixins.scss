@@ -1,10 +1,12 @@
-@mixin clearfix() {
-  *zoom: 1;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+
+@mixin box-shadow($color: $--color-black,$type:'base') {
+  @if $type == 'sm' {
+    box-shadow: 0 .125rem .25rem rgba($color, .075);
+  } @else if $type == 'base' {
+    box-shadow: 0 .5rem 1rem rgba($color, .15);
+  } @else if $type == 'lg' {
+    box-shadow: 0 1rem 3rem rgba($--color-black, .175);
+  } 
 }
 
 @mixin arrow($width, $borderColor, $bgColor, $direction, $borderWidth:$width * 0.1) {

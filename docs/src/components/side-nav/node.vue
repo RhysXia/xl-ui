@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "@docs/style/variables.scss";
+@import "@docs/style/var.scss";
 .node {
   list-style: none;
   margin-left: 0;

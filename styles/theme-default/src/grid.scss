@@ -1,83 +1,81 @@
-@import './commons/var';
-@import './commons/mixins';
-.#{$--clsPrefix}-row {
-  position: relative;
-  box-sizing: border-box;
-  @include clearfix;
-  &--flex {
-    display: flex;
-    flex-direction: row;
-    &:after {
-      display: none;
-    }
-    &.#{$--clsPrefix}-row--start {
-      justify-content: flex-start;
-    }
-    &.#{$--clsPrefix}-row--end {
-      justify-content: flex-end;
-    }
-    &.#{$--clsPrefix}-row--center {
-      justify-content: center;
-    }
-    &.#{$--clsPrefix}-row--space-around {
-      justify-content: space-around;
-    }
-    &.#{$--clsPrefix}-row--space-between {
-      justify-content: space-between;
-    }
-    &.#{$--clsPrefix}-row--top {
-      align-items: flex-start;
-    }
-    &.#{$--clsPrefix}-row--middle {
-      align-items: center;
-    }
-    &.#{$--clsPrefix}-row--bottom {
-      align-items: flex-end;
-    }
+@import 'commons/var';
+@import 'mixins/bem';
+@import 'mixins/utils';
+@mixin make-col($breakpoint, $number: 24) {
+  $prefix: col-#{$breakpoint}-;
+  @if $breakpoint==span {
+    $prefix: col-;
   }
-}
-
-@mixin col($prefix, $type, $number) {
-  @if ($type==span) {
-    $type: #{''};
-  }
-  @else {
-    $type: -#{$type};
-  }
-  .#{$prefix}#{$type}-0 {
+  @include b(#{$prefix}0) {
     display: none;
   }
   @for $i from 1 through $number {
-    .#{$prefix}#{$type}-#{$i} {
+    @include b(#{$prefix}#{$i}) {
       display: block;
       width: $i / $number * 100%;
     }
-    .#{$prefix}#{$type}-pull-#{$i} {
+    @include b(#{$prefix}pull-#{$i}) {
       position: relative;
       right: $i / $number * 100%;
     }
-    .#{$prefix}#{$type}-offset-#{$i} {
+    @include b(#{$prefix}offset-#{$i}) {
       margin-left: $i / $number * 100%;
     }
-    .#{$prefix}#{$type}-push-#{$i} {
+    @include b(#{$prefix}push-#{$i}) {
       position: relative;
       left: $i / $number * 100%;
     }
   }
 }
 
-@mixin media-col($prefix, $breakpoints) {
+@mixin media-col( $breakpoints) {
   @each $key in map_keys($breakpoints) {
-    @media only screen and #{map_get($breakpoints,$key)} {
-      @include col($prefix, $key, 24);
+    $next: breakpoint-next($key);
+    @media only screen and (min-width: #{map_get($breakpoints,$key)}) {
+      @include make-col($key);
     }
   }
 }
 
-.xl-col {
-  float: left;
+@include b(row) {
+  position: relative;
   box-sizing: border-box;
+  @include clearfix;
+  @include m(flex) {
+    display: flex;
+    flex-direction: row;
+    &:after {
+      display: none;
+    }
+  }
+  @include m((flex, start)) {
+    justify-content: flex-start;
+  }
+  @include m((flex, end)) {
+    justify-content: flex-end;
+  }
+  @include m((flex, center)) {
+    justify-content: center;
+  }
+  @include m((flex, space-around)) {
+    justify-content: space-around;
+  }
+  @include m((flex, space-between)) {
+    justify-content: space-between;
+  }
+  @include m((flex, top)) {
+    align-items: flex-start;
+  }
+  @include m((flex, middle)) {
+    align-items: center;
+  }
+  @include m((flex, bottom)) {
+    align-items: flex-end;
+  }
+  @include b(col) {
+    float: left;
+    box-sizing: border-box;
+  }
 }
-
-@include col(#{$--clsPrefix}-col, span, 24);
-@include media-col(#{$--clsPrefix}-col, $--grid-breakpoints);
+@include make-col(span);
+@include media-col($--grid-breakpoints);

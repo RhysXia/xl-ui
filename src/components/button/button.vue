@@ -1,5 +1,5 @@
 <template lang="pug">
-  button(@click="_clickHandler",:class='classes',:type="nativeType",:disabled='disabled')
+  button(@click="_clickHandler",:class='classes',:disabled="isDisabled",:type="nativeType")
     Icon(v-if='loading',type='load-c')
     Icon(v-else-if='icon',:type='icon')
     span(v-if='$slots.default')
@@ -16,7 +16,7 @@ export default {
       type: Boolean,
       default: false
     },
-    dash: {
+    dashed: {
       type: Boolean,
       default: false
     },
@@ -25,14 +25,20 @@ export default {
       default: 'default',
       validator(value) {
         return oneOf(
-          ['default', 'primary', 'success', 'warning', 'error', 'info', 'text'],
+          [
+            'default',
+            'primary',
+            'success',
+            'warning',
+            'danger',
+            'info',
+            'secondary',
+            'dark',
+            'text'
+          ],
           value
         )
       }
-    },
-    disabled: {
-      type: Boolean,
-      default: false
     },
     round: {
       type: Boolean,
@@ -51,6 +57,10 @@ export default {
     long: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -59,6 +69,12 @@ export default {
     }
   },
   computed: {
+    isDisabled() {
+      if (this.loading) {
+        return true
+      }
+      return this.disabled
+    },
     classes() {
       const arr = [this.prefixCls]
       if (this.type) {
@@ -76,8 +92,8 @@ export default {
       if (this.loading) {
         arr.push(`${this.prefixCls}--loading`)
       }
-      if (this.dash) {
-        arr.push(`${this.prefixCls}--dash`)
+      if (this.dashed) {
+        arr.push(`${this.prefixCls}--dashed`)
       }
       return arr
     }

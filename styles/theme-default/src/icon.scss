@@ -1,6 +1,10 @@
-@import './commons/variables.scss';
+@import './commons/var';
+@import './mixins/bem';
 @import './commons/ionicons/ionicons.scss';
-
-.#{$--clsPrefix}-icon {
-  font-size: 1em;
+@include b(icon) {
+  display: inline-block;
+  font-size: $--icon-font-size;
+  width: $--icon-font-size;
+  height: $--icon-font-size;
+  line-height: 1;
 }

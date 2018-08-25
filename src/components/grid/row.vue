@@ -35,11 +35,13 @@ export default {
       }
     },
     align: {
+      default: 'top',
       validator(value) {
         return oneOf(['top', 'middle', 'bottom'], value)
       }
     },
     justify: {
+      default: 'start',
       validator(value) {
         return oneOf(
           ['start', 'end', 'center', 'space-around', 'space-between'],
@@ -60,12 +62,17 @@ export default {
   },
   computed: {
     classes() {
-      return [
-        name,
-        this.type ? `${this.prefixCls}--${this.type}` : '',
-        this.justify ? `${this.prefixCls}--${this.justify}` : '',
-        this.align ? `${this.prefixCls}--${this.align}` : ''
-      ]
+      const arr = [name]
+      if (this.type) {
+        arr.push(`${this.prefixCls}--${this.type}`)
+        if (this.justify) {
+          arr.push(`${this.prefixCls}--${this.justify}`)
+        }
+        if (this.align) {
+          arr.push(`${this.prefixCls}--${this.align}`)
+        }
+      }
+      return arr
     },
     actualGutter() {
       const gutter = this.gutter

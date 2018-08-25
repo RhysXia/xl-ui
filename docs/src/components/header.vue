@@ -17,7 +17,8 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../styles/theme-default/src/commons/variables.scss';
+@import '@docs/style/var.scss';
+
 $header-height: 60px;
 .header {
   position: sticky;

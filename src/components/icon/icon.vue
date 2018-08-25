@@ -11,7 +11,7 @@ export default {
       required: true
     },
     color: String,
-    size: [Number, String]
+    size: [String]
   },
   data() {
     return {
@@ -25,11 +25,9 @@ export default {
     styles() {
       const style = {}
       if (this.size) {
-        if (typeof this.size === 'string') {
-          style['font-size'] = `${this.size}`
-        } else {
-          style['font-size'] = `${this.size}em`
-        }
+        style.fontSize = this.size
+        style.width = this.size
+        style.height = this.size
       }
       if (this.color) {
         style.color = this.color

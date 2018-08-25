@@ -2232,4 +2232,8 @@
   content: ""; }
 
 .xl-icon {
-  font-size: 1em; }
+  display: inline-block;
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+  line-height: 1; }

@@ -112,7 +112,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@docs/style/variables.scss';
+@import '@docs/style/var.scss';
 .demo-block {
   border: 1px solid $--border-color;
   font-size: 1em;

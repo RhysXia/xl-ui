@@ -1,0 +1,35 @@
+@import 'config';
+@import '../commons/var';
+@import "config";
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+  @at-root {
+    .#{$B} {
+      @content;
+    }
+  }
+}
+
+@mixin e($element) {
+  $currentSelector: '';
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + " "};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $currentSelector: "";
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}

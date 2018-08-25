@@ -1,205 +1,147 @@
 @import './commons/var';
-.#{$--clsPrefix}-button {
+@import './mixins/bem';
+@mixin button-variant($background) {
+  $border: $background;
+  $background-hover: color-level($background, $--btn-color-level);
+  $border-hover: $background-hover;
+  $background-active: color-level($background-hover, $--btn-color-level);
+  $border-active: $background-active;
+  color: color-yiq($background);
+  background: $background;
+  border-color: $border; // box-shadow: $--btn-box-shadow;
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    color: color-yiq($background-hover);
+    background: $background-hover;
+    border-color: $border-hover;
+  }
+  &:focus:not(:disabled) {
+    box-shadow: 0 0 0 $--btn-focus-width rgba($border-hover, .5);
+  }
+  &:active:not(:disabled) {
+    color: color-yiq($background-active);
+    background: $background-active;
+    border-color: $border-active;
+    box-shadow: 0 0 0 $--btn-focus-width rgba($border-active, .5);
+  }
+}
+
+@mixin button-outline-variant($color) {
+  $border: $color;
+  $color-hover: color-level($border, $--btn-color-level);
+  $border-hover: $color-hover;
+  $color-active: color-level($color-hover, $--btn-color-level);
+  $border-active: $color-active;
+  color: $color;
+  background-color: transparent;
+  background-image: none;
+  border-color: $border;
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    color: $color-hover;
+    background-color: transparent;
+    border-color: $border-hover;
+  }
+  &:focus:not(:disabled) {
+    box-shadow: 0 0 0 $--btn-focus-width rgba($border-hover, .5);
+  }
+  &:active:not(:disabled) {
+    color: $color-active;
+    border-color: $border-active;
+    box-shadow: 0 0 0 $--btn-focus-width rgba($border-active, .5);
+  }
+}
+
+@include b(button) {
   display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  appearance: none;
+  font-weight: $--btn-font-weight;
   text-align: center;
-  box-sizing: border-box;
-  outline: none;
-  margin: 0;
-  border-radius: $--btn-border-radius;
-  padding: $--btn-padding-vertical $--btn-padding-horizontal;
-  border: $--btn-border-width solid;
+  vertical-align: middle;
+  user-select: none;
+  border: $--btn-border-width solid transparent;
+  padding: $--btn-padding-y $--btn-padding-x;
+  font-size: $--btn-font-size;
+  line-height: $--btn-line-height;
   transition: $--btn-transition;
-  &::-moz-focus-inner {
-    border: 0;
+  border-radius: $--btn-border-radius;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    outline: 0;
   }
   &:disabled {
-    opacity: $--btn-opacity--disabled;
+    opacity: $--btn-opacity-disabled;
     cursor: not-allowed;
   }
-  .#{$--clsPrefix}-icon+span {
-    padding-left: $--btn-padding-horizontal / 1.5;
+  [class*="xl-icon-"] {
+    &+span {
+      margin-left: 5px;
+    }
   }
-  &.#{$--clsPrefix}-button--dash {
+  @include m(dashed) {
     border-style: dashed;
   }
-  &.#{$--clsPrefix}-button--long {
-    display: block;
+  @include m(round) {
+    border-radius: $--btn-border-radius-round;
+  }
+  @include m(circle) {
+    padding: $--btn-circle-padding;
+    border-radius: 50%;
+  }
+  @include m(long) {
     width: 100%;
   }
-  &.#{$--clsPrefix}-button--round {
-    border-radius: $--btn-border-radius--round; //字体高度的一半+padding
-  }
-  &.#{$--clsPrefix}-button--loading {
-    cursor: default;
-    pointer-events: none;
-    opacity: $--btn-opacity--disabled;
-    .#{$--clsPrefix}-icon {
-      animation: #{$--clsPrefix}-button-loading-loop 1s linear infinite;
-    }
-    @keyframes #{$--clsPrefix}-button-loading-loop {
-      from {
+  @include m(loading) {
+    @keyframes loading {
+      0% {
         transform: rotate(0deg);
       }
-      to {
+      100% {
         transform: rotate(360deg);
       }
     }
+    .xl-icon{
+      animation: loading $--btn-loading-time linear infinite;
+    }
   }
-}
-
-// .#{$--clsPrefix}-button--plain {
-//   background-color: transparent !important;
-//   &:hover {
-//     background-color: transparent !important;
-//   }
-// }
-.#{$--clsPrefix}-button--default {
-  background-color: $--btn-default-bg-color;
-  border-color: $--btn-default-border-color;
-  color: $--btn-default-color;
-  &:not(:disabled):hover {
-    background-color: $--btn-default-bg-color--hover;
-    border-color: $--btn-default-border-color--hover;
-    color: $--btn-default-color--hover;
+  @include m(default) {
+    background-color: transparent;
+    border-color: $--border-color;
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      color: $--color-primary;
+      border-color: color-level($--color-primary, -6);
+      background-color: color-level($--color-primary, -10);
+    }
+    &:focus:not(:disabled) {
+      box-shadow: 0 0 0 $--btn-focus-width rgba(color-level($--color-primary, -6), .5);
+    }
+    &:active:not(:disabled) {
+      border-color: color-level($--color-primary);
+      box-shadow: 0 0 0 $--btn-focus-width rgba(color-level($--color-primary), 0.5);
+    }
   }
-  &:not(:disabled):focus {
-    background-color: $--btn-default-bg-color--focus;
-    border-color: $--btn-default-border-color--focus;
-    color: $--btn-default-color--focus;
-    box-shadow: $--btn-default-box-shadow--focus;
+  @include m((plain, default)) {
+    background-color: transparent;
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      background-color: transparent;
+    }
   }
-  &.#{$--clsPrefix}-button--plain {
-    background-color: $--btn-default-bg-color;
-    &:not(:disabled):hover,
-    &:not(:disabled):focus {
-      background-color: $--btn-default-bg-color;
+  @include m(text) {
+    background-color: transparent;
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      color: $--color-primary;
+    }
+  }
+  @each $key,
+  $value in $--btn-theme-color {
+    @include m($key) {
+      @include button-variant($value);
+    }
+    @include m((plain, $key)) {
+      @include button-outline-variant($value);
     }
   }
 }
-
-.#{$--clsPrefix}-button--success {
-  background-color: $--btn-success-bg-color;
-  border-color: $--btn-success-border-color;
-  color: $--btn-success-color;
-  &:not(:disabled):hover {
-    background-color: $--btn-success-bg-color--hover;
-    border-color: $--btn-success-border-color--hover;
-    color: $--btn-success-color--hover;
-  }
-  &:not(:disabled):focus {
-    background-color: $--btn-success-bg-color--focus;
-    border-color: $--btn-success-border-color--focus;
-    color: $--btn-success-color--focus;
-    box-shadow: $--btn-success-box-shadow--focus;
-  }
-  &.#{$--clsPrefix}-button--plain {
-    background-color: $--btn-default-bg-color;
-    color: $--btn-success-bg-color;
-    &:not(:disabled):hover{
-      color: $--btn-success-bg-color--hover;
-      background-color: $--btn-default-bg-color;
-    }
-    &:not(:disabled):focus {
-      color: $--btn-success-bg-color--focus;
-      background-color: $--btn-default-bg-color;
-    }
-  }
-}
-
-// .#{$--clsPrefix}-button--primary {
-//   background-color: $--btn-bg-color--primary;
-//   border-color: $--btn-border-color--primary;
-//   color: $--btn-font-color--primary;
-//   &:not(:disabled):hover,
-//   &:not(:disabled):focus {
-//     background-color: $--btn-bg-color--primary--hover;
-//     border-color: $--btn-border-color--primary--hover;
-//     color: $--btn-font-color--primary--hover;
-//   }
-//   &:not(:disabled):focus {
-//     box-shadow: $--box-shadow-size rgba($--btn-border-color--primary--hover, $--box-shadow-transparency);
-//   }
-//   &.#{$--clsPrefix}-button--plain {
-//     color: $--btn-bg-color--primary;
-//     &:not(:disabled):hover,
-//     &:not(:disabled):focus {
-//       color: $--btn-bg-color--primary--hover;
-//     }
-//   }
-// }
-// .#{$--clsPrefix}-button--warning {
-//   background-color: $--btn-bg-color--warning;
-//   border-color: $--btn-border-color--warning;
-//   color: $--btn-font-color--warning;
-//   &:not(:disabled):hover,
-//   &:not(:disabled):focus {
-//     background-color: $--btn-bg-color--warning--hover;
-//     border-color: $--btn-border-color--warning--hover;
-//     color: $--btn-font-color--warning--hover;
-//   }
-//   &:not(:disabled):focus {
-//     box-shadow: $--box-shadow-size rgba($--btn-border-color--warning--hover, $--box-shadow-transparency);
-//   }
-//   &.#{$--clsPrefix}-button--plain {
-//     color: $--btn-bg-color--warning;
-//     &:not(:disabled):hover,
-//     &:not(:disabled):focus {
-//       color: $--btn-bg-color--warning--hover;
-//     }
-//   }
-// }
-// .#{$--clsPrefix}-button--error {
-//   background-color: $--btn-bg-color--error;
-//   border-color: $--btn-border-color--error;
-//   color: $--btn-font-color--error;
-//   &:not(:disabled):hover,
-//   &:not(:disabled):focus {
-//     background-color: $--btn-bg-color--error--hover;
-//     border-color: $--btn-border-color--error--hover;
-//     color: $--btn-font-color--error--hover;
-//   }
-//   &:not(:disabled):focus {
-//     box-shadow: $--box-shadow-size rgba($--btn-border-color--error--hover, $--box-shadow-transparency);
-//   }
-//   &.#{$--clsPrefix}-button--plain {
-//     color: $--btn-bg-color--error;
-//     &:not(:disabled):hover,
-//     &:not(:disabled):focus {
-//       color: $--btn-bg-color--error--hover;
-//     }
-//   }
-// }
-// .#{$--clsPrefix}-button--info {
-//   background-color: $--btn-bg-color--info;
-//   border-color: $--btn-border-color--info;
-//   color: $--btn-font-color--info;
-//   &:not(:disabled):hover,
-//   &:not(:disabled):focus {
-//     background-color: $--btn-bg-color--info--hover;
-//     border-color: $--btn-border-color--info--hover;
-//     color: $--btn-font-color--info--hover;
-//   }
-//   &:not(:disabled):focus {
-//     box-shadow: $--btn-box-shadow-size rgba($--btn-border-color--info--hover, $--box-shadow-transparency);
-//   }
-//   &.#{$--clsPrefix}-button--plain {
-//     color: $--btn-bg-color--info;
-//     &:not(:disabled):hover,
-//     &:not(:disabled):focus {
-//       color: $--btn-bg-color--info--hover;
-//     }
-//   }
-// }
-// .#{$--clsPrefix}-button--text {
-//   background-color: $--btn-bg-color--text;
-//   border-color: $--btn-border-color--text;
-//   color: $--btn-font-color--text;
-//   &:not(:disabled):hover,
-//   &:not(:disabled):focus {
-//     color: $--btn-font-color--text--hover;
-//   }
-// }
