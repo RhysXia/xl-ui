@@ -117,13 +117,11 @@
       border-color: color-level($--color-primary);
       box-shadow: 0 0 0 $--btn-focus-width rgba(color-level($--color-primary), 0.5);
     }
-    @include spec-selector('') {
-      @include m(plain) {
+    @include spec-selector('', plain) {
+      background-color: transparent;
+      &:hover:not(:disabled),
+      &:focus:not(:disabled) {
         background-color: transparent;
-        &:hover:not(:disabled),
-        &:focus:not(:disabled) {
-          background-color: transparent;
-        }
       }
     }
   }
@@ -137,10 +135,8 @@
   @each $key,$value in $--btn-theme-color {
     @include m($key) {
       @include button-variant($value);
-      @include spec-selector('') {
-        @include m(plain) {
-          @include button-outline-variant($value);
-        }
+      @include spec-selector('', plain) {
+        @include button-outline-variant($value);
       }
     }
   }

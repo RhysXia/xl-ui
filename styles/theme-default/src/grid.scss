@@ -47,31 +47,29 @@
     &:after {
       display: none;
     }
-    @include spec-selector('') {
-      @include m(start) {
-        justify-content: flex-start;
-      }
-      @include m(end) {
-        justify-content: flex-end;
-      }
-      @include m(center) {
-        justify-content: center;
-      }
-      @include m(space-around) {
-        justify-content: space-around;
-      }
-      @include m(space-between) {
-        justify-content: space-between;
-      }
-      @include m(top) {
-        align-items: flex-start;
-      }
-      @include m(middle) {
-        align-items: center;
-      }
-      @include m(bottom) {
-        align-items: flex-end;
-      }
+    @include m(start) {
+      justify-content: flex-start;
+    }
+    @include m(end) {
+      justify-content: flex-end;
+    }
+    @include m(center) {
+      justify-content: center;
+    }
+    @include m(space-around) {
+      justify-content: space-around;
+    }
+    @include m(space-between) {
+      justify-content: space-between;
+    }
+    @include m(top) {
+      align-items: flex-start;
+    }
+    @include m(middle) {
+      align-items: center;
+    }
+    @include m(bottom) {
+      align-items: flex-end;
     }
   }
   @include b(col) {

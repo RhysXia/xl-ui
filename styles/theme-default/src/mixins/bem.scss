@@ -1,48 +1,6 @@
 @import 'config';
+@import 'bem-func';
 @import '../commons/var';
-@import "config";
-/* BEM support Func
- -------------------------- */
-
-@function selectorToString($selector) {
-  $selector: inspect($selector);
-  $selector: str-slice($selector, 2, -2);
-  @return $selector;
-}
-
-@function containsModifier($selector) {
-  $selector: selectorToString($selector);
-  @if str-index($selector, $modifier-separator) {
-    @return true;
-  }
-  @else {
-    @return false;
-  }
-}
-
-// @function containWhenFlag($selector) {
-//   $selector: selectorToString($selector);
-//   @if str-index($selector, '.' + $state-prefix) {
-//     @return true
-//   }
-//   @else {
-//     @return false
-//   }
-// }
-@function containPseudoClass($selector) {
-  $selector: selectorToString($selector);
-  @if str-index($selector, ':') {
-    @return true;
-  }
-  @else {
-    @return false;
-  }
-}
-
-@function hitAllSpecialNestRule($selector) {
-  @return containsModifier($selector) or containPseudoClass($selector);
-}
-
 @mixin b($block) {
   $B: $namespace+'-'+$block !global;
   .#{$B} {
@@ -88,17 +46,48 @@
   }
 }
 
-@mixin spec-selector($specSelector: '', $element: false, $modifier: false, $block: $B) {
+@mixin meb($modifier: false, $element: $E, $block: $B) {
+  $selector: &;
+  $modifierCombo: '';
+  @if $modifier {
+    $modifierCombo: $modifier-separator + $modifier;
+  }
+  @at-root {
+    #{$selector} {
+      .#{$block+$element-separator+$element+$modifierCombo} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin spec-selector($specSelector, $modifier, $element: false, $block: $B) {
   $modifierCombo: '';
   @if $modifier {
     $modifierCombo: $modifier-separator + $modifier;
   }
   $elementCombo: '';
   @if $element {
-    $elementCombo:  $element-separator + $element;
+    $elementCombo: $element-separator + $element;
   }
   @at-root {
     #{&}#{$specSelector}.#{$block + $elementCombo + $modifierCombo} {
+      @content;
+    }
+  }
+}
+
+@mixin not($modifier, $element: false, $block: $B) {
+  $elementCombo: '';
+  @if $element {
+    $elementCombo: $element-separator + $element;
+  }
+  $currentSelector: "";
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + ':not(.' + $block + $elementCombo + $modifier-separator + $unit + ')'}
+  }
+  @at-root {
+    #{&}#{$currentSelector} {
       @content;
     }
   }
@@ -116,7 +105,11 @@
 }
 
 @mixin pseudo($pseudo) {
-  @at-root #{&}#{':#{$pseudo}'} {
+  $currentSelector: "";
+  @each $unit in $pseudo {
+    $currentSelector: #{& + ':' + $pseudo + ','}
+  }
+  @at-root #{$currentSelector} {
     @content;
   }
 }

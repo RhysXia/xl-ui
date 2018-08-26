@@ -8,6 +8,7 @@
   font-size: $--input-font-size;
   align-content: center;
   color: $--input-color;
+  line-height: $--input-line-height;
   @include e((prefix, suffix)) {
     background-color: $--input-append-bg-color;
   }
@@ -36,12 +37,12 @@
     transition: $--input-transition;
     border: $--input-border-width solid $--input-border-color;
   }
-  @include m(hover) {
+  @include m(hovered) {
     @include e((textarea, body)) {
       border-color: $--input-hover-border-color;
     }
   }
-  @include m(focus) {
+  @include m(focused) {
     @include e((textarea, body)) {
       border-color: $--input-focus-border-color;
     }
@@ -98,7 +99,7 @@
     box-sizing: border-box;
     color: $--input-content-color;
   }
-  @include m(autosize) {
+  @include m(autosized) {
     @include e(textarea) {
       transition: $--input-textarea-transition;
     }

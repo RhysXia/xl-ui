@@ -323,7 +323,7 @@ body {
   padding: 0.3rem 0.6rem;
   font-size: 1rem;
   line-height: 1.5;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, z-index 0.15s ease-in-out;
   border-radius: 0.25rem;
   cursor: pointer; }
   .xl-button:hover, .xl-button:focus {
@@ -2825,7 +2825,8 @@ body {
   position: relative;
   display: inline-block; }
   .xl-button-group .xl-button {
-    position: relative; }
+    position: relative;
+    z-index: 0; }
     .xl-button-group .xl-button:focus, .xl-button-group .xl-button:hover {
       z-index: 1; }
   .xl-button-group--horizontal .xl-button {
@@ -2868,21 +2869,21 @@ body {
     flex-direction: row; }
     .xl-row--flex:after {
       display: none; }
-    .xl-row--flex.xl-row--start {
+    .xl-row--flex--start {
       justify-content: flex-start; }
-    .xl-row--flex.xl-row--end {
+    .xl-row--flex--end {
       justify-content: flex-end; }
-    .xl-row--flex.xl-row--center {
+    .xl-row--flex--center {
       justify-content: center; }
-    .xl-row--flex.xl-row--space-around {
+    .xl-row--flex--space-around {
       justify-content: space-around; }
-    .xl-row--flex.xl-row--space-between {
+    .xl-row--flex--space-between {
       justify-content: space-between; }
-    .xl-row--flex.xl-row--top {
+    .xl-row--flex--top {
       align-items: flex-start; }
-    .xl-row--flex.xl-row--middle {
+    .xl-row--flex--middle {
       align-items: center; }
-    .xl-row--flex.xl-row--bottom {
+    .xl-row--flex--bottom {
       align-items: flex-end; }
   .xl-row .xl-col {
     float: left;
@@ -4797,7 +4798,8 @@ body {
   width: 100%;
   font-size: 1rem;
   align-content: center;
-  color: #6c757d; }
+  color: #6c757d;
+  line-height: 1.5; }
   .xl-input__prefix, .xl-input__suffix {
     background-color: #e9ecef; }
   .xl-input__prefix {
@@ -4819,9 +4821,9 @@ body {
     position: relative;
     transition: border-color 0.3s ease-in-out;
     border: 1px solid #dee2e6; }
-  .xl-input--hover .xl-input__textarea, .xl-input--hover .xl-input__body {
+  .xl-input--hovered .xl-input__textarea, .xl-input--hovered .xl-input__body {
     border-color: #adb5bd; }
-  .xl-input--focus .xl-input__textarea, .xl-input--focus .xl-input__body {
+  .xl-input--focused .xl-input__textarea, .xl-input--focused .xl-input__body {
     border-color: #007bff; }
   .xl-input--disabled {
     opacity: 0.65;
@@ -4867,5 +4869,142 @@ body {
     width: 100%;
     box-sizing: border-box;
     color: #212529; }
-  .xl-input--autosize .xl-input__textarea {
+  .xl-input--autosized .xl-input__textarea {
     transition: height 0.3s ease-in-out; }
+
+/* BEM support Func
+ -------------------------- */
+.xl-checkbox {
+  position: relative;
+  line-height: 1.5;
+  white-space: nowrap;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 1rem; }
+  .xl-checkbox__input, .xl-checkbox__inner, .xl-checkbox__label {
+    display: inline-block;
+    vertical-align: middle; }
+  .xl-checkbox__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    cursor: pointer;
+    opacity: 0; }
+  .xl-checkbox__inner {
+    position: relative;
+    height: 1rem;
+    width: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.2rem;
+    transition: all 0.3s ease-in-out; }
+    .xl-checkbox__inner:after {
+      position: absolute;
+      content: '';
+      border: none;
+      height: 0;
+      width: 0;
+      left: 0.2rem;
+      top: 0.25rem;
+      transform: rotate(0) scale(0);
+      transform-origin: center;
+      transition: all 0.3s ease-in-out; }
+  .xl-checkbox__label {
+    padding-left: 0.4rem;
+    vertical-align: middle; }
+  .xl-checkbox:hover:not(.xl-checkbox--checked):not(.xl-checkbox--disabled) .xl-checkbox__inner {
+    border-color: #adb5bd; }
+  .xl-checkbox--disabled {
+    opacity: 0.65; }
+    .xl-checkbox--disabled .xl-checkbox__input {
+      cursor: not-allowed; }
+  .xl-checkbox--readonly {
+    pointer-events: none; }
+  .xl-checkbox--focused .xl-checkbox__inner {
+    box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
+  .xl-checkbox--checked .xl-checkbox__inner {
+    border-color: #007bff;
+    background-color: #007bff; }
+    .xl-checkbox--checked .xl-checkbox__inner:after {
+      border-bottom: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
+      height: 0.25rem;
+      width: 0.55rem;
+      transform: rotate(-45deg) scale(1); }
+  .xl-checkbox--checked .xl-checkbox__label {
+    color: #007bff; }
+  .xl-checkbox--checked--focused .xl-checkbox__inner {
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
+  .xl-checkbox--indeterminate .xl-checkbox__inner {
+    background-color: #007bff; }
+    .xl-checkbox--indeterminate .xl-checkbox__inner:after {
+      transform: rotate(0) scale(1);
+      border-bottom: 1px solid #ffffff;
+      left: 0.2rem;
+      width: 0.6rem;
+      height: 0.3rem; }
+  .xl-checkbox--bordered {
+    border: 1px solid #dee2e6;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.2rem;
+    transition: all 0.3s ease-in-out; }
+    .xl-checkbox--bordered:hover:not(.xl-checkbox--disabled):not(.xl-checkbox--checked) {
+      border-color: #adb5bd; }
+    .xl-checkbox--bordered.xl-checkbox--focused {
+      box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
+      .xl-checkbox--bordered.xl-checkbox--focused .xl-checkbox__inner {
+        box-shadow: none; }
+    .xl-checkbox--bordered.xl-checkbox--checked {
+      border-color: #007bff; }
+      .xl-checkbox--bordered.xl-checkbox--checked--focused {
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
+
+/* BEM support Func
+ -------------------------- */
+.xl-checkbox-group .xl-checkbox:not(:last-child) {
+  margin-right: 0.5em; }
+
+.xl-checkbox-group--button {
+  *zoom: 1; }
+  .xl-checkbox-group--button:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .xl-checkbox-group--button .xl-checkbox {
+    float: left;
+    border: 1px solid #dee2e6;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0 !important;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    z-index: 0; }
+    .xl-checkbox-group--button .xl-checkbox:first-child {
+      border-top-left-radius: 0.2rem;
+      border-bottom-left-radius: 0.2rem; }
+    .xl-checkbox-group--button .xl-checkbox:last-child {
+      border-top-right-radius: 0.2rem;
+      border-bottom-right-radius: 0.2rem; }
+    .xl-checkbox-group--button .xl-checkbox:not(:first-child) {
+      margin-left: -1px; }
+    .xl-checkbox-group--button .xl-checkbox .xl-checkbox__inner {
+      display: none; }
+    .xl-checkbox-group--button .xl-checkbox .xl-checkbox__label {
+      transition: all 0.3s ease-in-out;
+      padding-left: 0; }
+    .xl-checkbox-group--button .xl-checkbox:not(.xl-checkbox--disabled):not(.xl-checkbox--checked):hover {
+      border: 1px solid #adb5bd;
+      z-index: 1; }
+    .xl-checkbox-group--button .xl-checkbox--focused {
+      box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
+      .xl-checkbox-group--button .xl-checkbox--focused.xl-checkbox--checked {
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
+    .xl-checkbox-group--button .xl-checkbox--checked {
+      border-color: #007bff;
+      background-color: #007bff; }
+      .xl-checkbox-group--button .xl-checkbox--checked .xl-checkbox__label {
+        color: #ffffff; }

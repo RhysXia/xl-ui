@@ -74,12 +74,33 @@
 
 :::
 
+## 边框
+
+::: demo 使用`bordered`给多选框设置边框
+
+```html
+<xl-checkbox v-model="value" bordered label='选择框'></xl-checkbox>
+<p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value:false
+            }
+        }
+    }
+</script>
+```
+
+:::
+
 ## 禁用
 
 ::: demo 使用`disabled`禁用多选框
 
 ```html
 <xl-checkbox v-model="value" disabled label='选择框'></xl-checkbox>
+<xl-checkbox v-model="value" disabled bordered label='选择框'></xl-checkbox>
 <p>{{value}}</p>
 <script>
     export default{
@@ -100,6 +121,8 @@
 
 ```html
 <xl-checkbox v-model="value" readonly label='选择框'></xl-checkbox>
+<xl-checkbox v-model="value" readonly bordered label='选择框'></xl-checkbox>
+
 <p>{{value}}</p>
 <script>
     export default{
@@ -114,25 +137,6 @@
 
 :::
 
-## 边框
-
-::: demo 使用`bordered`给多选框设置边框
-
-```html
-<xl-checkbox v-model="value" bordered label='选择框'></xl-checkbox>
-<p>{{value}}</p>
-<script>
-    export default{
-        data(){
-            return {
-                value:false
-            }
-        }
-    }
-</script>
-```
-
-:::
 
 ## 多选框组
 

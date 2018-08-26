@@ -5,6 +5,7 @@
   display: inline-block;
   @include b(button) {
     position: relative;
+    z-index: 0;
     &:focus,
     &:hover {
       z-index: 1;

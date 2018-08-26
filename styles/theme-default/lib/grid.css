@@ -13,21 +13,21 @@
     flex-direction: row; }
     .xl-row--flex:after {
       display: none; }
-    .xl-row--flex.xl-row--start {
+    .xl-row--flex--start {
       justify-content: flex-start; }
-    .xl-row--flex.xl-row--end {
+    .xl-row--flex--end {
       justify-content: flex-end; }
-    .xl-row--flex.xl-row--center {
+    .xl-row--flex--center {
       justify-content: center; }
-    .xl-row--flex.xl-row--space-around {
+    .xl-row--flex--space-around {
       justify-content: space-around; }
-    .xl-row--flex.xl-row--space-between {
+    .xl-row--flex--space-between {
       justify-content: space-between; }
-    .xl-row--flex.xl-row--top {
+    .xl-row--flex--top {
       align-items: flex-start; }
-    .xl-row--flex.xl-row--middle {
+    .xl-row--flex--middle {
       align-items: center; }
-    .xl-row--flex.xl-row--bottom {
+    .xl-row--flex--bottom {
       align-items: flex-end; }
   .xl-row .xl-col {
     float: left;

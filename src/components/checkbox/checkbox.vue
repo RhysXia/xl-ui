@@ -88,19 +88,18 @@ export default {
       } else if (this.checked) {
         arr.push(`${name}--checked`)
       }
+      if (this.bordered) {
+        arr.push(`${name}--bordered`)
+      }
+      if (this.readonly) {
+        arr.push(`${name}--readonly`)
+      }
       if (this.focused) {
         arr.push(`${name}--focused`)
       }
       if (this.disabled) {
         arr.push(`${name}--disabled`)
       }
-      if (this.readonly) {
-        arr.push(`${name}--readonly`)
-      }
-      if (this.bordered) {
-        arr.push(`${name}--bordered`)
-      }
-
       return arr
     },
     inputClasses() {

@@ -4,7 +4,8 @@
   position: relative;
   display: inline-block; }
   .xl-button-group .xl-button {
-    position: relative; }
+    position: relative;
+    z-index: 0; }
     .xl-button-group .xl-button:focus, .xl-button-group .xl-button:hover {
       z-index: 1; }
   .xl-button-group--horizontal .xl-button {

@@ -76,13 +76,13 @@ export default {
     classes() {
       const arr = [`${name}`]
       if (this.autosize) {
-        arr.push(`${name}--autosize`)
+        arr.push(`${name}--autosized`)
       }
       if (this.isHovered) {
-        arr.push(`${name}--hover`)
+        arr.push(`${name}--hovered`)
       }
       if (this.isFocused) {
-        arr.push(`${name}--focus`)
+        arr.push(`${name}--focused`)
       }
       if (this.disabled) {
         arr.push(`${name}--disabled`)
