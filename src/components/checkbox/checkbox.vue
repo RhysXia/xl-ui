@@ -127,10 +127,16 @@ export default {
       this.checked = checked
     },
     _focusHandler(e) {
+      if (this.disabled || this.readonly) {
+        return
+      }
       this.focused = true
       this.$emit('on-focus', e)
     },
     _blurHandler(e) {
+      if (this.disabled || this.readonly) {
+        return
+      }
       this.focused = false
       this.$emit('on-blur', e)
     }

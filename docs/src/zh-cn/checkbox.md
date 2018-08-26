@@ -94,49 +94,6 @@
 
 :::
 
-## 禁用
-
-::: demo 使用`disabled`禁用多选框
-
-```html
-<xl-checkbox v-model="value" disabled label='选择框'></xl-checkbox>
-<xl-checkbox v-model="value" disabled bordered label='选择框'></xl-checkbox>
-<p>{{value}}</p>
-<script>
-    export default{
-        data(){
-            return {
-                value:false
-            }
-        }
-    }
-</script>
-```
-
-:::
-
-## 只读
-
-::: demo 使用`readonly`只读多选框
-
-```html
-<xl-checkbox v-model="value" readonly label='选择框'></xl-checkbox>
-<xl-checkbox v-model="value" readonly bordered label='选择框'></xl-checkbox>
-
-<p>{{value}}</p>
-<script>
-    export default{
-        data(){
-            return {
-                value:false
-            }
-        }
-    }
-</script>
-```
-
-:::
-
 
 ## 多选框组
 
@@ -244,6 +201,61 @@
                 }else{
                     this.arr3 = []
                 }
+            }
+        }
+    }
+</script>
+```
+
+:::
+
+## 禁用
+
+::: demo 使用`disabled`禁用多选框
+
+```html
+<xl-checkbox-group type='button'>
+    <xl-checkbox disabled value='123'>aaa</xl-checkbox>
+    <xl-checkbox value='456'>bbb</xl-checkbox>
+    <xl-checkbox value='987' label='789'>ccc</xl-checkbox>
+</xl-checkbox-group>
+
+<xl-checkbox v-model="value" disabled label='选择框'></xl-checkbox>
+<xl-checkbox v-model="value" disabled bordered label='选择框'></xl-checkbox>
+<p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value:false
+            }
+        }
+    }
+</script>
+```
+
+:::
+
+## 只读
+
+::: demo 使用`readonly`只读多选框
+
+```html
+<xl-checkbox-group type='button'>
+    <xl-checkbox readonly value='123'>aaa</xl-checkbox>
+    <xl-checkbox value='456'>bbb</xl-checkbox>
+    <xl-checkbox value='987' label='789'>ccc</xl-checkbox>
+</xl-checkbox-group>
+
+<xl-checkbox v-model="value" readonly label='选择框'></xl-checkbox>
+<xl-checkbox v-model="value" readonly bordered label='选择框'></xl-checkbox>
+
+<p>{{value}}</p>
+<script>
+    export default{
+        data(){
+            return {
+                value:false
             }
         }
     }
