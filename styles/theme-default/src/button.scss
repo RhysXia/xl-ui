@@ -1,5 +1,5 @@
-@import './commons/var';
-@import './mixins/bem';
+@import 'commons/var';
+@import 'mixins/bem';
 @mixin button-variant($background) {
   $border: $background;
   $background-hover: color-level($background, $--btn-color-level);
@@ -7,12 +7,12 @@
   $background-active: color-level($background-hover, $--btn-color-level);
   $border-active: $background-active;
   color: color-yiq($background);
-  background: $background;
+  background-color: $background;
   border-color: $border; // box-shadow: $--btn-box-shadow;
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
     color: color-yiq($background-hover);
-    background: $background-hover;
+    background-color: $background-hover;
     border-color: $border-hover;
   }
   &:focus:not(:disabled) {
@@ -20,7 +20,7 @@
   }
   &:active:not(:disabled) {
     color: color-yiq($background-active);
-    background: $background-active;
+    background-color: $background-active;
     border-color: $border-active;
     box-shadow: 0 0 0 $--btn-focus-width rgba($border-active, .5);
   }
@@ -85,10 +85,6 @@
   @include m(round) {
     border-radius: $--btn-border-radius-round;
   }
-  @include m(circle) {
-    padding: $--btn-circle-padding;
-    border-radius: 50%;
-  }
   @include m(long) {
     width: 100%;
   }
@@ -121,12 +117,14 @@
       border-color: color-level($--color-primary);
       box-shadow: 0 0 0 $--btn-focus-width rgba(color-level($--color-primary), 0.5);
     }
-  }
-  @include m((plain, default)) {
-    background-color: transparent;
-    &:hover:not(:disabled),
-    &:focus:not(:disabled) {
-      background-color: transparent;
+    @include spec-selector('') {
+      @include m(plain) {
+        background-color: transparent;
+        &:hover:not(:disabled),
+        &:focus:not(:disabled) {
+          background-color: transparent;
+        }
+      }
     }
   }
   @include m(text) {
@@ -136,13 +134,14 @@
       color: $--color-primary;
     }
   }
-  @each $key,
-  $value in $--btn-theme-color {
+  @each $key,$value in $--btn-theme-color {
     @include m($key) {
       @include button-variant($value);
-    }
-    @include m((plain, $key)) {
-      @include button-outline-variant($value);
+      @include spec-selector('') {
+        @include m(plain) {
+          @include button-outline-variant($value);
+        }
+      }
     }
   }
 }

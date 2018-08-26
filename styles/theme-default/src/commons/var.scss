@@ -73,21 +73,26 @@ $--theme-colors: (
 
 $--theme-color-interval:    8% !default;
 
-$--yiq-contrasted-threshold:  210              !default;
+$--yiq-contrasted-threshold:  210               !default;
 $--yiq-text-dark:             $--color-gray-900 !default;
 $--yiq-text-light:            $--color-white    !default;
 
 //body
-$--body-color: $--color-white;
+$--body-color:                $--color-white    !default;
+
+//background
+$--bg-color:                  $--color-white     !default;
 
 //text color
-$--text-color-dark:           $--color-gray-900           !default;
-$--text-color-light:          $--color-white              !default;
+$--text-color-dark:           $--yiq-text-dark            !default;
+$--text-color-light:          $--yiq-text-light           !default;
 $--link-color:                theme-color("primary")      !default;
 $--link-color--hover:         darken($--link-color, 15%)  !default;
 
 // border
-$--border-color:      $--color-gray-300 !default;
+$--border-color:            $--color-gray-300 !default;
+$--border-color-hover:      $--color-gray-500 !default;
+$--border-color-focus:      $--color-primary !default;
 $--border-width:      1px               !default;
 $--border-radius:     .25rem            !default;
 $--border-radius-lg:  .3rem             !default;
@@ -115,16 +120,6 @@ $--font-weight-bolder:          bolder    !default;
 //opacity
 $--opacity-disabled: 0.65 !default;
 
-//grid断点
-$--grid-breakpoints: ( 
-  'xs':  0,
-  'sm':  576px,
-  'md':  768px, 
-  'lg':  992px, 
-  'xl':  1200px, 
-  'xxl': 1600px
-) !default;
-
 //icon
 $--icon-font-path:                './fonts'                             !default;
 $--icon-font-size:                $--font-size                          !default;
@@ -134,7 +129,6 @@ $--btn-font-weight:               $--font-weight                        !default
 $--btn-border-width:              $--border-width                       !default;
 $--btn-padding-y:                 .3rem                                 !default;
 $--btn-padding-x:                 .6rem                                 !default;
-$--btn-circle-padding:            .6rem                                 !default;
 $--btn-font-size:                 $--font-size                          !default;
 $--btn-line-height:               $--line-height                        !default;
 $--btn-transition:                color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -143,6 +137,52 @@ $--btn-border-radius:             $--border-radius                      !default
 $--btn-border-radius-round:       ($--btn-padding-y + $--btn-line-height * $--btn-font-size) !default;
 $--btn-opacity-disabled:          $--opacity-disabled                   !default;
 $--btn-color-level:               3                                     !default;
-$--btn-loading-time:              2s                                   !default;
+$--btn-loading-time:              2s                                    !default;
+$--btn-theme-color: map_merge($--theme-colors,())                       !default;
 
-$--btn-theme-color: map_merge($--theme-colors,()) !default;
+//grid
+$--grid-breakpoints: ( 
+  'xs':  0,
+  'sm':  576px,
+  'md':  768px, 
+  'lg':  992px, 
+  'xl':  1200px, 
+  'xxl': 1600px
+) !default;
+
+//layout
+$--layout-header-height:        5rem                                  !default;
+$--layout-header-bg-color:      $--color-gray-600                     !default;
+$--layout-header-color:         color-yiq($--layout-header-bg-color)  !default;
+$--layout-header-padding-x:     5rem                                  !default;
+
+$--layout-content-bg-color:     $--color-gray-100;
+$--layout-content-color:        color-yiq($--layout-content-bg-color) !default;
+
+$--layout-footer-height:        $--layout-header-height               !default;
+$--layout-footer-bg-color:      $--layout-header-bg-color             !default;
+$--layout-footer-color:         color-yiq($--layout-footer-bg-color)  !default;
+$--layout-footer-padding-x:     $--layout-header-padding-x            !default;
+
+$--layout-sider-width:          15rem                                 !default;
+$--layout-sider-bg-color:       $--color-gray-500                     !default;
+$--layout-sider-color:          color-yiq($--layout-sider-bg-color)   !default;
+
+//input
+$--input-border-color: $--border-color;
+$--input-hover-border-color: $--border-color-hover;
+$--input-focus-border-color: $--border-color-focus;
+$--input-font-size: $--font-size;
+$--input-border-radius: $--border-radius;
+$--input-color: $--color-gray-600;
+$--input-clear-hover-color: $--color-gray-800;
+$--input-content-color: $--text-color-dark;
+$--input-bg-color: $--bg-color;
+$--input-transition: border-color .3s ease-in-out;
+$--input-textarea-transition: height .3s ease-in-out;
+$--input-append-bg-color: $--color-gray-200;
+$--input-border-width: $--border-width;
+$--input-padding-x: .5rem;
+$--input-padding-y: .5rem;
+$--input-inner-icon-padding-x: $--input-padding-y * 2 + $--icon-font-size;
+$--input-opacity-disabled: $--opacity-disabled;

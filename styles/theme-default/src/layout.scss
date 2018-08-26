@@ -1,0 +1,37 @@
+@import 'commons/var';
+@import 'mixins/bem';
+@include b(layout) {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  @include m(sider) {
+    flex-direction: row;
+  }
+  @include b(header) {
+    flex: 0 0 auto;
+    padding: 0 $--layout-header-padding-x;
+    height: $--layout-header-height;
+    line-height: $--layout-header-height;
+    background-color: $--layout-header-bg-color;
+    color: $--layout-header-color;
+  }
+  @include b(content) {
+    flex: auto;
+    background-color: $--layout-content-bg-color;
+    color: $--layout-content-color;
+  }
+  @include b(footer) {
+    flex: 0 0 auto;
+    padding: 0 $--layout-footer-padding-x;
+    height: $--layout-footer-height;
+    line-height: $--layout-footer-height;
+    background-color: $--layout-footer-bg-color;
+    color: $--layout-footer-color
+  }
+  @include b(sider) {
+    flex: 0 1 auto;
+    width: $--layout-sider-width;
+    background-color: $--layout-sider-bg-color;
+    color: $--layout-sider-color;
+  }
+}

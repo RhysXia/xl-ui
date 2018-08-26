@@ -1,22 +1,31 @@
+/* BEM support Func
+ -------------------------- */
 .xl-layout {
   display: flex;
   flex-direction: column;
   flex: auto; }
   .xl-layout--sider {
     flex-direction: row; }
-  .xl-layout .xl-header,
-  .xl-layout .xl-footer {
-    flex: 0 0 auto; }
   .xl-layout .xl-header {
-    padding: 0 3em;
-    height: 4em;
-    line-height: 4em; }
+    flex: 0 0 auto;
+    padding: 0 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    background-color: #6c757d;
+    color: #ffffff; }
   .xl-layout .xl-content {
-    flex: auto; }
+    flex: auto;
+    background-color: #f8f9fa;
+    color: #212529; }
   .xl-layout .xl-footer {
-    padding: 0 3em;
-    height: 4em;
-    line-height: 4em; }
+    flex: 0 0 auto;
+    padding: 0 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    background-color: #6c757d;
+    color: #ffffff; }
   .xl-layout .xl-sider {
     flex: 0 1 auto;
-    min-width: 0; }
+    width: 15rem;
+    background-color: #adb5bd;
+    color: #ffffff; }

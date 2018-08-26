@@ -1,56 +1,122 @@
 @import 'config';
 @import '../commons/var';
 @import "config";
-@mixin b($block, $root: true) {
+/* BEM support Func
+ -------------------------- */
+
+@function selectorToString($selector) {
+  $selector: inspect($selector);
+  $selector: str-slice($selector, 2, -2);
+  @return $selector;
+}
+
+@function containsModifier($selector) {
+  $selector: selectorToString($selector);
+  @if str-index($selector, $modifier-separator) {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+// @function containWhenFlag($selector) {
+//   $selector: selectorToString($selector);
+//   @if str-index($selector, '.' + $state-prefix) {
+//     @return true
+//   }
+//   @else {
+//     @return false
+//   }
+// }
+@function containPseudoClass($selector) {
+  $selector: selectorToString($selector);
+  @if str-index($selector, ':') {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+@function hitAllSpecialNestRule($selector) {
+  @return containsModifier($selector) or containPseudoClass($selector);
+}
+
+@mixin b($block) {
   $B: $namespace+'-'+$block !global;
-  @if $root {
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+  @if hitAllSpecialNestRule($selector) {
     @at-root {
-      .#{$B} {
-        @content;
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
       }
     }
   }
   @else {
-    .#{$B} {
-      @content;
-    }
-  }
-}
-
-@mixin e($element, $root: true) {
-  $currentSelector: '';
-  @each $unit in $element {
-    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + " "};
-  }
-  @if $root {
     @at-root {
       #{$currentSelector} {
         @content;
       }
     }
   }
-  @else {
-    #{$currentSelector} {
-      @content;
-    }
-  }
 }
 
-@mixin m($modifier, $root: true) {
+@mixin m($modifier) {
+  $selector: &;
   $currentSelector: "";
   @each $unit in $modifier {
-    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit};
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
   }
-  @if $root {
-    @at-root {
-      #{$currentSelector} {
-        @content;
-      }
-    }
-  }
-  @else {
+  @at-root {
     #{$currentSelector} {
       @content;
     }
+  }
+}
+
+@mixin spec-selector($specSelector: '', $element: false, $modifier: false, $block: $B) {
+  $modifierCombo: '';
+  @if $modifier {
+    $modifierCombo: $modifier-separator + $modifier;
+  }
+  $elementCombo: '';
+  @if $element {
+    $elementCombo:  $element-separator + $element;
+  }
+  @at-root {
+    #{&}#{$specSelector}.#{$block + $elementCombo + $modifierCombo} {
+      @content;
+    }
+  }
+}
+
+@mixin extend-rule($name) {
+  @extend #{'%shared-'+$name};
+}
+
+@mixin share-rule($name) {
+  $rule-name: '%shared-'+$name;
+  @at-root #{$rule-name} {
+    @content;
+  }
+}
+
+@mixin pseudo($pseudo) {
+  @at-root #{&}#{':#{$pseudo}'} {
+    @content;
   }
 }

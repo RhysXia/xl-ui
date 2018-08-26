@@ -2,29 +2,13 @@
     .layout{
         margin-bottom: 2em;
     }
-    .layout__header,
-    .layout__footer{
-        background-color: #7cbce9;
-        height: 80px;
-        color: #fff;
-        display: flex;
-        justify-content: center;
+    .layout .xl-content{
+        height: 10rem;
     }
-    .layout__sider{
+    .layout [class^="xl-"]:not(.xl-layout){
         display: flex;
-        background-color: #3a9fe8;
-        color: #fff;
-        justify-content: center;
         align-items: center;
-        width: 240px;
-    }
-    .layout__content{
-        display: flex;
-        background-color: #0f8de9;
-        color: #fff;
-        height: 100px;
         justify-content: center;
-        align-items: center;
     }
 </style>
 
@@ -48,61 +32,40 @@
 
 ```html
 <xl-layout class="layout">
-    <xl-header class="layout__header">header</xl-header>
-    <xl-content class="layout__content">content</xl-content>
-    <xl-footer class="layout__footer">footer</xl-footer>
+    <xl-header>header</xl-header>
+    <xl-content>content</xl-content>
+    <xl-footer>footer</xl-footer>
 </xl-layout>
 <xl-layout class="layout">
-    <xl-sider class="layout__sider">sider</xl-sider>
+    <xl-sider>sider</xl-sider>
     <xl-layout>
-        <xl-header class="layout__header">header</xl-header>
-        <xl-content  class="layout__content">content</xl-content>
-        <xl-footer class="layout__footer">footer</xl-footer>
+        <xl-header>header</xl-header>
+        <xl-content>content</xl-content>
+        <xl-footer>footer</xl-footer>
     </xl-layout>
 </xl-layout>
 <xl-layout class="layout">
-    <xl-header class="layout__header">header</xl-header>
+    <xl-header>header</xl-header>
     <xl-layout>
-        <xl-sider class="layout__sider">sider</xl-sider>
-        <xl-content  class="layout__content">content</xl-content>
+        <xl-sider>sider</xl-sider>
+        <xl-content>content</xl-content>
     </xl-layout>
-    <xl-footer class="layout__footer">footer</xl-footer>
+    <xl-footer>footer</xl-footer>
 </xl-layout>
 <xl-layout class="layout">
-    <xl-header class="layout__header">header</xl-header>
+    <xl-header>header</xl-header>
     <xl-layout>
-        <xl-content  class="layout__content">content</xl-content>
-        <xl-sider class="layout__sider">sider</xl-sider>
+        <xl-content>content</xl-content>
+        <xl-sider>sider</xl-sider>
     </xl-layout>
-    <xl-footer class="layout__footer">footer</xl-footer>
+    <xl-footer>footer</xl-footer>
 </xl-layout>
 <style>
     .layout{
         margin-bottom: 2em;
     }
-    .layout__header,
-    .layout__footer{
-        background-color: #7cbce9;
-        height: 80px;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-    }
-    .layout__sider{
-        display: flex;
-        background-color: #3a9fe8;
-        color: #fff;
-        justify-content: center;
-        align-items: center;
-        width: 240px;
-    }
-    .layout__content{
-        display: flex;
-        background-color: #0f8de9;
-        color: #fff;
-        height: 100px;
-        justify-content: center;
-        align-items: center;
+    .layout .xl-content{
+        height: 10rem;
     }
 </style>
 ```

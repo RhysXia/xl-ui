@@ -13,6 +13,7 @@
         }
     }
 </script>
+
 # input 输入框
 
 通过鼠标或键盘输入字符
@@ -23,36 +24,6 @@
 
 ```html
 <xl-input class="demo-input" placeholder='请输入内容'></xl-input>
-<style>
-    .demo-input{
-        width: 20em;
-    }
-</style>
-```
-
-:::
-
-## 禁用状态
-
-::: demo 使用`disabled`禁止输入
-
-```html
-<xl-input class="demo-input" placeholder='请输入内容' disabled></xl-input>
-<style>
-    .demo-input{
-        width: 20em;
-    }
-</style>
-```
-
-:::
-
-## 只读状态
-
-::: demo 使用`readonly`只读
-
-```html
-<xl-input class="demo-input" placeholder='请输入内容' readonly></xl-input>
 <style>
     .demo-input{
         width: 20em;
@@ -83,7 +54,9 @@
 
 ```html
 <xl-input class="demo-input" placeholder='请输入内容' suffix-icon='calendar'></xl-input>
-<xl-input class="demo-input" style="margin-top: 2em;" placeholder='请输入内容' prefix-icon='search'></xl-input>
+<xl-input class="demo-input" style="margin-top: 2rem;" placeholder='请输入内容' suffix-icon='calendar' clearable></xl-input>
+<xl-input class="demo-input" style="margin-top: 2rem;" placeholder='请输入内容' prefix-icon='search'></xl-input>
+<xl-input class="demo-input" style="margin-top: 2rem;" placeholder='请输入内容' suffix-icon='calendar' clearable prefix-icon='search'></xl-input>
 <style>
     .demo-input{
         width: 20em;
@@ -111,9 +84,27 @@
 
 :::
 
+## 完整功能的输入框
+
+::: demo 所有功能都开启
+
+```html
+<xl-input class="demo-input" placeholder='请输入内容' placeholder='请输入内容' suffix-icon='calendar' clearable prefix-icon='search'>
+    <span slot='prefix'>Http://</span>
+    <span slot='suffix'>.com</span>
+</xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
+```
+
+:::
+
 ## 文本域
 
-::: demo 使用`type`='textarea'
+::: demo 使用`type=textarea`
 
 ```html
 <xl-input class="demo-input" type='textarea' placeholder='请输入内容'></xl-input>
@@ -147,8 +138,8 @@
 
 ```html
 <xl-input class="demo-input" v-model="minRows" placeholder="最小高度"></xl-input>
-<xl-input class="demo-input" style="margin-top:2em;" v-model="maxRows" placeholder="最大高度"></xl-input>
-<xl-input class="demo-input" style="margin-top:2em;" type='textarea' :autosize="{minRows:Number(minRows),maxRows:Number(maxRows)}" placeholder='请输入内容'></xl-input>
+<xl-input class="demo-input" style="margin-top:2rem;" v-model="maxRows" placeholder="最大高度"></xl-input>
+<xl-input class="demo-input" style="margin-top:2rem;" type='textarea' :autosize="{minRows:Number(minRows),maxRows:Number(maxRows)}" placeholder='请输入内容'></xl-input>
 <script>
     export default{
         data(){
@@ -165,7 +156,49 @@
     }
 </style>
 ```
+
 :::
+
+
+## 禁用状态
+
+::: demo 使用`disabled`禁止输入
+
+```html
+<xl-input class="demo-input" placeholder='请输入内容'  suffix-icon='calendar' prefix-icon='calendar' disabled>
+    <span slot='prefix'>Http://</span>
+    <span slot='suffix'>.com</span>
+</xl-input>
+<xl-input style="margin-top:2rem;" class="demo-input" type='textarea' placeholder='请输入内容' disabled></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
+```
+
+:::
+
+## 只读状态
+
+::: demo 使用`readonly`只读
+
+```html
+<xl-input class="demo-input" placeholder='请输入内容'  suffix-icon='calendar' prefix-icon='calendar' readonly>
+    <span slot='prefix'>Http://</span>
+    <span slot='suffix'>.com</span>
+</xl-input>
+<xl-input style="margin-top:2rem;" class="demo-input" type='textarea' placeholder='请输入内容' readonly></xl-input>
+<style>
+    .demo-input{
+        width: 20em;
+    }
+</style>
+```
+
+:::
+
+
 
 ## input 属性
 

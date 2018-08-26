@@ -1,9 +1,9 @@
-@import './commons/var';
-@import './mixins/bem';
+@import 'commons/var';
+@import 'mixins/bem';
 @include b(button-group) {
   position: relative;
   display: inline-block;
-  @include b(button, false) {
+  @include b(button) {
     position: relative;
     &:focus,
     &:hover {
@@ -11,7 +11,7 @@
     }
   }
   @include m(horizontal) {
-    @include b(button, false) {
+    @include b(button) {
       float: left;
       &:first-child:not(:last-child) {
         border-top-right-radius: 0;
@@ -29,7 +29,7 @@
     }
   }
   @include m(vertical) {
-    @include b(button, false) {
+    @include b(button) {
       display: block;
       &:first-child:not(:last-child) {
         border-bottom-left-radius: 0;

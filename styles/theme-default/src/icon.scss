@@ -1,6 +1,6 @@
-@import './commons/var';
-@import './mixins/bem';
-@import './commons/ionicons/ionicons.scss';
+@import 'commons/var';
+@import 'mixins/bem';
+@import 'commons/ionicons/ionicons';
 @include b(icon) {
   display: inline-block;
   font-size: $--icon-font-size;

@@ -1,15 +1,15 @@
 <template lang="pug">
-  div(:class='classes')
-    textarea(ref="textarea",v-if="type=='textarea'",:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:style="textareaStyles",:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
+  div(:class='classes',@mouseenter="_mouseenter",@mouseleave="_mouseleave")
+    textarea(:class="textareaClasses" ref="textarea",v-if="type=='textarea'",:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:style="textareaStyles",:placeholder='placeholder',:rows='rows',:readonly='readonly',:disabled='disabled')
     template(v-else)
-      div(:class="[prefixCls+'__prefix']",v-if="$slots.prefix")
+      span(:class="prefixClasses",v-if="$slots.prefix")
         slot(name="prefix")
-      div(:class="prefixCls+'__inner-wrapper'",@mouseenter="isHovered = true",@mouseleave="isHovered = false")
-        Icon(@click="_iconClickHandler",:class="prefixCls+'__prefix-icon'",v-if="prefixIcon",:type="prefixIcon")
+      span(:class="bodyClasses")
+        Icon(:class="prefixIconClasses",v-if="prefixIcon",@on-click="_iconClickHandler",:type="prefixIcon")
         input(:class="inputClasses",ref="input",:type='type',:value='currentValue',@input='_inputHandler',@focus="_focusHandler",@blur="_blurHandler",:placeholder='placeholder',:readonly='readonly',:disabled='disabled')
-        Icon(ref="icon-clear",@click="currentValue=''",:class="prefixCls+'__suffix-icon'",v-if="clearable&&currentValue&&(isFocused||isHovered)&&!readonly&&!disabled",type="ios-close")
-        Icon(@click="_iconClickHandler",:class="prefixCls+'__suffix-icon'",v-else-if="suffixIcon",:type="suffixIcon")
-      div(:class="[prefixCls+'__suffix']",v-if="$slots.suffix")
+        Icon(:class="clearIconClasses",ref="icon-clear",@on-click="currentValue=''",type="ios-close",v-if="isClearShow")
+        Icon(:class="suffixIconClasses",@on-click="_iconClickHandler",v-else-if="suffixIcon",:type="suffixIcon")
+      span(:class="suffixClasses",v-if="$slots.suffix")
         slot(name="suffix")
 </template>
 <script>
@@ -57,7 +57,6 @@ export default {
   },
   data() {
     return {
-      prefixCls: name,
       currentValue: this.value,
       textareaStyles: {},
       isFocused: false,
@@ -65,23 +64,70 @@ export default {
     }
   },
   computed: {
-    inputClasses() {
-      const arr = [`${this.prefixCls}__inner`]
-
-      if (this.suffixIcon) {
-        arr.push(`${this.prefixCls}__inner--suffix-icon`)
-      }
-      if (this.prefixIcon) {
-        arr.push(`${this.prefixCls}__inner--prefix-icon`)
-      }
-
-      return arr
+    isClearShow() {
+      return (
+        this.clearable &&
+        this.currentValue &&
+        (this.isFocused || this.isHovered) &&
+        !this.readonly &&
+        !this.disabled
+      )
     },
     classes() {
-      const arr = [`${this.prefixCls}`]
+      const arr = [`${name}`]
       if (this.autosize) {
-        arr.push(`${this.prefixCls}--autosize`)
+        arr.push(`${name}--autosize`)
       }
+      if (this.isHovered) {
+        arr.push(`${name}--hover`)
+      }
+      if (this.isFocused) {
+        arr.push(`${name}--focus`)
+      }
+      if (this.disabled) {
+        arr.push(`${name}--disabled`)
+      }
+      if (this.readonly) {
+        arr.push(`${name}--readonly`)
+      }
+      return arr
+    },
+    textareaClasses() {
+      const arr = [`${name}__textarea`]
+      return arr
+    },
+    prefixClasses() {
+      const arr = [`${name}__prefix`]
+      return arr
+    },
+    suffixClasses() {
+      const arr = [`${name}__suffix`]
+      return arr
+    },
+    prefixIconClasses() {
+      const arr = [`${name}__prefix-icon`]
+      return arr
+    },
+    bodyClasses() {
+      const arr = [`${name}__body`]
+      return arr
+    },
+    inputClasses() {
+      const arr = [`${name}__inner`]
+      if (this.prefixIcon) {
+        arr.push(`${name}__inner--prefix-icon`)
+      }
+      if (this.suffixIcon) {
+        arr.push(`${name}__inner--suffix-icon`)
+      }
+      return arr
+    },
+    suffixIconClasses() {
+      const arr = [`${name}__suffix-icon`]
+      return arr
+    },
+    clearIconClasses() {
+      const arr = [`${name}__suffix-icon`, `${name}__suffix-icon--clear`]
       return arr
     }
   },
@@ -108,14 +154,32 @@ export default {
     blur() {
       ;(this.$refs.textarea || this.$refs.input).blur()
     },
+    _mouseenter() {
+      if (this.disabled || this.readonly) {
+        return
+      }
+      this.isHovered = true
+    },
+    _mouseleave() {
+      if (this.disabled || this.readonly) {
+        return
+      }
+      this.isHovered = false
+    },
     _iconClickHandler() {
       this.$emit('on-icon-click')
     },
     _blurHandler(e) {
+      if (this.disabled || this.readonly) {
+        return
+      }
       this.$emit('on-blur', e)
       this.isFocused = false
     },
     _focusHandler(e) {
+      if (this.disabled || this.readonly) {
+        return
+      }
       this.$emit('on-focus', e)
       this.isFocused = true
     },
