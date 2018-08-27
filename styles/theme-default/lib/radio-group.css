@@ -36,8 +36,6 @@
         z-index: 1; }
         .xl-radio-group--button .xl-radio--checked .xl-radio__label {
           color: #ffffff; }
-      .xl-radio-group--button .xl-radio--focused {
-        box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
   .xl-radio-group--button .xl-radio:not(.xl-radio--disabled):hover {
     z-index: 2;
     border-color: #007bff; }

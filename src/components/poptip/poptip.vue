@@ -88,23 +88,23 @@ export default {
       return `${name}__ref`
     },
     popClasses() {
-      const arr = [`${name}__popper`]
+      const arr = [`${name}__popper`,`${name}__popper--${this.actualPlacement}`]
       if (this.popClass) {
         arr.push(this.popClass)
       }
       return arr
     },
     arrowClasses() {
-      return `${name}__popper__arrow`
+      return `${name}__arrow`
     },
     contentClasses() {
-      return `${name}__popper__content`
+      return `${name}__content`
     },
     titleClasses() {
-      return `${name}__popper__title`
+      return `${name}__title`
     },
     bodyClasses() {
-      return `${name}__popper__body`
+      return `${name}__body`
     },
     popStyles() {
       const style = {

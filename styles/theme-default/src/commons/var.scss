@@ -118,7 +118,7 @@ $--font-weight-bolder:          bolder    !default;
 
 
 //opacity
-$--opacity-disabled: 0.65 !default;
+$--opacity-disabled:            .65      !default;
 
 //icon
 $--icon-font-path:                './fonts'                             !default;
@@ -138,7 +138,7 @@ $--btn-border-radius-round:       ($--btn-padding-y + $--btn-line-height * $--bt
 $--btn-opacity-disabled:          $--opacity-disabled                   !default;
 $--btn-color-level:               3                                     !default;
 $--btn-loading-time:              2s                                    !default;
-$--btn-theme-color: map_merge($--theme-colors,())                       !default;
+$--btn-theme-color:               map_merge($--theme-colors,())         !default;
 
 //grid
 $--grid-breakpoints: ( 
@@ -152,20 +152,20 @@ $--grid-breakpoints: (
 
 //layout
 $--layout-header-height:        5rem                                  !default;
-$--layout-header-bg-color:      $--color-gray-600                     !default;
+$--layout-header-bg-color:      $--color-gray-800                     !default;
 $--layout-header-color:         color-yiq($--layout-header-bg-color)  !default;
 $--layout-header-padding-x:     5rem                                  !default;
 
-$--layout-content-bg-color:     $--color-gray-100;
+$--layout-content-bg-color:     $--color-gray-200;
 $--layout-content-color:        color-yiq($--layout-content-bg-color) !default;
 
 $--layout-footer-height:        $--layout-header-height               !default;
-$--layout-footer-bg-color:      $--layout-header-bg-color             !default;
+$--layout-footer-bg-color:      $--color-gray-500                     !default;
 $--layout-footer-color:         color-yiq($--layout-footer-bg-color)  !default;
 $--layout-footer-padding-x:     $--layout-header-padding-x            !default;
 
 $--layout-sider-width:          15rem                                 !default;
-$--layout-sider-bg-color:       $--color-gray-500                     !default;
+$--layout-sider-bg-color:       $--color-gray-700                     !default;
 $--layout-sider-color:          color-yiq($--layout-sider-bg-color)   !default;
 
 //input
@@ -209,29 +209,36 @@ $--checkbox-group-margin-right:     .5rem                                   !def
 $--checkbox-opacity-disabled:       $--opacity-disabled                     !default;
 $--checkbox-transition-time:        .3s                                     !default;
 $--checkbox-transition-func:        ease-in-out                             !default;
-$--checkbox-focus-box-shadow:             0 0 0 $--checkbox-focus-width rgba($--checkbox-border-color, .5)           !default;
-$--checkbox-checked-focus-box-shadow:     0 0 0 $--checkbox-focus-width rgba($--checkbox-checked-border-color, .5)   !default;
 
 //radio
-$--radio-bg-color:               $--checkbox-bg-color    ;
-$--radio-color:                  $--checkbox-color ;
-$--radio-border-color: $--checkbox-border-color;
-$--radio-hover-color: $--checkbox-hover-color;
-$--radio-hover-border-color:     $--checkbox-hover-border-color                   !default;
-$--radio-checked-color: $--checkbox-checked-color;
-$--radio-checked-border-color:     $--checkbox-checked-border-color                   !default;
-$--radio-line-height: $--checkbox-line-height;
-$--radio-height: $--checkbox-height;
-$--radio-width: $--checkbox-width;
-$--radio-border-width: $--checkbox-border-width;
-$--radio-transition-time: $--checkbox-transition-time;
-$--radio-transition-func: $--checkbox-transition-func;
-$--radio-label-padding-left: $--checkbox-label-padding-left;
-$--radio-button-padding-x:       $--checkbox-button-padding-x                        !default;
-$--radio-button-padding-y:       $--checkbox-button-padding-y   ;
-$--radio-group-margin-right:$--checkbox-group-margin-right;
-$--radio-focus-width: $--checkbox-focus-width;
-$--radio-focus-box-shadow:             0 0 0 $--radio-focus-width rgba($--radio-border-color, .5)           !default;
-$--radio-checked-focus-box-shadow:       0 0 0 $--radio-focus-width rgba($--radio-checked-border-color, .5)     !default;
-$--radio-opacity-disabled:       $--checkbox-opacity-disabled                     !default;
-$--radio-border-radius:          $--checkbox-border-radius                     !default;
+$--radio-bg-color:                  $--checkbox-bg-color                    !default;
+$--radio-color:                     $--checkbox-color                       !default;
+$--radio-border-color:              $--checkbox-border-color                !default;
+$--radio-hover-color:               $--checkbox-hover-color                 !default;
+$--radio-hover-border-color:        $--checkbox-hover-border-color          !default;
+$--radio-checked-color:             $--checkbox-checked-color               !default;
+$--radio-checked-border-color:      $--checkbox-checked-border-color        !default;
+$--radio-line-height:               $--checkbox-line-height                 !default;
+$--radio-height:                    $--checkbox-height                      !default;
+$--radio-width:                     $--checkbox-width                       !default;
+$--radio-border-width:              $--checkbox-border-width                !default;
+$--radio-transition-time:           $--checkbox-transition-time             !default;
+$--radio-transition-func:           $--checkbox-transition-func             !default;
+$--radio-label-padding-left:        $--checkbox-label-padding-left          !default;
+$--radio-button-padding-x:          $--checkbox-button-padding-x            !default;
+$--radio-button-padding-y:          $--checkbox-button-padding-y            !default;
+$--radio-group-margin-right:        $--checkbox-group-margin-right          !default;
+$--radio-focus-width:               $--checkbox-focus-width                 !default;
+$--radio-opacity-disabled:          $--checkbox-opacity-disabled            !default;
+$--radio-border-radius:             $--checkbox-border-radius               !default;
+
+//poptip
+$--poptip-border-radius: $--border-radius;
+$--poptip-border-width: $--border-width;
+$--poptip-border-color: $--color-gray-200;
+$--poptip-bg-color: $--bg-color;
+$--poptip-box-shadow: 0 2px 5px 0 rgba($--border-color, .9) !default;
+$--poptip-arrow-size: 1rem;
+$--poptip-transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+$--poptip-title-content-space: .5rem;
+

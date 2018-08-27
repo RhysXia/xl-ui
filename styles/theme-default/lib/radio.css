@@ -55,8 +55,6 @@
     border-color: #007bff; }
   .xl-radio:hover:not(.xl-radio--disabled):not(.xl-radio--checked) .xl-radio__label {
     color: #007bff; }
-  .xl-radio--focused .xl-radio__inner {
-    box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
   .xl-radio--checked .xl-radio__inner {
     border-color: #007bff; }
     .xl-radio--checked .xl-radio__inner:after {
@@ -72,7 +70,3 @@
       border-color: #007bff; }
     .xl-radio--bordered.xl-radio--checked {
       border-color: #007bff; }
-    .xl-radio--bordered.xl-radio--focused {
-      box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
-      .xl-radio--bordered.xl-radio--focused .xl-radio__inner {
-        box-shadow: none; }

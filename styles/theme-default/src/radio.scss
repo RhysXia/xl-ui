@@ -69,11 +69,6 @@
       }
     }
   }
-  @include m(focused) {
-    @include e(inner) {
-      box-shadow: $--radio-focus-box-shadow;
-    }
-  }
   @include m(checked) {
     @include e(inner) {
       border-color: $--radio-checked-border-color;
@@ -97,12 +92,6 @@
     }
     @include spec-selector('', checked) {
       border-color: $--radio-checked-border-color;
-    }
-    @include spec-selector('', focused) {
-      box-shadow: $--radio-focus-box-shadow;
-      @include e(inner) {
-        box-shadow: none;
-      }
     }
   }
 }

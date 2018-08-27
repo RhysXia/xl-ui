@@ -40,12 +40,6 @@
           z-index: 2;
         }
       }
-      @include m(focused){
-        box-shadow: $--checkbox-focus-box-shadow;
-        @include spec-selector('',checked){
-          box-shadow: $--checkbox-checked-focus-box-shadow;
-        }
-      }
       @include m(checked) {
         border-color: $--checkbox-checked-color;
         background-color: $--checkbox-checked-color;

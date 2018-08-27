@@ -64,16 +64,16 @@ export default [
         component: () => import('./zh-cn/input.md')
       },
       {
-        path: '/radio',
-        title: '单选框',
-        icon: 'android-radio-button-on',
-        component: () => import('./zh-cn/radio.md')
-      },
-      {
         path: '/checkbox',
         title: '多选框',
         icon: 'android-checkbox',
         component: () => import('./zh-cn/checkbox.md')
+      },
+      {
+        path: '/radio',
+        title: '单选框',
+        icon: 'android-radio-button-on',
+        component: () => import('./zh-cn/radio.md')
       }
       // {
       //   path: '/form',

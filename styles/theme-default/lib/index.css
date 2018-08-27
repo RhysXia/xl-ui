@@ -4770,23 +4770,23 @@ body {
     padding: 0 5rem;
     height: 5rem;
     line-height: 5rem;
-    background-color: #6c757d;
+    background-color: #343a40;
     color: #ffffff; }
   .xl-layout .xl-content {
     flex: auto;
-    background-color: #f8f9fa;
+    background-color: #e9ecef;
     color: #212529; }
   .xl-layout .xl-footer {
     flex: 0 0 auto;
     padding: 0 5rem;
     height: 5rem;
     line-height: 5rem;
-    background-color: #6c757d;
+    background-color: #adb5bd;
     color: #ffffff; }
   .xl-layout .xl-sider {
     flex: 0 1 auto;
     width: 15rem;
-    background-color: #adb5bd;
+    background-color: #495057;
     color: #ffffff; }
 
 /* BEM support Func
@@ -4931,8 +4931,6 @@ body {
       cursor: not-allowed; }
   .xl-checkbox--readonly {
     pointer-events: none; }
-  .xl-checkbox--focused .xl-checkbox__inner {
-    box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
   .xl-checkbox--checked .xl-checkbox__inner {
     border-color: #007bff;
     background-color: #007bff; }
@@ -4944,8 +4942,6 @@ body {
       transform: rotate(-45deg) scale(1); }
   .xl-checkbox--checked .xl-checkbox__label {
     color: #007bff; }
-  .xl-checkbox--checked.xl-checkbox--focused .xl-checkbox__inner {
-    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
   .xl-checkbox--indeterminate .xl-checkbox__inner {
     background-color: #007bff; }
     .xl-checkbox--indeterminate .xl-checkbox__inner:after {
@@ -4961,14 +4957,8 @@ body {
     transition: all 0.3s ease-in-out; }
     .xl-checkbox--bordered:hover:not(.xl-checkbox--disabled):not(.xl-checkbox--checked) {
       border-color: #007bff; }
-    .xl-checkbox--bordered.xl-checkbox--focused {
-      box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
-      .xl-checkbox--bordered.xl-checkbox--focused .xl-checkbox__inner {
-        box-shadow: none; }
     .xl-checkbox--bordered.xl-checkbox--checked {
       border-color: #007bff; }
-      .xl-checkbox--bordered.xl-checkbox--checked--focused {
-        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
 
 /* BEM support Func
  -------------------------- */
@@ -5004,10 +4994,6 @@ body {
     .xl-checkbox-group--button .xl-checkbox:not(.xl-checkbox--disabled):not(.xl-checkbox--checked):hover {
       border: 1px solid #007bff;
       z-index: 2; }
-    .xl-checkbox-group--button .xl-checkbox--focused {
-      box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
-      .xl-checkbox-group--button .xl-checkbox--focused.xl-checkbox--checked {
-        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
     .xl-checkbox-group--button .xl-checkbox--checked {
       border-color: #007bff;
       background-color: #007bff;
@@ -5072,8 +5058,6 @@ body {
     border-color: #007bff; }
   .xl-radio:hover:not(.xl-radio--disabled):not(.xl-radio--checked) .xl-radio__label {
     color: #007bff; }
-  .xl-radio--focused .xl-radio__inner {
-    box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
   .xl-radio--checked .xl-radio__inner {
     border-color: #007bff; }
     .xl-radio--checked .xl-radio__inner:after {
@@ -5089,10 +5073,6 @@ body {
       border-color: #007bff; }
     .xl-radio--bordered.xl-radio--checked {
       border-color: #007bff; }
-    .xl-radio--bordered.xl-radio--focused {
-      box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
-      .xl-radio--bordered.xl-radio--focused .xl-radio__inner {
-        box-shadow: none; }
 
 /* BEM support Func
  -------------------------- */
@@ -5132,8 +5112,118 @@ body {
         z-index: 1; }
         .xl-radio-group--button .xl-radio--checked .xl-radio__label {
           color: #ffffff; }
-      .xl-radio-group--button .xl-radio--focused {
-        box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
   .xl-radio-group--button .xl-radio:not(.xl-radio--disabled):hover {
     z-index: 2;
     border-color: #007bff; }
+
+/* BEM support Func
+ -------------------------- */
+.xl-poptip {
+  display: inline-block; }
+  .xl-poptip__ref {
+    display: inline-block;
+    position: relative; }
+  .xl-poptip__arrow {
+    position: absolute;
+    z-index: 1; }
+  .xl-poptip__body {
+    background-clip: padding-box;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    border: 1px solid #e9ecef;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(222, 226, 230, 0.9); }
+  .xl-poptip__title {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef; }
+  .xl-poptip__popper--top, .xl-poptip__popper--top-start, .xl-poptip__popper--top-end {
+    padding-bottom: 1rem; }
+    .xl-poptip__popper--top .xl-poptip__arrow, .xl-poptip__popper--top-start .xl-poptip__arrow, .xl-poptip__popper--top-end .xl-poptip__arrow {
+      display: block;
+      height: 0;
+      width: 0;
+      border: 0.5rem solid transparent;
+      border-top-color: #e9ecef;
+      bottom: 1px; }
+      .xl-poptip__popper--top .xl-poptip__arrow:after, .xl-poptip__popper--top-start .xl-poptip__arrow:after, .xl-poptip__popper--top-end .xl-poptip__arrow:after {
+        position: absolute;
+        display: block;
+        left: -0.4rem;
+        top: -0.4rem;
+        content: "";
+        height: 0;
+        width: 0;
+        border: 0.4rem solid transparent; }
+      .xl-poptip__popper--top .xl-poptip__arrow:after, .xl-poptip__popper--top-start .xl-poptip__arrow:after, .xl-poptip__popper--top-end .xl-poptip__arrow:after {
+        border-top-color: #ffffff;
+        margin-top: -0.1rem; }
+  .xl-poptip__popper--bottom, .xl-poptip__popper--bottom-start, .xl-poptip__popper--bottom-end {
+    padding-top: 1rem; }
+    .xl-poptip__popper--bottom .xl-poptip__arrow, .xl-poptip__popper--bottom-start .xl-poptip__arrow, .xl-poptip__popper--bottom-end .xl-poptip__arrow {
+      display: block;
+      height: 0;
+      width: 0;
+      border: 0.5rem solid transparent;
+      border-bottom-color: #e9ecef;
+      top: 1px; }
+      .xl-poptip__popper--bottom .xl-poptip__arrow:after, .xl-poptip__popper--bottom-start .xl-poptip__arrow:after, .xl-poptip__popper--bottom-end .xl-poptip__arrow:after {
+        position: absolute;
+        display: block;
+        left: -0.4rem;
+        top: -0.4rem;
+        content: "";
+        height: 0;
+        width: 0;
+        border: 0.4rem solid transparent; }
+      .xl-poptip__popper--bottom .xl-poptip__arrow:after, .xl-poptip__popper--bottom-start .xl-poptip__arrow:after, .xl-poptip__popper--bottom-end .xl-poptip__arrow:after {
+        border-bottom-color: #ffffff;
+        margin-top: 0.1rem; }
+  .xl-poptip__popper--left, .xl-poptip__popper--left-start, .xl-poptip__popper--left-end {
+    padding-right: 1rem; }
+    .xl-poptip__popper--left .xl-poptip__arrow, .xl-poptip__popper--left-start .xl-poptip__arrow, .xl-poptip__popper--left-end .xl-poptip__arrow {
+      display: block;
+      height: 0;
+      width: 0;
+      border: 0.5rem solid transparent;
+      border-left-color: #e9ecef;
+      right: 1px; }
+      .xl-poptip__popper--left .xl-poptip__arrow:after, .xl-poptip__popper--left-start .xl-poptip__arrow:after, .xl-poptip__popper--left-end .xl-poptip__arrow:after {
+        position: absolute;
+        display: block;
+        left: -0.4rem;
+        top: -0.4rem;
+        content: "";
+        height: 0;
+        width: 0;
+        border: 0.4rem solid transparent; }
+      .xl-poptip__popper--left .xl-poptip__arrow:after, .xl-poptip__popper--left-start .xl-poptip__arrow:after, .xl-poptip__popper--left-end .xl-poptip__arrow:after {
+        border-left-color: #ffffff;
+        margin-left: -0.1rem; }
+  .xl-poptip__popper--right, .xl-poptip__popper--right-start, .xl-poptip__popper--right-end {
+    padding-left: 1rem; }
+    .xl-poptip__popper--right .xl-poptip__arrow, .xl-poptip__popper--right-start .xl-poptip__arrow, .xl-poptip__popper--right-end .xl-poptip__arrow {
+      display: block;
+      height: 0;
+      width: 0;
+      border: 0.5rem solid transparent;
+      border-right-color: #e9ecef;
+      left: 1px; }
+      .xl-poptip__popper--right .xl-poptip__arrow:after, .xl-poptip__popper--right-start .xl-poptip__arrow:after, .xl-poptip__popper--right-end .xl-poptip__arrow:after {
+        position: absolute;
+        display: block;
+        left: -0.4rem;
+        top: -0.4rem;
+        content: "";
+        height: 0;
+        width: 0;
+        border: 0.4rem solid transparent; }
+      .xl-poptip__popper--right .xl-poptip__arrow:after, .xl-poptip__popper--right-start .xl-poptip__arrow:after, .xl-poptip__popper--right-end .xl-poptip__arrow:after {
+        border-right-color: #ffffff;
+        margin-left: 0.1rem; }
+  .xl-poptip-fade-enter-active, .xl-poptip-fade-leave-active {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; }
+  .xl-poptip-fade-enter, .xl-poptip-fade-leave-to {
+    opacity: 0; }
+  .xl-poptip-fade-enter-to, .xl-poptip-fade-leave {
+    opacity: 1; }

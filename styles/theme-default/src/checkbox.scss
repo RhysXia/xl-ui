@@ -69,11 +69,7 @@
   @include m(readonly) {
     pointer-events: none;
   }
-  @include m(focused) {
-    @include e(inner) {
-      box-shadow: $--checkbox-focus-box-shadow;
-    }
-  }
+
   @include m(checked) {
     @include e(inner) {
       border-color: $--checkbox-checked-border-color;
@@ -88,11 +84,6 @@
     }
     @include e(label) {
       color: $--checkbox-checked-color;
-    }
-    @include spec-selector('',focused){
-      @include e(inner) {
-        box-shadow: $--checkbox-checked-focus-box-shadow;
-      }
     }
   }
   @include m(indeterminate) {
@@ -117,17 +108,8 @@
         border-color: $--checkbox-hover-border-color;
       }
     }
-    @include spec-selector('', focused) {
-      box-shadow: $--checkbox-focus-box-shadow;
-      @include e(inner) {
-        box-shadow: none;
-      }
-    }
     @include spec-selector('', checked) {
       border-color: $--checkbox-checked-border-color;
-      @include m(focused) {
-        box-shadow: $--checkbox-checked-focus-box-shadow;
-      }
     }
   }
 }

@@ -43,9 +43,6 @@
           color: $--radio-bg-color;
         }
       }
-      @include m(focused) {
-        box-shadow: $--radio-focus-box-shadow;
-      }
     }
   }
   @include m(button) {

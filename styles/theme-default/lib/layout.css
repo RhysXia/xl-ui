@@ -11,21 +11,21 @@
     padding: 0 5rem;
     height: 5rem;
     line-height: 5rem;
-    background-color: #6c757d;
+    background-color: #343a40;
     color: #ffffff; }
   .xl-layout .xl-content {
     flex: auto;
-    background-color: #f8f9fa;
+    background-color: #e9ecef;
     color: #212529; }
   .xl-layout .xl-footer {
     flex: 0 0 auto;
     padding: 0 5rem;
     height: 5rem;
     line-height: 5rem;
-    background-color: #6c757d;
+    background-color: #adb5bd;
     color: #ffffff; }
   .xl-layout .xl-sider {
     flex: 0 1 auto;
     width: 15rem;
-    background-color: #adb5bd;
+    background-color: #495057;
     color: #ffffff; }
