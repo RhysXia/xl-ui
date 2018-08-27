@@ -1,15 +1,14 @@
 @import 'commons/var';
-@import 'mixins/bem';
 @import 'mixins/utils';
-@include b(checkbox-group) {
-  @include b(checkbox) {
+.#{$--cls-prefix}-checkbox-group {
+  .#{$--cls-prefix}-checkbox {
     &:not(:last-child) {
       margin-right: $--checkbox-group-margin-right;
     }
   }
-  @include m(button) {
+  &--button {
     @include clearfix;
-    @include b(checkbox) {
+    .#{$--cls-prefix}-checkbox {
       float: left;
       border: $--checkbox-border-width solid $--checkbox-border-color;
       padding: $--checkbox-button-padding-y $--checkbox-button-padding-x;
@@ -28,23 +27,29 @@
       &:not(:first-child) {
         margin-left: -$--checkbox-border-width;
       }
-      @include e(inner) {
-        display: none;
-      }
-      @include e(label) {
-        padding-left: 0;
-      }
-      @include not((disabled, checked)) {
-        @include pseudo(hover) {
-          border: 1px solid $--checkbox-hover-border-color;
-          z-index: 2;
+      &:not(&--disabled):not(&--checked) {
+        &:hover {
+          border: $--checkbox-border-width solid $--checkbox-hover-border-color;
+          z-index: 1;
         }
       }
-      @include m(checked) {
+      &__inner {
+        display: none;
+      }
+      &__label {
+        padding-left: 0;
+      }
+      &--checked {
         border-color: $--checkbox-checked-color;
         background-color: $--checkbox-checked-color;
-        z-index: 1;
-        @include e(label) {
+        z-index: 2;
+        &:not(:first-child) {
+          border-left-color: $--checkbox-bg-color;
+        }
+        &:not(:last-child) {
+          border-right-color: $--checkbox-bg-color;
+        }
+        .#{$--cls-prefix}-checkbox__label {
           color: $--checkbox-bg-color;
         }
       }

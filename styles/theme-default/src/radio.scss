@@ -1,17 +1,18 @@
 @import 'commons/var';
-@import 'mixins/bem';
-@include b(radio) {
+.#{$--cls-prefix}-radio {
   position: relative;
   display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
   line-height: $--radio-line-height;
   background-color: $--radio-bg-color;
-  @include e((input, inner, label)) {
+  &__input,
+  &__inner,
+  &__label {
     display: inline-block;
     vertical-align: middle;
   }
-  @include e(input) {
+  &__input {
     position: absolute;
     left: 0;
     top: 0;
@@ -24,7 +25,7 @@
     box-sizing: border-box;
     cursor: pointer;
   }
-  @include e(inner) {
+  &__inner {
     position: relative;
     left: 0;
     top: 0;
@@ -46,51 +47,51 @@
       transform: scale(0);
     }
   }
-  @include e(label) {
+  &__label {
     padding-left: $--radio-label-padding-left;
     transition: color $--radio-transition-time $--radio-transition-func;
   }
-  @include m(disabled) {
+  &--disabled {
     opacity: $--radio-opacity-disabled;
-    @include e(input) {
+    .#{$--cls-prefix}-radio__input {
       cursor: not-allowed;
     }
   }
-  @include m(readonly) {
+  &--readonly {
     pointer-events: none;
   }
-  @include pseudo(hover) {
-    @include not((disabled,checked)) {
-      @include e(inner) {
+  &:not(&--disabled):not(&--checked) {
+    &:hover {
+      .#{$--cls-prefix}-radio__inner {
         border-color: $--radio-hover-border-color;
       }
-      @include e(label) {
+      .#{$--cls-prefix}-radio__label {
         color: $--radio-hover-color;
       }
     }
   }
-  @include m(checked) {
-    @include e(inner) {
+  &--checked {
+    .#{$--cls-prefix}-radio__inner {
       border-color: $--radio-checked-border-color;
       &:after {
         transform: scale(0.7);
       }
     }
-    @include e(label) {
+    .#{$--cls-prefix}-radio__label {
       color: $--radio-checked-color;
     }
   }
-  @include m(bordered) {
+  &--bordered {
     border: $--radio-border-width solid $--radio-border-color;
     padding: $--radio-button-padding-y $--radio-button-padding-x;
     border-radius: $--border-radius;
     transition: border-color $--radio-transition-time $--radio-transition-func;
-    @include pseudo(hover) {
-      @include not((disabled,checked)) {
+    &:not(.#{$--cls-prefix}-radio--disabled):not(.#{$--cls-prefix}-radio--checked) {
+      &:hover {
         border-color: $--radio-hover-border-color;
       }
     }
-    @include spec-selector('', checked) {
+    &.#{$--cls-prefix}-radio--checked {
       border-color: $--radio-checked-border-color;
     }
   }

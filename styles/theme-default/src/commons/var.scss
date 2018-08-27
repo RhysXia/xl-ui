@@ -1,4 +1,7 @@
 @import 'mixins/function';
+//prefix
+
+$--cls-prefix:          'xl'      !default;
 
 // color
 $--color-white:     #ffffff !default;
@@ -129,6 +132,7 @@ $--btn-font-weight:               $--font-weight                        !default
 $--btn-border-width:              $--border-width                       !default;
 $--btn-padding-y:                 .3rem                                 !default;
 $--btn-padding-x:                 .6rem                                 !default;
+$--btn-span-icon-space:           .5rem                                 !default;
 $--btn-font-size:                 $--font-size                          !default;
 $--btn-line-height:               $--line-height                        !default;
 $--btn-transition:                color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, z-index .15s ease-in-out !default;
@@ -233,12 +237,19 @@ $--radio-opacity-disabled:          $--checkbox-opacity-disabled            !def
 $--radio-border-radius:             $--checkbox-border-radius               !default;
 
 //poptip
-$--poptip-border-radius: $--border-radius;
-$--poptip-border-width: $--border-width;
-$--poptip-border-color: $--color-gray-200;
-$--poptip-bg-color: $--bg-color;
-$--poptip-box-shadow: 0 2px 5px 0 rgba($--border-color, .9) !default;
-$--poptip-arrow-size: 1rem;
-$--poptip-transition: opacity .3s ease-in-out, transform .3s ease-in-out;
-$--poptip-title-content-space: .5rem;
+$--poptip-color:                    $--text-color-dark                      !default;
+$--poptip-font-size:                $--font-size                            !default;
+$--poptip-border-radius:            $--border-radius                        !default;
+$--poptip-border-width:             $--border-width                         !default;
+$--poptip-border-color:             $--color-gray-200                       !default;
+$--poptip-bg-color:                 $--bg-color                             !default;
+$--poptip-box-shadow:               0 2px 5px 0 rgba($--poptip-border-color, .2)   !default;
+$--poptip-arrow-size:               1rem                                    !default;
+$--poptip-title-content-space:      0.5rem                                  !default;
+$--poptip-transition:               opacity .3s ease-in-out, transform .3s ease-in-out  !default;
 
+//tooltip
+$--tooltip-color:                 $--bg-color                             !default;
+$--tooltip-bg-color:                 $--color-gray-700                             !default;
+$--tooltip-border-color:             $--tooltip-bg-color                      !default;
+$--tooltip-box-shadow:               0 2px 5px 0 rgba($--tooltip-border-color, .9)   !default;

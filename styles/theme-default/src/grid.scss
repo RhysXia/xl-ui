@@ -1,27 +1,26 @@
 @import 'commons/var';
-@import 'mixins/bem';
 @import 'mixins/utils';
 @mixin make-col($breakpoint, $number: 24) {
   $prefix: col-#{$breakpoint}-;
   @if $breakpoint==span {
     $prefix: col-;
   }
-  @include b(#{$prefix}0) {
+  .#{$--cls-prefix}-#{$prefix}0 {
     display: none;
   }
   @for $i from 1 through $number {
-    @include b(#{$prefix}#{$i}) {
+    .#{$--cls-prefix}-#{$prefix}#{$i} {
       display: block;
       width: $i / $number * 100%;
     }
-    @include b(#{$prefix}pull-#{$i}) {
+    .#{$--cls-prefix}-#{$prefix}pull-#{$i} {
       position: relative;
       right: $i / $number * 100%;
     }
-    @include b(#{$prefix}offset-#{$i}) {
+    .#{$--cls-prefix}-#{$prefix}offset-#{$i} {
       margin-left: $i / $number * 100%;
     }
-    @include b(#{$prefix}push-#{$i}) {
+    .#{$--cls-prefix}-#{$prefix}push-#{$i} {
       position: relative;
       left: $i / $number * 100%;
     }
@@ -37,45 +36,47 @@
   }
 }
 
-@include b(row) {
+.#{$--cls-prefix}-row {
   position: relative;
   box-sizing: border-box;
   @include clearfix;
-  @include m(flex) {
+  &--flex {
     display: flex;
     flex-direction: row;
     &:after {
       display: none;
     }
-    @include m(start) {
-      justify-content: flex-start;
-    }
-    @include m(end) {
-      justify-content: flex-end;
-    }
-    @include m(center) {
-      justify-content: center;
-    }
-    @include m(space-around) {
-      justify-content: space-around;
-    }
-    @include m(space-between) {
-      justify-content: space-between;
-    }
-    @include m(top) {
-      align-items: flex-start;
-    }
-    @include m(middle) {
-      align-items: center;
-    }
-    @include m(bottom) {
-      align-items: flex-end;
-    }
   }
-  @include b(col) {
-    float: left;
-    box-sizing: border-box;
+  &--start {
+    justify-content: flex-start;
   }
-  @include make-col(span);
-  @include media-col($--grid-breakpoints);
+  &--end {
+    justify-content: flex-end;
+  }
+  &--center {
+    justify-content: center;
+  }
+  &--space-around {
+    justify-content: space-around;
+  }
+  &--space-between {
+    justify-content: space-between;
+  }
+  &--top {
+    align-items: flex-start;
+  }
+  &--middle {
+    align-items: center;
+  }
+  &--bottom {
+    align-items: flex-end;
+  }
 }
+
+.#{$--cls-prefix}-col {
+  float: left;
+  box-sizing: border-box;
+}
+
+@include make-col(span);
+@include media-col($--grid-breakpoints);

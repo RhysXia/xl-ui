@@ -88,7 +88,7 @@ export default {
       return `${name}__ref`
     },
     popClasses() {
-      const arr = [`${name}__popper`,`${name}__popper--${this.actualPlacement}`]
+      const arr = [`${name}__popper`, `${name}__popper--${this.actualPlacement}`]
       if (this.popClass) {
         arr.push(this.popClass)
       }

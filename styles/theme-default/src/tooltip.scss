@@ -1,0 +1,41 @@
+@import './commons/var';
+.#{$--cls-prefix}-tooltip__popper {
+  .#{$--cls-prefix}-poptip__body {
+    color: $--tooltip-color;
+    background-color: $--tooltip-bg-color;
+    border-color: $--tooltip-border-color;
+    box-shadow: $--tooltip-box-shadow;
+  }
+  &[x-placement^=top] {
+    .#{$--cls-prefix}-poptip__arrow {
+      border-top-color: $--tooltip-bg-color;
+      &:after {
+        border-top-color: $--tooltip-bg-color;
+      }
+    }
+  }
+  &[x-placement^=bottom] {
+    .#{$--cls-prefix}-poptip__arrow {
+      border-bottom-color: $--tooltip-bg-color;
+      &:after {
+        border-bottom-color: $--tooltip-bg-color;
+      }
+    }
+  }
+  &[x-placement^=left] {
+    .#{$--cls-prefix}-poptip__arrow {
+      border-left-color: $--tooltip-bg-color;
+      &:after {
+        border-left-color: $--tooltip-bg-color;
+      }
+    }
+  }
+  &[x-placement^=right] {
+    .#{$--cls-prefix}-poptip__arrow {
+      border-right-color: $--tooltip-bg-color;
+      &:after {
+        border-right-color: $--tooltip-bg-color;
+      }
+    }
+  }
+}

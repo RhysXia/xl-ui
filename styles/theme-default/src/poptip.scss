@@ -1,5 +1,4 @@
 @import 'commons/var';
-@import 'mixins/bem';
 @mixin arrow($width, $borderColor, $bgColor, $direction, $borderWidth:$width * 0.1) {
   display: block;
   height: 0;
@@ -45,55 +44,57 @@
   }
 }
 
-@include b(poptip) {
+.#{$--cls-prefix}-poptip {
   display: inline-block;
-  @include e(ref) {
+  font-size: $--poptip-font-size;
+  color: $--text-color-dark;
+  &__ref {
     display: inline-block;
     position: relative;
   }
-  @include e(popper) {
-    @include e(arrow) {
-      position: absolute;
-      z-index: 1;
-    }
-    @include e(body) {
-      background-clip: padding-box;
-      box-sizing: border-box;
-      border-radius: $--poptip-border-radius;
-      border: $--poptip-border-width solid $--poptip-border-color;
-      background-color: $--poptip-bg-color;
-      box-shadow: $--poptip-box-shadow;
-    }
-    @include e(title) {
-      padding-bottom: $--poptip-title-content-space;
-      margin-bottom: $--poptip-title-content-space;
-      border-bottom: $--poptip-border-width solid $--poptip-border-color;
-    }
-    @include e(content) {}
-    @include m((top, top-start, top-end)) {
+  &__arrow {
+    position: absolute;
+    z-index: 1;
+  }
+  &__body {
+    background-clip: padding-box;
+    box-sizing: border-box;
+    border-radius: $--poptip-border-radius;
+    border: $--poptip-border-width solid $--poptip-border-color;
+    background-color: $--poptip-bg-color;
+    box-shadow: $--poptip-box-shadow;
+  }
+  &__title {
+    padding-bottom: $--poptip-title-content-space;
+    margin-bottom: $--poptip-title-content-space;
+    border-bottom: $--poptip-border-width solid $--poptip-border-color;
+  }
+  &__content {}
+  &__popper {
+    &[x-placement^=top] {
       padding-bottom: $--poptip-arrow-size;
-      @include e(arrow) {
+      .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, bottom);
         bottom: $--poptip-border-width;
       }
     }
-    @include m((bottom, bottom-start, bottom-end)) {
+    &[x-placement^=bottom] {
       padding-top: $--poptip-arrow-size;
-      @include e(arrow) {
+      .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, top);
         top: $--poptip-border-width;
       }
     }
-    @include m((left, left-start, left-end)) {
+    &[x-placement^=left] {
       padding-right: $--poptip-arrow-size;
-      @include e(arrow) {
+      .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, right);
         right: $--poptip-border-width;
       }
     }
-    @include m((right, right-start, right-end)) {
+    &[x-placement^=right] {
       padding-left: $--poptip-arrow-size;
-      @include e(arrow) {
+      .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, left);
         left: $--poptip-border-width;
       }

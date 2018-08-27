@@ -1,5 +1,3 @@
-/* BEM support Func
- -------------------------- */
 .xl-radio {
   position: relative;
   display: inline-block;
@@ -51,9 +49,9 @@
       cursor: not-allowed; }
   .xl-radio--readonly {
     pointer-events: none; }
-  .xl-radio:hover:not(.xl-radio--disabled):not(.xl-radio--checked) .xl-radio__inner {
+  .xl-radio:not(.xl-radio--disabled):not(.xl-radio--checked):hover .xl-radio__inner {
     border-color: #007bff; }
-  .xl-radio:hover:not(.xl-radio--disabled):not(.xl-radio--checked) .xl-radio__label {
+  .xl-radio:not(.xl-radio--disabled):not(.xl-radio--checked):hover .xl-radio__label {
     color: #007bff; }
   .xl-radio--checked .xl-radio__inner {
     border-color: #007bff; }
@@ -66,7 +64,7 @@
     padding: 0.3rem 0.6rem;
     border-radius: 0.25rem;
     transition: border-color 0.3s ease-in-out; }
-    .xl-radio--bordered:hover:not(.xl-radio--disabled):not(.xl-radio--checked) {
+    .xl-radio--bordered:not(.xl-radio--disabled):not(.xl-radio--checked):hover {
       border-color: #007bff; }
     .xl-radio--bordered.xl-radio--checked {
       border-color: #007bff; }

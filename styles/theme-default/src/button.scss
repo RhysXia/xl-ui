@@ -1,5 +1,4 @@
 @import 'commons/var';
-@import 'mixins/bem';
 @mixin button-variant($background) {
   $border: $background;
   $background-hover: color-level($background, $--btn-color-level);
@@ -52,7 +51,7 @@
   }
 }
 
-@include b(button) {
+.#{$--cls-prefix}-button {
   display: inline-block;
   font-weight: $--btn-font-weight;
   text-align: center;
@@ -74,21 +73,19 @@
     opacity: $--btn-opacity-disabled;
     cursor: not-allowed;
   }
-  [class*="xl-icon-"] {
-    &+span {
-      margin-left: 5px;
-    }
+  .#{$--cls-prefix}-icon+span {
+    margin-left: $--btn-span-icon-space;
   }
-  @include m(dashed) {
+  &--dashed {
     border-style: dashed;
   }
-  @include m(round) {
+  &--round {
     border-radius: $--btn-border-radius-round;
   }
-  @include m(long) {
+  &--long {
     width: 100%;
   }
-  @include m(loading) {
+  &--loading {
     @keyframes loading {
       0% {
         transform: rotate(0deg);
@@ -97,11 +94,11 @@
         transform: rotate(360deg);
       }
     }
-    .xl-icon {
+    .#{$--cls-prefix}-icon {
       animation: loading $--btn-loading-time linear infinite;
     }
   }
-  @include m(default) {
+  &--default {
     background-color: transparent;
     border-color: $--border-color;
     &:hover:not(:disabled),
@@ -117,7 +114,7 @@
       border-color: color-level($--color-primary);
       box-shadow: 0 0 0 $--btn-focus-width rgba(color-level($--color-primary), 0.5);
     }
-    @include spec-selector('', plain) {
+    &.#{$--cls-prefix}-button--plain {
       background-color: transparent;
       &:hover:not(:disabled),
       &:focus:not(:disabled) {
@@ -125,7 +122,7 @@
       }
     }
   }
-  @include m(text) {
+  &--text {
     background-color: transparent;
     &:hover:not(:disabled),
     &:focus:not(:disabled) {
@@ -133,9 +130,9 @@
     }
   }
   @each $key,$value in $--btn-theme-color {
-    @include m($key) {
+    &--#{$key} {
       @include button-variant($value);
-      @include spec-selector('', plain) {
+      &.#{$--cls-prefix}-button--plain {
         @include button-outline-variant($value);
       }
     }

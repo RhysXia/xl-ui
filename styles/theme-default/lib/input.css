@@ -1,5 +1,3 @@
-/* BEM support Func
- -------------------------- */
 .xl-input {
   position: relative;
   display: table;
@@ -7,8 +5,7 @@
   width: 100%;
   font-size: 1rem;
   align-content: center;
-  color: #6c757d;
-  line-height: 1.5; }
+  color: #6c757d; }
   .xl-input__prefix, .xl-input__suffix {
     background-color: #e9ecef; }
   .xl-input__prefix {
@@ -17,6 +14,8 @@
   .xl-input__suffix {
     border: 1px solid #dee2e6;
     border-left: none; }
+  .xl-input__prefix, .xl-input__suffix, .xl-input__inner, .xl-input__textarea {
+    line-height: 1.5; }
   .xl-input__prefix, .xl-input__suffix, .xl-input__body, .xl-input__textarea {
     display: table-cell;
     vertical-align: middle; }
@@ -30,14 +29,17 @@
     position: relative;
     transition: border-color 0.3s ease-in-out;
     border: 1px solid #dee2e6; }
-  .xl-input--hovered .xl-input__textarea, .xl-input--hovered .xl-input__body {
+  .xl-input--hovered .xl-input__textarea,
+  .xl-input--hovered .xl-input__body {
     border-color: #adb5bd; }
-  .xl-input--focused .xl-input__textarea, .xl-input--focused .xl-input__body {
+  .xl-input--focused .xl-input__textarea,
+  .xl-input--focused .xl-input__body {
     border-color: #007bff; }
   .xl-input--disabled {
     opacity: 0.65;
     cursor: not-allowed; }
-    .xl-input--disabled .xl-input__inner, .xl-input--disabled .xl-input__textarea {
+    .xl-input--disabled .xl-input__inner,
+    .xl-input--disabled .xl-input__textarea {
       cursor: not-allowed;
       background-color: inherit; }
   .xl-input__prefix, .xl-input__suffix, .xl-input__inner, .xl-input__textarea {

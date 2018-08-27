@@ -1,7 +1,6 @@
 @import 'commons/var';
-@import 'mixins/bem';
 @import 'commons/ionicons/ionicons';
-@include b(icon) {
+.#{$--cls-prefix}-icon {
   display: inline-block;
   font-size: $--icon-font-size;
   width: $--icon-font-size;

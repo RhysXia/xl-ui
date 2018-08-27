@@ -1,6 +1,5 @@
 @import 'commons/var';
-@import 'mixins/bem';
-@include b(checkbox) {
+.#{$--cls-prefix}-checkbox {
   position: relative;
   line-height: $--checkbox-line-height;
   white-space: nowrap;
@@ -8,11 +7,23 @@
   box-sizing: border-box;
   font-size: 1rem;
   background-color: $--checkbox-bg-color;
-  @include e((input, inner, label)) {
+  &:not(&--checked):not(&--disabled) {
+    &:hover {
+      .#{$--cls-prefix}-checkbox__inner {
+        border-color: $--checkbox-hover-border-color;
+      }
+      .#{$--cls-prefix}-checkbox__label {
+        color: $--checkbox-hover-color;
+      }
+    }
+  }
+  &__input,
+  &__inner,
+  &__label {
     display: inline-block;
     vertical-align: middle;
   }
-  @include e(input) {
+  &__input {
     position: absolute;
     left: 0;
     top: 0;
@@ -25,7 +36,7 @@
     cursor: pointer;
     opacity: 0;
   }
-  @include e(inner) {
+  &__inner {
     position: relative;
     height: $--checkbox-height;
     width: $--checkbox-width;
@@ -45,33 +56,22 @@
       transition: all $--checkbox-transition-time $--checkbox-transition-func;
     }
   }
-  @include e(label) {
+  &__label {
     padding-left: $--checkbox-label-padding-left;
     vertical-align: middle;
     transition: color $--checkbox-transition-time $--checkbox-transition-func;
   }
-  @include pseudo(hover) {
-    @include not((checked, disabled)) {
-      @include e(inner) {
-        border-color: $--checkbox-hover-border-color;
-      }
-      @include e(label){
-        color: $--checkbox-hover-color;
-      }
-    }
-  }
-  @include m(disabled) {
+  &--disabled {
     opacity: $--checkbox-opacity-disabled;
-    @include e(input) {
+    .#{$--cls-prefix}-checkbox__input {
       cursor: not-allowed;
     }
   }
-  @include m(readonly) {
+  &--readonly {
     pointer-events: none;
   }
-
-  @include m(checked) {
-    @include e(inner) {
+  &--checked {
+    .#{$--cls-prefix}-checkbox__inner {
       border-color: $--checkbox-checked-border-color;
       background-color: $--checkbox-checked-color;
       &:after {
@@ -82,12 +82,12 @@
         transform: rotate(-45deg) scale(1);
       }
     }
-    @include e(label) {
+    .#{$--cls-prefix}-checkbox__label {
       color: $--checkbox-checked-color;
     }
   }
-  @include m(indeterminate) {
-    @include e(inner) {
+  &--indeterminate {
+    .#{$--cls-prefix}-checkbox__inner {
       background-color: $--checkbox-checked-color;
       &:after {
         transform: rotate(0) scale(1);
@@ -98,17 +98,17 @@
       }
     }
   }
-  @include m(bordered) {
+  &--bordered {
     border: $--checkbox-border-width solid $--checkbox-border-color;
     padding: $--checkbox-button-padding-y $--checkbox-button-padding-x;
     border-radius: $--checkbox-border-radius;
     transition: all $--checkbox-transition-time $--checkbox-transition-func;
-    @include pseudo(hover) {
-      @include not((disabled,checked)) {
+    &:not(.#{$--cls-prefix}-checkbox--checked):not(.#{$--cls-prefix}-checkbox--disabled) {
+      &:hover {
         border-color: $--checkbox-hover-border-color;
       }
     }
-    @include spec-selector('', checked) {
+    &.#{$--cls-prefix}-checkbox--checked {
       border-color: $--checkbox-checked-border-color;
     }
   }

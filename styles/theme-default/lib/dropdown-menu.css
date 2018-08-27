@@ -1,8 +1,0 @@
-.xl-dropdown-menu {
-  box-shadow: 0 0.1em 0.5em #dddee1;
-  background-color: #fff;
-  border-radius: 0.2em;
-  border: 1px solid #dddee1; }
-
-.xl-dropdown-menu--divide .xl-dropdown-item:not(:last-child) {
-  border-bottom: 1px solid #dddee1; }

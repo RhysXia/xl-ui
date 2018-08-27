@@ -1,16 +1,15 @@
 @import 'commons/var';
-@import 'mixins/bem';
 @import 'mixins/utils';
-@include b(radio-group) {
+.#{$--cls-prefix}-radio-group {
   position: relative;
-  @include b(radio) {
+  .#{$--cls-prefix}-radio {
     &:not(:last-child) {
       margin-right: $--radio-group-margin-right;
     }
   }
-  @include m(button) {
+  &--button {
     @include clearfix;
-    @include b(radio) {
+    .#{$--cls-prefix}-radio {
       float: left;
       border: $--radio-border-width solid $--radio-border-color;
       padding: $--radio-button-padding-y $--radio-button-padding-x;
@@ -29,26 +28,22 @@
       &:not(:first-child) {
         margin-left: -$--radio-border-width;
       }
-      @include e(inner) {
+      &__inner {
         display: none;
       }
-      @include e(label) {
+      &__label {
         padding-left: 0;
       }
-      @include m(checked) {
+      &--checked {
         border-color: $--radio-checked-border-color;
         background-color: $--radio-checked-color;
         z-index: 1;
-        @include e(label) {
+        .#{$--cls-prefix}-radio__label {
           color: $--radio-bg-color;
         }
       }
-    }
-  }
-  @include m(button) {
-    @include b(radio) {
-      @include not(disabled) {
-        @include pseudo(hover) {
+      &:not(&--disabled) {
+        &:hover {
           z-index: 2;
           border-color: $--radio-hover-border-color;
         }
@@ -56,3 +51,4 @@
     }
   }
 }
+

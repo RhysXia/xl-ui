@@ -1,7 +1,7 @@
-/* BEM support Func
- -------------------------- */
 .xl-poptip {
-  display: inline-block; }
+  display: inline-block;
+  font-size: 1rem;
+  color: #212529; }
   .xl-poptip__ref {
     display: inline-block;
     position: relative; }
@@ -14,21 +14,21 @@
     border-radius: 0.25rem;
     border: 1px solid #e9ecef;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px 0 rgba(222, 226, 230, 0.9); }
+    box-shadow: 0 2px 5px 0 rgba(233, 236, 239, 0.2); }
   .xl-poptip__title {
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
     border-bottom: 1px solid #e9ecef; }
-  .xl-poptip__popper--top, .xl-poptip__popper--top-start, .xl-poptip__popper--top-end {
+  .xl-poptip__popper[x-placement^=top] {
     padding-bottom: 1rem; }
-    .xl-poptip__popper--top .xl-poptip__arrow, .xl-poptip__popper--top-start .xl-poptip__arrow, .xl-poptip__popper--top-end .xl-poptip__arrow {
+    .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow {
       display: block;
       height: 0;
       width: 0;
       border: 0.5rem solid transparent;
       border-top-color: #e9ecef;
       bottom: 1px; }
-      .xl-poptip__popper--top .xl-poptip__arrow:after, .xl-poptip__popper--top-start .xl-poptip__arrow:after, .xl-poptip__popper--top-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:after {
         position: absolute;
         display: block;
         left: -0.4rem;
@@ -37,19 +37,19 @@
         height: 0;
         width: 0;
         border: 0.4rem solid transparent; }
-      .xl-poptip__popper--top .xl-poptip__arrow:after, .xl-poptip__popper--top-start .xl-poptip__arrow:after, .xl-poptip__popper--top-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:after {
         border-top-color: #ffffff;
         margin-top: -0.1rem; }
-  .xl-poptip__popper--bottom, .xl-poptip__popper--bottom-start, .xl-poptip__popper--bottom-end {
+  .xl-poptip__popper[x-placement^=bottom] {
     padding-top: 1rem; }
-    .xl-poptip__popper--bottom .xl-poptip__arrow, .xl-poptip__popper--bottom-start .xl-poptip__arrow, .xl-poptip__popper--bottom-end .xl-poptip__arrow {
+    .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow {
       display: block;
       height: 0;
       width: 0;
       border: 0.5rem solid transparent;
       border-bottom-color: #e9ecef;
       top: 1px; }
-      .xl-poptip__popper--bottom .xl-poptip__arrow:after, .xl-poptip__popper--bottom-start .xl-poptip__arrow:after, .xl-poptip__popper--bottom-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
         position: absolute;
         display: block;
         left: -0.4rem;
@@ -58,19 +58,19 @@
         height: 0;
         width: 0;
         border: 0.4rem solid transparent; }
-      .xl-poptip__popper--bottom .xl-poptip__arrow:after, .xl-poptip__popper--bottom-start .xl-poptip__arrow:after, .xl-poptip__popper--bottom-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
         border-bottom-color: #ffffff;
         margin-top: 0.1rem; }
-  .xl-poptip__popper--left, .xl-poptip__popper--left-start, .xl-poptip__popper--left-end {
+  .xl-poptip__popper[x-placement^=left] {
     padding-right: 1rem; }
-    .xl-poptip__popper--left .xl-poptip__arrow, .xl-poptip__popper--left-start .xl-poptip__arrow, .xl-poptip__popper--left-end .xl-poptip__arrow {
+    .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow {
       display: block;
       height: 0;
       width: 0;
       border: 0.5rem solid transparent;
       border-left-color: #e9ecef;
       right: 1px; }
-      .xl-poptip__popper--left .xl-poptip__arrow:after, .xl-poptip__popper--left-start .xl-poptip__arrow:after, .xl-poptip__popper--left-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:after {
         position: absolute;
         display: block;
         left: -0.4rem;
@@ -79,19 +79,19 @@
         height: 0;
         width: 0;
         border: 0.4rem solid transparent; }
-      .xl-poptip__popper--left .xl-poptip__arrow:after, .xl-poptip__popper--left-start .xl-poptip__arrow:after, .xl-poptip__popper--left-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:after {
         border-left-color: #ffffff;
         margin-left: -0.1rem; }
-  .xl-poptip__popper--right, .xl-poptip__popper--right-start, .xl-poptip__popper--right-end {
+  .xl-poptip__popper[x-placement^=right] {
     padding-left: 1rem; }
-    .xl-poptip__popper--right .xl-poptip__arrow, .xl-poptip__popper--right-start .xl-poptip__arrow, .xl-poptip__popper--right-end .xl-poptip__arrow {
+    .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow {
       display: block;
       height: 0;
       width: 0;
       border: 0.5rem solid transparent;
       border-right-color: #e9ecef;
       left: 1px; }
-      .xl-poptip__popper--right .xl-poptip__arrow:after, .xl-poptip__popper--right-start .xl-poptip__arrow:after, .xl-poptip__popper--right-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:after {
         position: absolute;
         display: block;
         left: -0.4rem;
@@ -100,7 +100,7 @@
         height: 0;
         width: 0;
         border: 0.4rem solid transparent; }
-      .xl-poptip__popper--right .xl-poptip__arrow:after, .xl-poptip__popper--right-start .xl-poptip__arrow:after, .xl-poptip__popper--right-end .xl-poptip__arrow:after {
+      .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:after {
         border-right-color: #ffffff;
         margin-left: 0.1rem; }
   .xl-poptip-fade-enter-active, .xl-poptip-fade-leave-active {

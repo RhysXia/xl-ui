@@ -1,6 +1,5 @@
 @import 'commons/var';
-@import 'mixins/bem';
-@include b(input) {
+.#{$--cls-prefix}-input {
   position: relative;
   display: table;
   box-sizing: border-box;
@@ -8,19 +7,28 @@
   font-size: $--input-font-size;
   align-content: center;
   color: $--input-color;
-  line-height: $--input-line-height;
-  @include e((prefix, suffix)) {
+  &__prefix,
+  &__suffix {
     background-color: $--input-append-bg-color;
   }
-  @include e(prefix) {
+  &__prefix {
     border: $--input-border-width solid $--input-border-color;
     border-right: none;
   }
-  @include e(suffix) {
+  &__suffix {
     border: $--input-border-width solid $--input-border-color;
     border-left: none;
   }
-  @include e((prefix, suffix, body, textarea)) {
+  &__prefix,
+  &__suffix,
+  &__inner,
+  &__textarea {
+    line-height: $--input-line-height;
+  }
+  &__prefix,
+  &__suffix,
+  &__body,
+  &__textarea {
     display: table-cell;
     vertical-align: middle;
     &:first-child {
@@ -32,33 +40,41 @@
       border-bottom-right-radius: $--input-border-radius;
     }
   }
-  @include e((body, textarea)) {
+  &__body,
+  &__textarea {
     position: relative;
     transition: $--input-transition;
     border: $--input-border-width solid $--input-border-color;
   }
-  @include m(hovered) {
-    @include e((textarea, body)) {
+  &--hovered {
+    .#{$--cls-prefix}-input__textarea,
+    .#{$--cls-prefix}-input__body {
       border-color: $--input-hover-border-color;
     }
   }
-  @include m(focused) {
-    @include e((textarea, body)) {
+  &--focused {
+    .#{$--cls-prefix}-input__textarea,
+    .#{$--cls-prefix}-input__body {
       border-color: $--input-focus-border-color;
     }
   }
-  @include m(disabled) {
+  &--disabled {
     opacity: $--input-opacity-disabled;
     cursor: not-allowed;
-    @include e((inner,textarea)) {
+    .#{$--cls-prefix}-input__inner,
+    .#{$--cls-prefix}-input__textarea {
       cursor: not-allowed;
       background-color: inherit;
     }
   }
-  @include e((prefix, suffix, inner, textarea)) {
+  &__prefix,
+  &__suffix,
+  &__inner,
+  &__textarea {
     padding: $--input-padding-y $--input-padding-x;
   }
-  @include e((prefix-icon, suffix-icon)) {
+  &__prefix-icon,
+  &__suffix-icon {
     padding: $--input-padding-y;
     text-align: center;
     position: absolute;
@@ -66,12 +82,12 @@
     line-height: $--input-line-height;
     top: 0;
   }
-  @include e(prefix-icon) {
+  &__prefix-icon {
     left: 0;
   }
-  @include e(suffix-icon) {
+  &__suffix-icon {
     right: 0;
-    @include m(clear) {
+    &--clear {
       cursor: pointer;
       transition: color .15s ease-in-out;
       &:hover {
@@ -79,30 +95,31 @@
       }
     }
   }
-  @include e(inner) {
+  &__inner {
     border: none;
     &::placeholder {
       color: $--input-color;
     }
-    &::-ms-clear{
+    &::-ms-clear {
       display: none;
     }
-    @include m(prefix-icon) {
+    &--prefix-icon {
       padding-left: $--input-inner-icon-padding-x;
     }
-    @include m(suffix-icon) {
+    &--suffix-icon {
       padding-right: $--input-inner-icon-padding-x;
     }
   }
-  @include e((inner, textarea)) {
+  &__inner,
+  &__textarea {
     outline: none;
     width: auto;
     width: 100%;
     box-sizing: border-box;
     color: $--input-content-color;
   }
-  @include m(autosized) {
-    @include e(textarea) {
+  &--autosized {
+    .#{$--cls-prefix}-input__textarea {
       transition: $--input-textarea-transition;
     }
   }

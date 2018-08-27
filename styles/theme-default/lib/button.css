@@ -1,5 +1,3 @@
-/* BEM support Func
- -------------------------- */
 .xl-button {
   display: inline-block;
   font-weight: 400;
@@ -22,8 +20,8 @@
   .xl-button:disabled {
     opacity: 0.65;
     cursor: not-allowed; }
-  .xl-button [class*="xl-icon-"] + span {
-    margin-left: 5px; }
+  .xl-button .xl-icon + span {
+    margin-left: 0.5rem; }
   .xl-button--dashed {
     border-style: dashed; }
   .xl-button--round {
