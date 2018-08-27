@@ -5220,7 +5220,6 @@ body {
     display: inline-block;
     position: relative; }
   .xl-poptip__body {
-    background-clip: padding-box;
     box-sizing: border-box;
     border-radius: 0.25rem;
     border: 1px solid #e9ecef;
@@ -5232,9 +5231,9 @@ body {
     border-bottom: 1px solid #e9ecef; }
   .xl-poptip__arrow {
     position: absolute;
-    z-index: 1; }
+    z-index: 1000; }
   .xl-poptip__popper[x-placement^=top] {
-    margin-bottom: 2rem; }
+    margin-bottom: 0.5rem; }
     .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow {
       display: block;
       height: 0;
@@ -5256,7 +5255,7 @@ body {
         border-top-color: #ffffff;
         margin-top: -0.1rem; }
   .xl-poptip__popper[x-placement^=bottom] {
-    margin-top: 2rem; }
+    margin-top: 0.5rem; }
     .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow {
       display: block;
       height: 0;
@@ -5278,7 +5277,7 @@ body {
         border-bottom-color: #ffffff;
         margin-top: 0.1rem; }
   .xl-poptip__popper[x-placement^=left] {
-    margin-right: 2rem; }
+    margin-right: 0.5rem; }
     .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow {
       display: block;
       height: 0;
@@ -5300,7 +5299,7 @@ body {
         border-left-color: #ffffff;
         margin-left: -0.1rem; }
   .xl-poptip__popper[x-placement^=right] {
-    margin-left: 2rem; }
+    margin-left: 0.5rem; }
     .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow {
       display: block;
       height: 0;

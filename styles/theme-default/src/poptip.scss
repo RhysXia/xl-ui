@@ -54,7 +54,6 @@
   }
   
   &__body {
-    background-clip: padding-box;
     box-sizing: border-box;
     border-radius: $--poptip-border-radius;
     border: $--poptip-border-width solid $--poptip-border-color;
@@ -69,7 +68,7 @@
   &__content {}
   &__arrow {
     position: absolute;
-    z-index: 1;
+    z-index: 1000;
   }
   &__popper {
     &[x-placement^=top] {
