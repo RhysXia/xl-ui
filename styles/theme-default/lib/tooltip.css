@@ -2,7 +2,7 @@
   color: #ffffff;
   background-color: #495057;
   border-color: #495057;
-  box-shadow: 0 2px 5px 0 rgba(73, 80, 87, 0.9); }
+  box-shadow: 0 2px 12px 0 rgba(73, 80, 87, 0.9); }
 
 .xl-tooltip__popper[x-placement^=top] .xl-poptip__arrow {
   border-top-color: #495057; }

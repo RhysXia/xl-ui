@@ -52,10 +52,7 @@
     display: inline-block;
     position: relative;
   }
-  &__arrow {
-    position: absolute;
-    z-index: 1;
-  }
+  
   &__body {
     background-clip: padding-box;
     box-sizing: border-box;
@@ -70,33 +67,41 @@
     border-bottom: $--poptip-border-width solid $--poptip-border-color;
   }
   &__content {}
+  &__arrow {
+    position: absolute;
+    z-index: 1;
+  }
   &__popper {
     &[x-placement^=top] {
-      padding-bottom: $--poptip-arrow-size;
+      margin-bottom: $--poptip-arrow-space;
       .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, bottom);
-        bottom: $--poptip-border-width;
+        bottom: -$--poptip-arrow-size;
+        margin-bottom: $--poptip-border-width;
       }
     }
     &[x-placement^=bottom] {
-      padding-top: $--poptip-arrow-size;
+      margin-top: $--poptip-arrow-space;
       .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, top);
-        top: $--poptip-border-width;
+        top: -$--poptip-arrow-size;
+        margin-top: $--poptip-border-width;
       }
     }
     &[x-placement^=left] {
-      padding-right: $--poptip-arrow-size;
+      margin-right: $--poptip-arrow-space;
       .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, right);
-        right: $--poptip-border-width;
+        right: -$--poptip-arrow-size;
+        margin-right: $--poptip-border-width;
       }
     }
     &[x-placement^=right] {
-      padding-left: $--poptip-arrow-size;
+      margin-left: $--poptip-arrow-space;
       .#{$--cls-prefix}-poptip__arrow {
         @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, left);
-        left: $--poptip-border-width;
+        left: -$--poptip-arrow-size;
+        margin-left: $--poptip-border-width;
       }
     }
   }
