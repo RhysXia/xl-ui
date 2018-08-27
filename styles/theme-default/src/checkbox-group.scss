@@ -4,7 +4,7 @@
 @include b(checkbox-group) {
   @include b(checkbox) {
     &:not(:last-child) {
-      margin-right: 0.5em;
+      margin-right: $--checkbox-group-margin-right;
     }
   }
   @include m(button) {
@@ -15,7 +15,7 @@
       padding: $--checkbox-button-padding-y $--checkbox-button-padding-x;
       margin-right: 0 !important;
       text-align: center;
-      transition: $--checkbox-transition;
+      transition: all $--checkbox-transition-time $--checkbox-transition-func;
       z-index: 0;
       &:first-child {
         border-top-left-radius: $--checkbox-border-radius;
@@ -32,24 +32,24 @@
         display: none;
       }
       @include e(label) {
-        transition: $--checkbox-transition;
         padding-left: 0;
       }
       @include not((disabled, checked)) {
         @include pseudo(hover) {
           border: 1px solid $--checkbox-hover-border-color;
-          z-index: 1;
+          z-index: 2;
         }
       }
       @include m(focused){
-        box-shadow: $--checkbox-box-shadow;
+        box-shadow: $--checkbox-focus-box-shadow;
         @include spec-selector('',checked){
-          box-shadow: $--checkbox-focus-box-shadow;
+          box-shadow: $--checkbox-checked-focus-box-shadow;
         }
       }
       @include m(checked) {
-        border-color: $--checkbox-focus-color;
-        background-color: $--checkbox-focus-color;
+        border-color: $--checkbox-checked-color;
+        background-color: $--checkbox-checked-color;
+        z-index: 1;
         @include e(label) {
           color: $--checkbox-bg-color;
         }

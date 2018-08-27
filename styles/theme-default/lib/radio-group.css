@@ -1,45 +1,43 @@
+/* BEM support Func
+ -------------------------- */
 .xl-radio-group {
   position: relative; }
   .xl-radio-group .xl-radio:not(:last-child) {
-    margin-right: 0.5em; }
-
-.xl-radio-group--button {
-  *zoom: 1; }
-  .xl-radio-group--button:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .xl-radio-group--button .xl-radio {
-    float: left;
-    border: 1px solid #dddee1;
-    padding: 0.4em 0.6em;
-    margin-right: 0 !important;
-    text-align: center;
-    transition: all 0.25s ease-in-out; }
-    .xl-radio-group--button .xl-radio:first-child {
-      border-top-left-radius: 0.2em;
-      border-bottom-left-radius: 0.2em; }
-    .xl-radio-group--button .xl-radio:last-child {
-      border-top-right-radius: 0.2em;
-      border-bottom-right-radius: 0.2em; }
-    .xl-radio-group--button .xl-radio:not(:first-child) {
-      margin-left: -1px; }
-    .xl-radio-group--button .xl-radio .xl-radio__inner {
-      display: none; }
-    .xl-radio-group--button .xl-radio .xl-radio__label {
-      transition: all 0.25s ease-in-out;
-      padding-left: 0; }
-  .xl-radio-group--button .xl-radio--checked {
-    border-color: #409eff;
-    background-color: #409eff;
-    z-index: 2; }
-    .xl-radio-group--button .xl-radio--checked .xl-radio__label {
-      color: #fff; }
-  .xl-radio-group--button .xl-radio--focused {
-    box-shadow: 0 0 0 0.15em rgba(64, 158, 255, 0.3); }
-
-.xl-radio-group--button .xl-radio:not(.xl-radio--disabled):hover {
-  z-index: 1;
-  border-color: #73b8ff; }
-  .xl-radio-group--button .xl-radio:not(.xl-radio--disabled):hover.xl-radio--checked {
-    background-color: #73b8ff; }
+    margin-right: 0.5rem; }
+  .xl-radio-group--button {
+    *zoom: 1; }
+    .xl-radio-group--button:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .xl-radio-group--button .xl-radio {
+      float: left;
+      border: 1px solid #dee2e6;
+      padding: 0.3rem 0.6rem;
+      margin-right: 0 !important;
+      text-align: center;
+      z-index: 0;
+      transition: all 0.3s ease-in-out; }
+      .xl-radio-group--button .xl-radio:first-child {
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem; }
+      .xl-radio-group--button .xl-radio:last-child {
+        border-top-right-radius: 0.2rem;
+        border-bottom-right-radius: 0.2rem; }
+      .xl-radio-group--button .xl-radio:not(:first-child) {
+        margin-left: -1px; }
+      .xl-radio-group--button .xl-radio .xl-radio__inner {
+        display: none; }
+      .xl-radio-group--button .xl-radio .xl-radio__label {
+        padding-left: 0; }
+      .xl-radio-group--button .xl-radio--checked {
+        border-color: #007bff;
+        background-color: #007bff;
+        z-index: 1; }
+        .xl-radio-group--button .xl-radio--checked .xl-radio__label {
+          color: #ffffff; }
+      .xl-radio-group--button .xl-radio--focused {
+        box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
+  .xl-radio-group--button .xl-radio:not(.xl-radio--disabled):hover {
+    z-index: 2;
+    border-color: #007bff; }

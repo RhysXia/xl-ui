@@ -1,7 +1,7 @@
 /* BEM support Func
  -------------------------- */
 .xl-checkbox-group .xl-checkbox:not(:last-child) {
-  margin-right: 0.5em; }
+  margin-right: 0.5rem; }
 
 .xl-checkbox-group--button {
   *zoom: 1; }
@@ -28,17 +28,17 @@
     .xl-checkbox-group--button .xl-checkbox .xl-checkbox__inner {
       display: none; }
     .xl-checkbox-group--button .xl-checkbox .xl-checkbox__label {
-      transition: all 0.3s ease-in-out;
       padding-left: 0; }
     .xl-checkbox-group--button .xl-checkbox:not(.xl-checkbox--disabled):not(.xl-checkbox--checked):hover {
-      border: 1px solid #adb5bd;
-      z-index: 1; }
+      border: 1px solid #007bff;
+      z-index: 2; }
     .xl-checkbox-group--button .xl-checkbox--focused {
       box-shadow: 0 0 0 0.1rem rgba(222, 226, 230, 0.5); }
       .xl-checkbox-group--button .xl-checkbox--focused.xl-checkbox--checked {
         box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.5); }
     .xl-checkbox-group--button .xl-checkbox--checked {
       border-color: #007bff;
-      background-color: #007bff; }
+      background-color: #007bff;
+      z-index: 1; }
       .xl-checkbox-group--button .xl-checkbox--checked .xl-checkbox__label {
         color: #ffffff; }

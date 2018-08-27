@@ -1,0 +1,108 @@
+@import 'commons/var';
+@import 'mixins/bem';
+@include b(radio) {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: $--radio-line-height;
+  background-color: $--radio-bg-color;
+  @include e((input, inner, label)) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  @include e(input) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  @include e(inner) {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: $--radio-width;
+    height: $--radio-height;
+    border: $--radio-border-width solid $--radio-border-color;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    transition: all $--radio-transition-time $--radio-transition-func;
+    &:after {
+      display: block;
+      content: '';
+      background-color: $--radio-checked-color;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      transition: all $--radio-transition-time $--radio-transition-func;
+      transform: scale(0);
+    }
+  }
+  @include e(label) {
+    padding-left: $--radio-label-padding-left;
+    transition: color $--radio-transition-time $--radio-transition-func;
+  }
+  @include m(disabled) {
+    opacity: $--radio-opacity-disabled;
+    @include e(input) {
+      cursor: not-allowed;
+    }
+  }
+  @include m(readonly) {
+    pointer-events: none;
+  }
+  @include pseudo(hover) {
+    @include not((disabled,checked)) {
+      @include e(inner) {
+        border-color: $--radio-hover-border-color;
+      }
+      @include e(label) {
+        color: $--radio-hover-color;
+      }
+    }
+  }
+  @include m(focused) {
+    @include e(inner) {
+      box-shadow: $--radio-focus-box-shadow;
+    }
+  }
+  @include m(checked) {
+    @include e(inner) {
+      border-color: $--radio-checked-border-color;
+      &:after {
+        transform: scale(0.7);
+      }
+    }
+    @include e(label) {
+      color: $--radio-checked-color;
+    }
+  }
+  @include m(bordered) {
+    border: $--radio-border-width solid $--radio-border-color;
+    padding: $--radio-button-padding-y $--radio-button-padding-x;
+    border-radius: $--border-radius;
+    transition: border-color $--radio-transition-time $--radio-transition-func;
+    @include pseudo(hover) {
+      @include not((disabled,checked)) {
+        border-color: $--radio-hover-border-color;
+      }
+    }
+    @include spec-selector('', checked) {
+      border-color: $--radio-checked-border-color;
+    }
+    @include spec-selector('', focused) {
+      box-shadow: $--radio-focus-box-shadow;
+      @include e(inner) {
+        box-shadow: none;
+      }
+    }
+  }
+}
