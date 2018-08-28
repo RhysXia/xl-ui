@@ -17,95 +17,63 @@
     border-bottom: 1px solid #e9ecef; }
   .xl-poptip__arrow {
     position: absolute;
-    z-index: 1000; }
-  .xl-poptip__popper[x-placement^=top] {
-    margin-bottom: 0.5rem; }
-    .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow {
+    z-index: 1; }
+    .xl-poptip__arrow:before, .xl-poptip__arrow:after {
+      content: "";
       display: block;
       height: 0;
       width: 0;
-      border: 0.5rem solid transparent;
-      border-top-color: #e9ecef;
-      bottom: -1rem;
-      margin-bottom: 1px; }
-      .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:after {
-        position: absolute;
-        display: block;
-        left: -0.4rem;
-        top: -0.4rem;
-        content: "";
-        height: 0;
-        width: 0;
-        border: 0.4rem solid transparent; }
+      border: 0.5rem solid transparent; }
+    .xl-poptip__arrow:after {
+      position: absolute; }
+  .xl-poptip__popper[x-placement^=top] {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem; }
+    .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow {
+      margin-bottom: 0.5rem;
+      bottom: -1rem; }
+      .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:before {
+        border-top-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:after {
         border-top-color: #ffffff;
-        margin-top: -0.1rem; }
+        bottom: 1px;
+        left: 0; }
   .xl-poptip__popper[x-placement^=bottom] {
-    margin-top: 0.5rem; }
+    margin-top: 0.5rem;
+    padding-top: 0.5rem; }
     .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow {
-      display: block;
-      height: 0;
-      width: 0;
-      border: 0.5rem solid transparent;
-      border-bottom-color: #e9ecef;
-      top: -1rem;
-      margin-top: 1px; }
-      .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
-        position: absolute;
-        display: block;
-        left: -0.4rem;
-        top: -0.4rem;
-        content: "";
-        height: 0;
-        width: 0;
-        border: 0.4rem solid transparent; }
+      margin-top: 0.5rem;
+      top: -1rem; }
+      .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:before {
+        border-bottom-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
         border-bottom-color: #ffffff;
-        margin-top: 0.1rem; }
+        top: 1px;
+        left: 0; }
   .xl-poptip__popper[x-placement^=left] {
-    margin-right: 0.5rem; }
+    margin-right: 0.5rem;
+    padding-right: 0.5rem; }
     .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow {
-      display: block;
-      height: 0;
-      width: 0;
-      border: 0.5rem solid transparent;
-      border-left-color: #e9ecef;
-      right: -1rem;
-      margin-right: 1px; }
-      .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:after {
-        position: absolute;
-        display: block;
-        left: -0.4rem;
-        top: -0.4rem;
-        content: "";
-        height: 0;
-        width: 0;
-        border: 0.4rem solid transparent; }
+      margin-right: 0.5rem;
+      right: -1rem; }
+      .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:before {
+        border-left-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:after {
         border-left-color: #ffffff;
-        margin-left: -0.1rem; }
+        right: 1px;
+        top: 0; }
   .xl-poptip__popper[x-placement^=right] {
-    margin-left: 0.5rem; }
+    margin-left: 0.5rem;
+    padding-left: 0.5rem; }
     .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow {
-      display: block;
-      height: 0;
-      width: 0;
-      border: 0.5rem solid transparent;
-      border-right-color: #e9ecef;
-      left: -1rem;
-      margin-left: 1px; }
-      .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:after {
-        position: absolute;
-        display: block;
-        left: -0.4rem;
-        top: -0.4rem;
-        content: "";
-        height: 0;
-        width: 0;
-        border: 0.4rem solid transparent; }
+      margin-left: 0.5rem;
+      left: -1rem; }
+      .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:before {
+        border-right-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:after {
         border-right-color: #ffffff;
-        margin-left: 0.1rem; }
+        left: 1px;
+        top: 0; }
   .xl-poptip-fade-enter-active, .xl-poptip-fade-leave-active {
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; }
   .xl-poptip-fade-enter, .xl-poptip-fade-leave-to {

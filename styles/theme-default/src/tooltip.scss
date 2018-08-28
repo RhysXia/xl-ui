@@ -8,7 +8,9 @@
   }
   &[x-placement^=top] {
     .#{$--cls-prefix}-poptip__arrow {
-      border-top-color: $--tooltip-bg-color;
+      &:before {
+        border-top-color: $--tooltip-border-color;
+      }
       &:after {
         border-top-color: $--tooltip-bg-color;
       }
@@ -16,7 +18,9 @@
   }
   &[x-placement^=bottom] {
     .#{$--cls-prefix}-poptip__arrow {
-      border-bottom-color: $--tooltip-bg-color;
+      &:before {
+        border-bottom-color: $--tooltip-border-color;
+      }
       &:after {
         border-bottom-color: $--tooltip-bg-color;
       }
@@ -24,7 +28,9 @@
   }
   &[x-placement^=left] {
     .#{$--cls-prefix}-poptip__arrow {
-      border-left-color: $--tooltip-bg-color;
+      &:before {
+        border-left-color: $--tooltip-border-color;
+      }
       &:after {
         border-left-color: $--tooltip-bg-color;
       }
@@ -32,7 +38,9 @@
   }
   &[x-placement^=right] {
     .#{$--cls-prefix}-poptip__arrow {
-      border-right-color: $--tooltip-bg-color;
+      &:before {
+        border-right-color: $--tooltip-border-color;
+      }
       &:after {
         border-right-color: $--tooltip-bg-color;
       }

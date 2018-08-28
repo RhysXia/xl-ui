@@ -4,22 +4,26 @@
   border-color: #495057;
   box-shadow: 0 2px 12px 0 rgba(73, 80, 87, 0.9); }
 
-.xl-tooltip__popper[x-placement^=top] .xl-poptip__arrow {
+.xl-tooltip__popper[x-placement^=top] .xl-poptip__arrow:before {
   border-top-color: #495057; }
-  .xl-tooltip__popper[x-placement^=top] .xl-poptip__arrow:after {
-    border-top-color: #495057; }
 
-.xl-tooltip__popper[x-placement^=bottom] .xl-poptip__arrow {
+.xl-tooltip__popper[x-placement^=top] .xl-poptip__arrow:after {
+  border-top-color: #495057; }
+
+.xl-tooltip__popper[x-placement^=bottom] .xl-poptip__arrow:before {
   border-bottom-color: #495057; }
-  .xl-tooltip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
-    border-bottom-color: #495057; }
 
-.xl-tooltip__popper[x-placement^=left] .xl-poptip__arrow {
+.xl-tooltip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
+  border-bottom-color: #495057; }
+
+.xl-tooltip__popper[x-placement^=left] .xl-poptip__arrow:before {
   border-left-color: #495057; }
-  .xl-tooltip__popper[x-placement^=left] .xl-poptip__arrow:after {
-    border-left-color: #495057; }
 
-.xl-tooltip__popper[x-placement^=right] .xl-poptip__arrow {
+.xl-tooltip__popper[x-placement^=left] .xl-poptip__arrow:after {
+  border-left-color: #495057; }
+
+.xl-tooltip__popper[x-placement^=right] .xl-poptip__arrow:before {
   border-right-color: #495057; }
-  .xl-tooltip__popper[x-placement^=right] .xl-poptip__arrow:after {
-    border-right-color: #495057; }
+
+.xl-tooltip__popper[x-placement^=right] .xl-poptip__arrow:after {
+  border-right-color: #495057; }

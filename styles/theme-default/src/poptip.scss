@@ -1,48 +1,4 @@
 @import 'commons/var';
-@mixin arrow($width, $borderColor, $bgColor, $direction, $borderWidth:$width * 0.1) {
-  display: block;
-  height: 0;
-  width: 0;
-  border: $width / 2 solid transparent;
-  &:after {
-    position: absolute;
-    display: block;
-    left: (-$width + 2 * $borderWidth) /2;
-    top: (-$width + 2 * $borderWidth) /2;
-    content: "";
-    height: 0;
-    width: 0;
-    border: ($width - 2 * $borderWidth) / 2 solid transparent;
-  }
-  @if($direction==top) {
-    border-bottom-color: $borderColor;
-    &:after {
-      border-bottom-color: $bgColor;
-      margin-top: $borderWidth;
-    }
-  }
-  @if($direction==bottom) {
-    border-top-color: $borderColor;
-    &:after {
-      border-top-color: $bgColor;
-      margin-top: -$borderWidth;
-    }
-  }
-  @if($direction==left) {
-    border-right-color: $borderColor;
-    &:after {
-      border-right-color: $bgColor;
-      margin-left: $borderWidth;
-    }
-  }
-  @if($direction==right) {
-    border-left-color: $borderColor;
-    &:after {
-      border-left-color: $bgColor;
-      margin-left: -$borderWidth;
-    }
-  }
-}
 
 .#{$--cls-prefix}-poptip {
   display: inline-block;
@@ -52,7 +8,6 @@
     display: inline-block;
     position: relative;
   }
-  
   &__body {
     box-sizing: border-box;
     border-radius: $--poptip-border-radius;
@@ -68,39 +23,82 @@
   &__content {}
   &__arrow {
     position: absolute;
-    z-index: 1000;
+    z-index: 1;
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      height: 0;
+      width: 0;
+      border: $--poptip-arrow-size / 2 solid transparent;
+    }
+    &:after {
+      position: absolute;
+    }
   }
   &__popper {
     &[x-placement^=top] {
       margin-bottom: $--poptip-arrow-space;
+      padding-bottom: $--poptip-arrow-size /2;
       .#{$--cls-prefix}-poptip__arrow {
-        @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, bottom);
+        margin-bottom: $--poptip-arrow-size /2;
         bottom: -$--poptip-arrow-size;
-        margin-bottom: $--poptip-border-width;
+        &:before {
+          border-top-color: $--poptip-border-color;
+        }
+        &:after {
+          border-top-color: $--poptip-bg-color;
+          bottom: $--border-width;
+          left: 0;
+        }
       }
     }
     &[x-placement^=bottom] {
       margin-top: $--poptip-arrow-space;
+      padding-top: $--poptip-arrow-size /2;
       .#{$--cls-prefix}-poptip__arrow {
-        @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, top);
+        margin-top: $--poptip-arrow-size /2;
         top: -$--poptip-arrow-size;
-        margin-top: $--poptip-border-width;
+        &:before {
+          border-bottom-color: $--poptip-border-color;
+        }
+        &:after {
+          border-bottom-color: $--poptip-bg-color;
+          top: $--border-width;
+          left: 0;
+        }
       }
     }
     &[x-placement^=left] {
       margin-right: $--poptip-arrow-space;
+      padding-right: $--poptip-arrow-size /2;
       .#{$--cls-prefix}-poptip__arrow {
-        @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, right);
+        margin-right: $--poptip-arrow-size /2;
         right: -$--poptip-arrow-size;
-        margin-right: $--poptip-border-width;
+        &:before {
+          border-left-color: $--poptip-border-color;
+        }
+        &:after {
+          border-left-color: $--poptip-bg-color;
+          right: $--border-width;
+          top: 0;
+        }
       }
     }
     &[x-placement^=right] {
       margin-left: $--poptip-arrow-space;
+      padding-left: $--poptip-arrow-size /2;
       .#{$--cls-prefix}-poptip__arrow {
-        @include arrow($--poptip-arrow-size, $--poptip-border-color, $--poptip-bg-color, left);
+        margin-left: $--poptip-arrow-size /2;
         left: -$--poptip-arrow-size;
-        margin-left: $--poptip-border-width;
+        &:before {
+          border-right-color: $--poptip-border-color;
+        }
+        &:after {
+          border-right-color: $--poptip-bg-color;
+          left: $--border-width;
+          top: 0;
+        }
       }
     }
   }
