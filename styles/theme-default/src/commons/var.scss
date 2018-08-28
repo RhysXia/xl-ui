@@ -239,7 +239,7 @@ $--poptip-border-radius:            $--border-radius                            
 $--poptip-border-width:             $--border-width                                     !default;
 $--poptip-border-color:             $--color-gray-200                                   !default;
 $--poptip-bg-color:                 $--bg-color                                         !default;
-$--poptip-box-shadow:               0 2px 12px 0px rgba($--color-gray-500, .5)          !default;
+$--poptip-box-shadow:               0 0 0.5rem 0 rgba($--color-gray-500, .5)          !default;
 $--poptip-arrow-size:               1rem                                                !default;
 $--poptip-arrow-space:              0.5rem                                              !default;
 $--poptip-title-content-space:      0.5rem                                              !default;
@@ -249,7 +249,7 @@ $--poptip-transition:               opacity .3s ease-in-out, transform .3s ease-
 $--tooltip-color:                   $--bg-color                                         !default;
 $--tooltip-bg-color:                $--color-gray-700                                   !default;
 $--tooltip-border-color:            $--tooltip-bg-color                                 !default;
-$--tooltip-box-shadow:              0 2px 12px 0 rgba($--tooltip-border-color, .9)      !default;
+$--tooltip-box-shadow:              0 0 0.5rem 0 rgba($--tooltip-border-color, .9)      !default;
 
 //card
 $--card-bg-color:                   $--bg-color                                         !default;

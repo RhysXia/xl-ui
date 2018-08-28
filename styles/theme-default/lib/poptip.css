@@ -10,7 +10,7 @@
     border-radius: 0.25rem;
     border: 1px solid #e9ecef;
     background-color: #ffffff;
-    box-shadow: 0 2px 12px 0px rgba(173, 181, 189, 0.5); }
+    box-shadow: 0 0 0.5rem 0 rgba(173, 181, 189, 0.5); }
   .xl-poptip__title {
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
@@ -27,11 +27,12 @@
     .xl-poptip__arrow:after {
       position: absolute; }
   .xl-poptip__popper[x-placement^=top] {
-    margin-bottom: 0.5rem;
     padding-bottom: 0.5rem; }
+    .xl-poptip__popper[x-placement^=top] .xl-poptip__body {
+      margin-bottom: 0.5rem; }
     .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow {
       margin-bottom: 0.5rem;
-      bottom: -1rem; }
+      bottom: -0.5rem; }
       .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:before {
         border-top-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=top] .xl-poptip__arrow:after {
@@ -39,11 +40,12 @@
         bottom: 1px;
         left: 0; }
   .xl-poptip__popper[x-placement^=bottom] {
-    margin-top: 0.5rem;
     padding-top: 0.5rem; }
+    .xl-poptip__popper[x-placement^=bottom] .xl-poptip__body {
+      margin-top: 0.5rem; }
     .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow {
       margin-top: 0.5rem;
-      top: -1rem; }
+      top: -0.5rem; }
       .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:before {
         border-bottom-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=bottom] .xl-poptip__arrow:after {
@@ -51,11 +53,12 @@
         top: 1px;
         left: 0; }
   .xl-poptip__popper[x-placement^=left] {
-    margin-right: 0.5rem;
     padding-right: 0.5rem; }
+    .xl-poptip__popper[x-placement^=left] .xl-poptip__body {
+      margin-right: 0.5rem; }
     .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow {
       margin-right: 0.5rem;
-      right: -1rem; }
+      right: -0.5rem; }
       .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:before {
         border-left-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=left] .xl-poptip__arrow:after {
@@ -63,11 +66,12 @@
         right: 1px;
         top: 0; }
   .xl-poptip__popper[x-placement^=right] {
-    margin-left: 0.5rem;
     padding-left: 0.5rem; }
+    .xl-poptip__popper[x-placement^=right] .xl-poptip__body {
+      margin-left: 0.5rem; }
     .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow {
       margin-left: 0.5rem;
-      left: -1rem; }
+      left: -0.5rem; }
       .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:before {
         border-right-color: #e9ecef; }
       .xl-poptip__popper[x-placement^=right] .xl-poptip__arrow:after {
