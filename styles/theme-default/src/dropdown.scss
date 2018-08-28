@@ -1,5 +1,3 @@
 @import 'commons/var';
-@import 'button';
-.#{$--cls-prefix}-dropdown{
-  display: inline-block;
-}
+@import 'poptip';
+@import 'commons/motion/slide';

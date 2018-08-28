@@ -77,6 +77,9 @@ export default {
       if (val) {
         this.zIndex = generateZIndex()
       }
+    },
+    actualPlacement(val) {
+      this.$emit('on-placement-change', val)
     }
   },
   computed: {
@@ -88,7 +91,9 @@ export default {
       return `${name}__ref`
     },
     popClasses() {
-      const arr = [`${name}__popper`, `${name}__popper--${this.actualPlacement}`]
+      const arr = [
+        `${name}__popper`
+      ]
       if (this.popClass) {
         arr.push(this.popClass)
       }

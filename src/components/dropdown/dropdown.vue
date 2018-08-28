@@ -1,88 +1,76 @@
 <template lang="pug">
-    div(:class="classes",@mouseenter="_mouseenter",@mouseleave="_mouseleave",@click="_click",v-clickoutside="_clickoutside")
-      div(:class="refClasses",ref="reference")
-        slot
-      transition(:name="transitionName")
-        div(:class="popClasses",ref="popper",v-show="visible",)
-          slot(name="dropdown")
+  Poptip(ref="poptip",:transitionName="transitionName",:placement="placement",:pop-class="popClass",:value="actualVisible",:padding="padding",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave",@on-placement-change="_placementChange")
+    slot
+    div(slot="content")
+      slot(name="dropdown")
 </template>
 <script>
-import popper from '@/mixins/popper'
-import clickoutside from '@/directives/clickoutside'
-import { oneOf } from '@/utils/array'
+import Poptip from '../poptip'
+
 const name = 'xl-dropdown'
 export default {
   name,
-  mixins: [popper],
-  directives: {
-    clickoutside
-  },
   provide() {
     return {
       xlDropdown: this
     }
   },
   props: {
-    trigger: {
-      default: 'hover',
+    placement: {
+      default: 'bottom',
       validator(val) {
-        return oneOf(['hover', 'click', 'custom'], val)
+        return /^(top|bottom)(-start|-end)?$/g.test(val)
       }
     },
-    hideOnClick: {
-      type: Boolean,
-      default: false
+    padding: {
+      type: String,
+      default: '0.5em 1em'
+    }
+  },
+  data() {
+    return {
+      visible: false,
+      actualPlacement: this.placement
     }
   },
   computed: {
     transitionName() {
-      const placement = this.actualPlacement
-      let direction = placement.split('-')[0]
-      direction =
-        direction === 'left'
-          ? 'right'
-          : direction === 'right'
-            ? 'left'
-            : direction === 'top' ? 'bottom' : 'top'
-      return `xl-slide-${direction}`
+      let placement = this.actualPlacement.split('-')[0]
+      placement = placement === 'top' ? 'bottom' : 'top'
+      return `xl-slide-${placement}`
     },
-    classes() {
-      const arr = [name]
-      return arr
+    popClass() {
+      return `${name}__popper`
     },
-    refClasses() {
-      const arr = [`${name}__ref`]
-      return arr
-    },
-    popClasses() {
-      const arr = [`${name}__popper`]
-      return arr
+    actualVisible() {
+      return this.visible
     }
   },
   methods: {
-    _mouseenter() {
-      if (this.trigger === 'hover') {
-        this.visible = true
-      }
+    _placementChange(val) {
+      console.log(1)
+      this.actualPlacement = val
     },
     _mouseleave() {
-      if (this.trigger === 'hover') {
-        this.visible = false
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
       }
+      this.visible = false
+    },
+    _mouseenter() {
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
+      this._enterTimer = setTimeout(() => {
+        this.visible = true
+      }, this.delay)
     },
     _click() {
-      if (this.trigger === 'click') {
-        this.visible = true
-      }
-    },
-    _clickoutside() {
-      if (this.trigger === 'click') {
-        this.visible = false
-      }
+      this.visible = true
     }
   },
-  mounted() {
-    console.log(this)
+  components: {
+    Poptip
   }
 }
 </script>
