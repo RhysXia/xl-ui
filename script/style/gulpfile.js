@@ -22,6 +22,10 @@ gulp.task('css', function () {
         this.emit('end')
       })
       .pipe(postcss())
+      .pipe(cleanCSS({
+        level: 2,
+        format: 'beautify'
+      }))
       .pipe(gulp.dest(dir + '/lib'))
   })
 })

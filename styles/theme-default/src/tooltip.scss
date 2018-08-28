@@ -1,4 +1,6 @@
 @import './commons/var';
+@import 'poptip';
+
 .#{$--cls-prefix}-tooltip__popper {
   .#{$--cls-prefix}-poptip__body {
     color: $--tooltip-color;
