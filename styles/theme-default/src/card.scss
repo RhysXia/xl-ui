@@ -1,0 +1,36 @@
+@import 'commons/var';
+.#{$--cls-prefix}-card {
+  border-radius: $--card-border-radius;
+  background-color: $--card-bg-color;
+  transition: $--card-hover-transition;
+  &__header {
+    position: relative;
+    padding: $--card-padding-y $--card-padding-x;
+    border-bottom: $--card-border-width solid $--card-border-color;
+    &__title{
+      font-weight: $--card-header-font-weight;
+    }
+
+    &__extra{
+      position: absolute;
+      padding: $--card-padding-y $--card-padding-x;
+      right: 0;
+      top: 0;
+    }
+
+  }
+  &__body {
+    padding: $--card-padding-y $--card-padding-x;
+  }
+
+  &__footer {
+    padding: $--card-padding-y $--card-padding-x;
+    border-top: $--card-border-width solid $--card-border-color;
+  }
+  &--border {
+    border: $--card-border-width solid $--card-border-color;
+  }
+  &--shadow {
+    box-shadow: $--card-box-shadow;
+  }
+}

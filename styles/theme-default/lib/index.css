@@ -5324,3 +5324,28 @@ body {
 
 .xl-tooltip__popper[x-placement^=right] .xl-poptip__arrow:after {
   border-right-color: #495057; }
+
+.xl-card {
+  border-radius: 0.25rem;
+  background-color: #ffffff;
+  transition: box-shadow 0.5s ease-in-out; }
+  .xl-card__header {
+    position: relative;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #dee2e6; }
+    .xl-card__header__title {
+      font-weight: 700; }
+    .xl-card__header__extra {
+      position: absolute;
+      padding: 0.8rem 1rem;
+      right: 0;
+      top: 0; }
+  .xl-card__body {
+    padding: 0.8rem 1rem; }
+  .xl-card__footer {
+    padding: 0.8rem 1rem;
+    border-top: 1px solid #dee2e6; }
+  .xl-card--border {
+    border: 1px solid #dee2e6; }
+  .xl-card--shadow {
+    box-shadow: 0 2px 12px 0px rgba(173, 181, 189, 0.5); }

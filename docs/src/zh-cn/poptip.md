@@ -222,7 +222,7 @@
 | value       | 弹出框状态，支持`v-model`                   | boolean  | - | false              |
 | title       | 标题                   | string  | - | -              |
 | content       | 内容                   | string   | - | -              |
-| padding       | 自定义边距                   | string   | - | '0.5em,1em'              |
+| padding       | 自定义边距                   | string   | - | '0.5rem 1rem'              |
 | options       | 自定义popper.js的配置项，具体配置见[popper.js文档](https://popper.js.org/popper-documentation.html)                  | string   | - | '0.5em,1em'              |
 | pop-class       | 自定义弹出框样式         | string   | - | -        |
 | transition-name       | 自定义弹出框动画         | string   | - | xl-poptip-fade        |

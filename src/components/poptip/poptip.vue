@@ -59,7 +59,7 @@ export default {
     },
     padding: {
       type: String,
-      default: '0.5em 1em'
+      default: '0.5rem 1rem'
     },
     transitionName: {
       type: String,
