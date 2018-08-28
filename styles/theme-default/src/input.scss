@@ -10,13 +10,12 @@
   &__prefix,
   &__suffix {
     background-color: $--input-append-bg-color;
+    border: $--input-border-width solid $--input-border-color;
   }
   &__prefix {
-    border: $--input-border-width solid $--input-border-color;
     border-right: none;
   }
   &__suffix {
-    border: $--input-border-width solid $--input-border-color;
     border-left: none;
   }
   &__prefix,
@@ -45,6 +44,9 @@
     position: relative;
     transition: $--input-transition;
     border: $--input-border-width solid $--input-border-color;
+  }
+  &__body{
+    overflow: hidden;
   }
   &--hovered {
     .#{$--cls-prefix}-input__textarea,

@@ -82,7 +82,7 @@ $--yiq-text-dark:             $--color-gray-900       !default;
 $--yiq-text-light:            $--color-white          !default;
 
 //body
-$--body-color:                $--color-white          !default;
+$--body-color:                $--color-gray-100       !default;
 
 //background
 $--bg-color:                  $--color-white          !default;
@@ -124,7 +124,7 @@ $--opacity-disabled:          .65                         !default;
 
 //icon
 $--icon-font-path:                './fonts'                             !default;
-$--icon-font-size:                1em                          !default;
+$--icon-font-size:                1em                                   !default;
 
 // button
 $--btn-font-weight:               $--font-weight                        !default;
@@ -154,14 +154,14 @@ $--grid-breakpoints: (
 )                                                                           !default;
 
 //layout
-$--layout-header-height:        5rem                                        !default;
-$--layout-header-bg-color:      $--color-gray-800                           !default;
+$--layout-header-height:        4rem                                        !default;
+$--layout-header-bg-color:      $--color-gray-700                           !default;
 $--layout-header-color:         color-yiq($--layout-header-bg-color)        !default;
 $--layout-header-padding-x:     5rem                                        !default;
-$--layout-content-bg-color:     $--color-gray-200                           !default;
+$--layout-content-bg-color:     $--color-white                              !default;
 $--layout-content-color:        color-yiq($--layout-content-bg-color)       !default;
 $--layout-footer-height:        $--layout-header-height                     !default;
-$--layout-footer-bg-color:      $--color-gray-500                           !default;
+$--layout-footer-bg-color:      $--color-gray-700                           !default;
 $--layout-footer-color:         color-yiq($--layout-footer-bg-color)        !default;
 $--layout-footer-padding-x:     $--layout-header-padding-x                  !default;
 $--layout-sider-width:          15rem                                       !default;

@@ -6,9 +6,19 @@
 const name = 'xl-header'
 export default {
   name,
+  props: {
+    // fixed: {
+    //   type: Boolean,
+    //   default: false
+    // }
+  },
   computed: {
     classes() {
-      return name
+      const arr = [name]
+      // if (this.fixed) {
+      //   arr.push(`${name}--fixed`)
+      // }
+      return arr
     }
   }
 }

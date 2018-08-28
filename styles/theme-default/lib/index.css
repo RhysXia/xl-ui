@@ -301,9 +301,9 @@ template {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
+  font-size: 14px;
   color: #212529;
-  background-color: #ffffff;
+  background-color: #f8f9fa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -4860,29 +4860,33 @@ body {
 .xl-layout {
   display: flex;
   flex-direction: column;
-  flex: auto; }
+  flex: auto;
+  position: relative; }
   .xl-layout--sider {
     flex-direction: row; }
 
 .xl-header {
   flex: 0 0 auto;
   padding: 0 5rem;
-  height: 5rem;
-  line-height: 5rem;
-  background-color: #343a40;
+  height: 4rem;
+  line-height: 4rem;
+  background-color: #495057;
   color: #ffffff; }
+  .xl-header--fixed {
+    position: fixed;
+    top: 0; }
 
 .xl-content {
   flex: auto;
-  background-color: #e9ecef;
+  background-color: #ffffff;
   color: #212529; }
 
 .xl-footer {
   flex: 0 0 auto;
   padding: 0 5rem;
-  height: 5rem;
-  line-height: 5rem;
-  background-color: #adb5bd;
+  height: 4rem;
+  line-height: 4rem;
+  background-color: #495057;
   color: #ffffff; }
 
 .xl-sider {
@@ -4900,12 +4904,11 @@ body {
   align-content: center;
   color: #6c757d; }
   .xl-input__prefix, .xl-input__suffix {
-    background-color: #e9ecef; }
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6; }
   .xl-input__prefix {
-    border: 1px solid #dee2e6;
     border-right: none; }
   .xl-input__suffix {
-    border: 1px solid #dee2e6;
     border-left: none; }
   .xl-input__prefix, .xl-input__suffix, .xl-input__inner, .xl-input__textarea {
     line-height: 1.5; }
@@ -4922,6 +4925,8 @@ body {
     position: relative;
     transition: border-color 0.3s ease-in-out;
     border: 1px solid #dee2e6; }
+  .xl-input__body {
+    overflow: hidden; }
   .xl-input--hovered .xl-input__textarea,
   .xl-input--hovered .xl-input__body {
     border-color: #adb5bd; }

@@ -126,10 +126,12 @@ export default {
   .demo-code {
     padding: 1em;
     border-bottom: 1px solid $--border-color;
+    background-color: $--bg-color;
   }
   .demo-desc {
     position: relative;
     padding: 1em 3em 1em 1em;
+    background-color: $--bg-color;
     .code-btn {
       position: absolute;
       right: 0.4em;

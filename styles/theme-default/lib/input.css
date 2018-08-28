@@ -7,12 +7,11 @@
   align-content: center;
   color: #6c757d; }
   .xl-input__prefix, .xl-input__suffix {
-    background-color: #e9ecef; }
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6; }
   .xl-input__prefix {
-    border: 1px solid #dee2e6;
     border-right: none; }
   .xl-input__suffix {
-    border: 1px solid #dee2e6;
     border-left: none; }
   .xl-input__prefix, .xl-input__suffix, .xl-input__inner, .xl-input__textarea {
     line-height: 1.5; }
@@ -29,6 +28,8 @@
     position: relative;
     transition: border-color 0.3s ease-in-out;
     border: 1px solid #dee2e6; }
+  .xl-input__body {
+    overflow: hidden; }
   .xl-input--hovered .xl-input__textarea,
   .xl-input--hovered .xl-input__body {
     border-color: #adb5bd; }

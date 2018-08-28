@@ -1,29 +1,33 @@
 .xl-layout {
   display: flex;
   flex-direction: column;
-  flex: auto; }
+  flex: auto;
+  position: relative; }
   .xl-layout--sider {
     flex-direction: row; }
 
 .xl-header {
   flex: 0 0 auto;
   padding: 0 5rem;
-  height: 5rem;
-  line-height: 5rem;
-  background-color: #343a40;
+  height: 4rem;
+  line-height: 4rem;
+  background-color: #495057;
   color: #ffffff; }
+  .xl-header--fixed {
+    position: fixed;
+    top: 0; }
 
 .xl-content {
   flex: auto;
-  background-color: #e9ecef;
+  background-color: #ffffff;
   color: #212529; }
 
 .xl-footer {
   flex: 0 0 auto;
   padding: 0 5rem;
-  height: 5rem;
-  line-height: 5rem;
-  background-color: #adb5bd;
+  height: 4rem;
+  line-height: 4rem;
+  background-color: #495057;
   color: #ffffff; }
 
 .xl-sider {
