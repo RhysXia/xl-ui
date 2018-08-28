@@ -1,11 +1,4 @@
+@import '../mixins/motion';
 @mixin slide-motion($className,$keyframeName:ease-in-out) {
-  .#{$className}-enter-active {
-    animation-duration: $duration;
-    animation-name: #{$keyframeName}In;
-  }
-  .#{$className}-leave-active {
-    animation-duration: $duration;
-    animation-name: #{$keyframeName}Out;
-    pointer-events: none;
-  }
+  @include make-motion($className,$keyframeName);
 }
