@@ -1,4 +1,4 @@
-@mixin slide-motion($className,$keyframeName:ease-in-out) {
+@mixin make-motion($className, $keyframeName, $duration: 0.4s) {
   .#{$className}-enter-active {
     animation-duration: $duration;
     animation-name: #{$keyframeName}In;
