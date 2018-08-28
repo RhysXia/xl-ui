@@ -1,0 +1,44 @@
+@import 'commons/var';
+.#{$--cls-prefix}-collapse {
+  border: $--collapse-border-width solid $--collapse-border-color;
+  border-radius: $--collapse-border-radius;
+  .#{$--cls-prefix}-panel {
+    &__header {
+      border-top: $--collapse-border-width solid $--collapse-border-color;
+      padding: $--collapse-padding-y $--collapse-padding-x;
+      background-color: $--collapse-header-bg-color;
+      cursor: pointer;
+      &__icon {
+        margin-right: $--collapse-header-icon-margin-right;
+        transition: $--collapse-header-icon-transition;
+        transform-origin: 50% 50%;
+        &--actived {
+          transform: rotate(90deg)
+        }
+      }
+    }
+    &__body {
+      border-top: $--collapse-border-width solid $--collapse-border-color;
+      padding: $--collapse-padding-y $--collapse-padding-x;
+      background-color: $--collapse-body-bg-color;
+    }
+    &:first-child {
+      .#{$--cls-prefix}-panel__header {
+        border-top: none;
+      }
+    }
+    .collapse-transition {
+      transition: $--collapse-transition;
+    }
+  }
+}
+
+.#{$--cls-prefix}-collapse--simple {
+  border-left: none;
+  border-right: none;
+  .#{$--cls-prefix}-panel {
+    &__header {
+      background-color: $--bg-color;
+    }
+  }
+}

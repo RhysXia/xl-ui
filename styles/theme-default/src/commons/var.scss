@@ -261,3 +261,15 @@ $--card-padding-x:                  1rem                                        
 $--card-padding-y:                  0.8rem                                              !default;
 $--card-border-width:               $--border-width                                     !default;
 $--card-header-font-weight:         $--font-weight-bold                                 !default;
+
+//collapse
+$--collapse-border-width:               $--border-width                                 !default;
+$--collapse-border-color:               $--border-color                                 !default;
+$--collapse-header-bg-color:            lighten($--collapse-border-color, 9%)           !default;
+$--collapse-body-bg-color:              $--bg-color                                     !default;
+$--collapse-border-radius:              $--border-radius                                !default;
+$--collapse-padding-x:                  1rem                                            !default;
+$--collapse-padding-y:                  0.8rem                                          !default;
+$--collapse-header-icon-margin-right:   0.5rem                                          !default;
+$--collapse-header-icon-transition:     transform .3s ease-in-out                       !default;
+$--collapse-transition:                 all .3s ease-in-out                             !default;

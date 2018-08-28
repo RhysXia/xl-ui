@@ -2813,7 +2813,9 @@ body {
   font-size: 1rem;
   width: 1rem;
   height: 1rem;
-  line-height: 1; }
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle; }
 
 .xl-button-group {
   position: relative;
@@ -5349,3 +5351,32 @@ body {
     border: 1px solid #dee2e6; }
   .xl-card--shadow {
     box-shadow: 0 2px 12px 0px rgba(173, 181, 189, 0.5); }
+
+.xl-collapse {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem; }
+  .xl-collapse .xl-panel__header {
+    border-top: 1px solid #dee2e6;
+    padding: 0.8rem 1rem;
+    background-color: #f8f9fa;
+    cursor: pointer; }
+    .xl-collapse .xl-panel__header__icon {
+      margin-right: 0.5rem;
+      transition: transform 0.3s ease-in-out;
+      transform-origin: 50% 50%; }
+      .xl-collapse .xl-panel__header__icon--actived {
+        transform: rotate(90deg); }
+  .xl-collapse .xl-panel__body {
+    border-top: 1px solid #dee2e6;
+    padding: 0.8rem 1rem;
+    background-color: #ffffff; }
+  .xl-collapse .xl-panel:first-child .xl-panel__header {
+    border-top: none; }
+  .xl-collapse .xl-panel .collapse-transition {
+    transition: all 0.3s ease-in-out; }
+
+.xl-collapse--simple {
+  border-left: none;
+  border-right: none; }
+  .xl-collapse--simple .xl-panel__header {
+    background-color: #ffffff; }
