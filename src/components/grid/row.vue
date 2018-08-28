@@ -56,7 +56,6 @@ export default {
   },
   data() {
     return {
-      prefixCls: name,
       screens
     }
   },
@@ -64,12 +63,12 @@ export default {
     classes() {
       const arr = [name]
       if (this.type) {
-        arr.push(`${this.prefixCls}--${this.type}`)
+        arr.push(`${name}--${this.type}`)
         if (this.justify) {
-          arr.push(`${this.prefixCls}--${this.justify}`)
+          arr.push(`${name}--${this.justify}`)
         }
         if (this.align) {
-          arr.push(`${this.prefixCls}--${this.align}`)
+          arr.push(`${name}--${this.align}`)
         }
       }
       return arr

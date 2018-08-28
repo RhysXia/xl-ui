@@ -27,5 +27,6 @@ export default {
 .side-nav{
   margin: 0 0.5em;
   border-right: 1px solid $--border-color;
+  font-size: 1.1rem;
 }
 </style>

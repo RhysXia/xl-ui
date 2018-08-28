@@ -31,38 +31,33 @@ export default {
     },
     ...mediaProps
   },
-  data() {
-    return {
-      prefixCls: name
-    }
-  },
   computed: {
     gutter() {
       return this.xlRow.actualGutter
     },
     classes() {
-      let classList = [this.prefixCls]
+      let classList = [name]
       let props = ['span', 'offset', 'pull', 'push']
       props.forEach(prop => {
         if (this[prop] || this[prop] === 0) {
           if (prop === 'span') {
-            classList.push(`${this.prefixCls}-${this[prop]}`)
+            classList.push(`${name}-${this[prop]}`)
           } else {
-            classList.push(`${this.prefixCls}-${prop}-${this[prop]}`)
+            classList.push(`${name}-${prop}-${this[prop]}`)
           }
         }
       })
 
       breakpoints.forEach(size => {
         if (typeof this[size] === 'number') {
-          classList.push(`${this.prefixCls}-${size}-${this[size]}`)
+          classList.push(`${name}-${size}-${this[size]}`)
         } else if (typeof this[size] === 'object') {
           let props = this[size]
           Object.keys(props).forEach(prop => {
             if (prop === 'span') {
-              classList.push(`${this.prefixCls}-${size}-${props[prop]}`)
+              classList.push(`${name}-${size}-${props[prop]}`)
             } else {
-              classList.push(`${this.prefixCls}-${size}-${prop}-${props[prop]}`)
+              classList.push(`${name}-${size}-${prop}-${props[prop]}`)
             }
           })
         }

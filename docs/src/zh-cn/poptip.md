@@ -237,7 +237,7 @@
 | on-popper-hide   | 在提示框消失时触发 |  -  |
 | on-popper-created   | popper创建完成时触发 |  this  |
 | on-popper-updated   | popper更新完成时触发 |  this  |
-| on-input   | 弹出框状态改变时触发 | boolean，true：弹出框显示，false：弹出框隐藏  |
+| on-change   | 弹出框状态改变时触发 | boolean，true：弹出框显示，false：弹出框隐藏  |
 | on-click   | 弹出框附着的元素被点击时触发 | -  |
 | on-clickoutside   | 弹出框外点击时触发 | 实际被点击的元素e  |
 | on-mouseenter   | 鼠标进入组件时触发 | -  |

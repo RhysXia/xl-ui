@@ -63,11 +63,6 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      prefixCls: name
-    }
-  },
   computed: {
     isDisabled() {
       if (this.loading) {
@@ -76,24 +71,24 @@ export default {
       return this.disabled
     },
     classes() {
-      const arr = [this.prefixCls]
+      const arr = [name]
       if (this.type) {
-        arr.push(`${this.prefixCls}--${this.type}`)
+        arr.push(`${name}--${this.type}`)
       }
       if (this.round) {
-        arr.push(`${this.prefixCls}--round`)
+        arr.push(`${name}--round`)
       }
       if (this.long) {
-        arr.push(`${this.prefixCls}--long`)
+        arr.push(`${name}--long`)
       }
       if (this.plain) {
-        arr.push(`${this.prefixCls}--plain`)
+        arr.push(`${name}--plain`)
       }
       if (this.loading) {
-        arr.push(`${this.prefixCls}--loading`)
+        arr.push(`${name}--loading`)
       }
       if (this.dashed) {
-        arr.push(`${this.prefixCls}--dashed`)
+        arr.push(`${name}--dashed`)
       }
       return arr
     }

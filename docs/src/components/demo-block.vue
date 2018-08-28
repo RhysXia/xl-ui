@@ -5,7 +5,7 @@
     .demo-desc
       slot(name='desc')
       .code-btn
-        xl-tooltip(placement="top",:content="expand?'隐藏代码':'显示代码'")
+        xl-tooltip(transfer,placement="top",:content="expand?'隐藏代码':'显示代码'")
           xl-icon.demo-desc__icon(:style='iconStyle',type='android-arrow-dropup-circle',@on-click='expand=!expand')
     xl-collapse-transition
       .demo-source(v-show='expand',@mouseenter="mouseenter",@mouseleave="mouseleave")
@@ -14,9 +14,9 @@
           form.code-form(v-show="iconShow",action="https://codepen.io/pen/define",method="post",target="_blank")
             input(type="hidden",name="data",:value="codepenData")
             .form-btn
-              xl-tooltip(content="在codepen中打开")
+              xl-tooltip(transfer,content="在codepen中打开")
                 xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
-              xl-tooltip(content="复制代码")
+              xl-tooltip(transfer,content="复制代码")
                 xl-button.demo-source__icon.copy-btn(type="text",icon="ios-copy-outline",:data-clipboard-text="clipboardText")
 
 </template>
@@ -115,34 +115,34 @@ export default {
 @import '@docs/style/var';
 .demo-block {
   border: 1px solid $--border-color;
-  font-size: 1em;
-  transition: box-shadow .4s ease-in-out;
+  font-size: 1rem;
+  transition: box-shadow 0.2s ease-in-out;
+  border-radius: $--border-radius;
   code {
     font-family: Menlo, Monaco, Consolas, Courier, monospace;
   }
   &:hover {
-    box-shadow: 0 0 0.5em $--border-color;
+    box-shadow: 0 0 0.5rem 0 $--border-color;
   }
   .demo-code {
-    padding: 1em;
+    padding: 1.5rem;
     border-bottom: 1px solid $--border-color;
-    background-color: $--bg-color;
   }
   .demo-desc {
     position: relative;
-    padding: 1em 3em 1em 1em;
-    background-color: $--bg-color;
+    padding: 0.5rem 2rem 0.5rem 1.5rem;
     .code-btn {
       position: absolute;
-      right: 0.4em;
-      top: 0.4em;
+      right: 0.5rem;
+      top: 0.5rem;
     }
     .demo-desc__icon {
       display: block;
       cursor: pointer;
       color: #888;
-      font-size: 2.5em;
-      transition: transform .4s ease-in-out;
+      font-size: 2rem;
+      transform-origin: 50% 50%;
+      transition: transform 0.4s ease-in-out;
     }
     p {
       margin: 0;
@@ -152,15 +152,15 @@ export default {
     code {
       background-color: #e6effb;
       display: inline-block;
-      margin: 0 0.2em;
-      padding: 0.1em 0.4em;
-      height: 1.1em;
-      line-height: 1.1em;
+      margin: 0 0.2rem;
+      padding: 0.1rem 0.4rem;
+      height: 1.1rem;
+      line-height: 1.1rem;
     }
   }
   .demo-source {
     position: relative;
-    border-top: 1px solid $--border-color;
+    border-top: 1px dashed $--border-color;
     pre {
       margin: 0;
     }
@@ -172,8 +172,8 @@ export default {
       color: #888;
     }
     .demo-source__icon {
-      font-size: 1.5em;
-      padding: 0.5em;
+      font-size: 1.5rem;
+      padding: 0.5rem;
       cursor: pointer;
       &:hover {
         color: $--link-color;
@@ -183,7 +183,7 @@ export default {
 
   .icon-fade-enter-active,
   .icon-fade-leave-active {
-    transition: opacity .4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
   }
   .icon-fade-enter,
   .icon-fade-leave-to {
@@ -194,8 +194,8 @@ export default {
     opacity: 1;
   }
 
-  .collapse-transition{
-    transition: all .4s ease-in-out;
+  .collapse-transition {
+    transition: all 0.4s ease-in-out;
   }
 }
 </style>

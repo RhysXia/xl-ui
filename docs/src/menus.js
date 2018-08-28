@@ -6,6 +6,7 @@ export default [
   {
     path: '/install',
     title: '安装',
+    icon: 'gear-a',
     component: () => import('./zh-cn/install.md')
   },
   {
@@ -13,6 +14,12 @@ export default [
     title: '快速上手',
     icon: 'flag',
     component: () => import('./zh-cn/start.md')
+  },
+  {
+    path: '/theme',
+    title: '主题',
+    icon: 'android-color-palette',
+    component: () => import('./zh-cn/theme.md')
   },
   {
     title: '基础',
@@ -113,6 +120,23 @@ export default [
     ]
   },
   {
+    title: '导航',
+    children: [
+      {
+        path: '/menu',
+        title: '菜单',
+        icon: 'navicon-round',
+        component: () => import('./zh-cn/menu.md')
+      },
+      {
+        path: '/dropdown',
+        title: '下拉菜单',
+        icon: 'android-arrow-dropdown-circle',
+        component: () => import('./zh-cn/dropdown.md')
+      }
+    ]
+  },
+  {
     title: '提示',
     children: [
       {
@@ -121,17 +145,6 @@ export default [
         icon: 'alert-circled',
         component: () => import('./zh-cn/alert.md')
       }
-    ]
-  },
-  {
-    title: '导航',
-    children: [
-      // {
-      //   path: '/dropdown',
-      //   title: '下拉框',
-      //   icon: 'android-arrow-dropdown-circle',
-      //   component: () => import('./zh-cn/dropdown.md')
-      // }
     ]
   }
 ]

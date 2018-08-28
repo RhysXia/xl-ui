@@ -12,18 +12,13 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      prefixCls: name
-    }
-  },
   computed: {
     classes() {
-      const arr = [this.prefixCls]
+      const arr = [name]
       if (this.vertical) {
-        arr.push(`${this.prefixCls}--vertical`)
+        arr.push(`${name}--vertical`)
       } else {
-        arr.push(`${this.prefixCls}--horizontal`)
+        arr.push(`${name}--horizontal`)
       }
       return arr
     }

@@ -6,13 +6,12 @@ const Popper = isServer ? function () { } : require('popper.js/dist/umd/popper')
 export default {
   model: {
     prop: 'value',
-    event: 'on-input'
+    event: 'on-change'
   },
   props: {
     reference: Object,
     popper: Object,
     placement: {
-      type: String,
       default: 'bottom',
       validator(val) {
         return /^(auto|top|bottom|left|right)(-start|-end)?$/g.test(val)
@@ -52,7 +51,7 @@ export default {
       immediate: true,
       handler(val) {
         this.visible = val
-        this.$emit('on-input', val)
+        this.$emit('on-change', val)
       }
     },
     visible(val) {
@@ -64,7 +63,7 @@ export default {
         this.popperJS && this.popperJS.disableEventListeners()
         this.$emit('on-popper-hide')
       }
-      this.$emit('on-input', val)
+      this.$emit('on-change', val)
     }
   },
   methods: {

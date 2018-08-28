@@ -1,16 +1,17 @@
-import Grid from './components/grid'
 import Icon from './components/icon'
+import Button from './components/button'
+import Grid from './components/grid'
+import Layout from './components/layout'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
-import Button from './components/button'
-import Dropdown from './components/dropdown'
+import Radio from './components/radio'
 import Poptip from './components/poptip'
 import Tooltip from './components/tooltip'
-import Radio from './components/radio'
-import Form from './components/form'
 import Card from './components/card'
-import Layout from './components/layout'
 import Collapse from './components/collapse'
+import Menu from './components/menu'
+import Dropdown from './components/dropdown'
+import Form from './components/form'
 import Alert from './components/alert'
 import Animation from './components/animation'
 import {
@@ -29,22 +30,24 @@ const components = {
   Checkbox,
   CheckboxGroup: Checkbox.Group,
   Poptip,
-  Dropdown,
-  DropdownMenu: Dropdown.Menu,
-  DropdownItem: Dropdown.Item,
-  Form,
-  FormItem: Form.Item,
   Tooltip,
   Card,
   Layout,
   Header: Layout.Header,
   Sider: Layout.Sider,
-  Content: Layout.Content,
   Footer: Layout.Footer,
+  Content: Layout.Content,
   Collapse,
   Panel: Collapse.Panel,
-  Alert,
-  CollapseTransition: Animation.CollapseTransition
+  CollapseTransition: Animation.CollapseTransition,
+  Menu,
+  // waiting implement
+  Dropdown,
+  DropdownMenu: Dropdown.Menu,
+  DropdownItem: Dropdown.Item,
+  Form,
+  FormItem: Form.Item,
+  Alert
 }
 const install = (Vue, opts = {}) => {
   Object.values(components).forEach(component => {

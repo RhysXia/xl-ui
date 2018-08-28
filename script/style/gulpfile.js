@@ -32,7 +32,9 @@ gulp.task('minCss', function () {
       .src(dir + '/src/*.scss')
       .pipe(sass())
       .pipe(postcss())
-      .pipe(cleanCSS())
+      .pipe(cleanCSS({
+        level: 2
+      }))
       .pipe(
         rename(path => {
           path.basename += '.min'
