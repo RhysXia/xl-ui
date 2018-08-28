@@ -95,6 +95,7 @@
       }
     }
     .#{$--cls-prefix}-icon {
+      transform-origin: 50% 50%;
       animation: loading $--btn-loading-time linear infinite;
     }
   }
@@ -129,7 +130,8 @@
       color: $--color-primary;
     }
   }
-  @each $key,$value in $--btn-theme-color {
+  @each $key,
+  $value in $--btn-theme-color {
     &--#{$key} {
       @include button-variant($value);
       &.#{$--cls-prefix}-button--plain {

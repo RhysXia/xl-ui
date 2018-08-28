@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "@docs/style/var.scss";
+@import "@docs/style/var";
 .node {
   list-style: none;
   margin-left: 0;
@@ -37,7 +37,7 @@ export default {
   a {
     display: block;
     text-decoration: none;
-    transition: all $--transition-time ease-in-out;
+    transition: all .4s ease-in-out;
     margin: 1em 0;
     &:hover,
     &.router-link-active {
@@ -51,12 +51,12 @@ export default {
     }
   }
   .title {
-    transition: all $--transition-time ease-in-out;
+    transition: all .4s ease-in-out;
     font-size: 1em;
     font-weight: normal;
     margin: 0;
     padding: 0.5em;
-    color: $--font-color;
+    color: $--text-color-dark;
     .xl-icon + .title__inner{
       padding-left: 0.5em;
     }

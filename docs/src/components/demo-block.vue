@@ -112,11 +112,11 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@docs/style/var.scss';
+@import '@docs/style/var';
 .demo-block {
   border: 1px solid $--border-color;
   font-size: 1em;
-  transition: box-shadow $--transition-time ease-in-out;
+  transition: box-shadow .4s ease-in-out;
   code {
     font-family: Menlo, Monaco, Consolas, Courier, monospace;
   }
@@ -140,7 +140,7 @@ export default {
       cursor: pointer;
       color: #888;
       font-size: 2.5em;
-      transition: transform $--transition-time ease-in-out;
+      transition: transform .4s ease-in-out;
     }
     p {
       margin: 0;
@@ -181,7 +181,7 @@ export default {
 
   .icon-fade-enter-active,
   .icon-fade-leave-active {
-    transition: opacity $--transition-time ease-in-out;
+    transition: opacity .4s ease-in-out;
   }
   .icon-fade-enter,
   .icon-fade-leave-to {
@@ -193,7 +193,7 @@ export default {
   }
 
   .collapse-transition{
-    transition: all $--transition-time ease-in-out;
+    transition: all .4s ease-in-out;
   }
 }
 </style>

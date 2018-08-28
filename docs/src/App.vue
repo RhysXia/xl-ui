@@ -1,13 +1,18 @@
 <template lang='pug'>
-  #app
-    Header
-    .container
-      xl-row(type='flex',:gutter="20")
-        xl-col(:span="4")
-          SideNav
-        xl-col.content(:span="20")
-          keep-alive
-            router-view
+  xl-layout
+    xl-header
+      Header
+    xl-layout
+      xl-aside
+      xl-content
+    xl-footer
+    //- .container
+    //-   xl-row(type='flex',:gutter="20")
+    //-     xl-col(:span="4")
+    //-       SideNav
+    //-     xl-col.content(:span="20")
+    //-       keep-alive
+    //-         router-view
 </template>
 
 <script>
@@ -30,8 +35,8 @@ export default {
 }
 </script>
 <style lang="scss">
-@import './style/base.scss';
-#app {
+@import './style/index';
+.app {
   .container {
     width: 1450px;
     margin: 0 auto;

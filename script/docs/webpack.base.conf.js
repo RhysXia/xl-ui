@@ -40,7 +40,7 @@ const webpackConfig = {
     publicPath: isProduction() ? '/xl-vision/' : '/'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.scss'],
     alias: config.alias
   },
   module: {
