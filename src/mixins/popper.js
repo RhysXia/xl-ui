@@ -104,11 +104,6 @@ export default {
       } else {
         this.createPopper()
       }
-    },
-    doDestroy() {
-      if (isServer) return
-      this.popperJS.destroy()
-      this.popperJS = null
     }
   },
   mounted() {

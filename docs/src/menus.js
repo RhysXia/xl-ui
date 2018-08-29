@@ -16,10 +16,10 @@ export default [
     component: () => import('./zh-cn/start.md')
   },
   {
-    path: '/theme',
-    title: '主题',
+    path: '/color',
+    title: '色彩',
     icon: 'android-color-palette',
-    component: () => import('./zh-cn/theme.md')
+    component: () => import('./zh-cn/color.md')
   },
   {
     title: '基础',

@@ -35,7 +35,7 @@ export default {
   .container {
     width: 1450px;
     margin: 0 auto;
-    padding: 1em;
+    padding: 1rem;
     background-color: $--bg-color;
   }
 }
