@@ -6,19 +6,19 @@ export default [
   {
     path: '/install',
     title: '安装',
-    icon: 'gear-a',
+    icon: 'ios-gear-outline',
     component: () => import('./zh-cn/install.md')
   },
   {
     path: '/start',
     title: '快速上手',
-    icon: 'flag',
+    icon: 'ios-flag-outline',
     component: () => import('./zh-cn/start.md')
   },
   {
     path: '/color',
     title: '色彩',
-    icon: 'android-color-palette',
+    icon: 'ios-color-filter-outline',
     component: () => import('./zh-cn/color.md')
   },
   {
@@ -27,18 +27,18 @@ export default [
       {
         path: '/icon',
         title: '图标',
-        icon: 'heart',
+        icon: 'bag',
         component: () => import('./zh-cn/icon.md')
       },
       {
         path: '/button',
         title: '按钮',
-        icon: 'play',
+        icon: 'ios-circle-outline',
         component: () => import('./zh-cn/button.md')
       },
       {
         title: '动画',
-        icon: 'load-a',
+        icon: 'load-d',
         path: '/animation',
         component: () => import('./zh-cn/animation.md')
       }
@@ -73,13 +73,13 @@ export default [
       {
         path: '/checkbox',
         title: '多选框',
-        icon: 'android-checkbox',
+        icon: 'android-checkbox-outline',
         component: () => import('./zh-cn/checkbox.md')
       },
       {
         path: '/radio',
         title: '单选框',
-        icon: 'android-radio-button-on',
+        icon: 'ios-checkmark-outline',
         component: () => import('./zh-cn/radio.md')
       }
       // {
@@ -96,13 +96,13 @@ export default [
       {
         path: '/poptip',
         title: '弹出框',
-        icon: 'chatbox',
+        icon: 'ios-chatboxes-outline',
         component: () => import('./zh-cn/poptip.md')
       },
       {
         path: '/tooltip',
         title: '文字提示框',
-        icon: 'chatbox-working',
+        icon: 'ios-chatbubble-outline',
         component: () => import('./zh-cn/tooltip.md')
       },
       {
@@ -118,33 +118,33 @@ export default [
         component: () => import('./zh-cn/collapse.md')
       }
     ]
-  },
-  {
-    title: '导航',
-    children: [
-      {
-        path: '/menu',
-        title: '菜单',
-        icon: 'navicon-round',
-        component: () => import('./zh-cn/menu.md')
-      },
-      {
-        path: '/dropdown',
-        title: '下拉菜单',
-        icon: 'android-arrow-dropdown-circle',
-        component: () => import('./zh-cn/dropdown.md')
-      }
-    ]
-  },
-  {
-    title: '提示',
-    children: [
-      {
-        path: '/alert',
-        title: '警告提示',
-        icon: 'alert-circled',
-        component: () => import('./zh-cn/alert.md')
-      }
-    ]
   }
+  // ,{
+  //   title: '导航',
+  //   children: [
+  //     {
+  //       path: '/menu',
+  //       title: '菜单',
+  //       icon: 'navicon-round',
+  //       component: () => import('./zh-cn/menu.md')
+  //     },
+  //     {
+  //       path: '/dropdown',
+  //       title: '下拉菜单',
+  //       icon: 'android-arrow-dropdown-circle',
+  //       component: () => import('./zh-cn/dropdown.md')
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: '提示',
+  //   children: [
+  //     {
+  //       path: '/alert',
+  //       title: '警告提示',
+  //       icon: 'alert-circled',
+  //       component: () => import('./zh-cn/alert.md')
+  //     }
+  //   ]
+  // }
 ]

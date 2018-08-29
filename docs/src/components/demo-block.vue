@@ -15,7 +15,7 @@
             input(type="hidden",name="data",:value="codepenData")
             .form-btn
               xl-tooltip(transfer,content="在codepen中打开")
-                xl-button.demo-source__icon(native-type="submit",type="text",icon="code-working")
+                xl-button.demo-source__icon(native-type="submit",type="text",icon="social-codepen")
               xl-tooltip(transfer,content="复制代码")
                 xl-button.demo-source__icon.copy-btn(type="text",icon="ios-copy-outline",:data-clipboard-text="clipboardText")
 
