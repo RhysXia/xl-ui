@@ -141,7 +141,7 @@ export default {
 
 ```html
 <xl-card style="width:300px;overflow:hidden" :body-style="{padding:0}">
-  <img style="width:300px;vertical-align:top;" src="/static/card_1.png"/>
+  <img style="width:300px;vertical-align:top;" src="static/card_1.png"/>
   <div slot="footer" class="demo-card__card">
     <xl-button icon="gear-b" type="text"></xl-button>
     <xl-button icon="edit" type="text"></xl-button>
