@@ -60,7 +60,7 @@
   &--readonly {
     pointer-events: none;
   }
-  &:not(&--disabled):not(&--checked) {
+  &:not(.#{$--cls-prefix}-radio--disabled):not(.#{$--cls-prefix}-radio--checked) {
     &:hover {
       .#{$--cls-prefix}-radio__inner {
         border-color: $--radio-hover-border-color;

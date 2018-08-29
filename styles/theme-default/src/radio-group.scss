@@ -42,7 +42,7 @@
           color: $--radio-bg-color;
         }
       }
-      &:not(&--disabled) {
+      &:not(.#{$--cls-prefix}-radio--disabled) {
         &:hover {
           z-index: 2;
           border-color: $--radio-hover-border-color;

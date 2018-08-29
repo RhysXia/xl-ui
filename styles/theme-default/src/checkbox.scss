@@ -7,7 +7,7 @@
   box-sizing: border-box;
   font-size: 1rem;
   background-color: $--checkbox-bg-color;
-  &:not(&--checked):not(&--disabled) {
+  &:not(.#{$--cls-prefix}-checkbox--checked):not(.#{$--cls-prefix}-checkbox--disabled) {
     &:hover {
       .#{$--cls-prefix}-checkbox__inner {
         border-color: $--checkbox-hover-border-color;
