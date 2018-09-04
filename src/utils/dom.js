@@ -28,18 +28,6 @@ export function getPosition(element) {
   }
 }
 
-// 获取元素相对于容器的位置
-export function getOffset(element, container = document.body) {
-  const ePosition = getPosition(element)
-  const cPosition = getPosition(container)
-  return {
-    top: ePosition.top - cPosition.top,
-    bottom: cPosition.bottom - ePosition.bottom,
-    left: ePosition.left - cPosition.left,
-    right: cPosition.right - ePosition.right
-  }
-}
-
 export function getClasses(element) {
   const classes = (element.className || '').trim()
   return classes.split(/\s+/)
@@ -68,6 +56,9 @@ export function removeClass(element, className) {
 export function getPxNumber(px) {
   if (typeof px === 'number') {
     return px
+  }
+  if (!px.endsWith('px')) {
+    return Number(px)
   }
   return Number(px.substring(0, px.length - 2))
 }

@@ -95,7 +95,7 @@ export default [
     children: [
       {
         path: '/poptip',
-        title: '弹出框',
+        title: '弹出提示框',
         icon: 'ios-chatboxes-outline',
         component: () => import('./zh-cn/poptip.md')
       },
@@ -118,33 +118,44 @@ export default [
         component: () => import('./zh-cn/collapse.md')
       }
     ]
+  },
+  {
+    title: '导航',
+    children: [
+      {
+        path: '/menu',
+        title: '菜单',
+        icon: 'navicon-round',
+        component: () => import('./zh-cn/menu.md')
+      },
+      {
+        path: '/dropdown',
+        title: '下拉菜单',
+        icon: 'android-arrow-dropdown-circle',
+        component: () => import('./zh-cn/dropdown.md')
+      }
+    ]
+  },
+  {
+    title: '提示',
+    children: [
+      {
+        path: '/alert',
+        title: '警告提示',
+        icon: 'alert-circled',
+        component: () => import('./zh-cn/alert.md')
+      }
+    ]
+  },
+  {
+    title: '其他',
+    children: [
+      {
+        path: '/popper',
+        title: '弹出框',
+        component: () => import('./zh-cn/popper.md')
+      }
+    ]
   }
-  // ,{
-  //   title: '导航',
-  //   children: [
-  //     {
-  //       path: '/menu',
-  //       title: '菜单',
-  //       icon: 'navicon-round',
-  //       component: () => import('./zh-cn/menu.md')
-  //     },
-  //     {
-  //       path: '/dropdown',
-  //       title: '下拉菜单',
-  //       icon: 'android-arrow-dropdown-circle',
-  //       component: () => import('./zh-cn/dropdown.md')
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: '提示',
-  //   children: [
-  //     {
-  //       path: '/alert',
-  //       title: '警告提示',
-  //       icon: 'alert-circled',
-  //       component: () => import('./zh-cn/alert.md')
-  //     }
-  //   ]
-  // }
+
 ]
