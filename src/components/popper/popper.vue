@@ -3,7 +3,6 @@
     div(ref="reference",:class="referenceClasses")
       slot
     div(ref="popup",:style="popupStyles",v-show="actualVisible")
-      slot(name="arrow")
       slot(name="popup")
 </template>
 
@@ -47,7 +46,7 @@ export default {
         right: 0,
         bottom: 0
       },
-      popupOriginPosition: {
+      originPopupPosition: {
         top: 0,
         left: 0,
         right: 0,
@@ -69,9 +68,9 @@ export default {
     actualPlacement() {
       return this.placement
     },
-    popupDestPosition() {
+    destPopupPosition() {
       const refPos = this.referencePosition
-      const popPos = this.popupOriginPosition
+      const popPos = this.originPopupPosition
       let left = 0
       let top = 0
       const placement = this.actualPlacement
@@ -102,6 +101,8 @@ export default {
           top = (refPos.top + refPos.bottom - popPos.top - popPos.bottom) / 2
         }
       }
+      left = Math.floor(left)
+      top = Math.floor(top)
       let right = left + popPos.right - popPos.left
       let bottom = top + popPos.bottom - popPos.top
       return {
@@ -124,8 +125,8 @@ export default {
       return {
         position: 'absolute',
         zIndex: this.zIndex,
-        left: parseInt(this.popupDestPosition.left) + 'px',
-        top: parseInt(this.popupDestPosition.top) + 'px'
+        left: this.destPopupPosition.left + 'px',
+        top: this.destPopupPosition.top + 'px'
       }
     }
   },
@@ -159,7 +160,7 @@ export default {
       const refPos = this.referencePosition
       const pos = getPosition(this.$refs.reference)
       Object.keys(refPos).forEach(key => {
-        refPos[key] = pos[key]
+        refPos[key] = Math.floor(pos[key])
       })
     },
     _updateArrowSize() {
@@ -171,25 +172,25 @@ export default {
       size.width = pos.right - pos.left
       size.height = pos.bottom - pos.top
     },
-    _updatePopupOriginPosition() {
+    _updateOriginPopupPosition() {
       const popEle = this.$refs.popup
-      const popPos = this.popupOriginPosition
-      const left = this.popupDestPosition.left
-      const top = this.popupDestPosition.top
+      const popPos = this.originPopupPosition
+      const left = this.destPopupPosition.left
+      const top = this.destPopupPosition.top
       const pos = getPosition(popEle)
       Object.keys(popPos).forEach(key => {
         let sp = left
         if (key === 'top' || key === 'bottom') {
           sp = top
         }
-        popPos[key] = pos[key] - sp
+        popPos[key] = Math.floor(pos[key]) - sp
       })
     },
     updatePosition() {
       this.$nextTick(() => {
+        this._updateOriginPopupPosition()
         this._updateReferencePosition()
-        this._updatePopupOriginPosition()
-        this._updateArrowSize()
+        // this._updateArrowSize()
       })
     }
   },

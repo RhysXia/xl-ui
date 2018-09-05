@@ -28,7 +28,7 @@ export default {
         margin-bottom:2em;
     }
     .demo-popup {
-        padding: 0.5rem 1rem;
+        padding: 1rem;
         border-radius: 5px;
         border: 1px solid #eee;
         box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -55,10 +55,6 @@ export default {
 
 <br/>
 <br/>
-<xl-popper placement='top-start' v-model="visible">
-            <button>测试</button>
-            <div class="demo-popup" slot="popup">top-start</div>
-        </xl-popper>
 <xl-row class='demo-popper'>
     <xl-col :span='4' :offset='4'>
         <xl-popper placement='top-start' v-model="visible">
