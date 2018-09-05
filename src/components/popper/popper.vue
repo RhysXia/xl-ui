@@ -8,6 +8,7 @@
 
 <script>
 import { getPosition, getPxNumber } from '@/utils/dom'
+import { generateZIndex } from '@/utils/zIndex-manager'
 
 const name = 'xl-popper'
 export default {
@@ -25,7 +26,9 @@ export default {
     },
     getPopupContainer: {
       type: Function,
-      default: () => document.body
+      default: function() {
+        return this.$el
+      }
     },
     visible: {
       type: Boolean,
@@ -35,6 +38,7 @@ export default {
   data() {
     return {
       actualVisible: this.visible,
+      zIndex: generateZIndex(),
       popupContainer: null,
       referencePosition: {
         top: 0,
@@ -63,6 +67,7 @@ export default {
     popupStyles() {
       const ret = {
         position: 'absolute',
+        zIndex: this.zIndex,
         display: 'inline-block'
       }
 
@@ -110,6 +115,7 @@ export default {
     },
     actualVisible(val) {
       if (val) {
+        this.zIndex = generateZIndex()
         this.updatePosition()
       }
       this.$emit('on-change', val)
@@ -139,7 +145,7 @@ export default {
     _updatePopupPosition() {
       const popEle = this.$refs.popup
       const popPos = this.popupPosition
-      const pos = getPosition(this.$refs.popup)
+      const pos = getPosition(popEle)
       const left = getPxNumber(popEle.style.left)
       const top = getPxNumber(popEle.style.top)
       Object.keys(popPos).forEach(key => {
@@ -159,9 +165,6 @@ export default {
   },
   mounted() {
     this.popupContainer = this.getPopupContainer()
-  },
-  beforeDestroy() {
-    this.popupContainer.removeChild(this.$refs.popup)
   }
 }
 </script>

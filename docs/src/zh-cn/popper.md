@@ -46,13 +46,16 @@ export default {
 
 <br/>
 <br/>
-
+<xl-popper placement='top-start' v-model="visible">
+            <button>测试</button>
+            <div class="demo-popup" slot="popup">top-start</div>
+        </xl-popper>
 <xl-row class='demo-popper'>
     <xl-col :span='4' :offset='4'>
         <xl-popper placement='top-start' v-model="visible">
             <xl-button>下拉菜单</xl-button>
             <div class="demo-popup" slot="popup">top-start</div>
-        </xl-popu>
+        </xl-popper>
     </xl-col>
     <xl-col :span='4'>
         <xl-popper placement='top' v-model="visible">
