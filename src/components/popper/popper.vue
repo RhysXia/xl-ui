@@ -33,6 +33,10 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    offset: {
+      type: [String, Number],
+      default: 0
     }
   },
   data() {
@@ -120,11 +124,23 @@ export default {
       }
     },
     popupStyles() {
+      const map = {
+        top: 'padding-bottom',
+        bottom: 'padding-top',
+        left: 'padding-right',
+        right: 'padding-left'
+      }
+      const placement = this.actualPlacement.split('-')[0]
+      let offset = this.offset
+      if (typeof offset === 'number') {
+        offset += 'px'
+      }
       return {
         position: 'absolute',
         zIndex: this.zIndex,
         left: this.destPopupPosition.left + 'px',
-        top: this.destPopupPosition.top + 'px'
+        top: this.destPopupPosition.top + 'px',
+        [map[placement]]: offset
       }
     }
   },
