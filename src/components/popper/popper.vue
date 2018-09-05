@@ -101,8 +101,6 @@ export default {
           top = (refPos.top + refPos.bottom - popPos.top - popPos.bottom) / 2
         }
       }
-      left = Math.floor(left)
-      top = Math.floor(top)
       let right = left + popPos.right - popPos.left
       let bottom = top + popPos.bottom - popPos.top
       return {
@@ -183,14 +181,14 @@ export default {
         if (key === 'top' || key === 'bottom') {
           sp = top
         }
-        popPos[key] = Math.floor(pos[key]) - sp
+        popPos[key] = Math.floor(pos[key] - sp)
       })
     },
     updatePosition() {
       this.$nextTick(() => {
         this._updateOriginPopupPosition()
         this._updateReferencePosition()
-        // this._updateArrowSize()
+        this._updateArrowSize()
       })
     }
   },
