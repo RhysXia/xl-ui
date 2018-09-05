@@ -3,7 +3,11 @@
     div(ref="reference",:class="referenceClasses")
       slot
     div(ref="popup",:style="popupStyles",v-show="actualVisible")
-      slot(name="popup")
+      div(ref="arrow",:style="arrowStyles",v-if="arrowShow")
+        slot(name="arrow")
+          div
+      div(:style="contentStyles")
+        slot(name="popup")
 </template>
 
 <script>
@@ -37,6 +41,10 @@ export default {
     offset: {
       type: [String, Number],
       default: 0
+    },
+    arrowShow: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -105,6 +113,8 @@ export default {
           top = (refPos.top + refPos.bottom - popPos.top - popPos.bottom) / 2
         }
       }
+      left += popPos.left
+      top += popPos.top
       let right = left + popPos.right - popPos.left
       let bottom = top + popPos.bottom - popPos.top
       return {
@@ -114,14 +124,14 @@ export default {
         bottom
       }
     },
-    arrowPosition() {
-      let left = 0
-      let top = 0
-
-      return {
-        left,
-        top
-      }
+    popupAbsPosition() {
+      const ret = {}
+      const destPos = this.destPopupPosition
+      const originPos = this.originPopupPosition
+      Object.keys(destPos).forEach(key => {
+        ret[key] = destPos[key] - originPos[key]
+      })
+      return ret
     },
     popupStyles() {
       const map = {
@@ -138,9 +148,52 @@ export default {
       return {
         position: 'absolute',
         zIndex: this.zIndex,
-        left: this.destPopupPosition.left + 'px',
-        top: this.destPopupPosition.top + 'px',
+        left: this.popupAbsPosition.left + 'px',
+        top: this.popupAbsPosition.top + 'px',
         [map[placement]]: offset
+      }
+    },
+    arrowStyles() {
+      const ret = {
+        position: 'absolute',
+        display: 'inline-block',
+        top: 0,
+        left: 0
+      }
+      const placement = this.actualPlacement.split('-')[0]
+      const refPos = this.referencePosition
+      const popPos = this.destPopupPosition
+      const arrowSize = this.arrowSize
+      if (placement === 'top' || placement === 'bottom') {
+        if (placement === 'top') {
+          ret.top = -arrowSize.height + 'px'
+        }
+        ret.left = (Math.max(refPos.left, popPos.left) + Math.min(refPos.right, popPos.right) - this.arrowSize.width) / 2 - popPos.left + 'px'
+      } else {
+        if (placement === 'left') {
+          ret.left = -arrowSize.width + 'px'
+        }
+        ret.top = (Math.max(refPos.top, popPos.top) + Math.min(refPos.bottom, popPos.bottom) - this.arrowSize.height) / 2 - popPos.top + 'px'
+      }
+
+      return ret
+    },
+    contentStyles() {
+      const map1 = {
+        top: 'padding-bottom',
+        bottom: 'padding-top',
+        left: 'padding-right',
+        right: 'padding-left'
+      }
+      const map2 = {
+        top: 'height',
+        bottom: 'height',
+        left: 'width',
+        right: 'width'
+      }
+      const placement = this.actualPlacement.split('-')[0]
+      return {
+        [map1[placement]]: this.arrowSize[map2[placement]] + 'px'
       }
     }
   },
@@ -178,19 +231,19 @@ export default {
       })
     },
     _updateArrowSize() {
-      if (!this.$slots.arrow) {
+      if (!this.arrowShow) {
         return
       }
       const size = this.arrowSize
-      const pos = getPosition(this.$slots.arrow[0].elm)
+      const pos = getPosition(this.$refs.arrow)
       size.width = pos.right - pos.left
       size.height = pos.bottom - pos.top
     },
     _updateOriginPopupPosition() {
       const popEle = this.$refs.popup
       const popPos = this.originPopupPosition
-      const left = this.destPopupPosition.left
-      const top = this.destPopupPosition.top
+      const left = this.popupAbsPosition.left
+      const top = this.popupAbsPosition.top
       const pos = getPosition(popEle)
       Object.keys(popPos).forEach(key => {
         let sp = left

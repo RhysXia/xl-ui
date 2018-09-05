@@ -157,7 +157,12 @@ export default {
 <style>
     .demo-popper{
         margin-bottom:2em;
+    }
+    .demo-popup {
         padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
 </style>
 ```
@@ -282,7 +287,15 @@ export default {
 <style>
     .demo-popper{
         margin-bottom:2em;
+    }
+    .demo-popup {
         padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    .demo-container{
+        position: relative;
     }
 </style>
 ```
@@ -298,11 +311,103 @@ export default {
 
 <br/>
 <br/>
-<xl-popper v-model="visible3">
-    <xl-button>下拉菜单</xl-button>
-    <div slot="arrow" class="demo-arrow"></div>
-    <div slot="popup">弹出框</div>
-</xl-popper>
+<xl-row class='demo-popper'>
+    <xl-col :span='4' :offset='4'>
+        <xl-popper placement='top-start' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">top-start</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :span='4'>
+        <xl-popper placement='top' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">top</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :span='4'>
+        <xl-popper placement='top-end' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">top-end</div>
+        </xl-popper>
+    </xl-col>
+</xl-row>
+
+<xl-row class='demo-popper'>
+    <xl-col :span='4' :offset='4'>
+        <xl-popper placement='left-start' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">left-start</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :offset='4' :span='4'>
+        <xl-popper placement='right-start' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">right-start</div>
+        </xl-popper>
+    </xl-col>
+</xl-row>
+
+<xl-row class='demo-popper'>
+    <xl-col :span='4' :offset='4'>
+        <xl-popper placement='left' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">left</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :span='4' :offset='4'>
+        <xl-popper placement='right' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">right</div>
+        </xl-popper>
+    </xl-col>
+</xl-row>
+
+<xl-row class='demo-popper'>
+    <xl-col :span='4' :offset='4'>
+        <xl-popper placement='left-end' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">left-end</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :offset='4' :span='4'>
+        <xl-popper placement='right-end' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">right-end</div>
+        </xl-popper>
+    </xl-col>
+</xl-row>
+<xl-row class='demo-popper'>
+    <xl-col :span='4' :offset='4'>
+        <xl-popper placement='bottom-start' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">bottom-start</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :span='4'>
+        <xl-popper placement='bottom' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">bottom</div>
+        </xl-popper>
+    </xl-col>
+    <xl-col :span='4'>
+        <xl-popper placement='bottom-end' v-model="visible3">
+            <xl-button>下拉菜单</xl-button>
+            <div class="demo-arrow"></div>
+            <div class="demo-popup" slot="popup">bottom-end</div>
+        </xl-popper>
+    </xl-col>
+</xl-row>
 
 <script>
 export default {
@@ -318,6 +423,22 @@ export default {
     }
 }
 </script>
+<style>
+    .demo-popper{
+        margin-bottom:2em;
+    }
+    .demo-popup {
+        padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    .demo-arrow{
+        width: 1rem;
+        height: 1rem;
+        background-color: red;
+    }
+</style>
 ```
 
 :::
