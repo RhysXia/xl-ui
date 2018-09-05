@@ -3,11 +3,12 @@
     div(ref="reference",:class="referenceClasses")
       slot
     div(ref="popup",:style="popupStyles",v-show="actualVisible")
+      slot(name="arrow")
       slot(name="popup")
 </template>
 
 <script>
-import { getPosition, getPxNumber } from '@/utils/dom'
+import { getPosition } from '@/utils/dom'
 import { generateZIndex } from '@/utils/zIndex-manager'
 
 const name = 'xl-popper'
@@ -46,11 +47,15 @@ export default {
         right: 0,
         bottom: 0
       },
-      popupPosition: {
+      popupOriginPosition: {
         top: 0,
         left: 0,
         right: 0,
         bottom: 0
+      },
+      arrowSize: {
+        width: 0,
+        height: 0
       }
     }
   },
@@ -64,16 +69,9 @@ export default {
     actualPlacement() {
       return this.placement
     },
-    popupStyles() {
-      const ret = {
-        position: 'absolute',
-        zIndex: this.zIndex,
-        display: 'inline-block'
-      }
-
+    popupDestPosition() {
       const refPos = this.referencePosition
-      const popPos = this.popupPosition
-
+      const popPos = this.popupOriginPosition
       let left = 0
       let top = 0
       const placement = this.actualPlacement
@@ -104,9 +102,31 @@ export default {
           top = (refPos.top + refPos.bottom - popPos.top - popPos.bottom) / 2
         }
       }
-      ret.left = parseInt(left) + 'px'
-      ret.top = parseInt(top) + 'px'
-      return ret
+      let right = left + popPos.right - popPos.left
+      let bottom = top + popPos.bottom - popPos.top
+      return {
+        left,
+        top,
+        right,
+        bottom
+      }
+    },
+    arrowPosition() {
+      let left = 0
+      let top = 0
+
+      return {
+        left,
+        top
+      }
+    },
+    popupStyles() {
+      return {
+        position: 'absolute',
+        zIndex: this.zIndex,
+        left: parseInt(this.popupDestPosition.left) + 'px',
+        top: parseInt(this.popupDestPosition.top) + 'px'
+      }
     }
   },
   watch: {
@@ -142,12 +162,21 @@ export default {
         refPos[key] = pos[key]
       })
     },
-    _updatePopupPosition() {
+    _updateArrowSize() {
+      if (!this.$slots.arrow) {
+        return
+      }
+      const size = this.arrowSize
+      const pos = getPosition(this.$slots.arrow[0].elm)
+      size.width = pos.right - pos.left
+      size.height = pos.bottom - pos.top
+    },
+    _updatePopupOriginPosition() {
       const popEle = this.$refs.popup
-      const popPos = this.popupPosition
+      const popPos = this.popupOriginPosition
+      const left = this.popupDestPosition.left
+      const top = this.popupDestPosition.top
       const pos = getPosition(popEle)
-      const left = getPxNumber(popEle.style.left)
-      const top = getPxNumber(popEle.style.top)
       Object.keys(popPos).forEach(key => {
         let sp = left
         if (key === 'top' || key === 'bottom') {
@@ -159,7 +188,8 @@ export default {
     updatePosition() {
       this.$nextTick(() => {
         this._updateReferencePosition()
-        this._updatePopupPosition()
+        this._updatePopupOriginPosition()
+        this._updateArrowSize()
       })
     }
   },

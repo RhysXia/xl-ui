@@ -3,7 +3,8 @@ export default {
     data() {
         return {
             visible: false,
-            visible2: false
+            visible2: false,
+            visible3: false
         }
     },
     methods: {
@@ -12,6 +13,9 @@ export default {
         },
         click2() {
             this.visible2 = !this.visible2
+        },
+        click3() {
+            this.visible3 = !this.visible3
         },
         getPopupContainer() {
             return document.querySelector('.demo-container')
@@ -31,6 +35,11 @@ export default {
     }
     .demo-container{
         position: relative;
+    }
+    .demo-arrow{
+        width: 1rem;
+        height: 1rem;
+        background-color: red;
     }
 </style>
 
@@ -280,6 +289,39 @@ export default {
         padding: 1rem;
     }
 </style>
+```
+
+:::
+
+## 自定义箭头
+
+:::demo 通过`arrow`插槽设置箭头
+
+```html
+<xl-button @on-click="click3">点击{{visible3?'隐藏':'展示'}}</xl-button>
+
+<br/>
+<br/>
+<xl-popper v-model="visible3">
+    <xl-button>下拉菜单</xl-button>
+    <div slot="arrow" class="demo-arrow"></div>
+    <div slot="popup">弹出框</div>
+</xl-popper>
+
+<script>
+export default {
+    data() {
+        return {
+            visible3: false
+        }
+    },
+    methods: {
+        click3() {
+            this.visible3 = !this.visible3
+        }
+    }
+}
+</script>
 ```
 
 :::
