@@ -4,8 +4,8 @@
       slot
     div(ref="popup",:style="popupStyles",v-show="actualVisible")
       div(ref="arrow",:style="arrowStyles",v-if="arrowShow")
-        slot(name="arrow")
-          div
+        slot(name="arrow",:arrow="arrowStyles",:placement="actualPlacement")
+          div(:class="arrowClasses")
       div(:style="contentStyles")
         slot(name="popup")
 </template>
@@ -77,37 +77,52 @@ export default {
     referenceClasses() {
       return `${name}__reference`
     },
+    arrowClasses() {
+      return [`${name}__arrow`, `${name}__arrow--${this.prefixPlacement}`]
+    },
     actualPlacement() {
       return this.placement
+    },
+    prefixPlacement() {
+      return this.actualPlacement.split('-')[0]
+    },
+    suffixPlacement() {
+      const arr = this.actualPlacement.split('-')
+      if (arr.length === 2) {
+        return arr[1]
+      }
+      return ''
     },
     destPopupPosition() {
       const refPos = this.referencePosition
       const popPos = this.originPopupPosition
       let left = 0
       let top = 0
-      const placement = this.actualPlacement
-      if (placement.indexOf('top') > -1 || placement.indexOf('bottom') > -1) {
-        if (placement.indexOf('top') > -1) {
+      const prefixPlacement = this.prefixPlacement
+      const suffixPlacement = this.suffixPlacement
+
+      if (prefixPlacement === 'top' || prefixPlacement === 'bottom') {
+        if (prefixPlacement === 'top') {
           top = refPos.top - popPos.bottom
         } else {
           top = refPos.bottom - popPos.top
         }
-        if (placement.indexOf('start') > -1) {
+        if (suffixPlacement === 'start') {
           left = refPos.left - popPos.left
-        } else if (placement.indexOf('end') > -1) {
+        } else if (suffixPlacement === 'end') {
           left = refPos.right - popPos.right
         } else {
           left = (refPos.left + refPos.right - popPos.left - popPos.right) / 2
         }
       } else {
-        if (placement.indexOf('left') > -1) {
+        if (prefixPlacement === 'left') {
           left = refPos.left - popPos.right
         } else {
           left = refPos.right - popPos.left
         }
-        if (placement.indexOf('start') > -1) {
+        if (suffixPlacement === 'start') {
           top = refPos.top - popPos.top
-        } else if (placement.indexOf('end') > -1) {
+        } else if (suffixPlacement === 'end') {
           top = refPos.bottom - popPos.bottom
         } else {
           top = (refPos.top + refPos.bottom - popPos.top - popPos.bottom) / 2
@@ -140,7 +155,7 @@ export default {
         left: 'padding-right',
         right: 'padding-left'
       }
-      const placement = this.actualPlacement.split('-')[0]
+      const prefixPlacement = this.prefixPlacement
       let offset = this.offset
       if (typeof offset === 'number') {
         offset += 'px'
@@ -150,28 +165,29 @@ export default {
         zIndex: this.zIndex,
         left: this.popupAbsPosition.left + 'px',
         top: this.popupAbsPosition.top + 'px',
-        [map[placement]]: offset
+        [map[prefixPlacement]]: offset
       }
     },
     arrowStyles() {
       const ret = {
         position: 'absolute',
-        display: 'inline-block',
-        top: 0,
-        left: 0
+        display: 'inline-block'
       }
-      const placement = this.actualPlacement.split('-')[0]
+      const prefixPlacement = this.prefixPlacement
       const refPos = this.referencePosition
       const popPos = this.destPopupPosition
-      const arrowSize = this.arrowSize
-      if (placement === 'top' || placement === 'bottom') {
-        if (placement === 'top') {
-          ret.top = -arrowSize.height + 'px'
+      if (prefixPlacement === 'top' || prefixPlacement === 'bottom') {
+        if (prefixPlacement === 'top') {
+          ret.bottom = 0
+        } else {
+          ret.top = 0
         }
         ret.left = (Math.max(refPos.left, popPos.left) + Math.min(refPos.right, popPos.right) - this.arrowSize.width) / 2 - popPos.left + 'px'
       } else {
-        if (placement === 'left') {
-          ret.left = -arrowSize.width + 'px'
+        if (prefixPlacement === 'left') {
+          ret.right = 0
+        } else {
+          ret.left = 0
         }
         ret.top = (Math.max(refPos.top, popPos.top) + Math.min(refPos.bottom, popPos.bottom) - this.arrowSize.height) / 2 - popPos.top + 'px'
       }
@@ -191,9 +207,10 @@ export default {
         left: 'width',
         right: 'width'
       }
-      const placement = this.actualPlacement.split('-')[0]
+      const prefixPlacement = this.prefixPlacement
       return {
-        [map1[placement]]: this.arrowSize[map2[placement]] + 'px'
+        boxSize: 'border-box',
+        [map1[prefixPlacement]]: this.arrowSize[map2[prefixPlacement]] + 'px'
       }
     }
   },
@@ -256,8 +273,8 @@ export default {
     updatePosition() {
       this.$nextTick(() => {
         this._updateOriginPopupPosition()
-        this._updateReferencePosition()
         this._updateArrowSize()
+        this._updateReferencePosition()
       })
     }
   },
