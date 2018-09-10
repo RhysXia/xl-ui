@@ -1,9 +1,12 @@
 <template lang="pug">
-  Poptip(:dangerousHtml="dangerousHtml",:placement="placement",:pop-class="popClass",:content="content",:value="actualVisible",:transfer="transfer",:width="width",:padding="padding",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
+  Popover(:placement="placement",:contentClass="contentClass",:arrowClassPrefix="arrowClassPrefix",:visible="actualVisible",:getPopupContainer="getPopupContainer",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
     slot
+    div(slot="popup",:style="popupStyles")
+      span(v-text="content",v-if="dangerousHtml")
+      template(v-html="content",v-else)
 </template>
 <script>
-import Poptip from '../poptip'
+import Popover from '../popover'
 
 const name = 'xl-tooltip'
 export default {
@@ -17,20 +20,12 @@ export default {
       type: Boolean,
       default: false
     },
-    transfer: {
-      type: Boolean,
-      default: false
-    },
     content: String,
     width: {
       type: [String, Number, Object],
       default: () => ({
         min: 0
       })
-    },
-    padding: {
-      type: String,
-      default: '0.5em 1em'
     },
     delay: {
       type: Number,
@@ -43,16 +38,46 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    padding: {
+      type: String,
+      default: '0.5rem 0.5rem'
     }
   },
   data() {
     return {
-      visible: false
+      visible: false,
+      getPopupContainer() {
+        return document.body
+      }
     }
   },
   computed: {
-    popClass() {
-      return `${name}__popper`
+    popupStyles() {
+      const styles = {
+        padding: this.padding
+      }
+      const width = this.width
+      if (typeof width === 'object') {
+        if (width.min) {
+          styles.minWidth = formatWidth(width.min)
+        }
+        if (width.max) {
+          styles.maxWidth = formatWidth(width.max)
+        } else {
+          // 如果只有最小宽度，说明不希望换行
+          styles.whiteSpace = 'nowrap'
+        }
+      } else {
+        styles.width = formatWidth(width)
+      }
+      return styles
+    },
+    contentClass() {
+      return `${name}__content`
+    },
+    arrowClassPrefix() {
+      return `${name}__arrow`
     },
     actualVisible() {
       if (this.disabled) {
@@ -84,7 +109,14 @@ export default {
     }
   },
   components: {
-    Poptip
+    Popover
   }
+}
+
+const formatWidth = (width) => {
+  if (typeof width === 'number') {
+    return width + 'px'
+  }
+  return width
 }
 </script>

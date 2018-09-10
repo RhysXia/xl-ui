@@ -3,6 +3,9 @@ export default {
     methods: {
         getPopupContainer() {
             return document.querySelector('.demo-container')
+        },
+        getPopupContainer2() {
+            return document.body
         }
     }
 }
@@ -132,16 +135,27 @@ export default {
 :::demo 通过属性`get-popup-container`指定父容器
 
 ```html
-<xl-popover placement="bottom-end" :get-popup-container="getPopupContainer">
-    <xl-button>指定父容器</xl-button>
-    <div slot="popup">处在.demo-container中</div>
-</xl-popover>
-<div class="demo-container">.demo-container</div>
+
+<xl-row>
+    <xl-col :span="12">
+        <xl-popover placement="bottom-end" :get-popup-container="getPopupContainer">
+            <xl-button>指定父容器</xl-button>
+            <div slot="popup">处在.demo-container中</div>
+        </xl-popover>
+        <div class="demo-container">.demo-container</div>
+    </xl-col>
+    <xl-col :span="12">
+        <xl-popover placement="bottom-end" :get-popup-container="getPopupContainer2">
+            <xl-button>父容器为body</xl-button>
+            <div slot="popup">处在body中</div>
+        </xl-popover>
+    </xl-col>
+</xl-row>
 <script>
 export default {
     methods: {
-        getPopupContainer() {
-            return document.querySelector('.demo-container')
+        getPopupContainer2() {
+            return document.body
         }
     }
 }
@@ -188,4 +202,22 @@ export default {
 
 ```
 
+:::
+
+
+## 多级嵌套
+
+::: demo 多级嵌套，基于此可以实现类似菜单栏的结构
+```html
+<xl-popover padding="0">
+    <xl-button>按钮1</xl-button>
+    <xl-popover slot="popup">
+        <xl-button>按钮2</xl-button>
+        <xl-popover slot="popup">
+            <xl-button>按钮3</xl-button>
+            <xl-button slot="popup">按钮3</xl-button>
+        </xl-popover>
+    </xl-popover>
+</xl-popover>
+```
 :::

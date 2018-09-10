@@ -94,10 +94,10 @@ export default [
     title: '视图',
     children: [
       {
-        path: '/poptip',
+        path: '/popover',
         title: '弹出提示框',
         icon: 'ios-chatboxes-outline',
-        component: () => import('./zh-cn/poptip.md')
+        component: () => import('./zh-cn/popover.md')
       },
       {
         path: '/tooltip',
@@ -144,16 +144,6 @@ export default [
         title: '警告提示',
         icon: 'alert-circled',
         component: () => import('./zh-cn/alert.md')
-      }
-    ]
-  },
-  {
-    title: '其他',
-    children: [
-      {
-        path: '/popover',
-        title: '弹出框',
-        component: () => import('./zh-cn/popover.md')
       }
     ]
   }

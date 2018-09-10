@@ -1,49 +1,40 @@
 @import './commons/var';
-@import 'poptip';
-
-.#{$--cls-prefix}-tooltip__popper {
-  .#{$--cls-prefix}-poptip__body {
+@import 'popover';
+.#{$--cls-prefix}-tooltip{
+  &__content {
     color: $--tooltip-color;
     background-color: $--tooltip-bg-color;
-    border-color: $--tooltip-border-color;
     box-shadow: $--tooltip-box-shadow;
+    border-radius: $--tooltip-border-radius;
+    font-size: $--tooltip-font-size;
   }
-  &[x-placement^=top] {
-    .#{$--cls-prefix}-poptip__arrow {
+
+  &__arrow{
+    z-index: 1;
+    &:before{
+      content: "";
+      display: block;
+      height: 0;
+      width: 0;
+      border: $--tooltip-arrow-size / 2 solid transparent;
+    }
+    &--top{
       &:before {
-        border-top-color: $--tooltip-border-color;
-      }
-      &:after {
         border-top-color: $--tooltip-bg-color;
       }
     }
-  }
-  &[x-placement^=bottom] {
-    .#{$--cls-prefix}-poptip__arrow {
+    &--bottom{
       &:before {
-        border-bottom-color: $--tooltip-border-color;
-      }
-      &:after {
         border-bottom-color: $--tooltip-bg-color;
       }
     }
-  }
-  &[x-placement^=left] {
-    .#{$--cls-prefix}-poptip__arrow {
+    &--left{
       &:before {
-        border-left-color: $--tooltip-border-color;
-      }
-      &:after {
         border-left-color: $--tooltip-bg-color;
       }
     }
-  }
-  &[x-placement^=right] {
-    .#{$--cls-prefix}-poptip__arrow {
+    &--right{
       &:before {
-        border-right-color: $--tooltip-border-color;
-      }
-      &:after {
         border-right-color: $--tooltip-bg-color;
       }
     }
