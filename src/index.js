@@ -14,7 +14,7 @@ import Dropdown from './components/dropdown'
 import Form from './components/form'
 import Alert from './components/alert'
 import Animation from './components/animation'
-import Popper from './components/popper'
+import Popover from './components/popover'
 import {
   version
 } from '../package.json'
@@ -49,7 +49,7 @@ const components = {
   Form,
   FormItem: Form.Item,
   Alert,
-  Popper
+  Popover
 }
 const install = (Vue, opts = {}) => {
   Object.values(components).forEach(component => {

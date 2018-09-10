@@ -151,9 +151,9 @@ export default [
     title: '其他',
     children: [
       {
-        path: '/popper',
+        path: '/popover',
         title: '弹出框',
-        component: () => import('./zh-cn/popper.md')
+        component: () => import('./zh-cn/popover.md')
       }
     ]
   }

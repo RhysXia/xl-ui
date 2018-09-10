@@ -1,4 +1,4 @@
-@mixin make-motion($className, $keyframeName, $duration: 0.4s) {
+@mixin make-motion($className, $keyframeName, $duration) {
   .#{$className}-enter-active {
     animation-duration: $duration;
     animation-name: #{$keyframeName}In;

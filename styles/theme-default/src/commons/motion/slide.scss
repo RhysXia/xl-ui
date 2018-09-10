@@ -1,6 +1,7 @@
+@import '../var';
 @import '../../mixins/motion';
-@mixin slide-motion($className, $keyframeName) {
-  @include make-motion($className, $keyframeName);
+@mixin slide-motion($className, $keyframeName, $duration: $animation-duration-base) {
+  @include make-motion($className, $keyframeName, $duration);
   .#{$className}-enter,
   .#{$className}-appear {
     opacity: 0;

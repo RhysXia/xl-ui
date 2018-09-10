@@ -119,6 +119,9 @@ $--font-weight:               400                         !default;
 $--font-weight-bold:          700                         !default;
 $--font-weight-bolder:        bolder                      !default;
 
+//animation
+$animation-duration-base:     .4s                         !default;
+$animation-duration-fast:     .4s                         !default;
 
 //opacity
 $--opacity-disabled:          .65                         !default;
@@ -245,6 +248,18 @@ $--poptip-arrow-size:               1rem                                        
 $--poptip-arrow-space:              0.5rem                                              !default;
 $--poptip-title-content-space:      0.5rem                                              !default;
 $--poptip-transition:               opacity .3s ease-in-out, transform .3s ease-in-out  !default;
+
+//popover
+$--popover-color:                    $--text-color-dark                                  !default;
+$--popover-font-size:                $--font-size                                        !default;
+$--popover-border-radius:            $--border-radius                                    !default;
+$--popover-border-width:             $--border-width                                     !default;
+$--popover-border-color:             $--color-gray-200                                   !default;
+$--popover-bg-color:                 $--bg-color                                         !default;
+$--popover-box-shadow:               0 0 0.5rem 0 rgba($--color-gray-500, .5)          !default;
+$--popover-arrow-size:               1rem                                                !default;
+$--popover-padding-x:      0.5rem                                              !default;
+$--popover-padding-y:      0.5rem                                              !default;
 
 //tooltip
 $--tooltip-color:                   $--bg-color                                         !default;
