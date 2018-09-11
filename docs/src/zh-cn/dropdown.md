@@ -104,7 +104,7 @@
 ::: demo 使用`placement`指定位置
 
 ```html
-<xl-dropdown placement='top-end'>
+<xl-dropdown placement='top'>
     <xl-button>下拉菜单(上方)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
@@ -114,7 +114,7 @@
         <xl-dropdown-item>蚵仔煎</xl-dropdown-item>
     </xl-dropdown-menu>
 </xl-dropdown>
-<xl-dropdown placement='right-end'>
+<xl-dropdown placement='right'>
     <xl-button>下拉菜单(右侧)</xl-button>
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>

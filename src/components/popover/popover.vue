@@ -2,7 +2,7 @@
   div(:class="classes")
     div(ref="reference",@click="_click",:class="referenceClasses",v-clickoutside="_clickoutside",@mouseleave="_mouseleave",@mouseenter="_mouseenter")
       slot
-    transition(:name="transitionName",@before-enter="_beforeEnter")
+    transition(:name="transitionName")
       div(ref="popup",:class="popupClasses",:style="popupStyles",v-show="actualVisible",@click="_popupClick",@mouseleave="_popupMouseleave",@mouseenter="_popupMouseenter")
         div(ref="arrow",:class="arrowClasses",:style="arrowStyles",v-if="arrowShow")
         div(:class="contentClasses",:style="contentStyles")
@@ -283,9 +283,11 @@ export default {
     }
   },
   methods: {
-    _beforeEnter(el) {
-      // alert(1)
-      // this.updatePosition()
+    _click() {
+      this.$emit('on-click')
+      if (this.trigger === 'click') {
+        this.actualVisible = true
+      }
     },
     _clickoutside(e) {
       if (this.popupClicked) {
@@ -293,12 +295,34 @@ export default {
         return
       }
       this.$emit('on-clickoutside', e)
-      if (this.trigger === 'custom') {
-        return
+      if (this.trigger === 'click') {
+        this.actualVisible = false
       }
-      this.actualVisible = false
+    },
+    _popupClick() {
+      this.popupClicked = true
+    },
+    _mouseenter() {
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
+      if (this.trigger === 'hover') {
+        this.actualVisible = true
+      }
+      this.$emit('on-mouseenter')
     },
     _mouseleave() {
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
+      this._enterTimer = setTimeout(() => {
+        if (this.trigger === 'hover') {
+          this.actualVisible = false
+        }
+        this.$emit('on-mouseleave')
+      }, 100)
+    },
+    _popupMouseenter() {
       if (this._enterTimer) {
         clearTimeout(this._enterTimer)
       }
@@ -309,23 +333,10 @@ export default {
         this.$emit('on-mouseleave')
         return
       }
-      this._enterTimer = setTimeout(() => {
-        if (this.trigger === 'hover') {
-          this.actualVisible = false
-        }
-        this.$emit('on-mouseleave')
-      }, 100)
-    },
-    _mouseenter() {
-      if (this._enterTimer) {
-        clearTimeout(this._enterTimer)
+      if (this.trigger === 'hover') {
+        this.actualVisible = true
       }
-      this._enterTimer = setTimeout(() => {
-        if (this.trigger === 'hover') {
-          this.actualVisible = true
-        }
-        this.$emit('on-mouseenter')
-      }, 100)
+      this.$emit('on-mouseenter')
     },
     _popupMouseleave() {
       if (this._enterTimer) {
@@ -335,27 +346,8 @@ export default {
         if (this.trigger === 'hover') {
           this.actualVisible = false
         }
+        this.$emit('on-mouseleave')
       }, 100)
-    },
-    _popupMouseenter() {
-      if (this._enterTimer) {
-        clearTimeout(this._enterTimer)
-      }
-      this._enterTimer = setTimeout(() => {
-        if (this.trigger === 'hover') {
-          this.actualVisible = true
-        }
-      }, 100)
-    },
-    _click() {
-      this.$emit('on-click')
-      if (this.trigger === 'custom') {
-        return
-      }
-      this.actualVisible = true
-    },
-    _popupClick() {
-      this.popupClicked = true
     },
     _updateReferencePosition() {
       updateOriginPosition(this.referencePosition, this.$refs.reference)
