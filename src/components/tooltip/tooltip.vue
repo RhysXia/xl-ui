@@ -1,9 +1,9 @@
 <template lang="pug">
-  Popover(:placement="placement",:contentClass="contentClass",:arrowClassPrefix="arrowClassPrefix",:visible="actualVisible",:getPopupContainer="getPopupContainer",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
+  Popover(:placement="placement",:contentClass="contentClass",:hiddenOnPopupHover="hiddenOnPopupHover",:arrowClassPrefix="arrowClassPrefix",:visible="actualVisible",:getPopupContainer="getPopupContainer",trigger="custom",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
     slot
     div(slot="popup",:style="popupStyles")
-      span(v-text="content",v-if="dangerousHtml")
-      template(v-html="content",v-else)
+      span(v-html="content",v-if="dangerousHtml")
+      span(v-text="content",v-else)
 </template>
 <script>
 import Popover from '../popover'
@@ -42,6 +42,10 @@ export default {
     padding: {
       type: String,
       default: '0.5rem 0.5rem'
+    },
+    hiddenOnPopupHover: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -103,9 +107,6 @@ export default {
       this._enterTimer = setTimeout(() => {
         this.visible = true
       }, this.delay)
-    },
-    _click() {
-      this.visible = true
     }
   },
   components: {

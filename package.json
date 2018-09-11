@@ -99,8 +99,7 @@
     "webpack-merge": "^3.0.0"
   },
   "dependencies": {
-    "enquire.js": "^2.1.6",
-    "popper.js": "^1.14.4"
+    "enquire.js": "^2.1.6"
   },
   "engines": {
     "node": ">= 6.0.0",

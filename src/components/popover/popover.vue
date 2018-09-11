@@ -63,10 +63,14 @@ export default {
       default: `${name}__content--default`
     },
     trigger: {
-      default: 'hover',
+      default: 'click',
       validator(val) {
         return oneOf(['click', 'hover', 'custom'], val)
       }
+    },
+    hiddenOnPopupHover: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -298,6 +302,13 @@ export default {
       if (this._enterTimer) {
         clearTimeout(this._enterTimer)
       }
+      if (this.hiddenOnPopupHover) {
+        if (this.trigger === 'hover') {
+          this.actualVisible = false
+        }
+        this.$emit('on-mouseleave')
+        return
+      }
       this._enterTimer = setTimeout(() => {
         if (this.trigger === 'hover') {
           this.actualVisible = false
@@ -327,6 +338,9 @@ export default {
       }, 100)
     },
     _popupMouseenter() {
+      if (this._enterTimer) {
+        clearTimeout(this._enterTimer)
+      }
       this._enterTimer = setTimeout(() => {
         if (this.trigger === 'hover') {
           this.actualVisible = true
@@ -382,7 +396,7 @@ export default {
   },
   mounted() {
     this.popupContainer = this.getPopupContainer()
-    this._updateArrowSize()
+    this.updatePosition()
   }
 }
 

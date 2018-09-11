@@ -5,7 +5,7 @@ import Layout from './components/layout'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
 import Radio from './components/radio'
-import Poptip from './components/poptip'
+import Popover from './components/popover'
 import Tooltip from './components/tooltip'
 import Card from './components/card'
 import Collapse from './components/collapse'
@@ -14,7 +14,6 @@ import Dropdown from './components/dropdown'
 import Form from './components/form'
 import Alert from './components/alert'
 import Animation from './components/animation'
-import Popover from './components/popover'
 import {
   version
 } from '../package.json'
@@ -30,7 +29,6 @@ const components = {
   RadioGroup: Radio.Group,
   Checkbox,
   CheckboxGroup: Checkbox.Group,
-  Poptip,
   Tooltip,
   Card,
   Layout,

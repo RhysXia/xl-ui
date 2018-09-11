@@ -1,5 +1,15 @@
 <script>
 export default {
+    data(){
+        return {
+            value1: ""
+        }
+    },
+    computed: {
+        visible1() {
+            return this.value1 === 'admin'
+        }
+    },
     methods: {
         getPopupContainer() {
             return document.querySelector('.demo-container')
@@ -24,7 +34,8 @@ export default {
     }
 </style>
 
-# Popper组件
+# Popover 组件
+
 基础的弹出框组件，其他弹出框都是基于这个组件进行开发的，如果你需要基于弹出框功能进行二次开发，可以选择使用这个组件
 
 ## 基本使用
@@ -32,7 +43,6 @@ export default {
 :::demo 通过属性`visible`控制组件的显示或隐藏
 
 ```html
-
 <xl-row class='demo-popover'>
     <xl-col :span='4' :offset='4'>
         <xl-popover placement='top-start'>
@@ -127,6 +137,61 @@ export default {
 
 :::
 
+## 指定触发方式
+
+:::demo 通过`trigger`指定弹出框触发的方式，支持`click`,`hover`,`custom`三种方式
+
+```html
+<xl-row :gutter="20">
+    <xl-col :span="8">
+        <xl-popover trigger="click">
+            <xl-button>点击显示</xl-button>
+            <div slot="popup">点击显示的弹出框</div>
+        </xl-popover>
+    </xl-col>
+    <xl-col :span="8">
+        <xl-popover trigger="hover">
+            <xl-button>悬浮显示</xl-button>
+            <div slot="popup">悬浮显示的弹出框</div>
+        </xl-popover>
+    </xl-col>
+    <xl-col :span="8">
+        <xl-popover trigger="custom" :visible="visible1">
+            <xl-input v-model="value1" placeholder="输入admin时显示"></xl-input>
+            <div slot="popup">自定义显示的弹出框</div>
+        </xl-popover>
+    </xl-col>
+</xl-row>
+<script>
+export default {
+    data(){
+        return {
+            value1: ""
+        }
+    },
+    computed: {
+        visible1() {
+            return this.value1 === 'admin'
+        }
+    }
+}
+</script>
+```
+
+:::
+
+## 悬浮在弹出框时隐藏弹出框
+
+:::demo 通过`hidden-on-popup-hover`指定当悬浮在弹出框上是否隐藏
+
+```html
+<xl-popover trigger="hover" hidden-on-popup-hover>
+    <xl-button>悬浮显示</xl-button>
+    <div slot="popup">悬浮显示的弹出框</div>
+</xl-popover>
+```
+
+:::
 
 ## 指定弹出框的父容器
 
@@ -135,7 +200,6 @@ export default {
 :::demo 通过属性`get-popup-container`指定父容器
 
 ```html
-
 <xl-row>
     <xl-col :span="12">
         <xl-popover placement="bottom-end" :get-popup-container="getPopupContainer">
@@ -199,15 +263,14 @@ export default {
     <xl-button>reference</xl-button>
     <div slot="popup">popover</div>
 </xl-popover>
-
 ```
 
 :::
 
-
 ## 多级嵌套
 
 ::: demo 多级嵌套，基于此可以实现类似菜单栏的结构
+
 ```html
 <xl-popover padding="0">
     <xl-button>按钮1</xl-button>
@@ -220,4 +283,37 @@ export default {
     </xl-popover>
 </xl-popover>
 ```
+
 :::
+
+## Popover 属性
+
+| 参数                  | 说明                                                   | 类型          | 可选值                                                                                                    | 默认值                        |
+| --------------------- | ------------------------------------------------------ | ------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| placement             | 弹出框相对显示框的位置                                 | string        | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | bottom                        |
+| transition-name       | 自定义弹出框动画                                       | string        | -                                                                                                         | xl-fade                       |
+| get-popup-container   | 自定义弹出框的父容器                                   | function      | -                                                                                                         | `function(){return this.$el}` |
+| visible               | 自定义弹出框是否显示（支持`v-model`）                  | boolean       | -                                                                                                         | false                         |
+| offset                | 弹出框距离参考元素的距离(如果传入数字，默认单位为`px`) | string/number | -                                                                                                         | 0                             |
+| arrow-show            | 是否显示箭头                                           | booleam       | -                                                                                                         | true                          |
+| arrow-class-prefix    | 自定义箭头样式                                         | string/array  | -                                                                                                         | `xl-popover__arrow--default`  |
+| content-class         | 自定义弹出框样式                                       | string/array  | -                                                                                                         | `xl-popper__content--default` |
+| trigger               | 触发弹出框的条件                                       | string        | hover/click/custom                                                                                        | `click`                       |
+| hidden-on-popup-hover | 当悬浮在弹出框上的时候是否隐藏                         | boolean       | -                                                                                                         | false                         |
+
+## Popover 事件
+
+| 事件名          | 说明             | 参数             |
+| --------------- | ---------------- | ---------------- |
+| on-change       | 弹出框显示事件   | true/false       |
+| on-clickoutside | 弹出框外点击事件 | 原始点击事件参数 |
+| on-mouseleave   | 鼠标离开事件     | -                |
+| on-mouseenter   | 鼠标进入事件     | -                |
+| on-click        | 鼠标点击事件     | -                |
+
+## Popover slots
+
+| 名称    | 说明     |
+| ------- | -------- |
+| default | 参考元素 |
+| popup   | 弹出框   |

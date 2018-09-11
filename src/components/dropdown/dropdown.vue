@@ -1,11 +1,11 @@
 <template lang="pug">
-  Poptip(ref="poptip",:transitionName="transitionName",:placement="placement",:pop-class="popClass",:value="actualVisible",:padding="padding",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave",@on-placement-change="_placementChange")
+  Popover(ref="poptip",:transitionName="transitionName",:placement="placement",:pop-class="popClass",:value="actualVisible",:padding="padding",trigger="custom",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave",@on-placement-change="_placementChange")
     slot
     div(slot="content")
       slot(name="dropdown")
 </template>
 <script>
-import Poptip from '../poptip'
+import Poptip from '../popover'
 
 const name = 'xl-dropdown'
 export default {
