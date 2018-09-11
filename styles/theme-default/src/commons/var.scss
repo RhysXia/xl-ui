@@ -236,19 +236,6 @@ $--radio-focus-width:               $--checkbox-focus-width                 !def
 $--radio-opacity-disabled:          $--checkbox-opacity-disabled            !default;
 $--radio-border-radius:             $--checkbox-border-radius               !default;
 
-//poptip
-$--poptip-color:                    $--text-color-dark                                  !default;
-$--poptip-font-size:                $--font-size                                        !default;
-$--poptip-border-radius:            $--border-radius                                    !default;
-$--poptip-border-width:             $--border-width                                     !default;
-$--poptip-border-color:             $--color-gray-200                                   !default;
-$--poptip-bg-color:                 $--bg-color                                         !default;
-$--poptip-box-shadow:               0 0 0.5rem 0 rgba($--color-gray-500, .5)          !default;
-$--poptip-arrow-size:               1rem                                                !default;
-$--poptip-arrow-space:              0.5rem                                              !default;
-$--poptip-title-content-space:      0.5rem                                              !default;
-$--poptip-transition:               opacity .3s ease-in-out, transform .3s ease-in-out  !default;
-
 //popover
 $--popover-color:                    $--text-color-dark                                  !default;
 $--popover-font-size:                $--font-size                                        !default;
@@ -256,10 +243,8 @@ $--popover-border-radius:            $--border-radius                           
 $--popover-border-width:             $--border-width                                     !default;
 $--popover-border-color:             $--color-gray-200                                   !default;
 $--popover-bg-color:                 $--bg-color                                         !default;
-$--popover-box-shadow:               0 0 0.5rem 0 rgba($--color-gray-500, .5)          !default;
+$--popover-box-shadow:               0 0 0.5rem 0 rgba($--color-gray-500, .5)            !default;
 $--popover-arrow-size:               1rem                                                !default;
-$--popover-padding-x:      0.5rem                                              !default;
-$--popover-padding-y:      0.5rem                                              !default;
 
 //tooltip
 $--tooltip-color:                   $--bg-color                                         !default;
@@ -292,3 +277,12 @@ $--collapse-padding-y:                  0.8rem                                  
 $--collapse-header-icon-margin-right:   0.5rem                                          !default;
 $--collapse-header-icon-transition:     transform .3s ease-in-out                       !default;
 $--collapse-transition:                 all .3s ease-in-out                             !default;
+
+//dropdown
+$--dropdown-border-color: $--border-color;
+$--dropdown-border-width: $--border-width;
+$--dropdown-bg-color: $--bg-color;
+$--dropdown-hover-bg-color: $--color-gray-200;
+$--dropdown-opacity-disabled: $--opacity-disabled;
+$--dropdown-padding-x: 1rem;
+$--dropdown-padding-y: 0.5rem;

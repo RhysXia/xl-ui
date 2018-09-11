@@ -8,7 +8,15 @@ export default {
   name,
   inject: ['xlDropdown'],
   props: {
+    divided: {
+      type: Boolean,
+      default: false
+    },
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    selected: {
       type: Boolean,
       default: false
     }
@@ -16,8 +24,13 @@ export default {
   computed: {
     classes() {
       const arr = [name]
+      if (this.divided) {
+        arr.push(`${name}--divided`)
+      }
       if (this.disabled) {
         arr.push(`${name}--disabled`)
+      } else if (this.selected) {
+        arr.push(`${name}--selected`)
       }
       return arr
     }

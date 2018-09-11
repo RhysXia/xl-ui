@@ -1,6 +1,7 @@
 <template lang="pug">
-  Popover(:transitionName="transitionName",:placement="placement",:contentClass="contentClass",:arrowClassPrefix="arrowClassPrefix",:visible="actualVisible",trigger="custom",@on-clickoutside="_clickoutside",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
-    slot
+  Popover(:arrowShow="arrowShow",:class="classes",padding="0",:transitionName="transitionName",:placement="placement",:visible="actualVisible",trigger="custom",@on-clickoutside="_clickoutside",@on-click="_click",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
+    div(:class="refClasses")
+      slot
     div(slot="popup")
       slot(name="dropdown")
 </template>
@@ -21,6 +22,14 @@ export default {
     }
   },
   props: {
+    arrowShow: {
+      type: Boolean,
+      default: true
+    },
+    hideOnClick: {
+      type: Boolean,
+      default: false
+    },
     trigger: {
       default: 'hover',
       validator(val) {
@@ -30,7 +39,7 @@ export default {
     placement: {
       default: 'bottom',
       validator(val) {
-        return /^(left|right|top|bottom)$/g.test(val)
+        return /^(left|right|top|bottom)(-start|-end)?$/g.test(val)
       }
     },
     visible: {
@@ -44,16 +53,21 @@ export default {
     }
   },
   computed: {
+    classes() {
+      return name
+    },
+    refClasses() {
+      return `${name}__ref`
+    },
     transitionName() {
+      const map = {
+        top: 'bottom',
+        bottom: 'top',
+        left: 'right',
+        right: 'left'
+      }
       let placement = this.placement.split('-')[0]
-      placement = placement === 'top' ? 'bottom' : 'top'
-      return `xl-slide-${placement}`
-    },
-    contentClass() {
-      return `${name}__popper`
-    },
-    arrowClassPrefix() {
-      return `${name}__arrow`
+      return `xl-slide-${map[placement]}`
     }
   },
   watch: {

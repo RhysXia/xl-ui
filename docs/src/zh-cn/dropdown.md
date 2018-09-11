@@ -22,33 +22,17 @@
     <xl-dropdown-menu slot="dropdown">
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
-        <xl-dropdown-item>螺蛳粉</xl-dropdown-item>
-        <xl-dropdown-item>双皮奶</xl-dropdown-item>
-        <xl-dropdown-item>蚵仔煎</xl-dropdown-item>
-    </xl-dropdown-menu>
-</xl-dropdown>
-```
-
-:::
-
-## 禁用
-
-::: demo 禁止某一项点击
-
-```html
-<xl-dropdown>
-    <xl-button>下拉菜单</xl-button>
-    <xl-dropdown-menu slot="dropdown">
-        <xl-dropdown-item>黄金糕</xl-dropdown-item>
-        <xl-dropdown-item>狮子头</xl-dropdown-item>
         <xl-dropdown-item disabled>螺蛳粉</xl-dropdown-item>
+        <xl-dropdown-item divided>蚵仔煎</xl-dropdown-item>
         <xl-dropdown-item>双皮奶</xl-dropdown-item>
-        <xl-dropdown-item>蚵仔煎</xl-dropdown-item>
+        <xl-dropdown-item selected>双皮奶</xl-dropdown-item>
+        <xl-dropdown-item>双皮奶</xl-dropdown-item>
     </xl-dropdown-menu>
 </xl-dropdown>
 ```
 
 :::
+
 
 ## 触发弹出框的方式
 
@@ -171,7 +155,7 @@
         <xl-dropdown-item>黄金糕</xl-dropdown-item>
         <xl-dropdown-item>狮子头</xl-dropdown-item>
         <xl-dropdown-item>
-            <xl-dropdown placement='right'>
+            <xl-dropdown placement='right-start'>
                 <span>
                     北京烤鸭
                     <xl-icon type='arrow-right-b'></xl-icon>
@@ -180,7 +164,7 @@
                     <xl-dropdown-item>挂炉烤鸭</xl-dropdown-item>
                     <xl-dropdown-item>焖炉烤鸭</xl-dropdown-item>
                     <xl-dropdown-item>
-                        <xl-dropdown placement='right'>
+                        <xl-dropdown placement='right-start'>
                             <span>
                                 北京烤鸭
                                 <xl-icon type='arrow-right-b'></xl-icon>

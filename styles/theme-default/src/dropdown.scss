@@ -1,3 +1,31 @@
 @import 'commons/var';
-@import 'poptip';
+@import 'popover';
 @import 'commons/motion/slide';
+
+.#{$--cls-prefix}-dropdown {
+  &-menu {
+    background-color: $--dropdown-bg-color;
+    .#{$--cls-prefix}-dropdown-item {
+      padding: $--dropdown-padding-y $--dropdown-padding-x;
+      cursor: pointer;
+      white-space: nowrap;
+      &--selected,
+      &:hover:not(.#{$--cls-prefix}-dropdown-item--disabled){
+        background-color: $--dropdown-hover-bg-color;
+      }
+      &--divided{
+        border-top: $--dropdown-border-width solid $--dropdown-border-color;
+      }
+      &--disabled {
+        opacity: $--dropdown-opacity-disabled;
+        cursor: not-allowed;
+      }
+      .#{$--cls-prefix}-dropdown{
+        margin: -#{$--dropdown-padding-y} -$--dropdown-padding-x;
+        &__ref{
+          padding: $--dropdown-padding-y $--dropdown-padding-x;
+        }
+      }
+    }
+  }
+}

@@ -26,6 +26,10 @@ export default {
     clickoutside
   },
   props: {
+    padding: {
+      type: String,
+      default: '0.5rem 0.5rem'
+    },
     transitionName: {
       type: String,
       default: `xl-fade`
@@ -257,6 +261,7 @@ export default {
       }
       const prefixPlacement = this.prefixPlacement
       return {
+        padding: this.padding,
         [map1[prefixPlacement]]: this.arrowSize[map2[prefixPlacement]] + 'px'
       }
     }
@@ -365,9 +370,9 @@ export default {
       let width = 0
       let height = 0
       if (this.arrowShow) {
-        const rect = this.$refs.arrow.getBoundingClientRect()
-        width = rect.width
-        height = rect.height
+        const arrow = this.$refs.arrow
+        width = arrow.offsetWidth
+        height = arrow.offsetHeight
       }
       size.width = Math.floor(width)
       size.height = Math.floor(height)

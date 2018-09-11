@@ -1,5 +1,5 @@
 <template lang="pug">
-  Popover(:placement="placement",:contentClass="contentClass",:hiddenOnPopupHover="hiddenOnPopupHover",:arrowClassPrefix="arrowClassPrefix",:visible="actualVisible",:getPopupContainer="getPopupContainer",trigger="custom",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
+  Popover(:placement="placement",:padding="padding",:contentClass="contentClass",:hiddenOnPopupHover="hiddenOnPopupHover",:arrowClassPrefix="arrowClassPrefix",:visible="actualVisible",:getPopupContainer="getPopupContainer",trigger="custom",@on-mouseenter="_mouseenter",@on-mouseleave="_mouseleave")
     slot
     div(slot="popup",:style="popupStyles")
       span(v-html="content",v-if="dangerousHtml")
@@ -58,9 +58,7 @@ export default {
   },
   computed: {
     popupStyles() {
-      const styles = {
-        padding: this.padding
-      }
+      const styles = {}
       const width = this.width
       if (typeof width === 'object') {
         if (width.min) {
