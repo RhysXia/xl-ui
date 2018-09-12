@@ -381,7 +381,6 @@ export default {
       this._updateReferencePosition()
     },
     beforeEnter() {
-      console.log(this.originPopupPosition.left)
       this.updatePosition()
     }
   },
