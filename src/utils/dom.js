@@ -17,15 +17,15 @@ export function getScroll(top) {
 
 // 获取元素的绝对坐标
 export function getPosition(element) {
-  const top = getScroll(true)
-  const left = getScroll()
+  let top = getScroll(true)
+  let left = getScroll()
+  const rect = {}
   const elRect = element.getBoundingClientRect()
-  return {
-    top: top + elRect.top,
-    bottom: top + elRect.bottom,
-    left: left + elRect.left,
-    right: left + elRect.right
-  }
+  rect.top = top + elRect.top
+  rect.bottom = top + elRect.bottom
+  rect.left = left + elRect.left
+  rect.right = left + elRect.right
+  return rect
 }
 
 export function getClasses(element) {

@@ -4,14 +4,6 @@
 .#{$--cls-prefix}-popover {
   display: inline-block;
 
-  &__reference {
-    display: inline-block;
-  }
-
-  &__popup {
-    font-size: $--popover-font-size;
-  }
-
   &__arrow--default {
     z-index: 1;
 

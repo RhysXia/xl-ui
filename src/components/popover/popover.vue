@@ -1,9 +1,8 @@
 <template lang="pug">
-  div(:class="classes")
-    div(ref="reference",@click="_click",:class="referenceClasses",v-clickoutside="_clickoutside",@mouseleave="_mouseleave",@mouseenter="_mouseenter")
-      slot
-    transition(:name="transitionName")
-      div(ref="popup",:class="popupClasses",:style="popupStyles",v-show="actualVisible",@click="_popupClick",@mouseleave="_popupMouseleave",@mouseenter="_popupMouseenter")
+  div(:class="classes",@click="_click",v-clickoutside="_clickoutside",@mouseleave="_mouseleave",@mouseenter="_mouseenter")
+    slot
+    transition(:name="transitionName",@before-enter="beforeEnter")
+      div(ref="popup",:style="popupStyles",v-show="actualVisible",@click="_popupClick",@mouseleave="_popupMouseleave",@mouseenter="_popupMouseenter")
         div(ref="arrow",:class="arrowClasses",:style="arrowStyles",v-if="arrowShow")
         div(:class="contentClasses",:style="contentStyles")
           slot(name="popup")
@@ -179,12 +178,6 @@ export default {
     classes() {
       return name
     },
-    referenceClasses() {
-      return `${name}__reference`
-    },
-    popupClasses() {
-      return `${name}__popup`
-    },
     arrowClasses() {
       const placement = this.prefixPlacement
       let cls = this.arrowClassPrefix
@@ -212,7 +205,9 @@ export default {
         left: 'padding-right',
         right: 'padding-left'
       }
+
       const prefixPlacement = this.prefixPlacement
+
       return {
         position: 'absolute',
         zIndex: this.zIndex,
@@ -355,13 +350,13 @@ export default {
       }, 100)
     },
     _updateReferencePosition() {
-      updateOriginPosition(this.referencePosition, this.$refs.reference)
+      updateOriginPosition(this.referencePosition, this.$slots.default[0].elm)
     },
     _updateOriginPopupPosition() {
       const popupStyle = this.$refs.popup.style
       const offset = {
-        x: Math.floor(getPxNumber(popupStyle.left)),
-        y: Math.floor(getPxNumber(popupStyle.top))
+        x: getPxNumber(popupStyle.left),
+        y: getPxNumber(popupStyle.top)
       }
       updateOriginPosition(this.originPopupPosition, this.$refs.popup, offset)
     },
@@ -374,18 +369,20 @@ export default {
         width = arrow.offsetWidth
         height = arrow.offsetHeight
       }
-      size.width = Math.floor(width)
-      size.height = Math.floor(height)
+      size.width = parseInt(width)
+      size.height = parseInt(height)
     },
     updatePosition() {
       if (!this.actualVisible) {
         return
       }
       this._updateArrowSize()
-      this.$nextTick(() => {
-        this._updateOriginPopupPosition()
-        this._updateReferencePosition()
-      })
+      this._updateOriginPopupPosition()
+      this._updateReferencePosition()
+    },
+    beforeEnter() {
+      console.log(this.originPopupPosition.left)
+      this.updatePosition()
     }
   },
   updated() {
@@ -406,7 +403,7 @@ const updateOriginPosition = (pos, el, offset = {x: 0, y: 0}) => {
     if (key === 'top' || key === 'bottom') {
       sp = y
     }
-    pos[key] = Math.floor(tPos[key] - sp)
+    pos[key] = parseInt(tPos[key] - sp)
   })
 }
 </script>

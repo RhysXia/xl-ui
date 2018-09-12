@@ -32,6 +32,22 @@ export default {
         text-align: center;
         line-height: 10rem;
     }
+    .demo-wrap{
+        position: relative;
+        background-color: #eee;
+        height: 500px;
+        width: 500px;
+    }
+    .demo-transform{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .demo-ref{
+        display: block;
+        transform: scale(5);
+    }
 </style>
 
 # Popover 组件
@@ -284,6 +300,21 @@ export default {
 </xl-popover>
 ```
 
+:::
+
+## 对于参考元素有`transform`修饰
+
+:::demo
+```html
+<div class="demo-wrap">
+    <div class="demo-transform">
+        <xl-popover trigger="hover">
+            <span class="demo-ref">aaaaa</span>
+            <div slot="popup">popover</div>
+        </xl-popover>
+    </div>
+</div>
+```
 :::
 
 ## Popover 属性
